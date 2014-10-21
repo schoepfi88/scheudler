@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.1
+notifications:
+ email:
+  - ch.schoepf1@hotmail.com
+  - raphael.gwiggner@gmail.com
+ on_success: never
+ on_failture: always

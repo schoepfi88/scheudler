@@ -1,0 +1,121 @@
+@import "bootstrap/variables";
+/* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
+
+/* fix bootstrap 3 default form style */
+input[type=text], input[type=email], select {
+    @extend .form-control;
+}
+
+/* fix rails bootstrap invalid field higlighting */
+.field_with_errors {
+    @extend .has-error;
+}
+
+.alert-notice {
+    @extend .alert-info;
+}
+.alert-error {
+    @extend .alert-danger;
+}
+.alert-alert {
+    @extend .alert-warning;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.announcement-heading {
+  font-size: 50px;
+  margin: 0;
+}
+
+.announcement-text {
+  margin: 0;
+}
+
+// input.ng-dirty {
+//     border-color: #8a6d3b;
+// }
+
+input.ng-error {
+    border-color: #a94442;
+}
+
+.thumb {
+  max-width: 180px;
+  max-height: 180px;
+  height: 180px;
+  width: 180px;
+}
+
+.sharing-item {
+  margin: 10px 0 0;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.page-header-right { padding-bottom: 14px; margin: 40px 0 20px; }
+
+@media (max-width: $screen-xs) {
+  .page-header-right { padding-bottom: 10px; margin: 0; }
+}
+
+canvas{
+        width: 100% !important;
+        max-width: 800px;
+        height: auto !important;
+    }
+
+/* disable rounded corners */
+ * {
+   -webkit-border-radius: 5px !important;
+      -moz-border-radius: 5px !important;
+           border-radius: 5px !important;
+ }
+
+
+ /* add a cursor to following classes */
+ .nav, .pagination, .clickable, .carousel, .panel-title a 
+  { 
+    cursor: pointer; 
+  }
+
+// http://stackoverflow.com/questions/8222528/ios5-show-numeric-keypad-by-default-without-using-type-number-or-type-tel
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// http://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-inputs-spin-box
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+.btn-group-header {
+  display: relative;
+  max-width: 400px;
+  bottom: 15px;
+  top: 25px;
+  float: right!important;
+}
+.marg-bottom-md {
+  margin-bottom: 20px;
+}
+.si-hidden-true h3{
+  text-decoration: line-through;
+  color: #ccc;
+}
+.panel-title a {
+  display: block;
+}
+
+.sharing-item .input-group .form-control {
+  font-size: 16px!important;
+}

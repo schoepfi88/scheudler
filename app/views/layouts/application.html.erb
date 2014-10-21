@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scheudler">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no, user-scalable=0, maximum-scale=1"/>
+    <meta name="description">
+    <meta name="robots" content="<%= yield :robots %>">
+    <meta name="author" content="">
+    <meta name="google-site-verification" content="24dGcQyKurRHX8RcO9sXp5pB-LqGotGHMVUM-U3YsgU" />
+
+
+    <title>scheudler<%= " » " + h(yield(:title)) if content_for?(:title) %></title>
+    <%= stylesheet_link_tag "application", media: "all"%>
+    <%= csrf_meta_tags %>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body ng-controller="rootCtrl">
+
+    <!-- loading overlay before ng-cloak -->
+    <div class="splash" ng-cloak>
+      <div class="loading-overlay">
+        <span class="fa fa-refresh fa-spin fa-5x loading-overlay-centered"></span>
+      </div>
+    </div>
+
+    <!-- loading overlay for small devices -->
+    <div ng-show="isLoading()">
+      <div class="visible-xs loading-overlay">
+        <span class="fa fa-refresh fa-5x fa-spin loading-overlay-centered"></span>
+      </div>
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-cloak>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <% if logged_in %>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          <% end %>
+            <a class="navbar-brand" href="/#/dashboard">Scheudler</a>
+        </div>
+        <% if logged_in %>
+          <div class="navbar-collapse collapse no-transition">
+            <ul class="nav navbar-nav">
+              <li ng-class="{active:isActive('/dashboard')}">
+                <a href="/#/dashboard" ><span class="fa fa-dashboard"></span> <%=t(".navbar.dashboard")%></a>
+              </li>
+              <li ng-class="{active:isActive('/calender')}">
+                <a href="/#/calender"><span class="fa fa-calendar"></span>  <%=t(".navbar.calendar")%></a>
+              </li>
+              <li ng-class="{active:isActive('/statistik')}">
+                <a href="/#/statistic"><span class="fa fa-info"></span> <%=t(".navbar.statistic")%></a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                  <a href="/signout"><span class="glyphicon glyphicon-off"></span> <%=t("misc.titles.logout")%></a>
+                </li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- overall container -->
+    <div id="container" class="<%= content_for?(:no_container) ? "" : "container" %>" ng-cloak>
+      <section>
+        <% flash.each do |key,message| %>
+          <div class="alert alert-<%= key.to_s %> alert-dismissable auto-fadeout">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%=message%>
+          </div>
+        <% end %>
+
+        <div class="flyover flyover-top"
+              ng-class="{in:Util.has_server_errors}">
+          <alert ng-repeat="error in server_errors track by $index" type="error_type" close="delete_error($index)">
+            <i class="fa fa-exclamation-triangle fa-lg"></i> {{error}}
+          </alert>
+        </div>
+
+        <%= yield :validation %>
+      </section>
+
+      <%= yield %>
+    </div>
+
+    <!-- overall footer -->
+    <div id="footer" ng-cloak>
+      <div class="container">
+  
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="../../assets/js/docs.min.js"></script>-->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false">
+    </script>
+    <%= javascript_include_tag "application" %>
+    <%= yield :script %>
+    <%if I18n.locale.to_s === "de"%>
+        <%= javascript_include_tag "vendor/angular-locale_de-de" %>
+    <%end%>
+    <script>var locale = "<%=I18n.locale.to_s%>";</script>
+
+  </body>
+</html>

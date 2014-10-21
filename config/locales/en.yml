@@ -1,0 +1,100 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  errors:
+    not_found:
+      messages:
+        not_found                         : "Hmmm... You requested something that is either lost or never has been there..."
+    server_error:
+      messages:
+        server_error                      : "Ouuu no... Something went wrong, please try again later!"
+
+  api:
+
+  activerecord:
+    errors:
+      models:
+
+  buttons:
+    confirmations:
+      delete                              : "Are you sure?"
+
+  #misc
+  misc:
+    titles:
+      logout                              : "logout"
+      login                               : "login"
+      logged_out                          : "Successfully logged out!"
+      logged_in                           : "Successfully logged in!"
+      in_progress                         : ""
+      menus:
+        about:
+          title                           : "About us"
+          description                     : ""
+        home:
+          title                           : "Home"
+          description                     : ""
+        contact:
+          title                           : "Contact"
+          description                     : ""
+        terms_and_privacy:
+          title                           : "Terms & Privacy"
+          description                     : ""
+      language:
+        english                           : "English"
+        german                            : "German"
+    forms:
+      errors_in_form                      : "There are errors in your input!"
+
+   # views
+  layouts:
+    application:
+      navbar:
+        dashboard                         : "Dashboard"
+        calendar                          : "Calendar"
+        statistic                         : "Statistic"
+
+  static:
+    about:
+      page_header                         : "About us"
+      page_title                          : "About us"
+    contact:
+      page_header                         : "contact us"
+      page_title                          : "contact us!"
+    terms_and_privacy:
+      page_header                         : "Terms & Privacy"
+      page_title                          : "Terms and Privacy"
+
+  templates:
+    index:
+      page_title                         : "Dashboard"
+    dashboard:
+      page_header                        : "Dashboard"
+
+  session:
+    index:
+      page_title                         : "Please sign in"
+      sign_in_Facebook                   : "Facebook"
+      sign_in_Google                     : "Google"
+      title                              : "Welcome to Scheudler"
+      subtitle                           : "Scheudler defines an organized team"
+      signin_with                        : "sign in with"
