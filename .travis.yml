@@ -6,5 +6,6 @@ notifications:
   - ch.schoepf1@hotmail.com
   - raphael.gwiggner@gmail.com
   - Michael.Voetter@student.uibk.ac.at
+  - Roman.Reinold@student.uibk.ac.at
  on_success: never
  on_failture: always
