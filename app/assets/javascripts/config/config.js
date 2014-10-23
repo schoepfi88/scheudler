@@ -6,9 +6,9 @@ angular.module('scheudler', ['ngRoute','ngResource','google-maps','angles','ui.b
   $httpProvider.defaults.headers.common = {'X-CSRF-Token': $("meta[name='csrf-token']").attr("content"),
                                           'Content-Type': 'application/json'};
   $routeProvider.
-      when('/search/:term', {
-        templateUrl: '/templates/search',
-        controller: 'searchCtrl'
+      when('/dashboard', {
+        templateUrl: '/templates/dashboard',
+        controller: 'dashboardCtrl'
       }).
       otherwise({
         redirectTo: '/dashboard'

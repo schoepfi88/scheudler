@@ -85,10 +85,9 @@ en:
       page_title                          : "Terms and Privacy"
 
   templates:
-    index:
-      page_title                         : "Dashboard"
     dashboard:
       page_header                        : "Dashboard"
+      page_title                         : "Dashboard"
 
   session:
     index:

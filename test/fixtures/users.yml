@@ -11,14 +11,6 @@
 #    t.datetime "updated_at"
 #  end
 
-niko:
-  id: 2
-  email: niko1003@gmx.net
-  name: Niko Risslegger
-  provider: facebook
-  uid: 1438808021
-  oauth_token: wuseldusel
-
 chrisi:
   id: 1
   email: ch.test@testen.com
@@ -27,23 +19,6 @@ chrisi:
   provider: facebook
   uid: 1438808020
   oauth_token: blabla
-
-michi:
-  email: michi@test.com
-  name: Michi Fröwis
-  flat: wg_michi
-  provider: facebook
-  uid: 1438808022
-  oauth_token: wuseldusel
-
-clemi:
-  id: 4
-  email: cle@test.com
-  name: Clemens Brunner
-  flat: wg_clemi
-  provider: facebook
-  uid: 1438808023
-  oauth_token: wuseldusel
 
 raffi: 
   id: 5
@@ -61,19 +36,3 @@ hans:
   flat_id: 3
   provider: facebook
   uid: 1313232323
-  oauth_token: wuseldusel
-
-michi_without_flat_and_without_invite:
-  email: michael.froewis@gmx.at
-  name: Michi Fröwis
-  provider: facebook
-  uid: 1438808024
-  oauth_token: wuseldusel
-
-michi_without_flat_and_with_invite:
-  email: michael.froewis@gmail.com
-  name: Michi Fröwis
-  provider: facebook
-  uid: 1438808025
-  oauth_token: wuseldusel
-
