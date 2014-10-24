@@ -1,7 +1,7 @@
 $bgDefault      : #3465a4;
-$bgHighlight    : #f57900;
-$colDefault     : #ecf0f1;
-$colHighlight   : #ecdbff;
+$bgHighlight    : #fcaf3e;
+$colDefault     : #eeeeec;
+$colHighlight   : #555753;
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
@@ -16,7 +16,7 @@ $colHighlight   : #ecdbff;
       > a {
         color: $colDefault;
         &:hover,  &:focus {
-          color: $colHighlight; }}}
+          color: $bgHighlight; }}}
     > .active {
       > a, > a:hover, > a:focus {
         color: $colHighlight;
