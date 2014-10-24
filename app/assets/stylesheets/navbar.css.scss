@@ -8,7 +8,7 @@ $colHighlight   : #555753;
   .navbar-brand {
     color: $colDefault;
     &:hover, &:focus { 
-      color: $colHighlight; }}
+      color: $bgHighlight; }}
   .navbar-text {
     color: $colDefault; }
   .navbar-nav {
