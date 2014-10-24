@@ -7,5 +7,6 @@ notifications:
   - raphael.gwiggner@gmail.com
   - Michael.Voetter@student.uibk.ac.at
   - Roman.Reinold@student.uibk.ac.at
+  - Alexander.Jungmann@student.uibk.ac.at
  on_success: never
  on_failture: always
