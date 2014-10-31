@@ -72,6 +72,9 @@ en:
         dashboard                         : "Dashboard"
         calendar                          : "Calendar"
         statistic                         : "Statistic"
+        events                            : "Events"
+        groups                            : "Groups"
+        account                           : "Account"
 
   static:
     about:

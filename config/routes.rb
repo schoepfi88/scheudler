@@ -6,6 +6,7 @@ scope "(:locale)", locale: /en|de/ do
   # template routes
   namespace :templates do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
+    get '/statistic', to: :statistic, as: 'statistic_template'
   end
 
   #REST API
