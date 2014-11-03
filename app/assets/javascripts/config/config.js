@@ -10,6 +10,10 @@ angular.module('scheudler', ['ngRoute','ngResource','google-maps','angles','ui.b
         templateUrl: '/templates/dashboard',
         controller: 'dashboardCtrl'
       }).
+      when('/calendar', {
+        templateUrl: '/templates/calendar',
+        controller: 'statisticCtrl'
+      }).
       when('/statistic', {
         templateUrl: '/templates/statistic',
         controller: 'statisticCtrl'

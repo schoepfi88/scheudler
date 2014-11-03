@@ -91,6 +91,12 @@ en:
     dashboard:
       page_header                        : "Dashboard"
       page_title                         : "Dashboard"
+    calendar:
+      page_header                        : "Calendar"
+      page_title                         : "Calendar"
+    statistic:
+      page_header                        : "Statistic"
+      page_title                         : "Statistic"
 
   session:
     index:
