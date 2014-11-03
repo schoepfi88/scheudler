@@ -40,7 +40,7 @@ gem 'http_accept_language'
 gem 'chart-js-rails'
 
 #super cool icons
-gem "font-awesome-rails"
+gem "font-awesome-rails", '~> 4.2'
 
 #authorisation fb and google
 gem 'omniauth-facebook'

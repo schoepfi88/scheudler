@@ -51,7 +51,7 @@ GEM
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
-    font-awesome-rails (4.0.3.1)
+    font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     geocoder (1.2.1)
     hashie (2.1.1)
@@ -188,7 +188,7 @@ DEPENDENCIES
   capistrano
   chart-js-rails
   exception_notification
-  font-awesome-rails
+  font-awesome-rails (~> 4.2)
   geocoder
   http_accept_language
   jbuilder (~> 1.2)
