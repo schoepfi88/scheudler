@@ -14,13 +14,21 @@ angular.module('scheudler', ['ngRoute','ngResource','google-maps','angles','ui.b
         templateUrl: '/templates/calendar',
         controller: 'calendarCtrl'
       }).
-      when('/statistic', {
-        templateUrl: '/templates/statistic',
-        controller: 'statisticCtrl'
+      when('/events', {
+        templateUrl: '/templates/events',
+        controller: 'eventsCtrl'
       }).
       when('/groups', {
         templateUrl: '/templates/groups',
         controller: 'groupsCtrl'
+      }).
+      when('/statistic', {
+        templateUrl: '/templates/statistic',
+        controller: 'statisticCtrl'
+      }).
+      when('/account', {
+        templateUrl: '/templates/account',
+        controller: 'accountCtrl'
       }).
       otherwise({
         redirectTo: '/dashboard'

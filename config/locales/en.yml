@@ -94,12 +94,18 @@ en:
     calendar:
       page_header                        : "Calendar"
       page_title                         : "Calendar"
-    statistic:
-      page_header                        : "Statistic"
-      page_title                         : "Statistic"
     groups:
       page_header                        : "Groups"
       page_title                         : "Groups"
+    events:
+      page_header                        : "Events"
+      page_title                         : "Events"
+    statistic:
+      page_header                        : "Statistic"
+      page_title                         : "Statistic"
+    account:
+      page_header                        : "Account"
+      page_title                         : "Account"
 
   session:
     index:
