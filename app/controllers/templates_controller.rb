@@ -10,7 +10,16 @@ class TemplatesController < ProtectedController
   def calendar
   end
 
+  def events
+  end
+
+  def groups
+  end
+
   def statistic
+  end
+
+  def account
   end
 
 end
