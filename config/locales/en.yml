@@ -97,6 +97,9 @@ en:
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
+    groups:
+      page_header                        : "Groups"
+      page_title                         : "Groups"
 
   session:
     index:

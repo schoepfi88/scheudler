@@ -12,11 +12,15 @@ angular.module('scheudler', ['ngRoute','ngResource','google-maps','angles','ui.b
       }).
       when('/calendar', {
         templateUrl: '/templates/calendar',
-        controller: 'statisticCtrl'
+        controller: 'calendarCtrl'
       }).
       when('/statistic', {
         templateUrl: '/templates/statistic',
         controller: 'statisticCtrl'
+      }).
+      when('/groups', {
+        templateUrl: '/templates/groups',
+        controller: 'groupsCtrl'
       }).
       otherwise({
         redirectTo: '/dashboard'
