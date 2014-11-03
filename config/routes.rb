@@ -6,6 +6,7 @@ scope "(:locale)", locale: /en|de/ do
   # template routes
   namespace :templates do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
+    get '/calendar', to: :calendar, as: 'calendar_template'
     get '/statistic', to: :statistic, as: 'statistic_template'
   end
 
@@ -67,7 +68,6 @@ end
   #       get 'recent', on: :collection
   #     end
   #   end
-
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

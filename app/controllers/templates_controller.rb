@@ -7,4 +7,10 @@ class TemplatesController < ProtectedController
   def dashboard
   end
 
+  def calendar
+  end
+
+  def statistic
+  end
+
 end
