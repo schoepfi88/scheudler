@@ -7,10 +7,10 @@ scope "(:locale)", locale: /en|de/ do
   namespace :templates do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
     get '/calendar', to: :calendar, as: 'calendar_template'
-	get '/events', to: :events, as: 'events_template'
-	get '/groups', to: :groups, as: 'groups_template'
+    get '/events', to: :events, as: 'events_template'
+    get '/groups', to: :groups, as: 'groups_template'
     get '/statistic', to: :statistic, as: 'statistic_template'
-	get '/account', to: :account, as: 'account_template'
+    get '/account', to: :account, as: 'account_template'
   end
 
   #REST API
