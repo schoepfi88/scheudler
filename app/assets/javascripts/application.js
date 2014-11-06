@@ -34,4 +34,3 @@
 //= require_tree ./directives
 //= require ./vendor/angles.js
 //= require bootbox.js
-//= require ./vendor/angular-google-maps.min.js

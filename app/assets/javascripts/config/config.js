@@ -1,6 +1,6 @@
 // Angular Config / Routes
 
-angular.module('scheudler', ['ngRoute','ngResource','google-maps','angles','ui.bootstrap'])
+angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap'])
         .config(function($httpProvider, $routeProvider){
 
   $httpProvider.defaults.headers.common = {'X-CSRF-Token': $("meta[name='csrf-token']").attr("content"),
