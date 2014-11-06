@@ -14,6 +14,7 @@ class TemplatesController < ProtectedController
   end
 
   def groups
+	@groups = Group.all
   end
 
   def groups_create

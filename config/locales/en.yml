@@ -101,11 +101,16 @@ en:
       page_header                        : "Groups"
       page_title                         : "Groups"
       create_group                       : "Create New Group"
+      help_title                         : "Create your first group..."
+      help_paragraph1                    : "You can invite your team members to join.."
+      help_paragraph2                    : "and share news and events with them"
     groups_create:
       page_header                        : "Create New Group"
       page_title                         : "Create New Group"
       name                               : "Name"
       name_placeholder                   : "New York Giants"
+      description                        : "Description"
+      description_placeholder            : "American Football Team"
       privacy                            : "Private"
     statistic:
       page_header                        : "Statistic"
