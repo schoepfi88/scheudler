@@ -1,0 +1,34 @@
+<% content_for :robots, "INDEX, FOLLOW" %>
+
+<% content_for :title, t( '.page_title' ) %>
+
+<% content_for :page_header, t( '.page_header' ) %>
+
+<h1 class="page-header"><%= t('.page_header') %></h1>
+
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <address>
+            <strong>Scheudler</strong><br>
+            dummystreat 13<br>
+            1234 dummytown<br>
+            <abbr title="Email">E:</abbr> norelpy@example.com
+        </address>
+
+        <hr>
+
+        <h3><%= t( '.page_content.title_privacy' ) %></h3>
+        <p>
+            <%= t( '.page_content.content_privacy' ) %>
+        </p>
+
+        <h3><%= t( '.page_content.title_ga' ) %></h3>
+        <p>
+            <%= t( '.page_content.content_ga' ) %>
+        </p>
+
+    </div>
+
+</div>

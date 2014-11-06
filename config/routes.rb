@@ -3,6 +3,10 @@ Scheudler::Application.routes.draw do
 scope "(:locale)", locale: /en|de/ do
   root :to => 'templates#index'
 
+  get '/about', :to => :about, controller: :public
+  get '/contact', :to => :contact, controller: :public
+  get '/terms', :to => :terms_and_privacy, controller: :public
+
   # template routes
   namespace :templates do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
