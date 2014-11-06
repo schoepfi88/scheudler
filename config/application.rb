@@ -24,6 +24,7 @@ module Scheudler
 
     config.exceptions_app = self.routes
     config.encoding="utf-8"
+	#config.force_ssl = true
 
     I18n.enforce_available_locales = false
   end

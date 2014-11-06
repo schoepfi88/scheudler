@@ -22,6 +22,10 @@ angular.module('scheudler', ['ngRoute','ngResource','google-maps','angles','ui.b
         templateUrl: '/templates/groups',
         controller: 'groupsCtrl'
       }).
+	  when('/groups_create', {
+        templateUrl: '/templates/groups_create',
+        controller: 'groupsCtrl'
+      }).
       when('/statistic', {
         templateUrl: '/templates/statistic',
         controller: 'statisticCtrl'

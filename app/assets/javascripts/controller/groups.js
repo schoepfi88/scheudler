@@ -1,4 +1,3 @@
-angular.module('scheudler').controller("groupsCtrl",
-    function($scope,Util){
-
+angular.module('scheudler').controller("groupsCtrl", function($scope,Util){
+	
 });

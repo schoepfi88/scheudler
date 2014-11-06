@@ -16,6 +16,9 @@ class TemplatesController < ProtectedController
   def groups
   end
 
+  def groups_create
+  end
+
   def statistic
   end
 

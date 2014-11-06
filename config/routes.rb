@@ -8,10 +8,12 @@ scope "(:locale)", locale: /en|de/ do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
     get '/calendar', to: :calendar, as: 'calendar_template'
     get '/events', to: :events, as: 'events_template'
-    get '/groups', to: :groups, as: 'groups_template'
+	get '/groups', to: :groups, as: 'groups_template'
+	get '/groups_create', to: :groups_create, as: 'groups_create_template'
     get '/statistic', to: :statistic, as: 'statistic_template'
     get '/account', to: :account, as: 'account_template'
   end
+
 
   #REST API
   namespace :api, defaults: {format: :json} do

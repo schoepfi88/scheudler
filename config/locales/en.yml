@@ -94,12 +94,19 @@ en:
     calendar:
       page_header                        : "Calendar"
       page_title                         : "Calendar"
-    groups:
-      page_header                        : "Groups"
-      page_title                         : "Groups"
     events:
       page_header                        : "Events"
       page_title                         : "Events"
+    groups:
+      page_header                        : "Groups"
+      page_title                         : "Groups"
+      create_group                       : "Create New Group"
+    groups_create:
+      page_header                        : "Create New Group"
+      page_title                         : "Create New Group"
+      name                               : "Name"
+      name_placeholder                   : "New York Giants"
+      privacy                            : "Private"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
