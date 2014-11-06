@@ -19,14 +19,14 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+de:
   errors:
     not_found:
       messages:
-        not_found                         : "Hmmm... You requested something that is either lost or never has been there..."
+        not_found                         : "Hmmm... leider nicht vorhanden..."
     server_error:
       messages:
-        server_error                      : "Ouuu no... Something went wrong, please try again later!"
+        server_error                      : "Ohhh nein... Da ist was schief gelaufen, bitte versuchs später nochmal!"
 
   api:
 
@@ -36,60 +36,60 @@ en:
 
   buttons:
     confirmations:
-      delete                              : "Are you sure?"
+      delete                              : "Bist du dir sicher?"
 
   #misc
   misc:
     titles:
       logout                              : "logout"
       login                               : "login"
-      logged_out                          : "Successfully logged out!"
-      logged_in                           : "Successfully logged in!"
+      logged_out                          : "Du bist ausgelogged!"
+      logged_in                           : "Du bist eingelogged!"
       in_progress                         : ""
       menus:
         about:
-          title                           : "About us"
+          title                           : "Über uns"
           description                     : ""
         home:
           title                           : "Home"
           description                     : ""
         contact:
-          title                           : "Contact"
+          title                           : "Kontact"
           description                     : ""
         terms_and_privacy:
-          title                           : "Terms & Privacy"
+          title                           : "Datenschutz"
           description                     : ""
       language:
-        english                           : "English"
-        german                            : "German"
+        english                           : "Englisch"
+        german                            : "Deutsch"
     forms:
-      errors_in_form                      : "There are errors in your input!"
+      errors_in_form                      : "Es sind noch fehler in der Eingabe!"
 
    # views
   layouts:
     application:
       navbar:
         dashboard                         : "Dashboard"
-        calendar                          : "Calendar"
-        statistic                         : "Statistics"
+        calendar                          : "Kalender"
+        statistic                         : "Statistiken"
         events                            : "Events"
-        groups                            : "Groups"
-        account                           : "Account"
+        groups                            : "Gruppen"
+        account                           : "Konto"
 
   public:
     about:
-      page_header                         : "About us"
-      page_title                          : "About us"
+      page_header                         : "Über uns"
+      page_title                          : "Über uns"
       page_content:
         paragraph_1                       : "Bla bla bla"
-        paragraph_2                       : "We hope you find it as usefull as we do."
-        greetings                         : "Greetings,"
+        paragraph_2                       : "Wir hoffen ihr findet Flatman so nützlich wie wir."
+        greetings                         : "Grüße,"
     contact:
-      page_header                         : "Contact us"
-      page_title                          : "Contact us!"
+      page_header                         : "kontaktiert uns"
+      page_title                          : "kontaktiert uns!"
     terms_and_privacy:
-      page_header                         : "Terms & Privacy"
-      page_title                          : "Terms and Privacy"
+      page_header                         : "Datenschutz"
+      page_title                          : "Datenschutz"
       page_content:
         title_privacy                     : "Privacy"
         content_privacy                   : "Use of our website is usually possible without providing personal information. As far as on our sides personal data (such as name, address or e-mail address), this is as far as possible on a voluntary basis. These data are not without your express consent. We point out that data transmission over the Internet (eg when communicating by e-mail) may have security gaps. A complete protection of data against access by third parties is not possible. The use of the framework of the imprint obligation published contact data by third parties for sending unsolicited advertisements and information materials is hereby expressly excluded. The operators of the pages expressly legal steps in case of unsolicited promotional information, such as spam e-mails."
@@ -103,21 +103,21 @@ en:
       page_header                        : "Dashboard"
       page_title                         : "Dashboard"
     calendar:
-      page_header                        : "Calendar"
-      page_title                         : "Calendar"
+      page_header                        : "Kalender"
+      page_title                         : "Kalender"
     events:
-      page_header                        : "Events"
-      page_title                         : "Events"
+      page_header                        : "Ereignisse"
+      page_title                         : "Ereignisse"
     groups:
-      page_header                        : "Groups"
-      page_title                         : "Groups"
-      create_group                       : "Create New Group"
-      help_title                         : "Create your first group..."
-      help_paragraph1                    : "You can invite your team members to join..."
-      help_paragraph2                    : "and share news and events with them"
+      page_header                        : "Gruppen"
+      page_title                         : "Gruppen"
+      create_group                       : "Neue Gruppe erstellen"
+      help_title                         : "Erstell deine erste Gruppe..."
+      help_paragraph1                    : "Lade deine Team-Mitglieder ein mitzumachen..."
+      help_paragraph2                    : "und teile Neuigkeiten und Ereignisse mit ihen"
     groups_create:
-      page_header                        : "Create New Group"
-      page_title                         : "Create New Group"
+      page_header                        : "Neue Gruppe erstellen"
+      page_title                         : "Neue Gruppe erstellen"
       name                               : "Name"
       name_placeholder                   : "New York Giants"
       description                        : "Description"
@@ -132,9 +132,9 @@ en:
 
   session:
     index:
-      page_title                         : "Please sign in"
+      page_title                         : "Bitte einloggen"
       sign_in_Facebook                   : "Facebook"
       sign_in_Google                     : "Google"
-      title                              : "Welcome to Scheudler"
-      subtitle                           : "Scheudler defines an organized team"
-      signin_with                        : "sign in with"
+      title                              : "Willkommen bei Scheudler"
+      subtitle                           : "Scheudler organisiert Ihr Team"
+      signin_with                        : "einloggen mit"
