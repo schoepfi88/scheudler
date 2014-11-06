@@ -76,13 +76,13 @@ en:
         groups                            : "Groups"
         account                           : "Account"
 
-  static:
+  public:
     about:
       page_header                         : "About us"
       page_title                          : "About us"
     contact:
-      page_header                         : "contact us"
-      page_title                          : "contact us!"
+      page_header                         : "Contact us"
+      page_title                          : "Contact us!"
     terms_and_privacy:
       page_header                         : "Terms & Privacy"
       page_title                          : "Terms and Privacy"
