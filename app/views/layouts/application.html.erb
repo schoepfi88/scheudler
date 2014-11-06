@@ -16,21 +16,6 @@
   </head>
 
   <body ng-controller="rootCtrl">
-
-    <!-- loading overlay before ng-cloak -->
-    <div class="splash" ng-cloak>
-      <div class="loading-overlay">
-        <span class="fa fa-refresh fa-spin fa-5x loading-overlay-centered"></span>
-      </div>
-    </div>
-
-    <!-- loading overlay for small devices -->
-    <div ng-show="isLoading()">
-      <div class="visible-xs loading-overlay">
-        <span class="fa fa-refresh fa-5x fa-spin loading-overlay-centered"></span>
-      </div>
-    </div>
-
     <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-cloak>
       <div class="container-fluid">
         <div class="navbar-header">

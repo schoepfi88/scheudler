@@ -129,11 +129,9 @@ h4:after {
 }
 
 </style>
-
-<div class="intro-header">
-
+<!-- execute isLoading() to stop progress bar. Not nice-->
+<div class="intro-header" ng-controller="rootCtrl" ng-init="isLoading()">
           <div class="container">
-
               <div class="row">
                   <div class="col-lg-12">
                       <div class="intro-message">

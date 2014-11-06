@@ -34,3 +34,4 @@
 //= require_tree ./directives
 //= require ./vendor/angles.js
 //= require bootbox.js
+//= require ./vendor/loading-bar.js
