@@ -4,13 +4,13 @@
 
 <div class="row">
     <div class="col-md-6">
-      <form ng-submit="">
+      <form ng-submit="submit()">
 
        <div class="form-group">
           <label for="name">
             <%= t('.name') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="name" ng-model="finTmp.text" placeholder="<%= t('.name_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" id="name" ng-model="groupData.name" placeholder="<%= t('.name_placeholder') %>" type="text"/>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-user"></span>
             </span>
@@ -21,7 +21,7 @@
           <label for="description">
             <%= t('.description') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="description" ng-model="finTmp.text" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" id="description" ng-model="groupData.description" placeholder="<%= t('.description_placeholder') %>" type="text"/>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-info-sign"></span>
             </span>
@@ -30,12 +30,13 @@
 
         <div class="form-group">
             <label for="privacy">
-            	<input type="checkbox"><%= t('.privacy') %>
+            	<input type="checkbox"> <%= t('.privacy') %>
             </label>
         </div>
 
+		<p><a class="btn btn-primary btn-lg" role="button" ng-click="submit()"> <%=t(".create_group")%> </a></p>
       </form>
     </div>
 </div>
 
-<p><a class="btn btn-primary btn-lg" role="button" ng-click="blabla"> <%=t(".create_group")%> </a></p>
+

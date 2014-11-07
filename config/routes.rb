@@ -18,11 +18,14 @@ scope "(:locale)", locale: /en|de/ do
     get '/account', to: :account, as: 'account_template'
   end
 
-
   #REST API
   namespace :api, defaults: {format: :json} do
-   resources :status, only: [:index]
-   resources :invite, only: [:create,:destroy]
+    resources :status, only: [:index]
+    resources :invite, only: [:create,:destroy]
+	
+	#groups
+    resources :groups, only: [:create, :update, :show, :destroy, :index]
+   	post '/groups' => 'groups#create'
   end
 
   # Authentication
