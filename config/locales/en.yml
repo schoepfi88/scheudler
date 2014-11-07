@@ -115,6 +115,7 @@ en:
       help_title                         : "Create your first group..."
       help_paragraph1                    : "You can invite your team members to join..."
       help_paragraph2                    : "and share news and events with them"
+      members                            : "Members"
     groups_create:
       page_header                        : "Create New Group"
       page_title                         : "Create New Group"

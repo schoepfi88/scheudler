@@ -24,8 +24,38 @@
 			<%=t ( ".help_paragraph2") %>
 		</div>
 	<% else %>
+		<% panel_type = ["info","warning","danger","success"] %>
+		<% panel_icon = ["soccer-ball-o","beer","paper-plane","gamepad"] %>
+		<% counter = 0 %>
 		<% @groups.each do |group| %>
-			<%= simple_format group.name %>
+			<div class="col-lg-3 col-sm-6">
+				<div class="panel panel-<%= panel_type[counter % panel_type.size] %> clickable" ng-click="">
+				  <div class="panel-heading">
+					<div class="row">
+					  <div class="col-xs-2">
+						<i class="fa fa-<%= panel_icon[counter % panel_icon.size] %> fa-5x"></i>
+					  </div>
+					  <div class="col-xs-10 text-right">
+						<p class="announcement-heading"><%= Group.where(id: group.id).joins('INNER JOIN users ON users.id = user_id').size %></p>
+						<p class="announcement-text"><%=t(".members")%></p>
+					  </div>
+					</div>
+				  </div>
+				  <a href="/#/groups/{:id}">
+					<div class="panel-footer announcement-bottom">
+					  <div class="row">
+						<div class="col-xs-10">
+						  <%= group.name %>
+						</div>
+						<div class="col-xs-2 text-right">
+						  <i class="fa fa-arrow-circle-right"></i>
+						</div>
+					  </div>
+					</div>
+				  </a>
+				</div>
+			</div>
+			<% counter += 1 %>
 		<% end %>
 	<% end %>
 </div>
