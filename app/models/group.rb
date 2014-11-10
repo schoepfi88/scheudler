@@ -7,6 +7,7 @@ class Group < ActiveRecord::Base
 		g = Group.new()
 		g.name = params[:name]
 		g.description = params[:description]
+		g.icon = params[:icon].split(" ").last
 		g.admin_id = admin_id
 		g
 	end

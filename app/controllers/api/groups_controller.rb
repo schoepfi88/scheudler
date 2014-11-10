@@ -24,6 +24,6 @@ class Api::GroupsController < Api::RestController
 
 	private
 	def create_params
-		params.permit(:name, :description)
+		params.permit(:name, :description, :icon)
 	end
 end

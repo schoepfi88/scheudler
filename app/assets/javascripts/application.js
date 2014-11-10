@@ -35,3 +35,4 @@
 //= require ./vendor/angles.js
 //= require bootbox.js
 //= require ./vendor/loading-bar.js
+//= require ./vendor/ui-iconpicker.js

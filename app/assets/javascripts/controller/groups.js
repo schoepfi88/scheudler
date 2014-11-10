@@ -10,6 +10,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 
 	$scope.groupData = {
 		name: '',
-		description: ''
+		description: '',
+		icon: ''
 	};
 });

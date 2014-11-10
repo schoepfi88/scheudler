@@ -123,7 +123,8 @@ en:
       name_placeholder                   : "New York Giants"
       description                        : "Description"
       description_placeholder            : "American Football Team"
-      privacy                            : "Private"
+      group_icon                         : "Group Icon"
+      icon                               : "Choose an icon for your group"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
