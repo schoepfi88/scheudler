@@ -1,17 +1,15 @@
-<div class="row modal-body">
-    <div class="page-head">
-        <h1 class="page-header"><i class="fa fa-group"></i>
-            <%=t ( '.page_header') %>
-                <a href="/#/groups_create">
-                    <button class="btn btn-primary pull-right"> <i class="fa fa-plus"></i>
-                        <span class="hidden-xs">
-                            <%=t ( '.create_group') %>
-                        </span>
-                    </button>
-                </a>
-        </h1>
-    </div>
-</div>
+<section class="hidden-print">
+  <h1 class="page-header">
+	<i class="fa fa-group"></i> <%=t ( '.page_header') %>
+	<a href="/#/groups_create">
+        <button class="btn btn-primary pull-right"> <i class="fa fa-plus"></i>
+            <span class="hidden-xs">
+                <%=t ( '.create_group') %>
+            </span>
+        </button>
+    </a>
+  </h1>
+</section>
 <div class="row">
 	<% if @groups.size == 0 %>
 		<div class="jumbotron text-center">
@@ -25,7 +23,6 @@
 		</div>
 	<% else %>
 		<% panel_type = ["info","warning","danger","default","success"] %>
-		<% panel_icon = ["soccer-ball-o","beer","paper-plane","gamepad"] %>
 		<% counter = 0 %>
 		<% @groups.each do |group| %>
 			<div class="col-lg-3 col-sm-6">
@@ -33,7 +30,7 @@
 				  <div class="panel-heading">
 					<div class="row">
 					  <div class="col-xs-2">
-						<i class="fa <%= if group.icon != nil then group.icon else ("fa-" + panel_icon[counter % panel_icon.size]) end %> fa-5x"></i>
+						<i class="fa <%= group.icon %> fa-5x"></i>
 					  </div>
 					  <div class="col-xs-10 text-right">
 						<p class="announcement-heading"><%= Group.where(id: group.id).joins('INNER JOIN users ON users.id = user_id').size %></p>
