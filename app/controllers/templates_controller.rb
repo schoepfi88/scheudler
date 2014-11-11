@@ -20,6 +20,10 @@ class TemplatesController < ProtectedController
   def groups_create
   end
 
+  def groups_dashboard
+	@group = Group.find(params[:id])
+  end
+
   def statistic
   end
 

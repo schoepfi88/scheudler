@@ -3,7 +3,7 @@
         <h1 class="page-header"><i class="fa fa-group"></i>
             <%=t ( '.page_header') %>
                 <a href="/#/groups_create">
-                    <button ng-click="" class="btn btn-primary pull-right"> <i class="fa fa-plus"></i>
+                    <button class="btn btn-primary pull-right"> <i class="fa fa-plus"></i>
                         <span class="hidden-xs">
                             <%=t ( '.create_group') %>
                         </span>
@@ -29,7 +29,7 @@
 		<% counter = 0 %>
 		<% @groups.each do |group| %>
 			<div class="col-lg-3 col-sm-6">
-				<div class="panel panel-<%= panel_type[counter % panel_type.size] %> clickable" ng-click="">
+				<div class="panel panel-<%= panel_type[counter % panel_type.size] %> clickable" ng-click="redirect_to_group(<%= group.id %>)">
 				  <div class="panel-heading">
 					<div class="row">
 					  <div class="col-xs-2">
@@ -41,7 +41,7 @@
 					  </div>
 					</div>
 				  </div>
-				  <a href="/#/groups/{:id}">
+				  <a href="/#/groups_dashboard/<%= group.id %>">
 					<div class="panel-footer announcement-bottom">
 					  <div class="row">
 						<div class="col-xs-10">

@@ -26,6 +26,10 @@ angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'ch
         templateUrl: '/templates/groups_create',
         controller: 'groupsCtrl'
       }).
+	  when('/groups_dashboard/:id', {
+		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id; },
+        controller: 'groupsCtrl'
+      }).
       when('/statistic', {
         templateUrl: '/templates/statistic',
         controller: 'statisticCtrl'
