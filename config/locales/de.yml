@@ -121,6 +121,7 @@ de:
       description_placeholder            : "Finale von American Football"
       date                               : "Datum"
       date_placeholder                   : "Implement Mini-Calendar"
+      create_event                       : "Event erstellen"
     groups:
       page_header                        : "Gruppen"
       page_title                         : "Gruppen"
