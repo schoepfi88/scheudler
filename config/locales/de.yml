@@ -108,6 +108,7 @@ de:
     events:
       page_header                        : "Ereignisse"
       page_title                         : "Ereignisse"
+      create_event                       : "Event erstellen"
     groups:
       page_header                        : "Gruppen"
       page_title                         : "Gruppen"

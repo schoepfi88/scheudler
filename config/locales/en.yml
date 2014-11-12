@@ -108,6 +108,10 @@ en:
     events:
       page_header                        : "Events"
       page_title                         : "Events"
+      create_event                       : "Create Event"
+      help_title                         : "Create your first event..."
+      help_paragraph1                    : "You can create a new event..."
+      help_paragraph2                    : "and invite them to join"
     groups:
       page_header                        : "Groups"
       page_title                         : "Groups"
