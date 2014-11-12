@@ -7,7 +7,7 @@ class Api::GroupsController < Api::RestController
 	def create
 		group = Group.create_new_group(create_params, current_user.id)
 		group.save!
-		respond_with(group, :location => nil)
+		respond_with(nil, :location => nil)
 	end
 
 	def update
@@ -24,6 +24,6 @@ class Api::GroupsController < Api::RestController
 
 	private
 	def create_params
-		params.permit(:name, :description)
+		params.permit(:name, :description, :icon)
 	end
 end

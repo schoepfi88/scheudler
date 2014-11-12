@@ -1,6 +1,6 @@
 // Angular Config / Routes
 
-angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar'])
+angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar','ui-iconpicker'])
         .config(function($httpProvider, $routeProvider){
 
   $httpProvider.defaults.headers.common = {'X-CSRF-Token': $("meta[name='csrf-token']").attr("content"),
@@ -24,6 +24,10 @@ angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'ch
       }).
 	  when('/groups_create', {
         templateUrl: '/templates/groups_create',
+        controller: 'groupsCtrl'
+      }).
+	  when('/groups_dashboard/:id', {
+		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id; },
         controller: 'groupsCtrl'
       }).
       when('/statistic', {
