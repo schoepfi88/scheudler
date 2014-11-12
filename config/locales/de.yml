@@ -109,6 +109,9 @@ de:
       page_header                        : "Ereignisse"
       page_title                         : "Ereignisse"
       create_event                       : "Event erstellen"
+      help_title                         : "Erstelle dein erstes Event..."
+      help_paragraph1                    : "Du kannst ein neues Event erstellen..."
+      help_paragraph2                    : "und Personen zu diesem Event einladen"
     groups:
       page_header                        : "Gruppen"
       page_title                         : "Gruppen"
