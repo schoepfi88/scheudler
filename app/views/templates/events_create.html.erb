@@ -1,0 +1,48 @@
+<section class="hidden-print">
+  <h1 class="page-header"><span class="fa fa-edit"></span> <%= t('.page_header') %></h1>
+</section>
+
+<div class="row">
+	 <div class="col-md-6">
+      <form ng-submit="submit()">
+
+       <div class="form-group">
+          <label for="name">
+            <%= t('.name') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" id="name" ng-model="" placeholder="<%= t('.name_placeholder') %>" type="text"/>
+            <span class="input-group-addon">
+              <span class="fa fa-trophy"></span>
+            </span>
+          </div>
+        </div>
+	
+        <div class="form-group">
+          <label for="date">
+            <%= t('.date') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" id="date" ng-model="" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-dashboard"></span>
+            </span>
+          </div>
+        </div>
+
+
+		<div class="form-group">
+          <label for="description">
+            <%= t('.description') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" id="description" ng-model="" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </span>
+          </div>
+        </div>
+		
+		<p><a class="btn btn-primary btn-lg" role="button" ng-click="submit()"> <%=t(".create_event")%> </a></p>
+      </form>
+		
+		
+    </div>
+</div>

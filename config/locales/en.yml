@@ -112,6 +112,15 @@ en:
       help_title                         : "Create your first event..."
       help_paragraph1                    : "You can create a new event..."
       help_paragraph2                    : "and invite them to join"
+    events_create:
+      page_header                        : "Create new event"
+      page_title                         : "Create new event"
+      name                               : "Name"
+      name_placeholder                   : "Superbowl"
+      description                        : "Description"
+      description_placeholder            : "Final of American Football"
+      date                               : "Date"
+      date_placeholder                   : "Implement Mini-Calendar"
     groups:
       page_header                        : "Groups"
       page_title                         : "Groups"
