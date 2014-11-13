@@ -1,0 +1,26 @@
+<section class="hidden-print">
+  	<h1 class="page-header">
+		<i class="fa fa-edit"></i> 
+		<%= t(".page_header") %>
+	</h1>
+</section>
+
+<div class="row">
+    <div class="col-md-6">
+      <form ng-submit="invite_to_group(<%= @group.id %>)">
+
+       <div class="form-group">
+          <label for="email">
+            <%= t('.email') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" id="email" ng-model="inviteData.email" placeholder="<%= t('.email_placeholder') %>" type="text"/>
+            <span class="input-group-addon">
+              <span class="fa fa-at"></span>
+            </span>
+          </div>
+        </div>
+		
+		<p><a class="btn btn-primary btn-lg" role="button" ng-click="invite_to_group(<%= @group.id %>)"> <%=t(".invite")%> </a></p>
+      </form>
+    </div>
+</div>

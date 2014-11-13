@@ -22,8 +22,17 @@ class Api::GroupsController < Api::RestController
 
 	end
 
+	def invite
+		Member.add_member(invite_params)
+		respond_with(nil, :location => nil)
+	end
+
 	private
 	def create_params
 		params.permit(:name, :description, :icon)
+	end
+
+	def invite_params
+		params.permit(:email, :group_id)
 	end
 end

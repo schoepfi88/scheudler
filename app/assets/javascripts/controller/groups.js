@@ -1,5 +1,5 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util){
-	$scope.submit = function(){
+	$scope.create_group = function(){
 		if($scope.groupData.name !== '' && $scope.groupData.description !== ''){
 			groupsService.group.create($scope.groupData, function(){
 				location.href="/#/groups";
@@ -12,9 +12,24 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		location.href="/#/groups_dashboard/" + id;
 	};
 
+	$scope.invite_to_group = function(id){
+		if($scope.inviteData.email !== ''){
+			$scope.inviteData.group_id = id;
+			groupsService.group.invite($scope.inviteData, function(){
+				location.href="/#/groups_dashboard/" + id;
+				location.reload();
+			});
+		}
+	};
+
 	$scope.groupData = {
 		name: '',
 		description: '',
 		icon: ''
+	};
+
+	$scope.inviteData = {
+		email: '',
+		group_id: 0
 	};
 });
