@@ -3,7 +3,7 @@ class CreateAdmin < ActiveRecord::Migration
     create_table :admins do |t|
       t.integer :group_id
       t.integer :user_id
-	  t.timestamps
+      t.timestamps
     end
   end
 end
