@@ -23,13 +23,8 @@ class TemplatesController < ProtectedController
 
   def groups_dashboard
 	@is_admin = false
-	@group.admins.each do |admin|
-		@is_admin = if current_user.id == admin.user_id then true end
-	end
-	
-	@is_member = false
-	@group.members.each do |member|
-		@is_member = if current_user.id == member.user_id then true end
+	if @group.admins.find_by(user_id: current_user.id) != nil then
+		@is_admin = true
 	end
   end
 

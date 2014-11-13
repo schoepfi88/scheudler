@@ -143,6 +143,11 @@ en:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"
       edit_group                         : "Edit Group"
+      members                            : "Members"
+      events                             : "Events"
+      calendar                           : "Calendar"
+      statistic                          : "Statistic"
+      news                               : "News"
     groups_invite:
       page_header                        : "Invite people to your group"
       page_title                         : "Invite poeple to your group"

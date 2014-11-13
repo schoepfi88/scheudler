@@ -2,19 +2,136 @@
   	<h1 class="page-header">
 		<i class="fa <%= @group.icon %>"></i> 
 		<%= @group.name + t(".page_header") %>
-		<% if @is_admin %>
+		
 			<div class="btn-group pull-right">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				<i class="fa fa-gear"></i> Settings<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
 				<li><a href="/#/groups_dashboard/<%= @group.id %>/invite"><i class="fa fa-plus"></i> Invite People</a></li>
-				<li class="divider"></li>
-				<li><a href="#"><i class="fa fa-gears"></i> Group Settings</a></li>
+				<% if @is_admin %>
+					<li class="divider"></li>
+					<li><a href="#"><i class="fa fa-gears"></i> Group Settings</a></li>
+				<% end %>
 			  </ul>
 			</div>
-		<% end %>
 	</h1>
 </section>
 
+<div class="row">
+	<div class="col-lg-3 col-sm-6">
+		<div class="panel panel-info clickable" ng-click="">
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-xs-2">
+				<i class="fa fa-group fa-5x"></i>
+			  </div>
+			  <div class="col-xs-10 text-right">
+				<p class="announcement-heading"><%= @group.members.size %></p>
+				<p class="announcement-text"></p>
+			  </div>
+			</div>
+		  </div>
+		  <a href="">
+			<div class="panel-footer announcement-bottom">
+			  <div class="row">
+				<div class="col-xs-10">
+				  <%=t(".members")%>
+				</div>
+				<div class="col-xs-2 text-right">
+				  <i class="fa fa-arrow-circle-right"></i>
+				</div>
+			  </div>
+			</div>
+		  </a>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="panel panel-warning clickable" ng-click="">
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-xs-2">
+				<i class="fa fa-trophy fa-5x"></i>
+			  </div>
+			  <div class="col-xs-10 text-right">
+				<p class="announcement-heading"><%= "0" %></p>
+				<p class="announcement-text"></p>
+			  </div>
+			</div>
+		  </div>
+		  <a href="">
+			<div class="panel-footer announcement-bottom">
+			  <div class="row">
+				<div class="col-xs-10">
+				  <%=t(".events")%>
+				</div>
+				<div class="col-xs-2 text-right">
+				  <i class="fa fa-arrow-circle-right"></i>
+				</div>
+			  </div>
+			</div>
+		  </a>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="panel panel-danger clickable" ng-click="">
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-xs-2">
+				<i class="fa fa-calendar fa-5x"></i>
+			  </div>
+			  <div class="col-xs-10 text-right">
+				<p class="announcement-heading"><%= "0" %></p>
+				<p class="announcement-text"></p>
+			  </div>
+			</div>
+		  </div>
+		  <a href="">
+			<div class="panel-footer announcement-bottom">
+			  <div class="row">
+				<div class="col-xs-10">
+				  <%=t(".calendar")%>
+				</div>
+				<div class="col-xs-2 text-right">
+				  <i class="fa fa-arrow-circle-right"></i>
+				</div>
+			  </div>
+			</div>
+		  </a>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="panel panel-success clickable" ng-click="">
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-xs-2">
+				<i class="fa fa-line-chart fa-5x"></i>
+			  </div>
+			  <div class="col-xs-10 text-right">
+				<p class="announcement-heading"><%= "0" %></p>
+				<p class="announcement-text"></p>
+			  </div>
+			</div>
+		  </div>
+		  <a href="">
+			<div class="panel-footer announcement-bottom">
+			  <div class="row">
+				<div class="col-xs-10">
+				  <%=t(".statistic")%>
+				</div>
+				<div class="col-xs-2 text-right">
+				  <i class="fa fa-arrow-circle-right"></i>
+				</div>
+			  </div>
+			</div>
+		  </a>
+		</div>
+	</div>
+</div>
 
+<section class="hidden-print">
+  	<h2 class="page-header">
+		<i class="fa fa-newspaper-o"></i> 
+		<%= t(".news") %>
+	</h2>
+</section>
