@@ -141,6 +141,7 @@ en:
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"
+      edit_group                         : "Edit Group"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

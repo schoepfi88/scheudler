@@ -14,7 +14,7 @@ class TemplatesController < ProtectedController
   end
 
   def groups
-	@groups = Group.all
+	@groups = Group.joins(:members).where(members: {user_id: current_user.id})
   end
 
   def groups_create
@@ -22,6 +22,15 @@ class TemplatesController < ProtectedController
 
   def groups_dashboard
 	@group = Group.find(params[:id])
+	#@is_admin = if current_user.id == @group.admin_id then true else false end
+	@is_admin = false
+	@group.admins.each do |admin|
+		@is_admin = if current_user.id == admin.user_id then true end
+	end
+	@is_member = false
+	@group.members.each do |member|
+		@is_member = if current_user.id == member.user_id then true end
+	end
   end
 
   def statistic

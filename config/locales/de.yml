@@ -129,6 +129,7 @@ de:
       help_title                         : "Erstelle deine erste Gruppe..."
       help_paragraph1                    : "Lade deine Team-Mitglieder ein mitzumachen..."
       help_paragraph2                    : "und teile Neuigkeiten und Ereignisse mit ihnen"
+      members                            : "Mitglieder"
     groups_create:
       page_header                        : "Neue Gruppe erstellen"
       page_title                         : "Neue Gruppe erstellen"
@@ -136,7 +137,12 @@ de:
       name_placeholder                   : "New York Giants"
       description                        : "Beschreibung"
       description_placeholder            : "American Football Team"
-      privacy                            : "Privat"
+      group_icon                         : "Gruppen Icon"
+      icon                               : "Wähle ein Icon aus"
+    groups_dashboard:
+      page_header                        : " - Dashboard"
+      page_title                         : "Gruppen Dashboard"
+      edit_group                         : "Gruppe bearbeiten"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

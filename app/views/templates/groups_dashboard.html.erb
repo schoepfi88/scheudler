@@ -1,3 +1,22 @@
 <section class="hidden-print">
-  <h1 class="page-header"><i class="fa <%= @group.icon %>"></i> <%= @group.name %><%= t(".page_header") %></h1>
+  	<h1 class="page-header">
+		<i class="fa <%= @group.icon %>"></i> 
+		<%= @group.name + t(".page_header") %>
+		<% if @is_admin %>
+			<a href="">
+				<button class="btn btn-primary pull-right"> <i class="fa fa-gear"></i>
+					<span class="hidden-xs">
+						<%=t ( '.edit_group') %>
+					</span>
+				</button>
+			</a>
+		<% end %>
+	</h1>
 </section>
+<% if @is_member %>
+
+	<%= "You are a member" %>
+
+<% else %>
+	<%= "You are no member of this group" %>
+<% end %>

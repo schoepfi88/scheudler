@@ -33,7 +33,7 @@
 						<i class="fa <%= group.icon %> fa-5x"></i>
 					  </div>
 					  <div class="col-xs-10 text-right">
-						<p class="announcement-heading"><%= Group.where(id: group.id).joins('INNER JOIN users ON users.id = user_id').size %></p>
+						<p class="announcement-heading"><%= group.members.size %></p>
 						<p class="announcement-text"><%=t(".members")%></p>
 					  </div>
 					</div>
