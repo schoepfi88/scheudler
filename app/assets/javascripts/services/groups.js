@@ -4,7 +4,7 @@ angular.module('scheudler').factory("groupsService",function($resource) {
 							'create': {method: "POST"},
 							'get': {method: "GET"},
 							'update': {method: "PUT"},
-							'destroy': {method: "DELETE"},
+							'destroy': {method: "DELETE"}
 						});
 	var inviteService = $resource('/api/groups_invite/:id',{},
 						{
