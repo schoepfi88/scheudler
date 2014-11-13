@@ -17,21 +17,25 @@ ActiveRecord::Schema.define(version: 20141113113321) do
   enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "icon"
   end
 
   create_table "members", force: true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
