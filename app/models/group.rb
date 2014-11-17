@@ -1,6 +1,8 @@
 class Group < ActiveRecord::Base
 	has_many :admins
 	has_many :members
+	has_many :events_groups
+	has_many :events, :through => :events_groups
 	has_many :users, :through => :members
 	has_many :users, :through => :admins
 	validates   :name, :description, presence: true
