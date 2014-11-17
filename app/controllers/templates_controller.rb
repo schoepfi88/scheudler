@@ -1,5 +1,6 @@
 class TemplatesController < ProtectedController
- layout false, except: [:index]
+  layout false, except: [:index]
+  before_action :is_group_member, only: [:groups_dashboard, :groups_invite]
 
   def index
   end
@@ -21,16 +22,13 @@ class TemplatesController < ProtectedController
   end
 
   def groups_dashboard
-	@group = Group.find(params[:id])
-	#@is_admin = if current_user.id == @group.admin_id then true else false end
 	@is_admin = false
-	@group.admins.each do |admin|
-		@is_admin = if current_user.id == admin.user_id then true end
+	if @group.admins.find_by(user_id: current_user.id) != nil then
+		@is_admin = true
 	end
-	@is_member = false
-	@group.members.each do |member|
-		@is_member = if current_user.id == member.user_id then true end
-	end
+  end
+
+  def groups_invite
   end
 
   def statistic
@@ -39,4 +37,14 @@ class TemplatesController < ProtectedController
   def account
   end
 
+  private
+
+  def is_group_member
+	@group = Group.find(params[:id])
+
+	#redirect to dashboard if not in group
+	if @group.members.find_by(user_id: current_user.id) == nil then
+		render action: 'dashboard' 
+	end
+  end
 end

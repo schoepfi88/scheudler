@@ -11,27 +11,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113113321) do
+ActiveRecord::Schema.define(version: 20141117104415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "date"
+    t.time     "time"
+  end
+
+  create_table "events_groups", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "groups_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "icon"
+    t.integer  "user_id"
+    t.integer  "admin_id"
   end
 
   create_table "members", force: true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

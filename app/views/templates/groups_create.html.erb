@@ -9,7 +9,7 @@
 	</div>-->
 	
     <div class="col-md-6">
-      <form ng-submit="submit()">
+      <form ng-submit="create_group()">
 
        <div class="form-group">
           <label for="name">
@@ -38,7 +38,7 @@
 			<ui-iconpicker groups="font-awesome" value="fa fa-lg fa-beer" ng-model="groupData.icon"></ui-iconpicker>
 		</div>
 		
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="submit()"> <%=t(".create_group")%> </a></p>
+		<p><a class="btn btn-primary btn-lg" role="button" ng-click="create_group()"> <%=t(".create_group")%> </a></p>
       </form>
 		
 		

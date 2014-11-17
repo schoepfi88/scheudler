@@ -5,7 +5,11 @@ angular.module('scheudler').factory("groupsService",function($resource) {
 							'get': {method: "GET"},
 							'update': {method: "PUT"},
 							'destroy': {method: "DELETE"}
-						});		
+						});
+	var inviteService = $resource('/api/groups_invite/:id',{},
+						{
+							'invite': {method: "POST"}
+						});
     return {
 		group: {
 				create: function(groupData, succH, errH){
@@ -19,6 +23,9 @@ angular.module('scheudler').factory("groupsService",function($resource) {
 				},
 				destroy: function(id, succH, errH){
 					groupsService.destroy({id: id}, succH, errH);
+				},
+				invite: function(inviteData, succH, errH){
+					inviteService.invite(inviteData, succH, errH);
 				}
 			}
     };

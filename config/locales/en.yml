@@ -138,10 +138,22 @@ en:
       description_placeholder            : "American Football Team"
       group_icon                         : "Group Icon"
       icon                               : "Choose an icon for your group"
+      create_group                       : "Create New Group"
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"
       edit_group                         : "Edit Group"
+      members                            : "Members"
+      events                             : "Events"
+      calendar                           : "Calendar"
+      statistic                          : "Statistic"
+      news                               : "News"
+    groups_invite:
+      page_header                        : "Invite people to your group"
+      page_title                         : "Invite poeple to your group"
+      email                              : "E-Mail Addresses"
+      email_placeholder                  : "john@gmail.com; wayne@gmail.com"
+      invite                             : "Invite"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
