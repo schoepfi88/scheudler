@@ -158,6 +158,8 @@ de:
       email                              : "E-Mail Adressen"
       email_placeholder                  : "john@gmail.com; wayne@gmail.com"
       invite                             : "Einladen"
+      required_email                     : "Zumindest eine E-Mail Adresse ist erforderlich"
+      pattern_email                      : "Falsches Format"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

@@ -7,20 +7,22 @@
 
 <div class="row">
     <div class="col-md-6">
-      <form ng-submit="invite_to_group(<%= @group.id %>)">
+      <form name="inviteToGroupForm" ng-submit="invite_to_group(<%= @group.id %>, inviteToGroupForm.$valid)" novalidate>
 
-       <div class="form-group">
+       <div class="form-group" ng-class="{ 'has-error' : inviteToGroupForm.email.$invalid && !inviteToGroupForm.email.$pristine }">
           <label for="email">
             <%= t('.email') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="email" ng-model="inviteData.email" placeholder="<%= t('.email_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" name="email" ng-model="inviteData.email" placeholder="<%= t('.email_placeholder') %>" type="text" class="form-control" ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/" required/>
             <span class="input-group-addon">
               <span class="fa fa-at"></span>
             </span>
           </div>
+		  <p ng-show="inviteToGroupForm.email.$invalid && !inviteToGroupForm.email.$pristine && !inviteToGroupForm.email.$error.pattern" class="help-block"><%= t('.required_email') %></p>
+		  <p ng-show="inviteToGroupForm.email.$error.pattern" class="help-block"><%= t('.pattern_email') %></p>
         </div>
 		
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="invite_to_group(<%= @group.id %>)"> <%=t(".invite")%> </a></p>
+		<button type="submit" class="btn btn-primary btn-lg" ng-disabled="inviteToGroupForm.$invalid"><%=t(".invite")%></button>
       </form>
     </div>
 </div>

@@ -157,6 +157,8 @@ en:
       email                              : "E-Mail Addresses"
       email_placeholder                  : "john@gmail.com; wayne@gmail.com"
       invite                             : "Invite"
+      required_email                     : "At least one email address is required"
+      pattern_email                      : "Wrong format"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

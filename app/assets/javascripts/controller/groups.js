@@ -13,8 +13,8 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		location.href="/#/groups_dashboard/" + id;
 	};
 
-	$scope.invite_to_group = function(id){
-		if($scope.inviteData.email !== ''){
+	$scope.invite_to_group = function(id, isValid){
+		if(isValid){
 			$scope.inviteData.group_id = id;
 			groupsService.group.invite($scope.inviteData, function(){
 				location.href="/#/groups_dashboard/" + id;
