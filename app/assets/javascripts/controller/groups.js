@@ -1,7 +1,7 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util){
 	
 	$scope.create_group = function(isValid){
-		if(isValid){
+		if(isValid && $scope.isGoogleUser){
 			groupsService.group.create($scope.groupData, function(){
 				location.href="/#/groups";
 				location.reload();
@@ -23,6 +23,12 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		}
 	};
 
+	$scope.checkIfGoogleUser = function(providerString){
+		if(providerString == "google_oauth2"){
+			$scope.isGoogleUser = true;
+		}
+	};
+
 	$scope.groupData = {
 		name: '',
 		description: '',
@@ -33,4 +39,6 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		email: '',
 		group_id: 0
 	};
+
+	$scope.isGoogleUser = false;
 });

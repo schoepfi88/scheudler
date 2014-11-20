@@ -142,6 +142,7 @@ en:
       required_name                      : "Group name is required"
       required_description               : "Description is required"
       minlength_name                     : "Group name is too short"
+      cant_create_group                  : "You need a Google account to create a group"
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"
