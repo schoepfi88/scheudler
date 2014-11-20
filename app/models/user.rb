@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :admins
 	has_many :members
+	has_many :participants
+	has_many :events, :through => :participants
 	has_many :groups, :through => :members
 	has_many :groups, :through => :admins
     validates   :provider, :uid, :name, :oauth_token, :email, presence: true
