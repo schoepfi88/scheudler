@@ -35,10 +35,9 @@ ActiveRecord::Schema.define(version: 20141114182404) do
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "admin_id"
   end
 
   create_table "members", force: true do |t|

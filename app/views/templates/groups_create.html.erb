@@ -3,42 +3,40 @@
 </section>
 
 <div class="row">
-	<!--<div class="col-md-2 text-center">
-		<div><label for="name"><%= t('.group_icon') %></label></div>
-		<div><i class="fa fa-group fa-5x"></i></div>
-	</div>-->
-	
     <div class="col-md-6">
-      <form ng-submit="create_group()">
+      <form name="createGroupForm" ng-submit="create_group(createGroupForm.$valid)" novalidate>
 
-       <div class="form-group">
-          <label for="name">
+       <div class="form-group" ng-class="{ 'has-error' : createGroupForm.name.$invalid && !createGroupForm.name.$pristine }">
+          <label class="control-label" for="name">
             <%= t('.name') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="name" ng-model="groupData.name" placeholder="<%= t('.name_placeholder') %>" type="text"/>
-            <span class="input-group-addon">
+            <input autofocus="autofocus" name="name" ng-model="groupData.name" placeholder="<%= t('.name_placeholder') %>" type="text" class="form-control" ng-minlength="3" required />
+			<span class="input-group-addon">
               <span class="glyphicon glyphicon-user"></span>
             </span>
           </div>
+		  <p ng-show="createGroupForm.name.$invalid && !createGroupForm.name.$pristine && !createGroupForm.name.$error.minlength" class="help-block"><%= t('.required_name') %></p>
+		  <p ng-show="createGroupForm.name.$error.minlength" class="help-block"><%= t('.minlength_name') %></p>
         </div>
 	
-		<div class="form-group">
-          <label for="description">
+		<div class="form-group" ng-class="{ 'has-error' : createGroupForm.description.$invalid && !createGroupForm.description.$pristine }">
+          <label class="control-label" for="description">
             <%= t('.description') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="description" ng-model="groupData.description" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" name="description" ng-model="groupData.description" placeholder="<%= t('.description_placeholder') %>" type="text" class="form-control" required />
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-info-sign"></span>
             </span>
           </div>
+		  <p ng-show="createGroupForm.description.$invalid && !createGroupForm.description.$pristine" class="help-block"><%= t('.required_description') %></p>
         </div>
-
+		
 		<div class="form-group">
-			<label for="description"><%= t('.icon') %></label>
+			<label><%= t('.icon') %></label>
 			<ui-iconpicker groups="font-awesome" value="fa fa-lg fa-beer" ng-model="groupData.icon"></ui-iconpicker>
 		</div>
 		
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="create_group()"> <%=t(".create_group")%> </a></p>
+		<button type="submit" class="btn btn-primary btn-lg" ng-disabled="createGroupForm.$invalid"><%=t(".create_group")%></button>
       </form>
 		
 		

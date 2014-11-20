@@ -139,6 +139,9 @@ en:
       group_icon                         : "Group Icon"
       icon                               : "Choose an icon for your group"
       create_group                       : "Create New Group"
+      required_name                      : "Group name is required"
+      required_description               : "Description is required"
+      minlength_name                     : "Group name is too short"
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"

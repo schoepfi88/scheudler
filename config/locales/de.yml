@@ -140,6 +140,9 @@ de:
       group_icon                         : "Gruppen Icon"
       icon                               : "Wähle ein Icon aus"
       create_group                       : "Neue Gruppe erstellen"
+      required_name                      : "Gruppenname ist erforderlich"
+      required_description               : "Beschreibung ist erforderlich"
+      minlength_name                     : "Gruppenname ist zu kurz"
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Gruppen Dashboard"

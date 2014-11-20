@@ -1,6 +1,7 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util){
-	$scope.create_group = function(){
-		if($scope.groupData.name !== '' && $scope.groupData.description !== ''){
+	
+	$scope.create_group = function(isValid){
+		if(isValid){
 			groupsService.group.create($scope.groupData, function(){
 				location.href="/#/groups";
 				location.reload();
@@ -25,7 +26,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	$scope.groupData = {
 		name: '',
 		description: '',
-		icon: ''
+		icon: 'fa-beer'
 	};
 
 	$scope.inviteData = {
