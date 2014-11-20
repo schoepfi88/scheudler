@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <form name="createGroupForm" ng-submit="create_group(createGroupForm.$valid)" novalidate>
 
-	   <p ng-show="$isGoogleUser" class="help-block"><%= t('.cant_create_group') %></p>
+	   <p ng-show="$scope.isGoogleUser" class="help-block"><%= t('.cant_create_group') %></p>
 
        <div class="form-group" ng-class="{ 'has-error' : createGroupForm.name.$invalid && !createGroupForm.name.$pristine }">
           <label class="control-label" for="name">
