@@ -139,6 +139,10 @@ en:
       group_icon                         : "Group Icon"
       icon                               : "Choose an icon for your group"
       create_group                       : "Create New Group"
+      required_name                      : "Group name is required"
+      required_description               : "Description is required"
+      minlength_name                     : "Group name is too short"
+      cant_create_group                  : "You need a Google account to create a group"
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"
@@ -154,6 +158,8 @@ en:
       email                              : "E-Mail Addresses"
       email_placeholder                  : "john@gmail.com; wayne@gmail.com"
       invite                             : "Invite"
+      required_email                     : "At least one email address is required"
+      pattern_email                      : "Wrong format"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

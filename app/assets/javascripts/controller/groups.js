@@ -1,6 +1,9 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util){
-	$scope.create_group = function(){
-		if($scope.groupData.name !== '' && $scope.groupData.description !== ''){
+
+	$scope.isGoogleUser = false;	
+
+	$scope.create_group = function(isValid){
+		if(isValid && $scope.isGoogleUser){
 			groupsService.group.create($scope.groupData, function(){
 				location.href="/#/groups";
 				location.reload();
@@ -12,8 +15,8 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		location.href="/#/groups_dashboard/" + id;
 	};
 
-	$scope.invite_to_group = function(id){
-		if($scope.inviteData.email !== ''){
+	$scope.invite_to_group = function(id, isValid){
+		if(isValid){
 			$scope.inviteData.group_id = id;
 			groupsService.group.invite($scope.inviteData, function(){
 				location.href="/#/groups_dashboard/" + id;
@@ -22,10 +25,16 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		}
 	};
 
+	$scope.checkIfGoogleUser = function(providerString){
+		if(providerString == 'google_oauth2'){
+			$scope.isGoogleUser = true;
+		}
+	};
+
 	$scope.groupData = {
 		name: '',
 		description: '',
-		icon: ''
+		icon: 'fa-beer'
 	};
 
 	$scope.inviteData = {

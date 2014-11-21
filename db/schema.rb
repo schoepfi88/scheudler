@@ -43,12 +43,15 @@ ActiveRecord::Schema.define(version: 20141117104415) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "icon"
+    t.integer  "user_id"
+    t.integer  "admin_id"
   end
 
   create_table "members", force: true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "participants", force: true do |t|
