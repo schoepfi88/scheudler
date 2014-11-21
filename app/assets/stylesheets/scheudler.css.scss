@@ -1,5 +1,5 @@
 $blue   : #3465a4;  /*blue*/
-$orange : #fcaf3e;  /*orange*/
+$orange : #FFB547;  /*orange*/
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -66,7 +66,6 @@ input.ng-error {
   color: $blue;
   border-color: $blue;
   border-width: 2px;
-  font-variant: small-caps;
   font-family: "calibri";
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
@@ -87,7 +86,6 @@ canvas{
         height: auto !important;
     }
 
-/* disable rounded corners */
  * {
    -webkit-border-radius: 5px !important;
       -moz-border-radius: 5px !important;
@@ -100,18 +98,6 @@ canvas{
   { 
     cursor: pointer; 
   }
-
-// http://stackoverflow.com/questions/8222528/ios5-show-numeric-keypad-by-default-without-using-type-number-or-type-tel
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-// http://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-inputs-spin-box
-input[type='number'] {
-    -moz-appearance:textfield;
-}
 
 .btn-group-header {
   display: relative;
@@ -133,14 +119,19 @@ input[type='number'] {
 
 .panel-default > .panel-heading {
   background-color: $blue;
-  color: $orange;
+  color: white;
   font-variant: small-caps;
   font-size: 22px;
-  font-weight: bold;
+  //font-weight: bold;
   border-color: $blue;
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
+}
+
+.panel-default > .panel-heading .fa {
+    margin-right: 6px;
+    color: $orange;
 }
 
 .panel-default > .panel-body {
@@ -158,9 +149,4 @@ input[type='number'] {
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
 }
-
-.sharing-item .input-group .form-control {
-  font-size: 16px!important;
-}
-
 
