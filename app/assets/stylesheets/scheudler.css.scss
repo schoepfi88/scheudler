@@ -66,6 +66,8 @@ input.ng-error {
   color: $blue;
   border-color: $blue;
   border-width: 2px;
+  font-variant: small-caps;
+  font-family: "calibri";
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
@@ -132,6 +134,7 @@ input[type='number'] {
 .panel-default > .panel-heading {
   background-color: $blue;
   color: $orange;
+  font-variant: small-caps;
   font-size: 22px;
   font-weight: bold;
   border-color: $blue;
@@ -144,12 +147,11 @@ input[type='number'] {
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .panel-default {
-  font-family: "calibri" bold;
-  font-variant: small-caps;
+  font-family: "calibri";
   border-color: $blue;
   border-width: 2px;
   webkit-border-radius: 0px !important;
