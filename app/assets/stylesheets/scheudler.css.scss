@@ -70,6 +70,14 @@ input.ng-error {
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
+  font-variant: small-caps;
+}
+
+.page-header .btn {
+  font-variant: normal;
+} .fa {
+  margin-right: 6px;
+  margin-top: 4px;
 }
 
 .page-header-right { 
