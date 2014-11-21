@@ -19,3 +19,4 @@ pickle-email-*.html
 /public/assets/*
 .env
 *~
+db/schema.rb

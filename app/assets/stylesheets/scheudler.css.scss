@@ -1,3 +1,5 @@
+$bg-color-panel   : #3465a4;
+$font-color-panel : #fcaf3e;
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -114,6 +116,32 @@ input[type='number'] {
 }
 .panel-title a {
   display: block;
+}
+
+.panel-default > .panel-heading {
+  background-color: $bg-color-panel;
+  font-size: 16px;
+  color: white;
+  border-color: $bg-color-panel;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.panel-default > .panel-body {
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.panel-default {
+  border-color: $bg-color-panel;
+  border-width: 2px;
+  color: white; 
+  background-color: $font-color-panel;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 
 .sharing-item .input-group .form-control {
