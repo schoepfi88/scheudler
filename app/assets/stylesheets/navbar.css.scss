@@ -3,6 +3,8 @@ $bgHighlight    : #fcaf3e;
 $colDefault     : #eeeeec;
 $colHighlight   : #555753;
 .navbar-default {
+  font-family: "calibri";
+  font-size: 16px;
   background-color: $bgDefault;
   border-color: $bgHighlight;
   .navbar-brand {
