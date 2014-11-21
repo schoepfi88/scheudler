@@ -1,5 +1,5 @@
-$bg-color-panel   : #3465a4;
-$font-color-panel : #fcaf3e;
+$blue   : #3465a4;  /*blue*/
+$orange : #fcaf3e;  /*orange*/
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -62,7 +62,18 @@ input.ng-error {
   cursor: pointer;
 }
 
-.page-header-right { padding-bottom: 14px; margin: 40px 0 20px; }
+.page-header {
+  color: $blue;
+  border-color: $blue;
+  border-width: 2px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.page-header-right { 
+  padding-bottom: 14px; margin: 40px 0 20px;
+}
 
 @media (max-width: $screen-xs) {
   .page-header-right { padding-bottom: 10px; margin: 0; }
@@ -119,10 +130,11 @@ input[type='number'] {
 }
 
 .panel-default > .panel-heading {
-  background-color: $bg-color-panel;
-  font-size: 16px;
-  color: white;
-  border-color: $bg-color-panel;
+  background-color: $blue;
+  color: $orange;
+  font-size: 22px;
+  font-weight: bold;
+  border-color: $blue;
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
@@ -132,13 +144,14 @@ input[type='number'] {
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
+  font-size: 20px;
 }
 
 .panel-default {
-  border-color: $bg-color-panel;
+  font-family: "calibri" bold;
+  font-variant: small-caps;
+  border-color: $blue;
   border-width: 2px;
-  color: white; 
-  background-color: $font-color-panel;
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
@@ -147,3 +160,5 @@ input[type='number'] {
 .sharing-item .input-group .form-control {
   font-size: 16px!important;
 }
+
+
