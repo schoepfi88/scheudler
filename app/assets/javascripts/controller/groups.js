@@ -1,6 +1,10 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util){
 
-	$scope.isGoogleUser = false;	
+	$scope.isGoogleUser = false;
+
+	$scope.redirect_to_create_group = function(){
+		//location.href="/#/groups_create";
+	};	
 
 	$scope.create_group = function(isValid){
 		if(isValid && $scope.isGoogleUser){

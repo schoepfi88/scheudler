@@ -129,6 +129,7 @@ en:
       help_paragraph1                    : "You can invite your team members to join..."
       help_paragraph2                    : "and share news and events with them"
       members                            : "Members"
+      cant_create_group                  : "You need a Google account to create a group"
     groups_create:
       page_header                        : "Create New Group"
       page_title                         : "Create New Group"

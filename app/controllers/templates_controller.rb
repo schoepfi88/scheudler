@@ -15,15 +15,22 @@ class TemplatesController < ProtectedController
   end
 
   def groups
-	@groups = Group.joins(:members).where(members: {user_id: current_user.id})
+	@groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 
   def groups_create
+	if @current_user.provider != "google_oauth2" then
+		flash[:alert] = t('.cant_create_group')
+		#redirect_to templates_groups_template_path
+		redirect_to url_for(:controller => :templates, :action => :groups)
+		#render action: 'groups'
+		#redirect_to "/#/groups"
+	end
   end
 
   def groups_dashboard
 	@is_admin = false
-	if @group.admins.find_by(user_id: current_user.id) != nil then
+	if @group.admins.find_by(user_id: @current_user.id) != nil then
 		@is_admin = true
 	end
   end
@@ -43,7 +50,7 @@ class TemplatesController < ProtectedController
 	@group = Group.find(params[:id])
 
 	#redirect to dashboard if not in group
-	if @group.members.find_by(user_id: current_user.id) == nil then
+	if @group.members.find_by(user_id: @current_user.id) == nil then
 		render action: 'dashboard' 
 	end
   end

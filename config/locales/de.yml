@@ -130,6 +130,7 @@ de:
       help_paragraph1                    : "Lade deine Team-Mitglieder ein mitzumachen..."
       help_paragraph2                    : "und teile Neuigkeiten und Ereignisse mit ihnen"
       members                            : "Mitglieder"
+      cant_create_group                  : "Du brauchst einen Google Account um eine Gruppe zu erstellen"
     groups_create:
       page_header                        : "Neue Gruppe erstellen"
       page_title                         : "Neue Gruppe erstellen"
