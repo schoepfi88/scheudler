@@ -1,8 +1,7 @@
 class Group < ActiveRecord::Base
 	has_many :admins
 	has_many :members
-	has_many :events_groups
-	has_many :events, :through => :events_groups
+	has_many :events
 	has_many :users, :through => :members
 	has_many :users, :through => :admins
 	validates   :name, :description, presence: true
@@ -14,5 +13,14 @@ class Group < ActiveRecord::Base
 		m = Member.create(group_id: g.id, user_id: admin_id)
 		m.save!
 		g
+	end
+
+	def self.delete_group(params)
+		g = Group.find(params[:id])
+		g.members.destroy_all
+		g.admins.destroy_all
+		g.events.destroy_all
+		g.destroy
+		nil
 	end
 end

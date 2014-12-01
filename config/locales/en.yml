@@ -166,6 +166,10 @@ en:
       page_title                         : "Group Members"
       admin                              : "Administrator"
       user                               : "User"
+    groups_settings:
+      page_header                        : " - Settings"
+      page_title                         : "Group Settings"
+      delete_group                       : "Delete Group"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

@@ -1,6 +1,7 @@
 class TemplatesController < ProtectedController
   layout false, except: [:index]
   before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members]
+  before_action :is_group_admin, only: [:groups_settings]
 
   def index
   end
@@ -50,8 +51,17 @@ class TemplatesController < ProtectedController
 	@group = Group.find(params[:id])
 
 	#redirect to dashboard if not in group
-	if @group.members.find_by(user_id: @current_user.id) == nil then
-		render action: 'dashboard' 
+	if @group == nil || @group.members.find_by(user_id: @current_user.id) == nil then
+		render action: 'dashboard'
+	end
+  end
+
+  def is_group_admin
+	@group = Group.find(params[:id])
+
+	#redirect to dashboard if not in group
+	if @group == nil || @group.admins.find_by(user_id: @current_user.id) == nil then
+		render action: 'dashboard'
 	end
   end
 end

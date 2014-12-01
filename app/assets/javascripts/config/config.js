@@ -38,8 +38,12 @@ angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'ch
 		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id + '/invite'; },
         controller: 'groupsCtrl'
       }).
-	  when('/groups_members/:id', {
-		templateUrl: function(params){ return '/templates/groups_members/' + params.id; },
+	  when('/groups_dashboard/:id/members', {
+		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id + '/members'; },
+        controller: 'groupsCtrl'
+      }).
+	  when('/groups_dashboard/:id/settings', {
+		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id + '/settings'; },
         controller: 'groupsCtrl'
       }).
       when('/statistic', {

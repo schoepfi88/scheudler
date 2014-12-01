@@ -11,7 +11,7 @@
 				<li><a href="/#/groups_dashboard/<%= @group.id %>/invite"><i class="fa fa-plus"></i> Invite People</a></li>
 				<% if @is_admin %>
 					<li class="divider"></li>
-					<li><a href="#"><i class="fa fa-gears"></i> Group Settings</a></li>
+					<li><a href="/#/groups_dashboard/<%= @group.id %>/settings"><i class="fa fa-gears"></i> Group Settings</a></li>
 				<% end %>
 			  </ul>
 			</div>
@@ -32,7 +32,7 @@
 			  </div>
 			</div>
 		  </div>
-		  <a href="/#/groups_members/<%= @group.id %>">
+		  <a href="/#/groups_dashboard/<%= @group.id %>/members">
 			<div class="panel-footer announcement-bottom">
 			  <div class="row">
 				<div class="col-xs-10">

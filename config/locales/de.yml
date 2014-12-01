@@ -167,6 +167,10 @@ de:
       page_title                         : "Gruppen Mitglieder"
       admin                              : "Administrator"
       user                               : "Benutzer"
+    groups_settings:
+      page_header                        : " - Einstellungen"
+      page_title                         : "Gruppen Einstellungen"
+      delete_group                       : "Gruppe Löschen"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

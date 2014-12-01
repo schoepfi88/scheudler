@@ -11,6 +11,14 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		}
 	};
 
+	$scope.delete_group = function(id){
+		groupsService.group.destroy(id, function(){
+			location.href="/#/groups";
+			location.reload();
+		});
+		
+	}
+
 	$scope.redirect_to_back = function(){
 		Util.redirect_to.back();
 	};
@@ -20,7 +28,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.redirect_to_members = function(id){
-		location.href="/#/groups_members/" + id;
+		location.href="/#/groups_dashboard/" + id + "/members";
 	};
 
 	$scope.invite_to_group = function(id, isValid){
