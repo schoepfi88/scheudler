@@ -161,9 +161,6 @@ en:
       invite                             : "Invite"
       required_email                     : "At least one email address is required"
       pattern_email                      : "Wrong format"
-    groups_dashboard:
-      page_header                        : " - Members"
-      page_title                         : "Group Members"
     groups_members:
       page_header                        : " - Members"
       page_title                         : "Group Members"

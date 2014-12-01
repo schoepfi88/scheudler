@@ -11,6 +11,10 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		}
 	};
 
+	$scope.redirect_to_back = function(){
+		Util.redirect_to.back();
+	};
+
 	$scope.redirect_to_group = function(id){
 		location.href="/#/groups_dashboard/" + id;
 	};
