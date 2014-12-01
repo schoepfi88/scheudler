@@ -20,11 +20,7 @@ class TemplatesController < ProtectedController
 
   def groups_create
 	if @current_user.provider != "google_oauth2" then
-		flash[:alert] = t('.cant_create_group')
-		#redirect_to templates_groups_template_path
-		redirect_to url_for(:controller => :templates, :action => :groups)
-		#render action: 'groups'
-		#redirect_to "/#/groups"
+		redirect_to templates_account_template_path, :alert => t('.cant_create_group')
 	end
   end
 

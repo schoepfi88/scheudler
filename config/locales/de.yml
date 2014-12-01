@@ -166,8 +166,8 @@ de:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
     account:
-      page_header                        : "Account"
-      page_title                         : "Account"
+      page_header                        : "Konto"
+      page_title                         : "Konto"
 
   session:
     index:

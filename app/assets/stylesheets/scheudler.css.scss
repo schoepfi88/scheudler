@@ -1,5 +1,12 @@
-$blue   : #3465a4;  /*blue*/
-$orange : #FFB547;  /*orange*/
+$blue   : #3465A4;  /*blue*/
+$orange : #FCAF3E;  /*orange*/
+$orange_dark : #CE5C00;
+$yellow_light : #FCE94F;
+$yellow_dark : #C17D11;
+$red_light : #8AE234;
+$red_dark : #4E9A06;
+$blue_light : #729FCF;
+$blue_dark : #204A87;
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -158,3 +165,151 @@ canvas{
   border-radius: 0px !important;
 }
 
+
+
+.panel-warning > .panel-heading {
+  background-color: $yellow_light;
+  color: $yellow_dark;
+  font-variant: small-caps;
+  font-size: 22px;
+  //font-weight: bold;
+  border-color: $yellow_dark;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.panel-warning > .panel-heading .fa {
+    margin-right: 6px;
+    color: $yellow_dark;
+}
+
+.panel-warning > .panel-body {
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  font-size: 17px;
+}
+
+.panel-warning {
+  font-family: "calibri";
+  border-color: $yellow_dark;
+  border-width: 2px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+
+
+.panel-info > .panel-heading {
+  background-color: $red_light;
+  color: $red_dark;
+  font-variant: small-caps;
+  font-size: 22px;
+  //font-weight: bold;
+  border-color: $red_dark;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.panel-info > .panel-heading .fa {
+    margin-right: 6px;
+    color: $red_dark;
+}
+
+.panel-info > .panel-body {
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  font-size: 17px;
+}
+
+.panel-info {
+  font-family: "calibri";
+  border-color: $red_dark;
+  border-width: 2px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+
+
+.panel-danger > .panel-heading {
+  background-color: $orange;
+  color: $orange_dark;
+  font-variant: small-caps;
+  font-size: 22px;
+  //font-weight: bold;
+  border-color: $orange_dark;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.panel-danger > .panel-heading .fa {
+    margin-right: 6px;
+    color: $orange_dark;
+}
+
+.panel-danger > .panel-body {
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  font-size: 17px;
+}
+
+.panel-danger {
+  font-family: "calibri";
+  border-color: $orange_dark;
+  border-width: 2px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+
+
+.panel-success > .panel-heading {
+  background-color: $blue_light;
+  color: $blue_dark;
+  font-variant: small-caps;
+  font-size: 22px;
+  //font-weight: bold;
+  border-color: $blue_dark;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.panel-success > .panel-heading .fa {
+    margin-right: 6px;
+    color: $blue_dark;
+}
+
+.panel-success > .panel-body {
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  font-size: 17px;
+}
+
+.panel-success {
+  font-family: "calibri";
+  border-color: $blue_dark;
+  border-width: 2px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.font-upscaling {
+  font-size: 150%;
+}
+
+.panel-text {
+  font-size: 85px;
+  margin: 0;
+}
