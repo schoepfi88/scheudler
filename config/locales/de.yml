@@ -162,6 +162,11 @@ de:
       invite                             : "Einladen"
       required_email                     : "Zumindest eine E-Mail Adresse ist erforderlich"
       pattern_email                      : "Falsches Format"
+    groups_members:
+      page_header                        : " - Mitglieder"
+      page_title                         : "Gruppen Mitglieder"
+      admin                              : "Administrator"
+      user                               : "Benutzer"
     statistic:
       page_header                        : "Statistic"
       page_title                         : "Statistic"

@@ -1,0 +1,18 @@
+<section class="hidden-print">
+  	<h1 class="page-header">
+		<i class="fa <%= @group.icon %>"></i> 
+		<%= @group.name + t(".page_header") %>
+	</h1>
+</section>
+<ul class="list-group">
+  <% @group_members.each do |member| %>
+	<li class="list-group-item">
+		<% if @group.admins.find_by(user_id: member.id) != nil then %>
+			<span class="badge"><%= t(".admin") %></span>
+		<% else %>
+			<span class="badge"><%= t(".user") %></span>
+		<% end %>
+		<%= member.name %>
+	</li>
+  <% end %>
+</ul>

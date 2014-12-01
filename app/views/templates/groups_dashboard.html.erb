@@ -20,7 +20,7 @@
 
 <div class="row font-upscaling">
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-info clickable" ng-click="">
+		<div class="panel panel-info clickable" ng-click="redirect_to_members(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
@@ -32,7 +32,7 @@
 			  </div>
 			</div>
 		  </div>
-		  <a href="">
+		  <a href="/#/groups_members/<%= @group.id %>">
 			<div class="panel-footer announcement-bottom">
 			  <div class="row">
 				<div class="col-xs-10">

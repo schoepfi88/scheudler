@@ -17,6 +17,7 @@ scope "(:locale)", locale: /en|de/ do
 	get '/groups_create', to: :groups_create, as: 'groups_create_template'
 	get '/groups_dashboard/:id', to: :groups_dashboard, as: 'groups_dashboard_template'
     get '/groups_dashboard/:id/invite', to: :groups_invite, as: 'groups_invite_template'
+	get '/groups_members/:id', to: :groups_members, as: 'groups_members_template'
     get '/statistic', to: :statistic, as: 'statistic_template'
     get '/account', to: :account, as: 'account_template'
   end

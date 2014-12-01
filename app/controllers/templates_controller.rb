@@ -1,6 +1,6 @@
 class TemplatesController < ProtectedController
   layout false, except: [:index]
-  before_action :is_group_member, only: [:groups_dashboard, :groups_invite]
+  before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members]
 
   def index
   end
@@ -29,6 +29,10 @@ class TemplatesController < ProtectedController
 	if @group.admins.find_by(user_id: @current_user.id) != nil then
 		@is_admin = true
 	end
+  end
+
+  def groups_members
+	@group_members = User.joins(:members).where(members: {group_id: @group.id})
   end
 
   def groups_invite
