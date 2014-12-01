@@ -23,6 +23,11 @@ class Api::GroupsController < Api::RestController
 		respond_with(nil, :location => nil)
 	end
 
+	def remove
+		Group.remove_member(remove_params)
+		respond_with(nil, :location => nil)
+	end
+
 	def invite
 		Member.add_member(invite_params)
 		respond_with(nil, :location => nil)
@@ -35,6 +40,10 @@ class Api::GroupsController < Api::RestController
 
 	def destroy_params
 		params.permit(:id)
+	end
+
+	def remove_params
+		params.permit(:group_id, :user_id)
 	end
 
 	def invite_params

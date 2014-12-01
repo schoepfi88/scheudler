@@ -2,6 +2,7 @@ class TemplatesController < ProtectedController
   layout false, except: [:index]
   before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members]
   before_action :is_group_admin, only: [:groups_settings]
+  before_action :is_admin_var, only: [:groups_dashboard, :groups_members]
 
   def index
   end
@@ -26,10 +27,6 @@ class TemplatesController < ProtectedController
   end
 
   def groups_dashboard
-	@is_admin = false
-	if @group.admins.find_by(user_id: @current_user.id) != nil then
-		@is_admin = true
-	end
   end
 
   def groups_members
@@ -62,6 +59,13 @@ class TemplatesController < ProtectedController
 	#redirect to dashboard if not in group
 	if @group == nil || @group.admins.find_by(user_id: @current_user.id) == nil then
 		render action: 'dashboard'
+	end
+  end
+
+  def is_admin_var
+	@is_admin = false
+	if @group.admins.find_by(user_id: @current_user.id) != nil then
+		@is_admin = true
 	end
   end
 end

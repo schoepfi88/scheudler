@@ -16,7 +16,15 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 			location.href="/#/groups";
 			location.reload();
 		});
-		
+	}
+
+	$scope.remove_member = function(group_id, user_id){
+		$scope.removeData.group_id = group_id;
+		$scope.removeData.user_id = user_id;
+		groupsService.group.remove($scope.removeData, function(){
+			location.href="/#/groups_dashboard/" + group_id;
+			location.reload();
+		});
 	}
 
 	$scope.redirect_to_back = function(){
@@ -57,4 +65,9 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		email: '',
 		group_id: 0
 	};
+
+	$scope.removeData = {
+		group_id: 0,
+		user_id: 0
+	}
 });

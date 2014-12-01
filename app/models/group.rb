@@ -23,4 +23,9 @@ class Group < ActiveRecord::Base
 		g.destroy
 		nil
 	end
+
+	def self.remove_member(params)
+		Member.where(:group_id => params[:group_id]).where(:user_id => params[:user_id]).destroy_all
+		nil
+	end
 end

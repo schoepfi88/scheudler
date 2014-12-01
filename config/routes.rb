@@ -29,10 +29,11 @@ scope "(:locale)", locale: /en|de/ do
     resources :invite, only: [:create,:destroy]
 	
 	#groups
-    resources :groups, only: [:create, :update, :show, :destroy, :index, :invite]
+    resources :groups, only: [:create, :update, :show, :destroy, :index, :invite, :destroy, :remove]
    	post '/groups' => 'groups#create'
     post '/groups_invite' => 'groups#invite'
 	delete '/groups' => 'groups#destroy'
+	delete '/groups_remove' => 'groups#remove'
   end
 
   # Authentication

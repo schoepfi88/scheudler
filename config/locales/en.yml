@@ -166,6 +166,7 @@ en:
       page_title                         : "Group Members"
       admin                              : "Administrator"
       user                               : "User"
+      remove_member                      : "Remove From Group"
     groups_settings:
       page_header                        : " - Settings"
       page_title                         : "Group Settings"

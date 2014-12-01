@@ -167,6 +167,7 @@ de:
       page_title                         : "Gruppen Mitglieder"
       admin                              : "Administrator"
       user                               : "Benutzer"
+      remove_member                      : "Von Gruppe Entfernen"
     groups_settings:
       page_header                        : " - Einstellungen"
       page_title                         : "Gruppen Einstellungen"
