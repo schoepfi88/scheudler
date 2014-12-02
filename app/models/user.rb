@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
             user.email = auth.info.email
             user.save!
         end
-
     end
+
+	def self.update(params)
+		u = User.find(params[:id])
+		u.back_link_enabled = params[:back_link_enabled]
+		u.save!
+	end
 end

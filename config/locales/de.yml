@@ -176,8 +176,10 @@ de:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
     account:
-      page_header                        : "Konto"
-      page_title                         : "Konto"
+      page_header                        : "Konto Einstellungen"
+      page_title                         : "Konto Einstellungen"
+      disable_back_link                  : "Versteckten zurück link deaktivieren"
+      save                               : "Einstellungen Speichern"
 
   session:
     index:

@@ -34,6 +34,10 @@ scope "(:locale)", locale: /en|de/ do
     post '/groups_invite' => 'groups#invite'
 	delete '/groups' => 'groups#destroy'
 	delete '/groups_remove' => 'groups#remove'
+
+	#account
+	resources :account, only: [:update, :destroy]
+	put '/account' => 'account#update'
   end
 
   # Authentication

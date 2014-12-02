@@ -1,6 +1,6 @@
 <section class="hidden-print">
   	<h1 class="page-header">
-		<span ng-click="redirect_to_back()">
+		<span ng-click="redirect_to_back(<%= @current_user.back_link_enabled %>)">
 			<i class="fa <%= @group.icon %>"></i> 
 			<%= @group.name + t(".page_header") %>
 		</span>

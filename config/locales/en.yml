@@ -175,8 +175,10 @@ en:
       page_header                        : "Statistic"
       page_title                         : "Statistic"
     account:
-      page_header                        : "Account"
-      page_title                         : "Account"
+      page_header                        : "Account Settings"
+      page_title                         : "Account Settings"
+      disable_back_link                  : "Disable secret back link"
+      save                               : "Save Settings"
 
   session:
     index:
