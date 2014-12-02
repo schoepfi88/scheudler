@@ -5,6 +5,9 @@
 	  </h1>
 	</div>
 </div>
+<% if !@is_google_user then %>
+	<div class="col-lg-offset-3 col-lg-6 alert alert-danger"><%= t('.cant_create_group') %></div>
+<% end %>
 <div class="row">
 	<div class="col-lg-offset-3 col-lg-6">
 		<form name="changeUserSettingsForm" ng-init="init_settings_states(<%= @current_user.back_link_enabled %>)" ng-submit="change_user_settings(<%= @current_user.id %>)">

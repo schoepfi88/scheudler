@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
             user.oauth_expires_at = Time.at(auth.credentials.expires_at)
             user.image_path = auth.info.image
             user.email = auth.info.email
+			user.back_link_enabled = true
             user.save!
         end
     end

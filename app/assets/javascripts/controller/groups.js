@@ -16,7 +16,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 			location.href="/#/groups";
 			location.reload();
 		});
-	}
+	};
 
 	$scope.remove_member = function(group_id, user_id){
 		$scope.removeData.group_id = group_id;
@@ -25,7 +25,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 			location.href="/#/groups_dashboard/" + group_id;
 			location.reload();
 		});
-	}
+	};
 
 	$scope.redirect_to_back = function(back_link_enabled){
 		if(back_link_enabled === null || back_link_enabled === false){
@@ -35,6 +35,13 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 
 	$scope.redirect_to_group = function(id){
 		location.href="/#/groups_dashboard/" + id;
+	};
+
+	$scope.redirect_to_groups_create = function(is_google_user){
+		if(is_google_user)
+			location.href="/#/groups_create";
+		else
+			location.href="/#/account";
 	};
 
 	$scope.redirect_to_members = function(id){
@@ -71,5 +78,5 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	$scope.removeData = {
 		group_id: 0,
 		user_id: 0
-	}
+	};
 });

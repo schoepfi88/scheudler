@@ -1,13 +1,12 @@
 <section class="hidden-print">
   <h1 class="page-header">
 	<i class="fa fa-group"></i> <%=t ( '.page_header') %>
-	<a href="/#/groups_create">
-        <button class="btn btn-primary pull-right"><i class="fa fa-plus"></i>
-            <span class="hidden-xs">
-                <%=t('.create_group') %>
-            </span>
-        </button>
-    </a>
+    <button class="btn btn-primary pull-right"ng-click="redirect_to_groups_create(<%= @is_google_user %>)">
+		<i class="fa fa-plus"></i>
+        <span class="hidden-xs">
+            <%=t('.create_group') %>
+        </span>
+    </button>
   </h1>
 </section>
 <div class="row">

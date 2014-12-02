@@ -3,6 +3,7 @@ class TemplatesController < ProtectedController
   before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members]
   before_action :is_group_admin, only: [:groups_settings]
   before_action :is_admin_var, only: [:groups_dashboard, :groups_members]
+  before_action :is_google_user, only: [:groups, :groups_create, :account]
 
   def index
   end
@@ -21,8 +22,9 @@ class TemplatesController < ProtectedController
   end
 
   def groups_create
-	if @current_user.provider != "google_oauth2" then
-		redirect_to templates_account_template_path, :alert => t('.cant_create_group')
+	if !@is_google_user then
+		#redirect_to templates_account_template_path, :alert => t('.cant_create_group')
+		redirect_to templates_account_template_path
 	end
   end
 
@@ -66,6 +68,13 @@ class TemplatesController < ProtectedController
 	@is_admin = false
 	if @group.admins.find_by(user_id: @current_user.id) != nil then
 		@is_admin = true
+	end
+  end
+
+  def is_google_user
+	@is_google_user = true
+	if @current_user.provider != "google_oauth2" then
+		@is_google_user = false;
 	end
   end
 end

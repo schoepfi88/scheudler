@@ -1,15 +1,10 @@
-<section class="hidden-print">
+<section class="hidden-print" ng-click="redirect_to_back(<%= @current_user.back_link_enabled %>)">
   <h1 class="page-header"><span class="fa fa-edit"></span> <%= t('.page_header') %></h1>
 </section>
 
 <div class="row" ng-init="checkIfGoogleUser(<%= @current_user.provider.to_json %>)">
     <div class="col-md-6">
       <form name="createGroupForm" ng-submit="create_group(createGroupForm.$valid)" novalidate>
-	   
-	   <% if @current_user.provider != "google_oauth2" then %>
-	   	   <div class="alert alert-danger"><%= t('.cant_create_group') %></div>
-	   <% end %>
-		   
 
        <div class="form-group" ng-class="{ 'has-error' : createGroupForm.name.$invalid && !createGroupForm.name.$pristine }">
           <label class="control-label" for="name">

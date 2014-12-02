@@ -143,7 +143,6 @@ en:
       required_name                      : "Group name is required"
       required_description               : "Description is required"
       minlength_name                     : "Group name is too short"
-      cant_create_group                  : "You need a Google account to create a group"
     groups_dashboard:
       page_header                        : " - Dashboard"
       page_title                         : "Group Dashboard"
@@ -179,6 +178,7 @@ en:
       page_title                         : "Account Settings"
       disable_back_link                  : "Disable secret back link"
       save                               : "Save Settings"
+      cant_create_group                  : "You need a Google account to create a group"
 
   session:
     index:
