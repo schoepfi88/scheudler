@@ -86,7 +86,8 @@
 
     <!-- overall footer -->
     <div id="footer" style="font-family:'calibri';" ng-cloak>
-      <div class="container-fluid">
+      <div class="container">
+        <p class="text-muted">
           <div class="row">
             <div class="col-xs-6 col-sm-4 text-center">
               &copy; Scheudler <%= Time.now.year %>
@@ -101,6 +102,7 @@
               <%= link_to t('misc.titles.menus.terms_and_privacy.title'), terms_path %>
             </div>
           </div>
+        </p>
       </div>
     </div>
 
