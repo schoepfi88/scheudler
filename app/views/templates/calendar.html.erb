@@ -1,21 +1,37 @@
 <script language="javascript" type="text/javascript">
   $(document).ready(function() {
     // page is now ready, initialize the calendar...
-
-    $('#calendar').fullCalendar({
-    	firstDay: 1,
-    	height: window.innerHeight * 0.78 - 120,
-    	header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'basicDay,basicWeek,month'
-        },
-        events: {
-		    url: 'api/event',
-		    color: '#3465A4', 
-		    textColor: 'white'
-		}
-    })
+	if(window.innerWidth > 490) {
+	    $('#calendar').fullCalendar({
+	    	firstDay: 1,
+	    	height: window.innerHeight * 0.78 - 120,
+	    	header: {
+	            left: 'prev,today,next',
+	            center: 'title',
+	            right: 'agendaDay,agendaWeek,month'
+	        },
+	        events: {
+			    url: 'api/event',
+			    color: '#3465A4', 
+			    textColor: 'white'
+			}
+	    })
+    } else {
+    	$('#calendar').fullCalendar({
+	    	firstDay: 1,
+	    	height: window.innerHeight * 0.78 - 120,
+	    	header: {
+	            left: 'prev,today,next',
+	            center: '',
+	            right: 'agendaDay,agendaWeek,month'
+	        },
+	        events: {
+			    url: 'api/event',
+			    color: '#3465A4', 
+			    textColor: 'white'
+			}
+	    })
+    } 	
   });
 </script>
 
