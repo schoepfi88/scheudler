@@ -86,23 +86,21 @@
 
     <!-- overall footer -->
     <div id="footer" style="font-family:'calibri';" ng-cloak>
-      <div class="container">
-        <p class="text-muted">
+      <div class="container-fluid">
           <div class="row">
-            <div class="col-md-4 col-xs-6">
+            <div class="col-xs-6 col-sm-4 text-center">
               &copy; Scheudler <%= Time.now.year %>
             </div>
-            <div class="col-md-4 col-xs-6 text-center">
+            <div class="col-xs-6 col-sm-4 text-center">
               <%= link_to_unless(I18n.locale == :en,
               t('misc.titles.language.english'),{locale: :en},{:onclick => "this.href=this.href+'/'+window.location.hash" })%> |
               <%= link_to_unless(I18n.locale == :de,
               t('misc.titles.language.german'),{locale: :de},{:onclick => "this.href=this.href+'/'+window.location.hash" })%>
             </div>
-            <div class="col-md-4 col-xs-6 text-right">
+            <div class="col-xs-12 col-sm-4 text-center">
               <%= link_to t('misc.titles.menus.terms_and_privacy.title'), terms_path %>
             </div>
           </div>
-        </p>
       </div>
     </div>
 
