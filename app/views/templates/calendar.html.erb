@@ -5,12 +5,12 @@
     $('#calendar').fullCalendar({
     	firstDay: 1,
     	height: window.innerHeight * 0.78 - 120,
-        googleCalendarApiKey: 'AIzaSyAmSHSj2a1B0e2GKVBHemNrUSBDEKSwI-E',
-        events: {
-            googleCalendarId: 'bqh0i24famv71aaa84mneavovg@group.calendar.google.com',
-            textColor: 'white',
-            color: '#3465A4'
-        }
+    	header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'basicDay,basicWeek,month'
+        },
+        events: 'api/event'
     })
   });
 </script>

@@ -27,7 +27,10 @@ scope "(:locale)", locale: /en|de/ do
   namespace :api, defaults: {format: :json} do
     resources :status, only: [:index]
     resources :invite, only: [:create,:destroy]
-	
+	 
+	  resources :event, only: [:index]
+	  get '/event' => 'event#index'
+	  
 	#groups
     resources :groups, only: [:create, :update, :show, :destroy, :index, :invite, :destroy, :remove]
    	post '/groups' => 'groups#create'

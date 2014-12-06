@@ -1,0 +1,10 @@
+[
+<% @events.each_with_index do |event, index| %>
+{
+	"id": "<%= event.id %>",
+	"title": "<%= event.summary %>",
+	"start": "<%= event.start.dateTime.strftime('%Y-%m-%d %H:%M:%S') %>",
+	"end": "<%= event.end.dateTime.strftime('%Y-%m-%d %H:%M:%S') %>"
+}<% if index < @events.length - 1 %>,<% end %>
+<% end %>
+]
