@@ -67,6 +67,7 @@ gem 'bootbox-rails'
 gem 'geocoder'
 
 #calendar support
+gem 'google-api-client', :require => 'google/api_client'
 gem 'fullcalendar-rails', '~>2.0.2.0'
 gem 'momentjs-rails'
 
