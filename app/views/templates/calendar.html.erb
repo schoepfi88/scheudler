@@ -1,13 +1,22 @@
 <script language="javascript" type="text/javascript">
-  function resizeIframe(obj) {
-    obj.style.height = window.innerHeight * 0.78 - 120 + 'px';                    
-  }
+  $(document).ready(function() {
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+    	firstDay: 1,
+    	height: window.innerHeight * 0.78 - 120,
+        googleCalendarApiKey: 'AIzaSyAmSHSj2a1B0e2GKVBHemNrUSBDEKSwI-E',
+        events: {
+            googleCalendarId: 'bqh0i24famv71aaa84mneavovg@group.calendar.google.com',
+            textColor: 'white',
+            color: '#3465A4'
+        }
+    })
+  });
 </script>
 
 <section class="hidden-print">
   <h1 class="page-header"><span class="fa fa-calendar"></span> <%= t('.page_header') %></h1>
 </section>
 
-<iframe onload='javascript:resizeIframe(this);' src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showCalendars=0&amp;height=400&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=bqh0i24famv71aaa84mneavovg%40group.calendar.google.com&amp;color=%23BE6D00&amp;ctz=Europe%2FVienna" style=" border-width:0 " width="100%" frameborder="0" scrolling="no"></iframe>
-<p></p>
-<p><a class="btn btn-primary btn-lg" role="button" href="https://www.google.com/calendar/ical/bqh0i24famv71aaa84mneavovg%40group.calendar.google.com/public/basic.ics">get ICS</a></p>
+<div id='calendar'></div>

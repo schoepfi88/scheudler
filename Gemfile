@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 3.1.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -65,6 +65,10 @@ gem 'bootbox-rails'
 
 #calculate distance
 gem 'geocoder'
+
+#calendar support
+gem 'fullcalendar-rails', '~>2.0.2.0'
+gem 'momentjs-rails'
 
 
 group :production do

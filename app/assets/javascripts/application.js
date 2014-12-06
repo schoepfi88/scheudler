@@ -36,3 +36,5 @@
 //= require bootbox.js
 //= require ./vendor/loading-bar.js
 //= require ./vendor/ui-iconpicker.js
+//= require fullcalendar
+//= require ./vendor/gcal.js
