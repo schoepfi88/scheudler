@@ -319,3 +319,27 @@ canvas{
 	background-color: #d9534f;
 	border-color: #d43f3a;
 }
+/* mygroups box on dashborad */
+.box-mygroups > .panel-body {
+  padding: 0px;
+}
+
+
+/* box on dashboard in my groups  */
+.inbox-mygroups {
+  border-width:0px;
+  border-bottom-width:1px;
+  margin-bottom:0px;
+  height: 50px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  color: $orange  
+}
+
+.img-circle {
+  border-radius: 50% !important;
+  margin: 5px; 
+  height:40px; 
+  width:40px;
+}
