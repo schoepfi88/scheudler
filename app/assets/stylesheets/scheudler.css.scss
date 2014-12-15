@@ -336,6 +336,7 @@ canvas{
   border-radius: 0px !important;
   color: $orange;
   vertical-align: middle;
+  font-size: 80%;
 }
 
 .inbox-messages {
@@ -370,4 +371,36 @@ canvas{
   color: black; 
   font-size: 70%;
   vertical-align: middle;
+  text-align: center; 
+}
+
+.center-row {
+  height: 100%; 
+  padding: 0px;
+  margin: 0px;
+}
+
+.uncenter {
+  line-height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.center {
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 0px; 
+  padding-right: 0px; 
+}
+
+.big-box,
+.mini-box {
+    background-color:#CCFFFF;
+    margin: 0px;
+}
+.big-box {
+    height: 100%;
+}
+.mini-box {
+    height: 50%;
 }
