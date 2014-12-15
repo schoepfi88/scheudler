@@ -319,14 +319,14 @@ canvas{
 	background-color: #d9534f;
 	border-color: #d43f3a;
 }
-/* mygroups box on dashborad */
-.box-mygroups > .panel-body {
+/* boxes on dashborad */
+.box-dashboard > .panel-body {
   padding: 0px;
 }
 
 
 /* box on dashboard in my groups  */
-.inbox-mygroups {
+.inbox-dashboard {
   border-width:0px;
   border-bottom-width:1px;
   margin-bottom:0px;
@@ -334,12 +334,40 @@ canvas{
   webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
-  color: $orange  
+  color: $orange;
+  vertical-align: middle;
+}
+
+.inbox-messages {
+  border-width:0px;
+  border-bottom-width:1px;
+  margin-bottom:0px;
+  padding: 0px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
 }
 
 .img-circle {
   border-radius: 50% !important;
   margin: 5px; 
-  height:40px; 
-  width:40px;
+  height:30px; 
+  width:30px;
+}
+
+.message-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.message-text {
+  font-size: 70%; 
+}
+
+.message-time {
+  color: black; 
+  font-size: 70%;
+  vertical-align: middle;
 }

@@ -13,12 +13,12 @@ scope "(:locale)", locale: /en|de/ do
     get '/calendar', to: :calendar, as: 'calendar_template'
     get '/events', to: :events, as: 'events_template'
     get 'events_create', to: :events_create, as: 'events_create_template'
-	get '/groups', to: :groups, as: 'groups_template'
-	get '/groups_create', to: :groups_create, as: 'groups_create_template'
-	get '/groups_dashboard/:id', to: :groups_dashboard, as: 'groups_dashboard_template'
+    get '/groups', to: :groups, as: 'groups_template'
+    get '/groups_create', to: :groups_create, as: 'groups_create_template'
+    get '/groups_dashboard/:id', to: :groups_dashboard, as: 'groups_dashboard_template'
     get '/groups_dashboard/:id/invite', to: :groups_invite, as: 'groups_invite_template'
-	get '/groups_dashboard/:id/members', to: :groups_members, as: 'groups_members_template'
-	get '/groups_dashboard/:id/settings', to: :groups_settings, as: 'groups_settings_template'
+    get '/groups_dashboard/:id/members', to: :groups_members, as: 'groups_members_template'
+    get '/groups_dashboard/:id/settings', to: :groups_settings, as: 'groups_settings_template'
     get '/statistic', to: :statistic, as: 'statistic_template'
     get '/account', to: :account, as: 'account_template'
   end
@@ -41,7 +41,14 @@ scope "(:locale)", locale: /en|de/ do
 	#account
 	resources :account, only: [:update, :destroy]
 	put '/account' => 'account#update'
+
+   #dashboard
+  resources :dashboard, only: [:destroy, :create]
+    get '/messages' => 'dashboard#get_messages'
+    get '/user' => 'user#index'
   end
+
+
 
   # Authentication
   match 'auth/:provider/callback', to: 'session#create', via: [:get, :post]

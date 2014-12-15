@@ -4,83 +4,207 @@
 <div class="row">
   <div class="col-lg-4 col-xs-12 col-md-6">
     <!-- next events -->
-    <div class="panel panel-default">
+    <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-trophy"></span>
          Next events
       </div>
+      <!-- next events -->
       <div class="panel-body">
-        List next events of user
-      </div>
+        <!-- next event 1 -->
+        <div class="panel panel-default inbox-dashboard">
+          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+          MON 15. dec 5pm 
+          <!-- cancel botton -->
+          <div class="btn-group pull-right" style="margin: 5px">
+            <div class="btn">
+              <span class="fa fa-close"></span>
+            </div>
+          </div>
+        </div>
+        <!-- next event 2-->
+        <div class="panel panel-default inbox-dashboard">
+          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+          WED 17. dec 6pm 
+          <!-- cancel botton -->
+          <div class="btn-group pull-right" style="margin: 5px">
+            <div class="btn">
+              <span class="fa fa-close"></span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end next events -->
     </div>
   </div>
   <!-- My groups -->
   <div class="col-lg-4 col-xs-12 col-md-6">
-    <div class="panel panel-default box-mygroups">
+    <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-group"></span> 
         My Groups
       </div>
       <!-- groups -->
       <div class="panel-body">
-        <div class="panel panel-default inbox-mygroups">
+        <div class="panel panel-default inbox-dashboard">
           <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          group one
+          Green Bay Packers
         </div>
-        <div class="panel panel-default inbox-mygroups">
-          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          group two
+        <div class="panel panel-default inbox-dashboard">
+          <%= image_tag("favicon.png", :class => "img-circle") %>
+          Scheudlers
         </div>
       </div>
+      <!-- end groups -->
     </div>
   </div>
   <!-- New Invites -->
   <div class="col-lg-4 col-xs-12 col-md-6">
-    <div class="panel panel-default">
+    <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-envelope-o"></span> 
         My Invites
       </div>
       <div class="panel-body">
-        List new Invites of user
-      </div>
+        <!-- invite 1 -->
+        <div class="panel panel-default inbox-dashboard">
+          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+          every Monday 5pm Training
+          <!-- confirm bottons -->
+          <div class="btn-group pull-right" style="margin: 5px">
+            <div class="btn">
+              <span class="fa fa-check"></span>
+            </div>
+            <div class="btn">
+              <span class="fa fa-close"></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default inbox-dashboard">
+          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+          every Saturday 6pm Game
+          <!-- confirm bottons -->
+          <div class="btn-group pull-right" style="margin: 5px">
+            <div class="btn">
+              <span class="fa fa-check"></span>
+            </div>
+            <div class="btn">
+              <span class="fa fa-close"></span>
+            </div>
+          </div>
+        </div>
+      </div>  
     </div>
   </div>
 </div>
 <div class="row">
   <!-- Blog of group -->
   <div class="col-lg-4 col-xs-12 col-md-6">
-    <div class="panel panel-default">
+    <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-rss"></span> 
         Blog of group
       </div>
-      <div class="panel-body">
-        List a blog for each group
+      <!--message panel-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages" >
+          <div class="row">
+            <div class="col-lg-2 col-md-2">
+              <img class="img-circle" ng-src="{{messages.image_path}}"/>
+            </div>
+            <!-- rows for name and text -->
+              <div class="col-lg-8 col-md-8 message-name">{{messages.name}}:</div>
+              <div class="col-lg-8 col-md-8 message-text">hi</div>
+              <div class="col-lg-2 col-md-2 message-time">10 pm</div>
+          </div>
+        </div>
+      </div>
+      <!--message panel-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages">
+          <div class="row">
+            <div class="col-lg-2 col-md-2">
+              <img class="img-circle" ng-src="{{messages.image_path}}"/>
+            </div>
+            <!-- rows for name and text -->
+              <div class="col-lg-8 col-md-8 message-name">{{messages.name}}:</div>
+              <div class="col-lg-8 col-md-8 message-text">ist da jemand?</div>
+              <div class="col-lg-2 col-md-2 message-time">10 pm</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <!-- Blog of group -->
   <div class="col-lg-4 col-xs-12 col-md-6">
-    <div class="panel panel-default">
+    <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-rss"></span> 
         Blog of group
       </div>
-      <div class="panel-body">
-        List a blog for each group
+         <!--message panel-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages">
+          <div class="row">
+            <div class="col-lg-2 col-md-2">
+              <img class="img-circle" ng-src="{{messages.image_path}}"/>
+            </div>
+            <!-- rows for name and text -->
+              <div class="col-lg-8 col-md-8 message-name">{{messages.name}}:</div>
+              <div class="col-lg-8 col-md-8 message-text">hallo</div>
+              <div class="col-lg-2 col-md-2 message-time">10 pm</div>
+          </div>
+        </div>
+      </div>
+      <!--message panel-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages">
+          <div class="row">
+            <div class="col-lg-2 col-md-2">
+              <img class="img-circle" ng-src="{{messages.image_path}}"/>
+            </div>
+            <!-- rows for name and text -->
+              <div class="col-lg-8 col-md-8 message-name">{{messages.name}}:</div>
+              <div class="col-lg-8 col-md-8 message-text">grüß euch</div>
+              <div class="col-lg-2 col-md-2 message-time">10 pm</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <!-- Blog of group -->
   <div class="col-lg-4 col-xs-12 col-md-6">
-    <div class="panel panel-default">
+    <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-rss"></span> 
         Blog of group
       </div>
-      <div class="panel-body">
-        List a blog for each group
+         <!--message panel-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages">
+          <div class="row">
+            <div class="col-lg-2 col-md-2">
+              <img class="img-circle" ng-src="{{messages.image_path}}"/>
+            </div>
+            <!-- rows for name and text -->
+            <div class="col-lg-8 col-md-8 message-name">{{messages.name}}:</div>
+            <div class="col-lg-8 col-md-8 message-text">hallo leute</div>
+            <div class="col-lg-2 col-md-2 message-time">10 pm</div>
+          </div>
+        </div>
+      </div>
+      <!--message panel-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages">
+          <div class="row">
+            <div class="col-lg-2 col-md-2">
+              <img class="img-circle" ng-src="{{messages.image_path}}"/>
+            </div>
+            <!-- rows for name and text -->
+              <div class="col-lg-8 col-md-8 message-name">{{messages.name}}:</div>
+              <div class="col-lg-8 col-md-8 message-text">hi</div>
+              <div class="col-lg-2 col-md-2 message-time">10 pm</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>  
