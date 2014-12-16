@@ -368,7 +368,7 @@ canvas{
 }
 
 .message-time {
-  color: black; 
+  color: gray; 
   font-size: 70%;
   vertical-align: middle;
   text-align: center; 
@@ -395,7 +395,6 @@ canvas{
 
 .big-box,
 .mini-box {
-    background-color:#CCFFFF;
     margin: 0px;
 }
 .big-box {
@@ -403,4 +402,6 @@ canvas{
 }
 .mini-box {
     height: 50%;
+    padding-right: 4px;
+    padding-left: 4px;
 }

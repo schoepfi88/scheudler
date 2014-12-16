@@ -12,24 +12,68 @@
       <!-- next events -->
       <div class="panel-body">
         <!-- next event 1 -->
-        <div class="panel panel-default inbox-dashboard">
-          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          MON 15. dec 5pm 
-          <!-- cancel botton -->
-          <div class="btn-group pull-right" style="margin: 5px">
-            <div class="btn">
-              <span class="fa fa-close"></span>
+        <div class="panel panel-default inbox-messages">
+          <div class="panel-body inbox-messages">
+            <div name="event-pic" class="row center-row">
+              <div class="col-lg-2 col-md-2 col-xs-2 center">
+                  <div class="big-box">
+                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                  </div>
+              </div>
+              <div name="event-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box message-name">
+                      Training:
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box message-text">
+                      Monday 15th december 5pm
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div name="event-time" class="col-lg-2 col-md-2 col-xs-2 center">
+                <div class="big-box message-time">
+                  <div class="btn">
+                    <span class="fa fa-close"></span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <!-- next event 2-->
-        <div class="panel panel-default inbox-dashboard">
-          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          WED 17. dec 6pm 
-          <!-- cancel botton -->
-          <div class="btn-group pull-right" style="margin: 5px">
-            <div class="btn">
-              <span class="fa fa-close"></span>
+        <div class="panel panel-default inbox-messages">
+          <div class="panel-body inbox-messages">
+            <div name="event-pic" class="row center-row">
+              <div class="col-lg-2 col-md-2 col-xs-2 center">
+                  <div class="big-box">
+                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                  </div>
+              </div>
+              <div name="event-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box message-name">
+                      Training:
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box message-text">
+                      Wednesday 17th december 5pm
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div name="event-time" class="col-lg-2 col-md-2 col-xs-2 center">
+                <div class="big-box message-time">
+                  <div class="btn">
+                    <span class="fa fa-close"></span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -79,6 +123,7 @@
             </div>
           </div>
         </div>
+        <!-- invite 2 -->
         <div class="panel panel-default inbox-dashboard">
           <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
           every Saturday 6pm Game
@@ -104,23 +149,66 @@
         <span class="fa fa-rss"></span> 
         Blog of group
       </div>
-      <!--message panel-->
+      <!--message 1-->
       <div class="panel panel-default inbox-messages">
         <div class="panel-body inbox-messages">
-              <div id="mes-pic" class="row center-row">
-                  <div class="col-lg-2 col-md-2 col-xs-2 center">
-                      <div class="big-box"><img class="img-circle" ng-src="{{messages.image_path}}"/></div>
-                  </div>
-                  <div id="mes-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
-                      <div class="row">
-                          <div class="col-lg-12 col-md-12 col-xs-12 uncenter"><div class="mini-box message-name">{{messages.name}}:</div></div>
-                          <div class="col-lg-12 col-md-12 col-xs-12 uncenter"><div class="mini-box message-text">hallo adfasdf asddf asdf aadfa ad faf aaf a fa sf sa fa af  fsa a afs sa sa sd sfd sdf sdf fsd fs fs fs fsa sdf asa da sd fas dfasdf asdf asdf adsf asdf asdf asd fasdf asdf asdf asd fas dfas dfasf asd fas dfas dfad faf a fasdf asdf as dfad fa dfaf as dffsdf asdf asdf asd f</div></div>
-                      </div>
-                  </div>
-                  <div id="mes-time" class="col-lg-2 col-md-2 col-xs-2 center"><div class="big-box message-time">10 pm</div></div>
-                    
+          <div name="mes-pic" class="row center-row">
+            <div class="col-lg-2 col-md-2 col-xs-2 center">
+              <div class="big-box">
+                <img class="img-circle" ng-src="{{messages.image_path}}"/>
               </div>
+            </div>
+            <div name="mes-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                  <div class="mini-box message-name">
+                    {{messages.name}}:
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                  <div class="mini-box message-text">
+                    hi guys, any comments?
+                  </div>
+                </div>
               </div>
+            </div>
+            <div name="mes-time" class="col-lg-2 col-md-2 col-xs-2 center">
+              <div class="big-box message-time">
+                10 pm
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--message 2-->
+      <div class="panel panel-default inbox-messages">
+        <div class="panel-body inbox-messages">
+          <div name="mes-pic" class="row center-row">
+            <div class="col-lg-2 col-md-2 col-xs-2 center">
+              <div class="big-box">
+                <img class="img-circle" ng-src="{{messages.image_path}}"/>
+              </div>
+            </div>
+            <div name="mes-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                  <div class="mini-box message-name">
+                    {{messages.name}}:
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                  <div class="mini-box message-text">
+                    any any any any comments?
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div name="mes-time" class="col-lg-2 col-md-2 col-xs-2 center">
+              <div class="big-box message-time">
+                10 pm
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
