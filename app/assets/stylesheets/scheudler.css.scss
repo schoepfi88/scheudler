@@ -323,7 +323,9 @@ canvas{
 .box-dashboard > .panel-body {
   padding: 0px;
 }
-
+// ########################
+// start dashboard css
+// ########################
 
 .inbox-dashboard {
   border-width:0px;
@@ -375,6 +377,8 @@ canvas{
 .groups-text {
   font-size: 70%;
   font-weight: bold;
+  padding-right: 4px; 
+  padding-left: 4px;
 }
 
 .message-time {
@@ -419,3 +423,7 @@ canvas{
     padding-right: 4px;
     padding-left: 4px;
 }
+
+// ########################
+// end dashboard css
+// ########################
