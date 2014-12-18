@@ -14,11 +14,17 @@ angular.module('scheudler').controller("dashboardCtrl",
 	// set correct line-height to center the pic and the time #events
 	var ev_text = document.getElementsByName('event-text');
 	var ev_pic = document.getElementsByName('event-pic');
-	var ev_time = document.getElementsByName('event-time');
+	var ev_close = document.getElementsByName('event-close');
 	for (i = ev_text.length - 1; i >= 0; i--) {
 		ev_pic[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
-		ev_time[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
+		ev_close[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
 	}
 
-	
+	// set correct line-height to center the pic and the time #groups
+	var gr_text = document.getElementsByName('group-text');
+	var gr_pic = document.getElementsByName('group-pic');
+	for (i = gr_pic.length - 1; i >= 0; i--) {
+		gr_text[i].style.lineHeight = gr_pic[i].offsetHeight.toString() + "px";
+	}
+
 });

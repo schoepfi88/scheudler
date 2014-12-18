@@ -325,21 +325,7 @@ canvas{
 }
 
 
-/* box on dashboard in my groups  */
 .inbox-dashboard {
-  border-width:0px;
-  border-bottom-width:1px;
-  margin-bottom:0px;
-  height: 50px;
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
-  color: $orange;
-  vertical-align: middle;
-  font-size: 80%;
-}
-
-.inbox-messages {
   border-width:0px;
   border-bottom-width:1px;
   margin-bottom:0px;
@@ -365,6 +351,30 @@ canvas{
 
 .message-text {
   font-size: 70%; 
+}
+
+.event-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.event-text {
+  font-size: 70%; 
+}
+
+.event-close {
+  color: $orange;
+}
+
+.event-check {
+  color: $blue;
+}
+
+.groups-text {
+  font-size: 70%;
+  font-weight: bold;
 }
 
 .message-time {
@@ -399,6 +409,10 @@ canvas{
 }
 .big-box {
     height: 100%;
+}
+
+.big-box-pics {
+    width: 60px;
 }
 .mini-box {
     height: 50%;

@@ -12,31 +12,31 @@
       <!-- next events -->
       <div class="panel-body">
         <!-- next event 1 -->
-        <div class="panel panel-default inbox-messages">
-          <div class="panel-body inbox-messages">
+        <div class="panel panel-default inbox-dashboard">
+          <div class="panel-body inbox-dashboard">
             <div name="event-pic" class="row center-row">
-              <div class="col-lg-2 col-md-2 col-xs-2 center">
+              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
                     <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
                   </div>
               </div>
-              <div name="event-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+              <div name="event-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
-                    <div class="mini-box message-name">
+                    <div class="mini-box event-name">
                       Training:
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
-                    <div class="mini-box message-text">
+                    <div class="mini-box event-text">
                       Monday 15th december 5pm
                     </div>
                   </div>
                 </div>
               </div>
-              <div name="event-time" class="col-lg-2 col-md-2 col-xs-2 center">
-                <div class="big-box message-time">
-                  <div class="btn">
+              <div name="event-close" class="col-lg-2 col-md-2 col-xs-2 center">
+                <div class="big-box event-close">
+                  <div class="btn pull-right">
                     <span class="fa fa-close"></span>
                   </div>
                 </div>
@@ -45,31 +45,31 @@
           </div>
         </div>
         <!-- next event 2-->
-        <div class="panel panel-default inbox-messages">
-          <div class="panel-body inbox-messages">
+        <div class="panel panel-default inbox-dashboard">
+          <div class="panel-body inbox-dashboard">
             <div name="event-pic" class="row center-row">
-              <div class="col-lg-2 col-md-2 col-xs-2 center">
+              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
                     <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
                   </div>
               </div>
-              <div name="event-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+              <div name="event-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
-                    <div class="mini-box message-name">
+                    <div class="mini-box event-name">
                       Training:
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
-                    <div class="mini-box message-text">
+                    <div class="mini-box event-text">
                       Wednesday 17th december 5pm
                     </div>
                   </div>
                 </div>
               </div>
-              <div name="event-time" class="col-lg-2 col-md-2 col-xs-2 center">
-                <div class="big-box message-time">
-                  <div class="btn">
+              <div name="event-close" class="col-lg-2 col-md-2 col-xs-2 center">
+                <div class="big-box event-close">
+                  <div class="btn pull-right">
                     <span class="fa fa-close"></span>
                   </div>
                 </div>
@@ -89,13 +89,47 @@
       </div>
       <!-- groups -->
       <div class="panel-body">
+      <!-- group 1 -->
         <div class="panel panel-default inbox-dashboard">
-          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          Green Bay Packers
+          <div class="panel-body inbox-dashboard">
+            <div name="group-pic" class="row center-row">
+              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
+                  <div class="big-box">
+                    <%= image_tag("favicon.png", :class => "img-circle") %>
+                  </div>
+              </div>
+              <div name="group-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 center">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 center">
+                    <div class="big-box groups-text">
+                      Scheudlers
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- group 2 -->
         <div class="panel panel-default inbox-dashboard">
-          <%= image_tag("favicon.png", :class => "img-circle") %>
-          Scheudlers
+          <div class="panel-body inbox-dashboard">
+            <div name="group-pic" class="row center-row">
+              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
+                  <div class="big-box">
+                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                  </div>
+              </div>
+              <div name="group-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 center">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 center">
+                    <div class="big-box groups-text">
+                      Green Bay Packers
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- end groups -->
@@ -111,32 +145,82 @@
       <div class="panel-body">
         <!-- invite 1 -->
         <div class="panel panel-default inbox-dashboard">
-          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          every Monday 5pm Training
-          <!-- confirm bottons -->
-          <div class="btn-group pull-right" style="margin: 5px">
-            <div class="btn">
-              <span class="fa fa-check"></span>
-            </div>
-            <div class="btn">
-              <span class="fa fa-close"></span>
+          <div class="panel-body inbox-dashboard">
+            <div name="event-pic" class="row center-row">
+              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
+                  <div class="big-box">
+                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                  </div>
+              </div>
+              <div name="event-text" class="col-lg-6 col-md-6 col-sm-7 col-xs-6 uncenter">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box event-name">
+                      Training:
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-sm-12 col-xs-12 uncenter">
+                    <div class="mini-box event-text">
+                      every Wednesday 5pm
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div name="event-close" class="col-lg-4 col-md-4 col-ms-4 col-xs-4 center">
+                <div class="big-box">
+                  <div class="btn-group pull-right">
+                    <div class="btn event-check">
+                      <span class="fa fa-check"></span>
+                    </div>
+                    <div class="btn event-close">
+                      <span class="fa fa-close"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!-- end invite 1 -->
         <!-- invite 2 -->
         <div class="panel panel-default inbox-dashboard">
-          <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
-          every Saturday 6pm Game
-          <!-- confirm bottons -->
-          <div class="btn-group pull-right" style="margin: 5px">
-            <div class="btn">
-              <span class="fa fa-check"></span>
-            </div>
-            <div class="btn">
-              <span class="fa fa-close"></span>
+          <div class="panel-body inbox-dashboard">
+            <div name="event-pic" class="row center-row">
+              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
+                  <div class="big-box">
+                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                  </div>
+              </div>
+              <div name="event-text" class="col-lg-6 col-md-6 col-sm-7 col-xs-6 uncenter">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box event-name">
+                      Training:
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
+                    <div class="mini-box event-text">
+                      every Wednesday 5pm
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div name="event-close" class="col-lg-4 col-md-4 col-xs-4 center">
+                <div class="big-box">
+                  <div class="btn-group pull-right">
+                    <div class="btn event-check">
+                      <span class="fa fa-check"></span>
+                    </div>
+                    <div class="btn event-close">
+                      <span class="fa fa-close"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!-- end invite 2 -->
       </div>  
     </div>
   </div>
@@ -150,15 +234,15 @@
         Blog of group
       </div>
       <!--message 1-->
-      <div class="panel panel-default inbox-messages">
-        <div class="panel-body inbox-messages">
+      <div class="panel panel-default inbox-dashboard">
+        <div class="panel-body inbox-dashboard">
           <div name="mes-pic" class="row center-row">
-            <div class="col-lg-2 col-md-2 col-xs-2 center">
+            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
               <div class="big-box">
                 <img class="img-circle" ng-src="{{messages.image_path}}"/>
               </div>
             </div>
-            <div name="mes-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+            <div name="mes-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
                   <div class="mini-box message-name">
@@ -181,15 +265,15 @@
         </div>
       </div>
       <!--message 2-->
-      <div class="panel panel-default inbox-messages">
-        <div class="panel-body inbox-messages">
+      <div class="panel panel-default inbox-dashboard">
+        <div class="panel-body inbox-dashboard">
           <div name="mes-pic" class="row center-row">
-            <div class="col-lg-2 col-md-2 col-xs-2 center">
+            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
               <div class="big-box">
                 <img class="img-circle" ng-src="{{messages.image_path}}"/>
               </div>
             </div>
-            <div name="mes-text" class="col-lg-8 col-md-8 col-xs-8 uncenter">
+            <div name="mes-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
                   <div class="mini-box message-name">
