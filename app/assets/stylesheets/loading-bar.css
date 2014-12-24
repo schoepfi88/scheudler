@@ -53,10 +53,7 @@
   -ms-box-shadow: #29d 1px 0 6px 1px;
   -webkit-box-shadow: #29d 1px 0 6px 1px;
   box-shadow: #29d 1px 0 6px 1px;
-  -moz-border-radius: 100%;
-  -webkit-border-radius: 100%;
-  border-radius: 100%;
-}
+  }
 
 #loading-bar-spinner {
   display: block;
@@ -74,6 +71,12 @@
   border-top-color:  #fcaf3e;
   border-left-color: #fcaf3e;
   border-radius: 30px;
+  -moz-border-radius: 7px !important;
+  -webkit-border-radius: 7px !important;
+  border-radius: 7px !important;
+  -webkit-border-radius: 7px !important;
+  -moz-border-radius: 7px !important;
+  border-radius: 7px !important;
 
   -webkit-animation: loading-bar-spinner 400ms linear infinite;
   -moz-animation:    loading-bar-spinner 400ms linear infinite;

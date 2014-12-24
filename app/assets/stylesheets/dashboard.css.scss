@@ -1,3 +1,117 @@
-// Place all the styles related to the dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* boxes on dashborad */
+.box-dashboard > .panel-body {
+  padding: 0px;
+}
+
+.inbox-dashboard {
+  border-width:0px;
+  border-top-width:1px;
+  margin-bottom:0px;
+  padding: 0px;
+}
+
+.img-circle {
+  border-radius: 50% !important;
+  margin: 5px; 
+  height:30px; 
+  width:30px;
+}
+
+.message-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.message-text {
+  font-size: 70%; 
+}
+
+.event-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.event-text {
+  font-size: 70%; 
+}
+
+.event-close {
+  color: $orange;
+}
+
+.event-check {
+  color: $blue;
+}
+
+.groups-text {
+  font-size: 70%;
+  font-weight: bold;
+  padding-right: 4px; 
+  padding-left: 4px;
+}
+
+.message-time {
+  color: gray; 
+  font-size: 70%;
+  vertical-align: middle;
+  text-align: center; 
+}
+
+.center-row {
+  height: 100%; 
+  padding: 0px;
+  margin: 0px;
+}
+
+.uncenter {
+  line-height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.center {
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 0px; 
+  padding-right: 0px; 
+}
+
+.big-box,
+.mini-box {
+    margin: 0px;
+}
+.big-box {
+    height: 100%;
+}
+
+.big-box-pics {
+    width: 60px;
+}
+.mini-box {
+    height: 50%;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.input-group-addon {
+  background-color: $blue;
+  color: white;
+}
+
+.form-control, .btn-input {
+  font-size: 80%;
+}
+
+.btn-input {
+  border-color: $blue;
+}
+
+.panel-footer {
+  border-bottom-width: 1px;
+  border-color: $blue;
+  padding: 0px;
+}

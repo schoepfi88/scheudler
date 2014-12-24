@@ -46,6 +46,7 @@ scope "(:locale)", locale: /en|de/ do
   resources :dashboard, only: [:destroy, :create]
     get '/messages' => 'dashboard#get_messages'
     get '/user' => 'user#index'
+    get '/dashboard/groups' => 'dashboard#get_groups'
   end
 
 

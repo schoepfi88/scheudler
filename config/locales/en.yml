@@ -102,6 +102,8 @@ en:
     dashboard:
       page_header                        : "Dashboard"
       page_title                         : "Dashboard"
+      send                               : "send"
+      new_message                        : "Enter text"
     calendar:
       page_header                        : "Calendar"
       page_title                         : "Calendar"
