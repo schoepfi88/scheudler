@@ -9,7 +9,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.center_groups=function(){
 		var gr_text = document.getElementsByName('group-text');
 		var gr_pic = document.getElementsByName('group-pic');
-		for (i = gr_pic.length - 1; i >= 0; i--) {
+		for (var i = gr_pic.length - 1; i >= 0; i--) {
 			gr_text[i].style.lineHeight = gr_pic[i].offsetHeight.toString() + "px";
 		}
 	};
@@ -19,7 +19,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 		var ev_text = document.getElementsByName('event-text');
 		var ev_pic = document.getElementsByName('event-pic');
 		var ev_close = document.getElementsByName('event-close');
-		for (i = ev_text.length - 1; i >= 0; i--) {
+		for (var i = ev_text.length - 1; i >= 0; i--) {
 			ev_pic[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
 			ev_close[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
 		}
