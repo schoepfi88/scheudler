@@ -10,7 +10,7 @@
          Next events
       </div>
       <!-- next events -->
-      <div class="panel-body">
+      <div class="panel-body" id="event_body">
         <!-- next event 1 -->
         <div class="panel panel-default inbox-dashboard">
           <div class="panel-body inbox-dashboard">
@@ -88,7 +88,7 @@
         My Groups
       </div>
       <!-- groups -->
-      <div class="panel-body">
+      <div class="panel-body" id="group_body">
         <div class="panel panel-default inbox-dashboard" ng-repeat="group in mygroups" ng-init="center_groups()">
           <div class="panel-body inbox-dashboard">
             <div name="group-pic" class="row center-row">
@@ -109,6 +109,19 @@
             </div>
           </div>
         </div>
+        <div class"panel panel-default inbox-dashboard" ng-show="mygroups.length === 0 && !checkLoading()" ng-init="set_height()">
+          <div id="group_empty" class="panel-body inbox-empty groups-text text-center" ng-controller="groupsCtrl">
+            <div>
+              <%=t('.no_group_placeholder') %>
+            </div>
+            <div class="btn btn-primary"ng-click="redirect_to_groups_create(<%= @is_google_user %>)">
+              <i class="fa fa-plus"></i>
+              <span class="hidden-xs">
+                  <%=t('.create_group') %>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- end groups -->
     </div>
@@ -120,7 +133,7 @@
         <span class="fa fa-envelope-o"></span> 
         My Invites
       </div>
-      <div class="panel-body">
+      <div class="panel-body" id="invite_body">
         <!-- invite 1 -->
         <div class="panel panel-default inbox-dashboard">
           <div class="panel-body inbox-dashboard">
@@ -212,7 +225,7 @@
         Blog of group
       </div>
       <!--message 1-->
-      <div class="panel-body">
+      <div class="panel-body" id="message_body">
         <div class="panel panel-default inbox-dashboard">
           <div class="panel-body inbox-dashboard">
             <div name="mes-pic" class="row center-row">

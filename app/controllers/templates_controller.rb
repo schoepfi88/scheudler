@@ -3,7 +3,7 @@ class TemplatesController < ProtectedController
   before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members]
   before_action :is_group_admin, only: [:groups_settings]
   before_action :is_admin_var, only: [:groups_dashboard, :groups_members]
-  before_action :is_google_user, only: [:groups, :groups_create, :account]
+  before_action :is_google_user, only: [:groups, :groups_create, :account, :dashboard]
 
   def index
   end

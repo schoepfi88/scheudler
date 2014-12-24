@@ -104,6 +104,8 @@ en:
       page_title                         : "Dashboard"
       send                               : "send"
       new_message                        : "Enter text"
+      no_group_placeholder               : "Currently you arn't member of a group"
+      create_group                       : "Create New Group"
     calendar:
       page_header                        : "Calendar"
       page_title                         : "Calendar"

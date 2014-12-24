@@ -16,6 +16,8 @@ angular.module('scheudler').controller("rootCtrl",function($scope,$rootScope,$ti
                 $scope.completeBar();
             return ($rootScope.pending_requests - $scope.pending_status_requests)>0;
     };
+    // used to show something with ng-show
+    $scope.checkLoading = function(){ return ($rootScope.pending_requests - $scope.pending_status_requests)>0; };
 
     $scope.isActive = function(route) {
         return route === $location.path();
