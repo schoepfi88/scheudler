@@ -35,8 +35,8 @@ scope "(:locale)", locale: /en|de/ do
     resources :groups, only: [:create, :update, :show, :destroy, :index, :invite, :destroy, :remove]
    	post '/groups' => 'groups#create'
     post '/groups_invite' => 'groups#invite'
-	delete '/groups' => 'groups#destroy'
-	delete '/groups_remove' => 'groups#remove'
+  	delete '/groups' => 'groups#destroy'
+  	delete '/groups_remove' => 'groups#remove'
 
 	#account
 	resources :account, only: [:update, :destroy]
@@ -47,6 +47,7 @@ scope "(:locale)", locale: /en|de/ do
     get '/messages' => 'dashboard#get_messages'
     get '/user' => 'user#index'
     get '/dashboard/groups' => 'dashboard#get_groups'
+    post '/messages' => 'dashboard#create'
   end
 
 

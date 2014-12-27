@@ -10,4 +10,21 @@ class Api::DashboardController < ApplicationController
 		end
 		@mygroups
 	end
+
+	def create
+		@mes = Message.new(mes_params)
+		@mes.sender_id = current_user.id
+		@mes.save
+	end
+
+	def get_messages
+		@messages = Message.all
+	end
+
+
+
+	private
+	def mes_params
+		params.permit(:sender_id, :receiver_id, :text, :readers)
+	end
 end

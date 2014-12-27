@@ -2,10 +2,11 @@ angular.module('scheudler').controller("dashboardCtrl",
     function($scope,Util,dashboardService){
 
 	$scope.messages = dashboardService.user.get();
+	$scope.mymessages = dashboardService.message.get();
 	$scope.mygroups = dashboardService.groups.get();
-	$scope.newMess = {sender_id: "", receiver_id: "", text: "", header: "", read: false, readers: [], deleted: []}; 
+	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
 	
-
+	/*++++design functions++++*/
 	// set height if no group exists
 	$scope.set_height=function(){
 		if($scope.mygroups.length === 0){
@@ -18,7 +19,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 		}
 
 	}
-
 
 	// set correct line-height to center the pic and the time #groups
 	$scope.center_groups=function(){
@@ -48,6 +48,20 @@ angular.module('scheudler').controller("dashboardCtrl",
 			mes_pic[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
 			mes_time[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
 		}
+	};
+	/*++++design functions++++*/
+
+	$scope.send_message=function(group_id, group_text){
+		$scope.newMess.receiver_id = group_id;
+		$scope.newMess.text = group_text;
+		dashboardService.message.create($scope.newMess, function(data){
+               $scope.mymessages.push(data);
+               var inputs = document.getElementsByName('input-text');
+               for (var i = inputs.length - 1; i >= 0; i--) {
+				inputs[i].value='';
+			}
+		});
+		
 	};
    
 

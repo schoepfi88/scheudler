@@ -2,8 +2,7 @@ angular.module('scheudler').service("dashboardService", function($resource) {
     var messageSer = $resource('api/messages/',{},
                         {
                             'get': {method: "GET", isArray:true},
-                            'create': {method: "POST", isArray:true},
-                            'destroy': {method: "DELETE"}                            
+                            'create': {method: "POST"}                            
                         });
 
     var userSer = $resource('api/user/', {}, 
@@ -17,8 +16,9 @@ angular.module('scheudler').service("dashboardService", function($resource) {
                         });
 
     return {
-        messages: {
-            get: function(quantity){ return messageSer.get({quantity: quantity});}
+        message: {
+            get: function(quantity){ return messageSer.get();},
+            create: function(mes, succ){ return messageSer.create(mes, succ);}
         },
         user: {
             get: function(){ return userSer.get();}

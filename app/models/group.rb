@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
 	has_many :events
 	has_many :users, :through => :members
 	has_many :users, :through => :admins
+	has_many    :receivedMessages, :class_name => 'Message', :foreign_key => 'receiver_id'
 	validates   :name, :description, presence: true
 
 	def self.create_new_group(params, admin_id)
