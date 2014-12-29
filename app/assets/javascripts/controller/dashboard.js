@@ -1,11 +1,10 @@
 angular.module('scheudler').controller("dashboardCtrl",
     function($scope,Util,dashboardService){
 
-	$scope.messages = dashboardService.user.get();
 	$scope.mymessages = dashboardService.message.get();
 	$scope.mygroups = dashboardService.groups.get();
 	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
-	
+
 	/*++++design functions++++*/
 	// set height if no group exists
 	$scope.set_height=function(){
@@ -51,18 +50,61 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 	/*++++design functions++++*/
 
-	$scope.send_message=function(group_id, group_text){
+	$scope.send_message=function(group_id, group_text, index){
 		$scope.newMess.receiver_id = group_id;
 		$scope.newMess.text = group_text;
+		var max_messages = 10;
 		dashboardService.message.create($scope.newMess, function(data){
-               $scope.mymessages.push(data);
-               var inputs = document.getElementsByName('input-text');
-               for (var i = inputs.length - 1; i >= 0; i--) {
-				inputs[i].value='';
+			var groupmes = {};
+			var mes = [];
+			groupmes.mes = mes;
+			var len = Object.keys($scope.mymessages[index]).length
+			if (len === max_messages){
+				for (var i = 0; i < len-1; i++){
+					$scope.mymessages[index][i] = $scope.mymessages[index][i+1];
+				}
+				$scope.mymessages[index][len-1] = data;
+			}
+			else {
+				for (var j = 0; j < len; j++){
+					groupmes.mes[j] = $scope.mymessages[index][j];
+				}
+				groupmes.mes.push(data);
+				$scope.mymessages[index] = groupmes.mes;
+			}
+			
+	          var inputs = document.getElementsByName('input-text');
+               for (var x = inputs.length - 1; x >= 0; x--) {
+				inputs[x].value='';
 			}
 		});
 		
 	};
-   
 
+	$scope.parseTime = function(time){
+		var oneDayInMillis = 86400000;
+		var oneHourInMillis = 3600000;
+		if (time === null || time === undefined){
+			return null;
+		}
+		else {
+			var beginDate2014 = Date.parse(new Date (2014,3,30,2,0));
+			var endDate2014 = Date.parse(new Date(2014,10,26,3,0));
+			var beginDate2015 = Date.parse(new Date(2015,3,29,2,0));
+			var endDate2015 = Date.parse(new Date(2015,10,25,3,0));
+			var millis = Date.parse(time);
+			var offset = oneHourInMillis;
+			if ((millis > beginDate2014 && millis < endDate2014) || (millis > beginDate2015 && millis < endDate2015))
+				offset = offset * 2; 
+			var day = new Date(millis).toISOString().split("T")[0];
+			var day1 = new Date(millis - offset);
+			var todayMillis = Date.parse(new Date());
+			var today = new Date(todayMillis).toISOString().split("T")[0];
+
+			if (today === day){
+				return day1.format("shortTime");
+			}
+			return day1.format("mmm d");
+		}
+	};
 });
