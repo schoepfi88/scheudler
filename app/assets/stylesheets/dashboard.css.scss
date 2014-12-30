@@ -58,7 +58,8 @@
   color: gray; 
   font-size: 70%;
   vertical-align: middle;
-  text-align: center; 
+  text-align: center;
+  padding-right: 5px; 
 }
 
 .center-row {
@@ -127,3 +128,34 @@
 .btn-primary {
   background-color: $blue;
 }
+
+.badge {
+  background-color: $orange;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 11px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.unread {
+  background-color: #CED8F6;
+}
+
+.modal-link {
+  text-decoration: none;
+  color: white;
+}
+
+.modal-dialog{
+      overflow-y: initial !important
+}
+.modal-body{
+  height: 250px;
+  overflow-y: auto;
+}
+
+a.modal-link:link {color: white; font-weight: bold; text-decoration: none;}
+a.modal-link:active {color: white; font-weight: bold; text-decoration: none;}
+a.modal-link:visited {color: white; font-weight: bold; text-decoration: none;}
+a.modal-link:hover {color: white; font-weight: bolder; text-decoration: none;}

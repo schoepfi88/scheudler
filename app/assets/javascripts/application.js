@@ -39,3 +39,4 @@
 //= require fullcalendar
 //= require ./vendor/gcal.js
 //= require ./vendor/date-format.js
+//= require ./vendor/scrolldown.js

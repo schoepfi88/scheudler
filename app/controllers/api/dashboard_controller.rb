@@ -1,5 +1,6 @@
 class Api::DashboardController < ApplicationController
-
+	respond_to :json
+	$max_messages = 7
 	def get_groups
 		groups = Member.where(user_id: current_user.id).pluck(:group_id)
 		@mygroups = Array.new
@@ -15,7 +16,8 @@ class Api::DashboardController < ApplicationController
 		@mes = Message.new(mes_params)
 		@mes.sender_id = current_user.id
 		@mes.created_at = Message.calcTime()
-		@mes.save
+		@mes.readers = [current_user.id]
+		@mes.save!
 	end
 
 	def get_messages
@@ -26,16 +28,68 @@ class Api::DashboardController < ApplicationController
 			#sort that actuall messages are at the bottom
 			group_messages.sort! { |a,b| a.created_at <=> b.created_at }
 			# only last 10
-			if group_messages.length > 10
-				number = 10 - group_messages.length
+			if group_messages.length > $max_messages
+				number = $max_messages - group_messages.length
 				group_messages = group_messages.drop(number.abs)
+			end
+			# set readers
+			group_messages.each do |m|
+				if !m.readers.include?(current_user.id) 
+                    	m.readers = m.readers + [current_user.id]
+                    	m.save!
+                	end
 			end
 			@messages << group_messages
 		end
 		@messages
 	end
 
+	def get_all
+		group_id = params[:group_id]
+		@messages_all = Message.where(receiver_id: group_id)
+		@messages_all.sort! { |a,b| a.created_at <=> b.created_at }
+		# set readers
+		@messages_all.each do |m|
+			if !m.readers.include?(current_user.id) 
+               	m.readers = m.readers + [current_user.id]
+               	m.save!
+           	end
+		end
+		@messages_all
+	end
 
+	def get_new
+		@mes_new = []
+		different_groups = Member.where(user_id: current_user.id).pluck(:group_id)
+		different_groups.each do |g|
+			group_messages = Message.where(receiver_id: g)
+			#sort that actuall messages are at the bottom
+			group_messages.sort! { |a,b| a.created_at <=> b.created_at }
+			# only last 10
+			if group_messages.length > $max_messages
+				number = $max_messages - group_messages.length
+				group_messages = group_messages.drop(number.abs)
+			end
+			@mes_new << group_messages
+		end
+		@mes_new
+	end
+
+	def unread
+		group_counter = []
+		different_groups = Member.where(user_id: current_user.id).pluck(:group_id)
+		different_groups.each do |g|
+			counter = 0
+			group_messages = Message.where(receiver_id: g)
+			group_messages.each do |m|
+				if !m.readers.include?(current_user.id) 
+                    	counter += 1
+                	end
+			end
+			group_counter << counter
+		end
+		respond_with({unread: group_counter})
+	end
 
 	private
 	def mes_params

@@ -1,10 +1,45 @@
 angular.module('scheudler').controller("dashboardCtrl",
-    function($scope,Util,dashboardService){
-
-	$scope.mymessages = dashboardService.message.get();
+    function($scope,$timeout,$q,Util,dashboardService){
+	$scope.unreadMessages = dashboardService.message.unread();
+	(function tick() {
+		dashboardService.message.unread(function(data){
+			if($scope.old_status){
+				$scope.forUpdate = [];
+				//console.log(data.unread);
+				for (var i = 0; i < data.unread.length; i++) {
+					if (data.unread[i] > $scope.old_status.unread[i]){
+						$scope.newMessages = dashboardService.message.getNew(i);
+						$scope.forUpdate.push(i);
+						$q.all([$scope.newMessages.$promise
+							]).then(function() {
+								//console.log($scope.forUpdate.length);
+								for(var z = 0; z < $scope.forUpdate.length; z++){
+									$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+								}
+						});
+						$scope.set_read();
+					}
+				}
+			}
+			$scope.old_status = data;
+			$scope.unreadMessages = data;
+			$timeout(tick, 5000);
+		});
+	})();
+	// get messages without setting as read
+	$scope.mymessages = dashboardService.message.getNew(0);
+	// set as read after 10 sec
+	$scope.set_read=function(){
+		$timeout(function() {
+			dashboardService.message.get();
+		}, 10000);
+	}
+	$scope.set_read();
 	$scope.mygroups = dashboardService.groups.get();
 	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
-
+	$scope.current_user = dashboardService.user.get();
+	$scope.selectedGroupMessages = [];
+	$scope.selectedGroup = null;
 	/*++++design functions++++*/
 	// set height if no group exists
 	$scope.set_height=function(){
@@ -53,7 +88,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.send_message=function(group_id, group_text, index){
 		$scope.newMess.receiver_id = group_id;
 		$scope.newMess.text = group_text;
-		var max_messages = 10;
+		var max_messages = 7;
 		dashboardService.message.create($scope.newMess, function(data){
 			var groupmes = {};
 			var mes = [];
@@ -81,6 +116,35 @@ angular.module('scheudler').controller("dashboardCtrl",
 		
 	};
 
+	$scope.send_message_modal=function(group_id, group_text, index){
+		$scope.send_message(group_id, group_text, index);
+		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
+		start(5000, true, true);
+	}
+
+	$scope.getAllMessages=function(group_id, index){
+		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
+		$scope.selectedGroup = $scope.mygroups[index];
+		$scope.selectedGroup.index = index;
+		start(7000, true, true);
+	}
+
+	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
+	$scope.currentlyRead = function(mes, allRead){
+		if (allRead){
+			return false;
+		}
+		var date = new Date().toISOString();
+		var millis = Date.parse(date) - 10000;
+		var compareDate = new Date(millis).toISOString();
+		$scope.center_messages();
+		return (compareDate < mes.updated_at);
+	};
+
+	$scope.currentUserIsSender = function(mes){
+        return (mes.sender_id == $scope.current_user.id);
+    };
+
 	$scope.parseTime = function(time){
 		var oneDayInMillis = 86400000;
 		var oneHourInMillis = 3600000;
@@ -97,9 +161,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 			if ((millis > beginDate2014 && millis < endDate2014) || (millis > beginDate2015 && millis < endDate2015))
 				offset = offset * 2; 
 			var day = new Date(millis).toISOString().split("T")[0];
-			var day1 = new Date(millis - offset);
+			var day1 = new Date(millis-offset);
 			var todayMillis = Date.parse(new Date());
-			var today = new Date(todayMillis).toISOString().split("T")[0];
+			var today = new Date(todayMillis+offset).toISOString().split("T")[0];
+			//alert(new Date(millis-offset));
 
 			if (today === day){
 				return day1.format("shortTime");
