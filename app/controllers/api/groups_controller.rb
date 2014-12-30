@@ -1,11 +1,12 @@
 class Api::GroupsController < Api::RestController
+	include CalendarModule
 
     def index
 		
     end
 
 	def create
-		group = Group.create_new_group(create_params, current_user.id)
+		group = Group.create_new_group(create_params, current_user.id, create_cal(params[:name]))
 		group.save!
 		respond_with(nil, :location => nil)
 	end
@@ -19,7 +20,8 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def destroy
-		Group.delete_group(destroy_params)
+		gcal_id = Group.delete_group(destroy_params)
+		delete_cal(gcal_id)
 		respond_with(nil, :location => nil)
 	end
 
