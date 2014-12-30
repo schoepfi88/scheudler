@@ -21,7 +21,7 @@ class Api::EventController < Api::RestController
 			out.push(ev.to_json)
 		end
 
-    respond_with gcal_acl_list("7859cgudueuebe4p7pum00gpao@group.calendar.google.com")
+    respond_with out
   end
 
 private
