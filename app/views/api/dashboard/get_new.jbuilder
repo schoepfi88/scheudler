@@ -1,4 +1,4 @@
-json.array!(@messages) do |group|
+json.array!(@mes_new) do |group|
 	json.array!(group) do |mes|
 		json.sender_id mes.sender_id
 		json.receiver_id mes.receiver_id
