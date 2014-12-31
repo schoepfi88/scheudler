@@ -25,6 +25,6 @@ class Api::EventController < Api::RestController
 			end
 		end
 
-    respond_with gcal_acl_list("uj20iijkkq6gr4v4ile0ifajeg@group.calendar.google.com")
+    respond_with out
   end
 end
