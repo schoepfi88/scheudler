@@ -78,6 +78,7 @@ angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'ch
 
 }).run(function($rootScope,Util){
   $rootScope.pending_requests=0;
+  $rootScope.pending_status_requests=0;
   $rootScope.$on('$routeChangeStart',function(){
     Util.clear_server_errors();     //clear errors on view change
     $('.modal.in').modal('hide');   //dirty nasty ugly hack!!! DON'T DO THIS AT

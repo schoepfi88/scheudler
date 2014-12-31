@@ -227,7 +227,7 @@
         <div  class="panel panel-default inbox-dashboard" 
               ng-init="center_messages()" 
               ng-repeat="message in mymessages[$index]"
-              ng-show="currentUserIsSender(message) || !currentlyRead(message)">
+              ng-show="currentUserIsSender(message) || (!currentlyRead(message) || isRead(message))">
           <div class="panel-body inbox-dashboard">
             <div name="mes-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
@@ -261,7 +261,7 @@
         <div  class="panel panel-default inbox-dashboard unread" 
               ng-init="center_messages()" 
               ng-repeat="message in mymessages[$index]"
-              ng-show="!currentUserIsSender(message) && currentlyRead(message)">
+              ng-show="!currentUserIsSender(message) && (!isRead(message) || currentlyRead(message))">
           <div class="panel-body inbox-dashboard">
             <div name="mes-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">

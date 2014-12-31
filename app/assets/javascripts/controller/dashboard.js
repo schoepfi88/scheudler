@@ -2,7 +2,7 @@ angular.module('scheudler').controller("dashboardCtrl",
     function($scope,$rootScope,$timeout,$q,Util,dashboardService){
 	$scope.unreadMessages = dashboardService.message.unread();
 	(function tick() {
-		$scope.pending_status_requests--;
+		$rootScope.pending_status_requests++;
 		dashboardService.message.unread(function(data){
 			if($scope.old_status){
 				$scope.forUpdate = [];
@@ -26,7 +26,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 			$scope.unreadMessages = data;
 			$timeout(tick, 5000);
 		},
-        function(){ $scope.pending_status_requests++; });
+        function(){ $rootScope.pending_status_requests--; });
 	})();
 	// get messages without setting as read
 	$scope.mymessages = dashboardService.message.getNew(0);
@@ -150,6 +150,14 @@ angular.module('scheudler').controller("dashboardCtrl",
 		$scope.center_messages();
 		return (compareDate < mes.updated_at);
 	};
+
+	$scope.isRead =function(mes){
+		var read = mes.readers.indexOf($scope.current_user.id);
+		console.log(read);
+		if (read < 0)
+			return false;
+		return true;
+	}
 
 	$scope.currentUserIsSender = function(mes){
         return (mes.sender_id == $scope.current_user.id);
