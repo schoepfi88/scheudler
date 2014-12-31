@@ -4,7 +4,8 @@ angular.module('scheudler').controller("rootCtrl",function($scope,$rootScope,$ti
     $scope.pending_status_requests=0;
 
     $scope.startBar = function() {
-      cfpLoadingBar.start();
+        if ($scope.checkLoading() > 0)
+            cfpLoadingBar.start();
     };
 
     $scope.completeBar = function () {
