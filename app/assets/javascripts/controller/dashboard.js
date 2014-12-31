@@ -1,7 +1,8 @@
 angular.module('scheudler').controller("dashboardCtrl",
-    function($scope,$timeout,$q,Util,dashboardService){
+    function($scope,$rootScope,$timeout,$q,Util,dashboardService){
 	$scope.unreadMessages = dashboardService.message.unread();
 	(function tick() {
+		$scope.pending_status_requests++;
 		dashboardService.message.unread(function(data){
 			if($scope.old_status){
 				$scope.forUpdate = [];
@@ -24,7 +25,8 @@ angular.module('scheudler').controller("dashboardCtrl",
 			$scope.old_status = data;
 			$scope.unreadMessages = data;
 			$timeout(tick, 5000);
-		});
+		},
+        function(){ $scope.pending_status_requests--; });
 	})();
 	// get messages without setting as read
 	$scope.mymessages = dashboardService.message.getNew(0);
@@ -52,6 +54,13 @@ angular.module('scheudler').controller("dashboardCtrl",
 			group_empty.style.lineHeight = set_height.toString() + "px";
 		}
 
+	}
+
+	$scope.set_modal_height=function(){
+		var modal_body = document.getElementById('scrollarea');
+		var set = $(window).height();
+		modal_body.style.height = (set-200) + "px";
+		start(500,true);
 	}
 
 	// set correct line-height to center the pic and the time #groups
@@ -123,6 +132,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	}
 
 	$scope.getAllMessages=function(group_id, index){
+		$scope.set_modal_height();
 		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
 		$scope.selectedGroup = $scope.mygroups[index];
 		$scope.selectedGroup.index = index;
