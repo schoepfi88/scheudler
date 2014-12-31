@@ -6,14 +6,12 @@ angular.module('scheudler').controller("dashboardCtrl",
 		dashboardService.message.unread(function(data){
 			if($scope.old_status){
 				$scope.forUpdate = [];
-				//console.log(data.unread);
 				for (var i = 0; i < data.unread.length; i++) {
 					if (data.unread[i] > $scope.old_status.unread[i]){
 						$scope.newMessages = dashboardService.message.getNew(i);
 						$scope.forUpdate.push(i);
 						$q.all([$scope.newMessages.$promise
 							]).then(function() {
-								//console.log($scope.forUpdate.length);
 								for(var z = 0; z < $scope.forUpdate.length; z++){
 									$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
 								}
@@ -151,17 +149,27 @@ angular.module('scheudler').controller("dashboardCtrl",
 		return (compareDate < mes.updated_at);
 	};
 
-	$scope.isRead =function(mes){
-		var read = mes.readers.indexOf($scope.current_user.id);
-		console.log(read);
-		if (read < 0)
-			return false;
-		return true;
-	}
-
 	$scope.currentUserIsSender = function(mes){
         return (mes.sender_id == $scope.current_user.id);
     };
+
+    $scope.isRead =function(mes){
+		var read = mes.readers.indexOf($scope.current_user.id);
+		var bool_read = true;
+		if (read < 0)
+			bool_read = false;
+		var currently = $scope.currentlyRead(mes, false);
+		var isSender = $scope.currentUserIsSender(mes);
+
+		if (isSender)				//!isSender && currently || !isSender && bool_read
+			return true;			// isSender || bool_read // read
+		else {
+			if (currently)
+				return false;
+			else 
+				return bool_read;
+		}
+	}
 
 	$scope.parseTime = function(time){
 		var oneDayInMillis = 86400000;

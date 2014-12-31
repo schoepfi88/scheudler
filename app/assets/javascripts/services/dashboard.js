@@ -8,7 +8,7 @@ angular.module('scheudler').service("dashboardService", function($resource) {
     var unreadSer = $resource('api/messages/unread/:id', {},
                         {
                             'unread': {method: "GET"},
-                            'getNew': {method: "GET", isArray:true}
+                            'getNew': {method: "GET", isArray:true, ignoreLoadingBar: true}
                         });
 
     var userSer = $resource('api/user/', {}, 
