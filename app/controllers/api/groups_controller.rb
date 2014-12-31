@@ -26,6 +26,7 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def remove
+		init_calendar
 		gcal_id = Group.find(params[:group_id]).calendar_id
 		email = User.find(params[:user_id]).email
 		gcal_acl_delete(gcal_id, email)

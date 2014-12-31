@@ -8,14 +8,17 @@ class Event < ActiveRecord::Base
   attr_accessor :title
 	attr_accessor :start
 	attr_accessor :end
-	attr_accessor 
+	attr_accessor :color
+	attr_accessor :text_color
 
 	def to_json
 		event = {
       'id' => self.gcal_id,
       'title' => self.name,
       'start' => self.start.dateTime.strftime('%Y-%m-%d %H:%M:%S'),
-      'end' => self.end.dateTime.strftime('%Y-%m-%d %H:%M:%S')
+      'end' => self.end.dateTime.strftime('%Y-%m-%d %H:%M:%S'),
+      'color' => self.color,
+      'textColor' => self.text_color
     }
 	end
 

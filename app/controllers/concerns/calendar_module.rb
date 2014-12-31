@@ -159,16 +159,15 @@ private
 	end
 	
 	def gcal_acl_delete(gcal_id, email)
-		acl = {
-			"id" => "user:" + email
-		}
+		id = "user:" + email
+	
 		params = {
-      calendarId: gcal_id
+      calendarId: gcal_id,
+			ruleId: id
     }
 		result = @client.execute(
 		  :api_method => @calendar.acl.delete,
-			:parameters => params,
-		  :body_object => acl
+			:parameters => params
 		)
 		return result.data
 	end
