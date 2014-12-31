@@ -4,11 +4,15 @@ module CalendarModule
   CALENDAR_ID = 'bqh0i24famv71aaa84mneavovg@group.calendar.google.com'
 
   def init_calendar
+		init_calendar_token(session[:token])
+  end
+  
+  def init_calendar_token(token)
 		@client = Google::APIClient.new(
 			:application_name => 'Scheudler',
 			:application_version => '1.0.0'
 		)
-    @client.authorization.access_token = session[:token]
+    @client.authorization.access_token = token
 		@calendar = @client.discovered_api('calendar', API_VERSION)
   end
 
@@ -170,6 +174,17 @@ private
 			:parameters => params
 		)
 		return result.data
+	end
+	
+	def gcal_list_remove(gcal_id)
+		params = {
+      calendarId: gcal_id
+    }
+		result = @client.execute(
+      :api_method => @calendar.calendar_list.delete,
+      :parameters => params
+    )
+    result
 	end
 
 end
