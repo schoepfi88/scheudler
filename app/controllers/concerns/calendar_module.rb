@@ -136,5 +136,41 @@ private
 		)
 		return result.data
 	end
+	
+	def gcal_acl_add_reader(gcal_id, email)
+		acl = {
+			"kind" => "calendar#aclRule",
+			"id" => "user:" + email,
+			"scope" => {
+				"type" => "user",
+				"value" => email
+			},
+			"role" => "reader"
+		}
+		params = {
+      calendarId: gcal_id
+    }
+		result = @client.execute(
+		  :api_method => @calendar.acl.insert,
+			:parameters => params,
+		  :body_object => acl
+		)
+		return result.data
+	end
+	
+	def gcal_acl_delete(gcal_id, email)
+		acl = {
+			"id" => "user:" + email
+		}
+		params = {
+      calendarId: gcal_id
+    }
+		result = @client.execute(
+		  :api_method => @calendar.acl.delete,
+			:parameters => params,
+		  :body_object => acl
+		)
+		return result.data
+	end
 
 end

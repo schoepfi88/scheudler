@@ -26,12 +26,25 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def remove
+		gcal_id = Group.find(params[:group_id]).calendar_id
+		email = User.find(params[:user_id]).email
+		gcal_acl_delete(gcal_id, email)
 		Group.remove_member(remove_params)
 		respond_with(nil, :location => nil)
 	end
 
 	def invite
-		Member.add_member(invite_params)
+		
+		user_to_add = Member.add_member(invite_params)
+		
+		if user_to_add != nil then
+			init_calendar
+			gcal_id = Group.find(params[:group_id]).calendar_id
+			
+			user_to_add.each do |email|
+				gcal_acl_add_reader(gcal_id, email)
+			end
+		end
 		respond_with(nil, :location => nil)
 	end
 
