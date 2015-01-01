@@ -28,8 +28,12 @@ class Api::GroupsController < Api::RestController
 	def remove
 		init_calendar
 		gcal_id = Group.find(params[:group_id]).calendar_id
-		email = User.find(params[:user_id]).email
-		gcal_acl_delete(gcal_id, email)
+		u = User.find(params[:user_id])
+		
+		if u.provider == 'google_oauth2' then
+			gcal_acl_delete(gcal_id, u.email)
+		end
+				
 		Group.remove_member(remove_params)
 		respond_with(nil, :location => nil)
 	end

@@ -12,7 +12,10 @@ class Member < ActiveRecord::Base
 				if(user.members.where(group_id: params[:group_id], user_id: user.id).size == 0) then
 					m = Member.create(group_id: params[:group_id], user_id: user.id)
 					m.save!
-					to_add.push(email)
+					
+					if user.provider == 'google_oauth2' then
+						to_add.push(email)
+					end
 				end
 			end
 		end
