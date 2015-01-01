@@ -7,8 +7,7 @@ angular.module('scheudler').service("dashboardService", function($resource) {
                         });
     var unreadSer = $resource('api/messages/unread/:id', {},
                         {
-                            'unread': {method: "GET", ignoreLoadingBar: true},
-                            'getNew': {method: "GET", isArray:true}
+                            'unread': {method: "GET", ignoreLoadingBar: true}
                         });
 
     var userSer = $resource('api/user/', {}, 
@@ -26,7 +25,6 @@ angular.module('scheudler').service("dashboardService", function($resource) {
             get: function(succ){ return messageSer.get(succ);},
             create: function(mes, succ){ return messageSer.create(mes, succ);},
             unread: function(succ){ return unreadSer.unread(succ);},
-            getNew: function(group_index, succ){ return unreadSer.getNew({id: group_index}, succ);},
             getAll: function(groupId){return messageSer.getAll({group_id: groupId})}
         },
         user: {

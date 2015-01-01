@@ -2,45 +2,39 @@ angular.module('scheudler').controller("dashboardCtrl",
     function($scope,$rootScope,$timeout,$q,Util,dashboardService){
 	$scope.unreadMessages = dashboardService.message.unread();
 	(function tick() {
-		$rootScope.pending_status_requests++;
-		dashboardService.message.unread(function(data){
-			if($scope.old_status){
-				$scope.forUpdate = [];
-				for (var i = 0; i < data.unread.length; i++) {
-					if (data.unread[i] > $scope.old_status.unread[i]){
-						$scope.newMessages = dashboardService.message.getNew(i);
-						$scope.forUpdate.push(i);
-						$q.all([$scope.newMessages.$promise
-							]).then(function() {
-								for(var z = 0; z < $scope.forUpdate.length; z++){
-									$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-								}
-						});
-						$scope.set_read();
+		if ($rootScope.dash_is_active === true){		// only on dashboard polling is allowed
+			dashboardService.message.unread(function(data){
+				if($scope.old_status){
+					$scope.forUpdate = [];
+					for (var i = 0; i < data.unread.length; i++) {
+						if (data.last_mes[i] != $scope.old_status.last_mes[i]){
+							$scope.newMessages = dashboardService.message.get();
+							$scope.allRead = false;
+							$scope.forUpdate.push(i);
+							$q.all([$scope.newMessages.$promise
+								]).then(function() {
+									for(var z = 0; z < $scope.forUpdate.length; z++){
+										$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+									}
+							});
+						}
 					}
 				}
-			}
-			$scope.old_status = data;
-			$scope.unreadMessages = data;
-			$timeout(tick, 5000);
-		},
-        function(){ $rootScope.pending_status_requests--; });
+				$scope.old_status = data;
+				$scope.unreadMessages = data;
+				$timeout(tick, 5000);
+			});
+		}
+		
 	})();
-	// get messages without setting as read
-	$scope.mymessages = dashboardService.message.getNew(0);
-	// set as read after 10 sec
-	$scope.set_read=function(){
-		$timeout(function() {
-			dashboardService.message.get();
-		}, 10000);
-	}
-	$scope.set_read();
+	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
+	$scope.allRead = false;
 	$scope.mygroups = dashboardService.groups.get();
 	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
 	$scope.current_user = dashboardService.user.get();
 	$scope.selectedGroupMessages = [];
 	$scope.selectedGroup = null;
-	/*++++design functions++++*/
+	/*++++start UI functions++++*/
 	// set height if no group exists
 	$scope.set_height=function(){
 		if($scope.mygroups.length === 0){
@@ -90,11 +84,12 @@ angular.module('scheudler').controller("dashboardCtrl",
 			mes_time[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
 		}
 	};
-	/*++++design functions++++*/
+	/*++++end UI functions++++*/
 
 	$scope.send_message=function(group_id, group_text, index){
 		$scope.newMess.receiver_id = group_id;
 		$scope.newMess.text = group_text;
+		$scope.allRead = true;
 		var max_messages = 7;
 		dashboardService.message.create($scope.newMess, function(data){
 			var groupmes = {};
@@ -138,38 +133,20 @@ angular.module('scheudler').controller("dashboardCtrl",
 	}
 
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
-	$scope.currentlyRead = function(mes, allRead){
-		if (allRead){
+	$scope.currentlyRead = function(mes){
+		if ($scope.allRead){
 			return false;
 		}
 		var date = new Date().toISOString();
-		var millis = Date.parse(date) - 10000;
+		var millis = Date.parse(date) - 5000;
 		var compareDate = new Date(millis).toISOString();
-		$scope.center_messages();
-		return (compareDate < mes.updated_at);
+		var currently = (compareDate < mes.updated_at);
+		return currently;
 	};
 
 	$scope.currentUserIsSender = function(mes){
-        return (mes.sender_id == $scope.current_user.id);
-    };
-
-    $scope.isRead =function(mes){
-		var read = mes.readers.indexOf($scope.current_user.id);
-		var bool_read = true;
-		if (read < 0)
-			bool_read = false;
-		var currently = $scope.currentlyRead(mes, false);
-		var isSender = $scope.currentUserIsSender(mes);
-
-		if (isSender)				//!isSender && currently || !isSender && bool_read
-			return true;			// isSender || bool_read // read
-		else {
-			if (currently)
-				return false;
-			else 
-				return bool_read;
-		}
-	}
+		return (mes.sender_id == $scope.current_user.id);
+	};
 
 	$scope.parseTime = function(time){
 		var oneDayInMillis = 86400000;

@@ -58,25 +58,9 @@ class Api::DashboardController < ApplicationController
 		@messages_all
 	end
 
-	def get_new
-		@mes_new = []
-		different_groups = Member.where(user_id: current_user.id).pluck(:group_id)
-		different_groups.each do |g|
-			group_messages = Message.where(receiver_id: g)
-			#sort that actuall messages are at the bottom
-			group_messages.sort! { |a,b| a.created_at <=> b.created_at }
-			# only last 10
-			if group_messages.length > $max_messages
-				number = $max_messages - group_messages.length
-				group_messages = group_messages.drop(number.abs)
-			end
-			@mes_new << group_messages
-		end
-		@mes_new
-	end
-
 	def unread
 		group_counter = []
+		last_mes_ids = []
 		different_groups = Member.where(user_id: current_user.id).pluck(:group_id)
 		different_groups.each do |g|
 			counter = 0
@@ -86,9 +70,15 @@ class Api::DashboardController < ApplicationController
                     	counter += 1
                 	end
 			end
+			group_messages.sort! { |a,b| a.created_at <=> b.created_at }
+			if (group_messages.length > 0)
+				last_mes_ids << group_messages.last.id
+			else
+				last_mes_ids << -1
+			end
 			group_counter << counter
 		end
-		respond_with({unread: group_counter})
+		respond_with({unread: group_counter, last_mes: last_mes_ids})
 	end
 
 	private
