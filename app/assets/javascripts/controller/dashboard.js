@@ -41,6 +41,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 					$scope.unreadMessages = data;
 					$scope.tickCounter = 0;
 				}
+				$scope.center_messages();
 				$timeout(tick, 3000);
 			});
 		}
@@ -164,19 +165,17 @@ angular.module('scheudler').controller("dashboardCtrl",
 		var date = new Date().toISOString();
 		var millis = Date.parse(date) - 20000;
 		var unread = $scope.unreadMessages.unread[group_index];
+		// mark the correct number of messages as unread 
 		if (!modal_active){
 			var len = Object.keys($scope.mymessages[group_index]).length;
 			var read = len - unread -1;
 			if (mes_index > read){
-				console.log(mes_index+ ">" + read);
-				$scope.mymessages[group_index][mes_index].updated_at = "3000";
+				$scope.mymessages[group_index][mes_index].updated_at = "3000";		// to achieve compareDate is smaller -> ugly
 			}
 			else {
-				$scope.mymessages[group_index][mes_index].updated_at = "1000";
+				$scope.mymessages[group_index][mes_index].updated_at = "1000";		// to achieve compareDate is greater -> ugly
 			}
 		}
-
-
 		var compareDate = new Date(millis).toISOString();
 		var currently = (compareDate < mes.updated_at);
 		return currently;
@@ -187,6 +186,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.parseTime = function(time){
+		$scope.center_messages();
 		var oneDayInMillis = 86400000;
 		var oneHourInMillis = 3600000;
 		if (time === null || time === undefined){
