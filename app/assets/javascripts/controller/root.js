@@ -25,12 +25,10 @@ angular.module('scheudler').controller("rootCtrl",function($scope,$rootScope,$ti
 
     $scope.actPolling=function(){
         $rootScope.dash_is_active = true;
-        console.log($rootScope.dash_is_active);
     };
 
     $scope.deactPolling=function(){
         $rootScope.dash_is_active = false;
-        console.log($rootScope.dash_is_active);
     }
 
     $scope.startBar();

@@ -148,12 +148,31 @@
 }
 
 .modal-dialog{
-      overflow-y: initial !important
+      overflow-y: initial !important;
 }
 .modal-body{
   height: 900px;
   overflow-y: auto;
+  border-color: $blue;
+  border: 2px solid $blue;
 }
+
+.modal-header{
+  background-color: $blue;
+  color: white;
+  font-variant: small-caps;
+  font-size: 22px;
+  font-family: "calibri";
+  border-color: $blue;
+  border-width: 2px;
+  border: 2px solid $blue;
+}
+
+.fa-rss{
+  color: $orange;
+}
+
+
 
 a.modal-link:link {color: white; font-weight: bold; text-decoration: none;}
 a.modal-link:active {color: white; font-weight: bold; text-decoration: none;}
