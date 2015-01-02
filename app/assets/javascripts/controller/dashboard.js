@@ -106,7 +106,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 	/*++++end UI functions++++*/
 
-	$scope.send_message=function(group_id, group_text, index){
+	$scope.send_message=function(group_id, group_text, index, modal_active){
 		$scope.newMess.receiver_id = group_id;
 		$scope.newMess.text = group_text;
 		$scope.allRead = true;
@@ -116,7 +116,8 @@ angular.module('scheudler').controller("dashboardCtrl",
 			var groupmes = {};
 			var mes = [];
 			groupmes.mes = mes;
-			var len = Object.keys($scope.mymessages[index]).length
+			var len = Object.keys($scope.mymessages[index]).length;
+			var modal_len = Object.keys($scope.selectedGroupMessages).length;
 			if (len === max_messages){
 				for (var i = 0; i < len-1; i++){
 					$scope.mymessages[index][i] = $scope.mymessages[index][i+1];
@@ -130,6 +131,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 				groupmes.mes.push(data);
 				$scope.mymessages[index] = groupmes.mes;
 			}
+			if (modal_active){
+				$scope.selectedGroupMessages.push(data);
+				console.log(data);
+			}
 			
 	          var inputs = document.getElementsByName('input-text');
                for (var x = inputs.length - 1; x >= 0; x--) {
@@ -140,8 +145,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.send_message_modal=function(group_id, group_text, index){
-		$scope.send_message(group_id, group_text, index);
-		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
+		$scope.send_message(group_id, group_text, index, true);
 		start(5000, true, true);
 	}
 
