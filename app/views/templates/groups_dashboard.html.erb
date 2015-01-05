@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-warning clickable" ng-click="">
+		<div class="panel panel-warning clickable" ng-click="redirect_to_events(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
@@ -52,7 +52,7 @@
 	</div>
 
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-danger clickable" ng-click="">
+		<div class="panel panel-danger clickable" ng-click="redirect_to_calendar(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
@@ -68,7 +68,7 @@
 	</div>
 
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-success clickable" ng-click="">
+		<div class="panel panel-success clickable" ng-click="redirect_to_statistic(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
