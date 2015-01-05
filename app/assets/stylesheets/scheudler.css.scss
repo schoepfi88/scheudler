@@ -74,9 +74,6 @@ input.ng-error {
   border-color: $blue;
   border-width: 2px;
   font-family: "calibri";
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
   font-variant: small-caps;
 }
 
@@ -102,9 +99,9 @@ canvas{
     }
 
  * {
-   -webkit-border-radius: 5px !important;
-      -moz-border-radius: 5px !important;
-           border-radius: 5px !important;
+   -webkit-border-radius: 0px !important;
+      -moz-border-radius: 0px !important;
+           border-radius: 0px !important;
  }
 
 
@@ -139,9 +136,6 @@ canvas{
   font-size: 22px;
   //font-weight: bold;
   border-color: $blue;
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
 }
 
 .panel-default > .panel-heading .fa {
@@ -150,9 +144,6 @@ canvas{
 }
 
 .panel-default > .panel-body {
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
   font-size: 17px;
 }
 
@@ -160,9 +151,6 @@ canvas{
   font-family: "calibri";
   border-color: $blue;
   border-width: 2px;
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
 }
 
 
@@ -174,9 +162,6 @@ canvas{
   font-size: 22px;
   //font-weight: bold;
   border-color: $yellow_light;
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
 }
 
 .panel-warning > .panel-heading .fa {
@@ -185,9 +170,6 @@ canvas{
 }
 
 .panel-warning > .panel-body {
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
   font-size: 17px;
 }
 
@@ -195,9 +177,6 @@ canvas{
   font-family: "calibri";
   border-color: $yellow_light;
   border-width: 2px;
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
 }
 
 
@@ -209,9 +188,6 @@ canvas{
   font-size: 22px;
   //font-weight: bold;
   border-color: $red_light;
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
 }
 
 .panel-info > .panel-heading .fa {
@@ -220,9 +196,6 @@ canvas{
 }
 
 .panel-info > .panel-body {
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
   font-size: 17px;
 }
 
@@ -230,9 +203,6 @@ canvas{
   font-family: "calibri";
   border-color: $red_light;
   border-width: 2px;
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
 }
 
 
@@ -244,9 +214,6 @@ canvas{
   font-size: 22px;
   //font-weight: bold;
   border-color: $orange;
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
 }
 
 .panel-danger > .panel-heading .fa {
@@ -255,9 +222,6 @@ canvas{
 }
 
 .panel-danger > .panel-body {
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
   font-size: 17px;
 }
 
@@ -265,9 +229,6 @@ canvas{
   font-family: "calibri";
   border-color: $orange;
   border-width: 2px;
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
 }
 
 
@@ -279,9 +240,6 @@ canvas{
   font-size: 22px;
   //font-weight: bold;
   border-color: $blue_light;
-  webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  border-radius: 0px !important;
 }
 
 .panel-success > .panel-heading .fa {
@@ -290,9 +248,6 @@ canvas{
 }
 
 .panel-success > .panel-body {
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
   font-size: 17px;
 }
 
@@ -300,9 +255,6 @@ canvas{
   font-family: "calibri";
   border-color: $blue_light;
   border-width: 2px;
-  webkit-border-radius: 7px !important;
-  -moz-border-radius: 7px !important;
-  border-radius: 7px !important;
 }
 
 .font-upscaling {
@@ -319,6 +271,7 @@ canvas{
 	background-color: #d9534f;
 	border-color: #d43f3a;
 }
+
 /* boxes on dashborad */
 .box-dashboard > .panel-body {
   padding: 0px;

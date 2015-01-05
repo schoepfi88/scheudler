@@ -1,9 +1,13 @@
 angular.module('scheudler').service("dashboardService", function($resource) {
-    var messageSer = $resource('api/messages/',{},
+    var messageSer = $resource('api/messages/:group_id',{},
                         {
                             'get': {method: "GET", isArray:true},
-                            'create': {method: "POST", isArray:true},
-                            'destroy': {method: "DELETE"}                            
+                            'create': {method: "POST"},
+                            'getAll': {method: "GET", isArray:true}
+                        });
+    var unreadSer = $resource('api/messages/unread/:id', {},
+                        {
+                            'unread': {method: "GET", ignoreLoadingBar: true}
                         });
 
     var userSer = $resource('api/user/', {}, 
@@ -11,12 +15,23 @@ angular.module('scheudler').service("dashboardService", function($resource) {
                             'get': {method: "GET"}
                         });
 
+    var groupSer = $resource('api/dashboard/groups/', {},
+                        {
+                            'get': {method: "GET", isArray:true}
+                        });
+
     return {
-        messages: {
-            get: function(quantity){ return messageSer.get({quantity: quantity});}
+        message: {
+            get: function(succ){ return messageSer.get(succ);},
+            create: function(mes, succ){ return messageSer.create(mes, succ);},
+            unread: function(succ){ return unreadSer.unread(succ);},
+            getAll: function(groupId){return messageSer.getAll({group_id: groupId})}
         },
         user: {
             get: function(){ return userSer.get();}
+        },
+        groups: {
+            get: function(){ return groupSer.get();}
         }
     }
     

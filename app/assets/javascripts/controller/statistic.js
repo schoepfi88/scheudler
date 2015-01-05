@@ -1,4 +1,3 @@
 angular.module('scheudler').controller("statisticCtrl",
-    function($scope,Util){
-
+	function($scope,Util){
 });

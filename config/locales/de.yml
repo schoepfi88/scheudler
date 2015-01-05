@@ -102,6 +102,10 @@ de:
     dashboard:
       page_header                        : "Dashboard"
       page_title                         : "Dashboard"
+      send                               : "senden"
+      new_message                        : "Text eingeben"
+      no_group_placeholder               : "Derzeit sind Sie nicht Mitglied einer Gruppe"
+      create_group                       : "Erstelle neue Gruppe"
     calendar:
       page_header                        : "Kalender"
       page_title                         : "Kalender"

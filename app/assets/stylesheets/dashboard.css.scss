@@ -1,3 +1,180 @@
-// Place all the styles related to the dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* boxes on dashborad */
+.box-dashboard > .panel-body {
+  padding: 0px;
+}
+
+.inbox-dashboard {
+  border-width:0px;
+  border-top-width:1px;
+  margin-bottom:0px;
+  padding: 0px;
+}
+
+.img-circle {
+  border-radius: 50% !important;
+  margin: 5px; 
+  height:30px; 
+  width:30px;
+}
+
+.message-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.message-text {
+  font-size: 70%; 
+}
+
+.event-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.event-text {
+  font-size: 70%; 
+}
+
+.event-close {
+  color: $orange;
+}
+
+.event-check {
+  color: $blue;
+}
+
+.groups-text {
+  font-size: 70%;
+  font-weight: bold;
+  padding-right: 4px; 
+  padding-left: 4px;
+}
+
+.message-time {
+  color: gray; 
+  font-size: 70%;
+  vertical-align: middle;
+  text-align: center;
+  padding-right: 5px; 
+}
+
+.center-row {
+  height: 100%; 
+  padding: 0px;
+  margin: 0px;
+}
+
+.uncenter {
+  line-height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.center {
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 0px; 
+  padding-right: 0px; 
+}
+
+.big-box,
+.mini-box {
+    margin: 0px;
+}
+.big-box {
+    height: 100%;
+}
+
+.big-box-pics {
+    width: 60px;
+}
+.mini-box {
+    height: 50%;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.input-group-addon {
+  background-color: $blue;
+  color: white;
+}
+
+.form-control, .btn-input {
+  font-size: 80%;
+}
+
+.btn-input {
+  border-color: $blue;
+  margin-right: -1px;
+}
+
+.panel-footer {
+  border-bottom-width: 1px;
+  border-color: $blue;
+  padding: 0px;
+}
+
+.inbox-empty {
+  vertical-align: middle;
+  padding: 0px; 
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.btn-primary {
+  background-color: $blue;
+}
+
+.badge {
+  background-color: $orange;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 11px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.unread {
+  background-color: #CED8F6;
+}
+
+.modal-link {
+  text-decoration: none;
+  color: white;
+}
+
+.modal-dialog{
+      overflow-y: initial !important;
+}
+.modal-body{
+  height: 900px;
+  overflow-y: auto;
+  border-color: $blue;
+  border: 2px solid $blue;
+}
+
+.modal-header{
+  background-color: $blue;
+  color: white;
+  font-variant: small-caps;
+  font-size: 22px;
+  font-family: "calibri";
+  border-color: $blue;
+  border-width: 2px;
+  border: 2px solid $blue;
+}
+
+.fa-rss{
+  color: $orange;
+}
+
+
+
+a.modal-link:link {color: white; font-weight: bold; text-decoration: none;}
+a.modal-link:active {color: white; font-weight: bold; text-decoration: none;}
+a.modal-link:visited {color: white; font-weight: bold; text-decoration: none;}
+a.modal-link:hover {color: white; font-weight: bolder; text-decoration: none;}
