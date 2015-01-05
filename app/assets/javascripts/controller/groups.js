@@ -1,6 +1,5 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util){
 	$scope.isGoogleUser = false;
-
 	$scope.create_group = function(isValid){
 		if(isValid && $scope.isGoogleUser){
 			groupsService.group.create($scope.groupData, function(){
