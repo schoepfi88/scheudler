@@ -9,15 +9,15 @@
 	<li class="list-group-item">
 		<%= member.name %>
 		<% if @group.admins.find_by(user_id: member.id) != nil then %>
-			<span class="badge"><%= t(".admin") + "  " %><i class="fa fa-ban"></i></span>
+			<span class="badge-normal pull-right"><%= t(".admin") + "  " %><i class="fa fa-ban"></i></span>
 		<% else %>
 			<% if @is_admin then %>
-				<button class="btn btn-danger badge badge-btn" ng-click="remove_member(<%= @group.id %>, <%= member.id %>)">
+				<button class="btn btn-danger badge-btn pull-right" ng-click="remove_member(<%= @group.id %>, <%= member.id %>)">
 					<%= t(".user") + "  " %>
 					<i class="fa fa-remove"></i>
 				</button>
 			<% else %>
-				<span class="badge"><%= t(".user") + "  " %><i class="fa fa-ban"></i></span>
+				<span class="badge-normal pull-right"><%= t(".user") + "  " %><i class="fa fa-ban"></i></span>
 			<% end %>
 		<% end %>
 	</li>

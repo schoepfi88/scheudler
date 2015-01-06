@@ -161,7 +161,7 @@ canvas{
   font-variant: small-caps;
   font-size: 22px;
   //font-weight: bold;
-  border-color: $yellow_dark;
+  border-color: $yellow_light;
 }
 
 .panel-warning > .panel-heading .fa {
@@ -175,7 +175,7 @@ canvas{
 
 .panel-warning {
   font-family: "calibri";
-  border-color: $yellow_dark;
+  border-color: $yellow_light;
   border-width: 2px;
 }
 
@@ -187,7 +187,7 @@ canvas{
   font-variant: small-caps;
   font-size: 22px;
   //font-weight: bold;
-  border-color: $red_dark;
+  border-color: $red_light;
 }
 
 .panel-info > .panel-heading .fa {
@@ -201,7 +201,7 @@ canvas{
 
 .panel-info {
   font-family: "calibri";
-  border-color: $red_dark;
+  border-color: $red_light;
   border-width: 2px;
 }
 
@@ -213,7 +213,7 @@ canvas{
   font-variant: small-caps;
   font-size: 22px;
   //font-weight: bold;
-  border-color: $orange_dark;
+  border-color: $orange;
 }
 
 .panel-danger > .panel-heading .fa {
@@ -227,7 +227,7 @@ canvas{
 
 .panel-danger {
   font-family: "calibri";
-  border-color: $orange_dark;
+  border-color: $orange;
   border-width: 2px;
 }
 
@@ -239,7 +239,7 @@ canvas{
   font-variant: small-caps;
   font-size: 22px;
   //font-weight: bold;
-  border-color: $blue_dark;
+  border-color: $blue_light;
 }
 
 .panel-success > .panel-heading .fa {
@@ -253,7 +253,7 @@ canvas{
 
 .panel-success {
   font-family: "calibri";
-  border-color: $blue_dark;
+  border-color: $blue_light;
   border-width: 2px;
 }
 
@@ -266,8 +266,79 @@ canvas{
   margin: 0;
 }
 
+.badge-normal {
+  background-color: #999999;
+  margin-top: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+
 .badge-btn {
-	color: white;
-	background-color: #d9534f;
-	border-color: #d43f3a;
+  color: white;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  margin-top: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 2px;
+}
+
+/* boxes on dashborad */
+.box-dashboard > .panel-body {
+  padding: 0px;
+}
+
+
+/* box on dashboard in my groups  */
+.inbox-dashboard {
+  border-width:0px;
+  border-bottom-width:1px;
+  margin-bottom:0px;
+  height: 50px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  color: $orange;
+  vertical-align: middle;
+}
+
+.inbox-messages {
+  border-width:0px;
+  border-bottom-width:1px;
+  margin-bottom:0px;
+  padding: 0px;
+  webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.img-circle {
+  border-radius: 50% !important;
+  margin: 5px; 
+  height:30px; 
+  width:30px;
+}
+
+.message-name {
+  color: black;
+  font-size: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.message-text {
+  font-size: 70%; 
+}
+
+.message-time {
+  color: black; 
+  font-size: 70%;
+  vertical-align: middle;
+}
+
+.align-top {
+  vertical-align: top;
 }

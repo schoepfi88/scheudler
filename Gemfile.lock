@@ -217,7 +217,7 @@ DEPENDENCIES
   capistrano
   chart-js-rails
   exception_notification
-  font-awesome-rails (~> 4.2)
+  font-awesome-rails
   fullcalendar-rails (~> 2.0.2.0)
   geocoder
   google-api-client
