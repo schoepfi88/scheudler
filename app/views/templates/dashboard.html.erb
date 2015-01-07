@@ -318,7 +318,7 @@
   <div class="modal-dialog" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
     <div class="modal-content">
       <div class="modal-header">
-        <button style="margin-top: 5px;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button style="margin-top: 5px;" type="button" ng-click="setMyMessages()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-title" id="myModalLabel"><span class="fa fa-rss"></span> Blog of {{selectedGroup.name}} <span class="badge pull-right" style="margin-right: 15px;">{{unreadMessages.unread[selectedGroup.index]}}</span></div>
 
       </div>

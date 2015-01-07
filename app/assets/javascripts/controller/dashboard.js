@@ -5,7 +5,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 	(function tick() {
 		if ($rootScope.dash_is_active === true){		// only on dashboard polling is allowed
 			dashboardService.message.unread(function(data){
-				console.log(data.unread);
 				if($scope.old_status){
 					$scope.forUpdate = [];
 					for (var i = 0; i < data.unread.length; i++) {
@@ -133,7 +132,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 			}
 			if (modal_active){
 				$scope.selectedGroupMessages.push(data);
-				console.log(data);
 			}
 			
 	          var inputs = document.getElementsByName('input-text');
@@ -152,9 +150,15 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.getAllMessages=function(group_id, index){
 		$scope.set_modal_height();
 		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
+		$scope.tmpMyMessages = $scope.mymessages;
+		$scope.mymessages = [];
 		$scope.selectedGroup = $scope.mygroups[index];
 		$scope.selectedGroup.index = index;
 		start(7000, true, true);
+	}
+
+	$scope.setMyMessages=function(){
+		$scope.mymessages = $scope.tmpMyMessages;
 	}
 
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
