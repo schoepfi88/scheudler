@@ -173,8 +173,9 @@ angular.module('scheudler').controller("dashboardCtrl",
 		$scope.tmpMyMessages = $scope.mymessages;
 		$scope.mymessages = [];
 		$scope.selectedGroup = $scope.mygroups[index];
+		$scope.selectedGroup.text = "";
 		$scope.selectedGroup.index = index;
-		start(7000, true, true);
+		start(3000, true, true);
 	}
 
 	$scope.setMyMessages=function(){
