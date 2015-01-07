@@ -18,6 +18,7 @@ class Group < ActiveRecord::Base
 
 	def self.delete_group(params)
 		g = Group.find(params[:id])
+		g.receivedMessages.destroy_all
 		gcal_id = g.calendar_id
 		g.members.destroy_all
 		g.admins.destroy_all
