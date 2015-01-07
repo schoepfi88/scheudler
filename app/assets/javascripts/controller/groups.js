@@ -58,6 +58,10 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		location.href="/#/statistic";
 	};
 
+	$scope.redirect_to_blog = function(id){
+		location.href="/#/blog";
+	};
+
 	$scope.invite_to_group = function(id, isValid){
 		if(isValid){
 			$scope.inviteData.group_id = id;
