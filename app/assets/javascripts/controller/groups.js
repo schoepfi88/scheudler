@@ -67,6 +67,10 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		location.href="/#/groups_dashboard/" + id + "/invite";
 	};
 
+	$scope.redirect_to_settings = function(id){
+		location.href="/#/groups_dashboard/" + id + "/settings";
+	};
+
 	$scope.invite_to_group = function(id, isValid){
 		if(isValid){
 			$scope.inviteData.group_id = id;

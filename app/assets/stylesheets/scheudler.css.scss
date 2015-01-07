@@ -11,6 +11,8 @@ $purple_light : #AD7FA8;
 $purple_dark : #5C3566;
 $red_light : #F08989;
 $red_dark : #A40000;
+$grey_light : #888A85;
+$grey_dark : #2E3436;
 
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
@@ -270,6 +272,21 @@ canvas{
 	border-color: $red_light;
 }
 
+
+/* Grey info panel */
+.panel-info-grey > .panel-heading {
+	background-color: $grey_light;
+	color: $grey_dark;
+	border-color: $grey_light;
+}
+
+.panel-info-grey > .panel-heading .fa {
+    color: $grey_dark;
+}
+
+.panel-info-grey {
+	border-color: $grey_light;
+}
 
 
 

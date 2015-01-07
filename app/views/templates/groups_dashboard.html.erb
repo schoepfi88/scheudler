@@ -3,18 +3,19 @@
 		<i class="fa <%= @group.icon %>"></i> 
 		<%= @group.name + t(".page_header") %>
 		
-			<div class="btn-group pull-right">
-			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				<i class="fa fa-gear"></i><span class="hidden-xs">Settings</span><span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu" role="menu">
-				<li><a href="/#/groups_dashboard/<%= @group.id %>/invite"><i class="fa fa-plus"></i> Invite People</a></li>
-				<% if @is_admin %>
-					<li class="divider"></li>
-					<li><a href="/#/groups_dashboard/<%= @group.id %>/settings"><i class="fa fa-gears"></i> Group Settings</a></li>
-				<% end %>
-			  </ul>
-			</div>
+		<!-- Dropdown menu -->
+		<!--<div class="btn-group pull-right">
+		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			<i class="fa fa-gear"></i><span class="hidden-xs">Settings</span><span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+			<li><a href="/#/groups_dashboard/<%= @group.id %>/invite"><i class="fa fa-plus"></i> Invite People</a></li>
+			<% if @is_admin %>
+				<li class="divider"></li>
+				<li><a href="/#/groups_dashboard/<%= @group.id %>/settings"><i class="fa fa-gears"></i> Group Settings</a></li>
+			<% end %>
+		  </ul>
+		</div>-->
 	</h1>
 </section>
 
@@ -120,6 +121,25 @@
 		  </div>
 		</div>
 	</div>
+
+	<!-- Settings panel (for admin only) -->
+	<% if @is_admin %>
+		<div class="col-lg-3 col-sm-6">
+			<div class="panel panel-info-grey clickable" ng-click="redirect_to_settings(<%= @group.id %>)">
+			  <div class="panel-heading">
+				<div class="row">
+				  <div class="col-xs-2">
+					<i class="fa fa-cogs fa-4x"></i>
+				  </div>
+				  <div class="col-xs-10 text-right">
+					<p class="announcement-text"><%=t(".update_the")%></p>
+					<p class="announcement-heading"><%=t(".Prefs")%></p>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	<% end %>
 </div>
 
 <!--<section class="hidden-print">
