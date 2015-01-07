@@ -81,8 +81,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.center_groups=function(){
 		var gr_text = document.getElementsByName('group-text');
 		var gr_pic = document.getElementsByName('group-pic');
+		var ev_text = document.getElementsByName('event-text');
 		for (var i = gr_pic.length - 1; i >= 0; i--) {
-			gr_text[i].style.lineHeight = gr_pic[i].offsetHeight.toString() + "px";
+			gr_text[i].style.lineHeight = ev_text[i].clientHeight.toString() + "px";
+			gr_pic[i].style.lineHeight = ev_text[i].clientHeight.toString() + "px";
 		}
 	};
 
@@ -171,8 +173,9 @@ angular.module('scheudler').controller("dashboardCtrl",
 		$scope.tmpMyMessages = $scope.mymessages;
 		$scope.mymessages = [];
 		$scope.selectedGroup = $scope.mygroups[index];
+		$scope.selectedGroup.text = "";
 		$scope.selectedGroup.index = index;
-		start(7000, true, true);
+		start(3000, true, true);
 	}
 
 	$scope.setMyMessages=function(){

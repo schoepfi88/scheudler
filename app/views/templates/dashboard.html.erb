@@ -17,7 +17,7 @@
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
-                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                    <span class="{{mygroups[0].icon}} group-icon"></span>
                   </div>
               </div>
               <div name="event-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
@@ -47,7 +47,7 @@
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
-                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                    <span class="{{mygroups[0].icon}} group-icon"></span>
                   </div>
               </div>
               <div name="event-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
@@ -85,16 +85,16 @@
       <div class="panel-body" id="group_body">
         <div class="panel panel-default inbox-dashboard" ng-repeat="group in mygroups" ng-init="center_groups()">
           <div class="panel-body inbox-dashboard">
-            <div name="group-pic" class="row center-row">
-              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
+            <div class="row center-row">
+              <div name="group-pic" class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
-                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                    <span class="{{group.icon}} group-icon"></span>
                   </div>
               </div>
-              <div name="group-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 center">
+              <div class="col-lg-8 col-md-8 col-sm-9 col-xs-8 center">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xs-12 center">
-                    <div class="big-box groups-text">
+                    <div class="big-box groups-text" name="group-text">
                       {{group.name}}
                     </div>
                   </div>
@@ -134,7 +134,7 @@
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
-                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                    <span class="{{mygroups[0].icon}} group-icon"></span>
                   </div>
               </div>
               <div name="event-text" class="col-lg-6 col-md-6 col-sm-7 col-xs-6 uncenter">
@@ -173,7 +173,7 @@
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
-                    <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle") %>
+                    <span class="{{mygroups[0].icon}} group-icon"></span>
                   </div>
               </div>
               <div name="event-text" class="col-lg-6 col-md-6 col-sm-7 col-xs-6 uncenter">
