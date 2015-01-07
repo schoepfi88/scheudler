@@ -218,7 +218,7 @@
         <a class="modal-link" data-toggle="modal" data-target="#myModal" ng-click="getAllMessages(group.id, $index)">
           <span class="fa fa-rss"></span> 
           Blog of {{group.name}}
-          <span class="badge pull-right">{{unreadMessages.unread[$index]}}</span>
+          <span class="badge pull-right">{{unreadMessages.unread[$index] + unreadMessages.undisplayed[$index]}}</span>
         </a>
       </div>
       <!--messages of groups-->

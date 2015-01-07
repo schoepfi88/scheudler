@@ -60,13 +60,17 @@ class Api::DashboardController < ApplicationController
 
 	def unread
 		group_counter = []
+		group_counter_undisplayed = []
 		last_mes_ids = []
 		different_groups = Member.where(user_id: current_user.id).pluck(:group_id)
 		different_groups.each do |g|
 			counter = 0
+			undisplayed = 0
 			group_messages = Message.where(receiver_id: g)
 			group_messages.each do |m|
-				if !m.readers.include?(current_user.id) 
+				len = group_messages.length
+				displayed = len - $max_messages
+				if !m.readers.include?(current_user.id) && group_messages.index(m) > (displayed - 1)
                     	counter += 1
                 	end
 			end
@@ -76,9 +80,20 @@ class Api::DashboardController < ApplicationController
 			else
 				last_mes_ids << -1
 			end
+			# count undisplayed messages
+			group_messages.each do |m|
+				len = group_messages.length
+				displayed = len - $max_messages
+				if len > displayed
+					if !m.readers.include?(current_user.id) && (group_messages.index(m) <= (displayed - 1))
+						undisplayed += 1
+					end
+				end
+			end
 			group_counter << counter
+			group_counter_undisplayed << undisplayed
 		end
-		respond_with({unread: group_counter, last_mes: last_mes_ids})
+		respond_with({unread: group_counter, last_mes: last_mes_ids, undisplayed: group_counter_undisplayed})
 	end
 
 	private

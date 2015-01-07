@@ -15,13 +15,16 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+										if ($scope.selectedGroup !== null)
+											$scope.tmpMyMessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+										else 
+											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
 										if ($scope.selectedGroup !== null){
 											if ($scope.selectedGroup.index === $scope.forUpdate[z]){
 												var check = data.unread[$scope.forUpdate[z]];
-												var start_index = Object.keys($scope.mymessages[$scope.forUpdate[z]]).length - check;
-												for (var r = start_index; r < Object.keys($scope.mymessages[$scope.forUpdate[z]]).length; r++){
-													$scope.selectedGroupMessages.push($scope.mymessages[$scope.forUpdate[z]][r]);
+												var start_index = Object.keys($scope.newMessages[$scope.forUpdate[z]]).length - check;
+												for (var r = start_index; r < Object.keys($scope.newMessages[$scope.forUpdate[z]]).length; r++){
+													$scope.selectedGroupMessages.push($scope.newMessages[$scope.forUpdate[z]][r]);
 												}
 												start(500, true);
 											}
@@ -115,22 +118,37 @@ angular.module('scheudler').controller("dashboardCtrl",
 			var groupmes = {};
 			var mes = [];
 			groupmes.mes = mes;
-			var len = Object.keys($scope.mymessages[index]).length;
-			var modal_len = Object.keys($scope.selectedGroupMessages).length;
-			if (len === max_messages){
-				for (var i = 0; i < len-1; i++){
-					$scope.mymessages[index][i] = $scope.mymessages[index][i+1];
+			if (!modal_active){
+				var len = Object.keys($scope.mymessages[index]).length;
+				if (len === max_messages){
+					for (var i = 0; i < len-1; i++){
+						$scope.mymessages[index][i] = $scope.mymessages[index][i+1];
+					}
+					$scope.mymessages[index][len-1] = data;
 				}
-				$scope.mymessages[index][len-1] = data;
-			}
-			else {
-				for (var j = 0; j < len; j++){
-					groupmes.mes[j] = $scope.mymessages[index][j];
+				else {
+					for (var j = 0; j < len; j++){
+						groupmes.mes[j] = $scope.mymessages[index][j];
+					}
+					groupmes.mes.push(data);
+					$scope.mymessages[index] = groupmes.mes;
 				}
-				groupmes.mes.push(data);
-				$scope.mymessages[index] = groupmes.mes;
 			}
 			if (modal_active){
+				var leng = Object.keys($scope.tmpMyMessages[index]).length;
+				if (leng === max_messages){
+					for (var z = 0; z < leng-1; z++){
+						$scope.tmpMyMessages[index][z] = $scope.tmpMyMessages[index][z+1];
+					}
+					$scope.tmpMyMessages[index][leng-1] = data;
+				}
+				else {
+					for (var y = 0; y < leng; y++){
+						groupmes.mes[y] = $scope.tmpMyMessages[index][y];
+					}
+					groupmes.mes.push(data);
+					$scope.tmpMyMessages[index] = groupmes.mes;
+				}
 				$scope.selectedGroupMessages.push(data);
 			}
 			
@@ -159,6 +177,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	$scope.setMyMessages=function(){
 		$scope.mymessages = $scope.tmpMyMessages;
+		$scope.selectedGroup = null;
 	}
 
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
