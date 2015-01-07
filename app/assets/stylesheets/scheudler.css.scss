@@ -1,5 +1,5 @@
-$blue   : #3465A4;  /*blue*/
-$orange : #FCAF3E;  /*orange*/
+$blue   : #3465A4;
+$orange : #FCAF3E;
 $orange_dark : #CE5C00;
 $yellow_light : #FCE94F;
 $yellow_dark : #C17D11;
@@ -7,8 +7,11 @@ $green_light : #8AE234;
 $green_dark : #4E9A06;
 $blue_light : #729FCF;
 $blue_dark : #204A87;
-$red_light : #AD7FA8;
-$red_dark : #5C3566;
+$purple_light : #AD7FA8;
+$purple_dark : #5C3566;
+$red_light : #F08989;
+$red_dark : #A40000;
+
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -171,80 +174,105 @@ canvas{
   border-width: 2px;
 }
 
+
 /* Green info panel */
-.panel-info-members > .panel-heading {
+.panel-info-green > .panel-heading {
 	background-color: $green_light;
 	color: $green_dark;
 	border-color: $green_light;
 }
 
-.panel-info-members > .panel-heading .fa {
+.panel-info-green > .panel-heading .fa {
     color: $green_dark;
 }
 
-.panel-info-members {
+.panel-info-green {
 	border-color: $green_light;
 }
 
+
 /* Yellow info panel */
-.panel-info-events > .panel-heading {
+.panel-info-yellow > .panel-heading {
 	background-color: $yellow_light;
 	color: $yellow_dark;
 	border-color: $yellow_light;
 }
 
-.panel-info-events > .panel-heading .fa {
+.panel-info-yellow > .panel-heading .fa {
     color: $yellow_dark;
 }
 
-.panel-info-events {
+.panel-info-yellow {
 	border-color: $yellow_light;
 }
 
+
 /* Orange info panel */
-.panel-info-calendar > .panel-heading {
+.panel-info-orange > .panel-heading {
 	background-color: $orange;
 	color: $orange_dark;
 	border-color: $orange;
 }
 
-.panel-info-calendar > .panel-heading .fa {
+.panel-info-orange > .panel-heading .fa {
     color: $orange_dark;
 }
 
-.panel-info-calendar {
+.panel-info-orange {
 	border-color: $orange;
 }
 
+
 /* Blue info panel */
-.panel-info-statistic > .panel-heading {
+.panel-info-blue > .panel-heading {
 	background-color: $blue_light;
 	color: $blue_dark;
 	border-color: $blue_light;
 }
 
-.panel-info-statistic > .panel-heading .fa {
+.panel-info-blue > .panel-heading .fa {
     color: $blue_dark;
 }
 
-.panel-info-statistic {
+.panel-info-blue {
 	border-color: $blue_light;
 }
 
-/* Blue info panel */
-.panel-info-blog > .panel-heading {
+
+/* Purple info panel */
+.panel-info-purple > .panel-heading {
+	background-color: $purple_light;
+	color: $purple_dark;
+	border-color: $purple_light;
+}
+
+.panel-info-purple > .panel-heading .fa {
+    color: $purple_dark;
+}
+
+.panel-info-purple {
+	border-color: $purple_light;
+}
+
+
+/* Red info panel */
+.panel-info-red > .panel-heading {
 	background-color: $red_light;
 	color: $red_dark;
 	border-color: $red_light;
 }
 
-.panel-info-blog > .panel-heading .fa {
+.panel-info-red > .panel-heading .fa {
     color: $red_dark;
 }
 
-.panel-info-blog {
+.panel-info-red {
 	border-color: $red_light;
 }
+
+
+
+
 
 .font-upscaling {
   font-size: 150%;
