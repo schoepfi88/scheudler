@@ -81,7 +81,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	$scope.groupData = {
 		name: '',
 		description: '',
-		icon: 'fa-beer'
+		icon: 'flaticon-ball39'
 	};
 
 	$scope.inviteData = {

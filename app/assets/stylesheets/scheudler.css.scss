@@ -246,7 +246,6 @@ canvas{
 	border-color: $red_light;
 }
 
-
 .font-upscaling {
   font-size: 150%;
 }
@@ -255,6 +254,13 @@ canvas{
   font-size: 85px;
   margin: 0;
 }
+
+/* Flaticon medium size orange */
+.flaticon-medium:before {
+	font-size: 40px !important;
+	color: $orange;
+}
+
 
 .badge-normal {
   background-color: #999999;
