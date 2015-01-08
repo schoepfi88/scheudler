@@ -1,4 +1,9 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$templateCache){
+
+	$scope.removeFromCache = function(id){
+		$templateCache.remove('/templates/groups_dashboard/' + id);
+	};
+
 	$scope.isGoogleUser = false;
 	$scope.create_group = function(isValid){
 		if(isValid && $scope.isGoogleUser){
@@ -60,7 +65,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.redirect_to_blog = function(id){
-		location.href="/#/blog";
+		location.href="/#/dashboard/messages/" + id + "/0";
 	};
 
 	$scope.redirect_to_invite = function(id){

@@ -1,6 +1,8 @@
 angular.module('scheudler').controller("dashboardCtrl",
     function($scope,$rootScope,$routeParams,$timeout,$q,Util,dashboardService){
+	
 	$scope.unreadMessages = dashboardService.message.unread();
+	
 	$scope.tickCounter = 0; 
 	(function tick() {
 		if ($rootScope.dash_is_active === true){		// only on dashboard polling is allowed

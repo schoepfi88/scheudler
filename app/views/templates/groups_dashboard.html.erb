@@ -1,4 +1,4 @@
-<section class="hidden-print">
+<section class="hidden-print" ng-init="removeFromCache(<%= @group.id %>)">
   	<h1 class="page-header">
 		<i class="fa <%= @group.icon %>"></i> 
 		<%= @group.name + t(".page_header") %>
@@ -64,7 +64,9 @@
 			  </div>
 			  <div class="col-xs-10 text-right">
 				<p class="announcement-text"><%=t(".blog")%></p>
-				<p class="announcement-heading"><%= "0" %></p>
+				<p class="announcement-heading">
+					<%= @msg_count %>
+				</p>
 			  </div>
 			</div>
 		  </div>
