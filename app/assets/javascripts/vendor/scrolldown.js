@@ -9,7 +9,7 @@ function start(time, send, loading){
 		if (!send){
 			var scroll = document.getElementById('scrollarea');
 			if (scroll != null){
-				scroll.style.height = ($(window).height()-270).toString() + "px";
+				scroll.style.height = ($(window).height()-370).toString() + "px";
 				var checkHeight = scroll.style.height.split("p")[0];
 			}
 		}

@@ -1,6 +1,7 @@
 class Api::DashboardController < ApplicationController
 	respond_to :json
 	$max_messages = 7
+	$max_messages_all = 25
 	def get_groups
 		groups = Member.where(user_id: current_user.id).pluck(:group_id)
 		@mygroups = Array.new
@@ -27,7 +28,7 @@ class Api::DashboardController < ApplicationController
 			group_messages = Message.where(receiver_id: g)
 			#sort that actuall messages are at the bottom
 			group_messages.sort! { |a,b| a.created_at <=> b.created_at }
-			# only last 10
+			# only last 7
 			if group_messages.length > $max_messages
 				number = $max_messages - group_messages.length
 				group_messages = group_messages.drop(number.abs)
@@ -54,6 +55,11 @@ class Api::DashboardController < ApplicationController
                	m.readers = m.readers + [current_user.id]
                	m.save!
            	end
+		end
+		# only last $max_messages_all
+		if @messages_all.length > $max_messages_all
+			number = $max_messages_all - @messages_all.length
+			@messages_all = @messages_all.drop(number.abs)
 		end
 		@messages_all
 	end

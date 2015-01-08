@@ -10,6 +10,7 @@ scope "(:locale)", locale: /en|de/ do
   # template routes
   namespace :templates do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
+    get '/dashboard/messages/:id', to: :dashboard_messages, as: 'dashboard_messages_template'
     get '/calendar', to: :calendar, as: 'calendar_template'
     get '/events', to: :events, as: 'events_template'
     get 'events_create', to: :events_create, as: 'events_create_template'

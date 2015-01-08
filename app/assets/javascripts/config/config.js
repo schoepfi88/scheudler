@@ -10,6 +10,10 @@ angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'ch
         templateUrl: '/templates/dashboard',
         controller: 'dashboardCtrl'
       }).
+      when('/dashboard/messages/:id/:index', {
+        templateUrl: function(id, index){ return '/templates/dashboard/messages/' + id.id + index; },
+        controller: 'dashboardCtrl'
+      }).
       when('/calendar', {
         templateUrl: '/templates/calendar',
         controller: 'calendarCtrl'

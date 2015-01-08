@@ -1,5 +1,5 @@
 angular.module('scheudler').controller("dashboardCtrl",
-    function($scope,$rootScope,$timeout,$q,Util,dashboardService){
+    function($scope,$rootScope,$routeParams,$timeout,$q,Util,dashboardService){
 	$scope.unreadMessages = dashboardService.message.unread();
 	$scope.tickCounter = 0; 
 	(function tick() {
@@ -7,6 +7,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 			dashboardService.message.unread(function(data){
 				if($scope.old_status){
 					$scope.forUpdate = [];
+					console.log(data.unread);
+					console.log(data.last_mes);
+					console.log(data.undisplayed);
+
 					for (var i = 0; i < data.unread.length; i++) {
 						if (data.last_mes[i] != $scope.old_status.last_mes[i]){
 							$scope.newMessages = dashboardService.message.get();
@@ -15,20 +19,25 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										if ($scope.selectedGroup !== null)
-											$scope.tmpMyMessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-										else 
+										if ($scope.selectedGroup === null)
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
 										if ($scope.selectedGroup !== null){
-											if ($scope.selectedGroup.index === $scope.forUpdate[z]){
+											console.log("group-index" + $scope.selectedGroup.index);
+											console.log("for update:" + $scope.forUpdate[z]);
+											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
 												var check = data.unread[$scope.forUpdate[z]];
 												var start_index = Object.keys($scope.newMessages[$scope.forUpdate[z]]).length - check;
+												console.log("start-index:" + start_index);
+												console.log("keys len: " + Object.keys($scope.newMessages[$scope.forUpdate[z]]).length);
 												for (var r = start_index; r < Object.keys($scope.newMessages[$scope.forUpdate[z]]).length; r++){
 													$scope.selectedGroupMessages.push($scope.newMessages[$scope.forUpdate[z]][r]);
 												}
 												start(500, true);
 											}
 										}
+										console.log("old:" + $scope.unreadMessages.unread[$scope.forUpdate[z]]);
+										console.log("new:" + data.unread[$scope.forUpdate[z]]);
+
 										$scope.unreadMessages.unread[$scope.forUpdate[z]] = $scope.unreadMessages.unread[$scope.forUpdate[z]]+data.unread[$scope.forUpdate[z]];
 
 										$scope.tickCounter = 0;
@@ -73,7 +82,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.set_modal_height=function(){
 		var modal_body = document.getElementById('scrollarea');
 		var set = $(window).height();
-		modal_body.style.height = (set-200) + "px";
+		modal_body.style.height = (set-300) + "px";
 		start(500,true);
 	}
 
@@ -137,20 +146,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 				}
 			}
 			if (modal_active){
-				var leng = Object.keys($scope.tmpMyMessages[index]).length;
-				if (leng === max_messages){
-					for (var z = 0; z < leng-1; z++){
-						$scope.tmpMyMessages[index][z] = $scope.tmpMyMessages[index][z+1];
-					}
-					$scope.tmpMyMessages[index][leng-1] = data;
-				}
-				else {
-					for (var y = 0; y < leng; y++){
-						groupmes.mes[y] = $scope.tmpMyMessages[index][y];
-					}
-					groupmes.mes.push(data);
-					$scope.tmpMyMessages[index] = groupmes.mes;
-				}
 				$scope.selectedGroupMessages.push(data);
 			}
 			
@@ -162,8 +157,9 @@ angular.module('scheudler').controller("dashboardCtrl",
 		
 	};
 
-	$scope.send_message_modal=function(group_id, group_text, index){
-		$scope.send_message(group_id, group_text, index, true);
+	$scope.send_message_modal=function(group_id, group_text){
+		console.log(group_id + group_text);
+		$scope.send_message(group_id, group_text, $routeParams.index, true);
 		start(5000, true, true);
 	}
 
@@ -178,37 +174,52 @@ angular.module('scheudler').controller("dashboardCtrl",
 		start(3000, true, true);
 	}
 
-	$scope.setMyMessages=function(){
-		$scope.mymessages = $scope.tmpMyMessages;
-		$scope.selectedGroup = null;
+	$scope.getAllMessages2 = function(group_id){
+		console.log("test");
+		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
 	}
+
+	$scope.setMyMessages=function(){
+		$timeout($scope.redirect_to_dashboard, 1000);
+	}
+
+	$scope.redirect_to_dashboard = function(){
+		location.href="/#/dashboard";
+	}
+
 
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
 	$scope.currentlyRead = function(mes, group_index, mes_index, modal_active){
 		$scope.center_messages();
-		if ($scope.allRead){
-			return false;
-		}
-		if ($scope.unreadMessages.unread[group_index] === 0){
-			return false;
-		}
-		var date = new Date().toISOString();
-		var millis = Date.parse(date) - 20000;
-		var unread = $scope.unreadMessages.unread[group_index];
-		// mark the correct number of messages as unread 
-		if (!modal_active){
-			var len = Object.keys($scope.mymessages[group_index]).length;
-			var read = len - unread -1;
-			if (mes_index > read){
-				$scope.mymessages[group_index][mes_index].updated_at = "3000";		// to achieve compareDate is smaller -> ugly
+		if ($scope.unreadMessages !== undefined){
+			if ($scope.allRead){
+				return false;
 			}
-			else {
-				$scope.mymessages[group_index][mes_index].updated_at = "1000";		// to achieve compareDate is greater -> ugly
+			if ($scope.unreadMessages.unread[group_index] === 0){
+				return false;
 			}
+			var date = new Date().toISOString();
+			var millis = Date.parse(date) - 20000;
+			var unread = $scope.unreadMessages.unread[group_index];
+			// mark the correct number of messages as unread 
+			if (!modal_active){
+				var len = Object.keys($scope.mymessages[group_index]).length;
+				var read = len - unread -1;
+				if (mes_index > read){
+					$scope.mymessages[group_index][mes_index].updated_at = "3000";		// to achieve compareDate is smaller -> ugly
+				}
+				else {
+					$scope.mymessages[group_index][mes_index].updated_at = "1000";		// to achieve compareDate is greater -> ugly
+				}
+			}
+			var compareDate = new Date(millis).toISOString();
+			var currently = (compareDate < mes.updated_at);
+			return currently;
 		}
-		var compareDate = new Date(millis).toISOString();
-		var currently = (compareDate < mes.updated_at);
-		return currently;
+	};
+
+	$scope.redirect_to_messages = function(id, index){
+		location.href="/#/dashboard/messages/" + id.id +"/" + index;
 	};
 
 	$scope.currentUserIsSender = function(mes){
@@ -243,4 +254,24 @@ angular.module('scheudler').controller("dashboardCtrl",
 			return day1.format("mmm d");
 		}
 	};
+
+	$scope.getGroupName = function(){
+		var id = $routeParams.id;
+		for (var i = 0; i < $scope.mygroups.length; i++){
+			if ($scope.mygroups !== undefined && $scope.mymessages !== undefined){
+				if ($scope.mygroups[i].id.toString() === id.toString()){
+					$scope.selectedGroup = $scope.mygroups[i];
+					$scope.selectedGroup.index = $routeParams.index;
+					$('#myModal').modal('show');
+					$scope.set_modal_height();
+					return $scope.mygroups[i].name;
+				}
+			}
+		}
+		return "";
+	}
+
+	if ($routeParams.id >= 0){
+		$scope.selectedGroupMessages = dashboardService.message.getAll($routeParams.id);
+	}
 });
