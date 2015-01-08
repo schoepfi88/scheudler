@@ -52,9 +52,6 @@ gem 'angularjs-rails'
 #Underscore js, cool collection api's for js
 gem 'underscore-rails'
 
-# scheduler
-#gem 'rufus-scheduler'
-
 # Angular bindings bootstrap, typeahead
 gem 'angular-ui-bootstrap-rails'
 
@@ -77,15 +74,8 @@ group :production do
     # Use unicorn as the app server
     gem 'unicorn'
 
-    #file storage in amazon cloud?? needed,
-    gem 'aws-sdk'
-
     # mail exception notification, if something goes wrong, not yet configured
     gem 'exception_notification'
-
-    group :assets do
-        gem 'sprockets-rails', :require => 'sprockets/railtie'
-    end
 
     # heroku open needs this gem
     gem 'launchy'
