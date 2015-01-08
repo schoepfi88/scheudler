@@ -23,31 +23,18 @@
 	<% else %>
 		<% counter = 0 %>
 		<% @groups.each do |group| %>
-			<div class="col-lg-3 col-sm-6">
+			<div class="col-lg-6 col-sm-12">
 				<div class="panel panel-default clickable" ng-click="redirect_to_group(<%= group.id %>)">
 				  <div class="panel-heading">
 					<div class="row">
-					  <div class="col-xs-2">
-						<i class="fa <%= group.icon %> fa-5x"></i>
-					  </div>
-					  <div class="col-xs-10 text-right">
-						<p class="announcement-heading"><%= group.members.size %></p>
-						<p class="announcement-text"><%=t(".members")%></p>
+					  <div class="col-xs-12">
+						<p class="announcement-heading align-top">
+							<i class="<%= group.icon %> flaticon-medium"></i>
+							<%= group.name%>
+						</p>
 					  </div>
 					</div>
 				  </div>
-				  <a href="/#/groups_dashboard/<%= group.id %>">
-					<div class="panel-footer announcement-bottom">
-					  <div class="row">
-						<div class="col-xs-10">
-						  <%= group.name %>
-						</div>
-						<div class="col-xs-2 text-right">
-						  <i class="fa fa-arrow-circle-right"></i>
-						</div>
-					  </div>
-					</div>
-				  </a>
 				</div>
 			</div>
 			<% counter += 1 %>

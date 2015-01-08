@@ -3,130 +3,143 @@
 		<i class="fa <%= @group.icon %>"></i> 
 		<%= @group.name + t(".page_header") %>
 		
-			<div class="btn-group pull-right">
-			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				<i class="fa fa-gear"></i><span class="hidden-xs">Settings</span><span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu" role="menu">
-				<li><a href="/#/groups_dashboard/<%= @group.id %>/invite"><i class="fa fa-plus"></i> Invite People</a></li>
-				<% if @is_admin %>
-					<li class="divider"></li>
-					<li><a href="/#/groups_dashboard/<%= @group.id %>/settings"><i class="fa fa-gears"></i> Group Settings</a></li>
-				<% end %>
-			  </ul>
-			</div>
+		<!-- Dropdown menu -->
+		<!--<div class="btn-group pull-right">
+		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			<i class="fa fa-gear"></i><span class="hidden-xs">Settings</span><span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+			<li><a href="/#/groups_dashboard/<%= @group.id %>/invite"><i class="fa fa-plus"></i> Invite People</a></li>
+			<% if @is_admin %>
+				<li class="divider"></li>
+				<li><a href="/#/groups_dashboard/<%= @group.id %>/settings"><i class="fa fa-gears"></i> Group Settings</a></li>
+			<% end %>
+		  </ul>
+		</div>-->
 	</h1>
 </section>
 
 <div class="row font-upscaling">
+	<!-- Events panel -->
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-info clickable" ng-click="redirect_to_members(<%= @group.id %>)">
+		<div class="panel panel-info-yellow clickable" ng-click="redirect_to_events(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
-				<i class="fa fa-group fa-5x"></i>
+				<i class="fa fa-trophy fa-4x"></i>
 			  </div>
 			  <div class="col-xs-10 text-right">
-				<p class="panel-text"><%= @group.members.size %></p>
-				<p class="announcement-text"></p>
+				<p class="announcement-text"><%=t(".events")%></p>
+				<p class="announcement-heading"><%= "0" %></p>
 			  </div>
 			</div>
 		  </div>
-		  <a href="/#/groups_dashboard/<%= @group.id %>/members">
-			<div class="panel-footer announcement-bottom">
-			  <div class="row">
-				<div class="col-xs-10">
-				  <%=t(".members")%>
-				</div>
-				<div class="col-xs-2 text-right">
-				  <i class="fa fa-arrow-circle-right"></i>
-				</div>
-			  </div>
-			</div>
-		  </a>
 		</div>
 	</div>
+
+	<!-- Calendar panel -->
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-warning clickable" ng-click="">
+		<div class="panel panel-info-orange clickable" ng-click="redirect_to_calendar(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
-				<i class="fa fa-trophy fa-5x"></i>
+				<i class="fa fa-calendar fa-4x"></i>
 			  </div>
 			  <div class="col-xs-10 text-right">
-				<p class="panel-text"><%= "0" %></p>
-				<p class="announcement-text"></p>
+				<p class="announcement-text"><%=t(".show_the")%></p>
+				<p class="announcement-heading"><%=t(".cal")%></p>
 			  </div>
 			</div>
 		  </div>
-		  <a href="">
-			<div class="panel-footer announcement-bottom">
-			  <div class="row">
-				<div class="col-xs-10">
-				  <%=t(".events")%>
-				</div>
-				<div class="col-xs-2 text-right">
-				  <i class="fa fa-arrow-circle-right"></i>
-				</div>
-			  </div>
-			</div>
-		  </a>
 		</div>
 	</div>
+
+	<!-- Blog panel -->
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-danger clickable" ng-click="">
+		<div class="panel panel-info-purple clickable" ng-click="redirect_to_blog(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
-				<i class="fa fa-calendar fa-5x"></i>
+				<i class="fa fa-rss fa-4x"></i>
 			  </div>
 			  <div class="col-xs-10 text-right">
-				<p class="panel-text"><%= "0" %></p>
-				<p class="announcement-text"></p>
+				<p class="announcement-text"><%=t(".blog")%></p>
+				<p class="announcement-heading"><%= "0" %></p>
 			  </div>
 			</div>
 		  </div>
-		  <a href="">
-			<div class="panel-footer announcement-bottom">
-			  <div class="row">
-				<div class="col-xs-10">
-				  <%=t(".calendar")%>
-				</div>
-				<div class="col-xs-2 text-right">
-				  <i class="fa fa-arrow-circle-right"></i>
-				</div>
-			  </div>
-			</div>
-		  </a>
 		</div>
 	</div>
+
+	<!-- Statistics panel -->
 	<div class="col-lg-3 col-sm-6">
-		<div class="panel panel-success clickable" ng-click="">
+		<div class="panel panel-info-blue clickable" ng-click="redirect_to_statistic(<%= @group.id %>)">
 		  <div class="panel-heading">
 			<div class="row">
 			  <div class="col-xs-2">
-				<i class="fa fa-line-chart fa-5x"></i>
+				<i class="fa fa-line-chart fa-4x"></i>
 			  </div>
 			  <div class="col-xs-10 text-right">
-				<p class="panel-text"><%= "0" %></p>
-				<p class="announcement-text"></p>
+				<p class="announcement-text"><%=t(".show_your")%></p>
+				<p class="announcement-heading"><%=t(".stats")%></p>
 			  </div>
 			</div>
 		  </div>
-		  <a href="">
-			<div class="panel-footer announcement-bottom">
-			  <div class="row">
-				<div class="col-xs-10">
-				  <%=t(".statistic")%>
-				</div>
-				<div class="col-xs-2 text-right">
-				  <i class="fa fa-arrow-circle-right"></i>
+		</div>
+	</div>
+
+	<!-- Members panel -->
+	<div class="col-lg-3 col-sm-6">
+		<div class="panel panel-info-green clickable" ng-click="redirect_to_members(<%= @group.id %>)">
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-xs-2">
+				<i class="fa fa-group fa-4x"></i>
+			  </div>
+			  <div class="col-xs-10 text-right">
+				<p class="announcement-text"><%=t(".members")%></p>
+				<p class="announcement-heading"><%= @group.members.size %></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- Invite panel -->
+	<div class="col-lg-3 col-sm-6">
+		<div class="panel panel-info-red clickable" ng-click="redirect_to_invite(<%= @group.id %>)">
+		  <div class="panel-heading">
+			<div class="row">
+			  <div class="col-xs-2">
+				<i class="fa fa-plus fa-4x"></i>
+			  </div>
+			  <div class="col-xs-10 text-right">
+				<p class="announcement-text"><%=t(".make_an")%></p>
+				<p class="announcement-heading"><%=t(".invite")%></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- Settings panel (for admin only) -->
+	<% if @is_admin %>
+		<div class="col-lg-3 col-sm-6">
+			<div class="panel panel-info-grey clickable" ng-click="redirect_to_settings(<%= @group.id %>)">
+			  <div class="panel-heading">
+				<div class="row">
+				  <div class="col-xs-2">
+					<i class="fa fa-cogs fa-4x"></i>
+				  </div>
+				  <div class="col-xs-10 text-right">
+					<p class="announcement-text"><%=t(".update_the")%></p>
+					<p class="announcement-heading"><%=t(".Prefs")%></p>
+				  </div>
 				</div>
 			  </div>
 			</div>
-		  </a>
 		</div>
-	</div>
+	<% end %>
 </div>
 
 <!--<section class="hidden-print">

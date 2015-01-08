@@ -222,7 +222,7 @@ DEPENDENCIES
   capistrano
   chart-js-rails
   exception_notification
-  font-awesome-rails (~> 4.2)
+  font-awesome-rails
   fullcalendar-rails (~> 2.0.2.0)
   geocoder
   google-api-client
@@ -242,6 +242,7 @@ DEPENDENCIES
   rake (= 10.3.2)
   rb-readline
   sass-rails (~> 4.0.0)
+  sprockets-rails
   therubyracer
   uglifier (>= 1.3.0)
   underscore-rails

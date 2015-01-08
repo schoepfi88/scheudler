@@ -35,22 +35,27 @@ scope "(:locale)", locale: /en|de/ do
     post '/events' => 'events#create'
 	  post '/events_participate' => 'events#participate'
 
-	#groups
+
+
+    #groups
     resources :groups, only: [:create, :update, :show, :destroy, :index, :invite, :destroy, :remove]
-   	post '/groups' => 'groups#create'
+    post '/groups' => 'groups#create'
     post '/groups_invite' => 'groups#invite'
-	delete '/groups' => 'groups#destroy'
-	delete '/groups_remove' => 'groups#remove'
+    delete '/groups' => 'groups#destroy'
+    delete '/groups_remove' => 'groups#remove'
 
-	#account
-	resources :account, only: [:update, :destroy]
-	put '/account' => 'account#update'
+    #account
+    resources :account, only: [:update, :destroy]
+    put '/account' => 'account#update'
 
-   #dashboard
-  resources :dashboard, only: [:destroy, :create]
+    #dashboard
+    resources :dashboard, only: [:destroy, :create, :unread]
     get '/messages' => 'dashboard#get_messages'
     get '/user' => 'user#index'
     get '/dashboard/groups' => 'dashboard#get_groups'
+    post '/messages' => 'dashboard#create'
+    get '/messages/unread' => 'dashboard#unread'
+    get '/messages/:group_id' => 'dashboard#get_all'
   end
 
 

@@ -38,5 +38,7 @@
 //= require ./vendor/ui-iconpicker.js
 //= require fullcalendar
 //= require ./vendor/gcal.js
+//= require ./vendor/date-format.js
+//= require ./vendor/scrolldown.js
 //= require bootstrap-datepicker
 //= require bootstrap-datetimepicker

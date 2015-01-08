@@ -40,7 +40,7 @@ gem 'http_accept_language'
 gem 'chart-js-rails'
 
 #super cool icons
-gem "font-awesome-rails", '~> 4.2'
+gem "font-awesome-rails"
 
 #authorisation fb and google
 gem 'omniauth-facebook'
@@ -87,6 +87,10 @@ group :production do
 
     # mail exception notification, if something goes wrong, not yet configured
     gem 'exception_notification'
+
+    group :assets do
+        gem 'sprockets-rails', :require => 'sprockets/railtie'
+    end
 
     # heroku open needs this gem
     gem 'launchy'

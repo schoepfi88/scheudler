@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225001942) do
+ActiveRecord::Schema.define(version: 20141230214611) do
 
   create_table "admins", force: true do |t|
     t.integer  "group_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141225001942) do
     t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "calendar_id"
   end
 
   create_table "members", force: true do |t|

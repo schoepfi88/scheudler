@@ -1,12 +1,19 @@
-$blue   : #3465A4;  /*blue*/
-$orange : #FCAF3E;  /*orange*/
+$blue   : #3465A4;
+$orange : #FCAF3E;
 $orange_dark : #CE5C00;
 $yellow_light : #FCE94F;
 $yellow_dark : #C17D11;
-$red_light : #8AE234;
-$red_dark : #4E9A06;
+$green_light : #8AE234;
+$green_dark : #4E9A06;
 $blue_light : #729FCF;
 $blue_dark : #204A87;
+$purple_light : #AD7FA8;
+$purple_dark : #5C3566;
+$red_light : #F08989;
+$red_dark : #A40000;
+$grey_light : #888A85;
+$grey_dark : #2E3436;
+
 @import "bootstrap/variables";
 /* http://stackoverflow.com/questions/13432311/ng-cloak-and-ng-show-flashes-the-hidden-element-on-screen */
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -134,7 +141,6 @@ canvas{
   color: white;
   font-variant: small-caps;
   font-size: 22px;
-  //font-weight: bold;
   border-color: $blue;
 }
 
@@ -155,44 +161,10 @@ canvas{
 
 
 
-.panel-warning > .panel-heading {
-  background-color: $yellow_light;
-  color: $yellow_dark;
-  font-variant: small-caps;
-  font-size: 22px;
-  //font-weight: bold;
-  border-color: $yellow_dark;
-}
-
-.panel-warning > .panel-heading .fa {
-    margin-right: 6px;
-    color: $yellow_dark;
-}
-
-.panel-warning > .panel-body {
-  font-size: 17px;
-}
-
-.panel-warning {
-  font-family: "calibri";
-  border-color: $yellow_dark;
-  border-width: 2px;
-}
-
-
-
+/* Info panel customization for group dashboard */
 .panel-info > .panel-heading {
-  background-color: $red_light;
-  color: $red_dark;
   font-variant: small-caps;
   font-size: 22px;
-  //font-weight: bold;
-  border-color: $red_dark;
-}
-
-.panel-info > .panel-heading .fa {
-    margin-right: 6px;
-    color: $red_dark;
 }
 
 .panel-info > .panel-body {
@@ -201,61 +173,123 @@ canvas{
 
 .panel-info {
   font-family: "calibri";
-  border-color: $red_dark;
   border-width: 2px;
 }
 
 
-
-.panel-danger > .panel-heading {
-  background-color: $orange;
-  color: $orange_dark;
-  font-variant: small-caps;
-  font-size: 22px;
-  //font-weight: bold;
-  border-color: $orange_dark;
+/* Green info panel */
+.panel-info-green > .panel-heading {
+	background-color: $green_light;
+	color: $green_dark;
+	border-color: $green_light;
 }
 
-.panel-danger > .panel-heading .fa {
-    margin-right: 6px;
+.panel-info-green > .panel-heading .fa {
+    color: $green_dark;
+}
+
+.panel-info-green {
+	border-color: $green_light;
+}
+
+
+/* Yellow info panel */
+.panel-info-yellow > .panel-heading {
+	background-color: $yellow_light;
+	color: $yellow_dark;
+	border-color: $yellow_light;
+}
+
+.panel-info-yellow > .panel-heading .fa {
+    color: $yellow_dark;
+}
+
+.panel-info-yellow {
+	border-color: $yellow_light;
+}
+
+
+/* Orange info panel */
+.panel-info-orange > .panel-heading {
+	background-color: $orange;
+	color: $orange_dark;
+	border-color: $orange;
+}
+
+.panel-info-orange > .panel-heading .fa {
     color: $orange_dark;
 }
 
-.panel-danger > .panel-body {
-  font-size: 17px;
-}
-
-.panel-danger {
-  font-family: "calibri";
-  border-color: $orange_dark;
-  border-width: 2px;
+.panel-info-orange {
+	border-color: $orange;
 }
 
 
-
-.panel-success > .panel-heading {
-  background-color: $blue_light;
-  color: $blue_dark;
-  font-variant: small-caps;
-  font-size: 22px;
-  //font-weight: bold;
-  border-color: $blue_dark;
+/* Blue info panel */
+.panel-info-blue > .panel-heading {
+	background-color: $blue_light;
+	color: $blue_dark;
+	border-color: $blue_light;
 }
 
-.panel-success > .panel-heading .fa {
-    margin-right: 6px;
+.panel-info-blue > .panel-heading .fa {
     color: $blue_dark;
 }
 
-.panel-success > .panel-body {
-  font-size: 17px;
+.panel-info-blue {
+	border-color: $blue_light;
 }
 
-.panel-success {
-  font-family: "calibri";
-  border-color: $blue_dark;
-  border-width: 2px;
+
+/* Purple info panel */
+.panel-info-purple > .panel-heading {
+	background-color: $purple_light;
+	color: $purple_dark;
+	border-color: $purple_light;
 }
+
+.panel-info-purple > .panel-heading .fa {
+    color: $purple_dark;
+}
+
+.panel-info-purple {
+	border-color: $purple_light;
+}
+
+
+/* Red info panel */
+.panel-info-red > .panel-heading {
+	background-color: $red_light;
+	color: $red_dark;
+	border-color: $red_light;
+}
+
+.panel-info-red > .panel-heading .fa {
+    color: $red_dark;
+}
+
+.panel-info-red {
+	border-color: $red_light;
+}
+
+
+/* Grey info panel */
+.panel-info-grey > .panel-heading {
+	background-color: $grey_light;
+	color: $grey_dark;
+	border-color: $grey_light;
+}
+
+.panel-info-grey > .panel-heading .fa {
+    color: $grey_dark;
+}
+
+.panel-info-grey {
+	border-color: $grey_light;
+}
+
+
+
 
 .font-upscaling {
   font-size: 150%;
@@ -266,8 +300,34 @@ canvas{
   margin: 0;
 }
 
+/* Flaticon medium size orange */
+.flaticon-medium:before {
+	font-size: 40px !important;
+	color: $orange;
+}
+
+
+.badge-normal {
+  background-color: #999999;
+  margin-top: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+
 .badge-btn {
-	color: white;
-	background-color: #d9534f;
-	border-color: #d43f3a;
+  color: white;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  margin-top: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 2px;
+}
+
+/* boxes on dashborad */
+.box-dashboard > .panel-body {
+  padding: 0px;
 }

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :events, :through => :participants
 	has_many :groups, :through => :members
 	has_many :groups, :through => :admins
+    has_many    :sentMessages, :class_name => 'Message', :foreign_key => 'sender_id'
     validates   :provider, :uid, :name, :oauth_token, :email, presence: true
 
     def self.find_by_email(email)
