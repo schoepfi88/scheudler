@@ -186,8 +186,13 @@
   padding-left: 10px;
 }
 
+/* group link */
+a.group-link-dashboard:link {color: #333333; font-weight: none; text-decoration: none;}
+a.group-link-dashboard:active {color: #333333; font-weight: none; text-decoration: none;}
+a.group-link-dashboard:visited {color: #333333; font-weight: none; text-decoration: none;}
+a.group-link-dashboard:hover {color: #333333; font-weight: none; text-decoration: none;}
 
-
+/* modal link */
 a.modal-link:link {color: white; font-weight: bold; text-decoration: none;}
 a.modal-link:active {color: white; font-weight: bold; text-decoration: none;}
 a.modal-link:visited {color: white; font-weight: bold; text-decoration: none;}
