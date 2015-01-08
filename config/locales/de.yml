@@ -182,8 +182,8 @@ de:
       page_title                         : "Gruppen Einstellungen"
       delete_group                       : "Gruppe Löschen"
     statistic:
-      page_header                        : "Statistic"
-      page_title                         : "Statistic"
+      page_header                        : "Statistiken"
+      page_title                         : "Statistiken"
     account:
       page_header                        : "Konto Einstellungen"
       page_title                         : "Konto Einstellungen"

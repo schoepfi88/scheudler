@@ -181,8 +181,8 @@ en:
       page_title                         : "Group Settings"
       delete_group                       : "Delete Group"
     statistic:
-      page_header                        : "Statistic"
-      page_title                         : "Statistic"
+      page_header                        : "Statistics"
+      page_title                         : "Statistics"
     account:
       page_header                        : "Account Settings"
       page_title                         : "Account Settings"
