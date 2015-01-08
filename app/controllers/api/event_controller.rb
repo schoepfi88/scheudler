@@ -12,20 +12,22 @@ class Api::EventController < Api::RestController
 		groups.each_with_index do |i, index|
 			tmp = Group.new
 			tmp = Group.where(id: i).first
-
-			events = gcal_events_get(tmp.calendar_id)
+			
+			if !tmp.calendar_id.nil? then
+				events = gcal_events_get(tmp.calendar_id)
 		
-			events.each do |event|
-				if event.start.date.nil? && event.end.date.nil? then
-					ev = Event.new
-					ev.gcal_id = event.id
-					ev.name = event.summary
-					ev.start = event.start
-					ev.end = event.end
-					ev.color = bg_color[index % bg_color.length]
-					ev.text_color = fg_color[index % fg_color.length]
+				events.each do |event|
+					if event.start.date.nil? && event.end.date.nil? then
+						ev = Event.new
+						ev.gcal_id = event.id
+						ev.name = event.summary
+						ev.start = event.start
+						ev.end = event.end
+						ev.color = bg_color[index % bg_color.length]
+						ev.text_color = fg_color[index % fg_color.length]
 
-					out.push(event)
+						out.push(event)
+					end
 				end
 			end
 		end
