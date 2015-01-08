@@ -84,7 +84,7 @@ group :production do
     gem 'exception_notification'
 
     group :assets do
-        gem 'turbo-sprockets-rails3'
+        gem 'sprockets-rails', :require => 'sprockets/railtie'
     end
 
     # heroku open needs this gem
