@@ -83,6 +83,10 @@ group :production do
     # mail exception notification, if something goes wrong, not yet configured
     gem 'exception_notification'
 
+    group :assets do
+        gem 'turbo-sprockets-rails3'
+    end
+
     # heroku open needs this gem
     gem 'launchy'
 
