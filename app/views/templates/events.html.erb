@@ -1,24 +1,85 @@
 <section class="hidden-print">
   <h1 class="page-header">
-	<i class="fa fa-trophy"></i> <%=t ( '.page_header') %>
-	<a href="/#/events_create">
-        <button class="btn btn-primary pull-right"> <i class="fa fa-plus"></i>
-            <span class="hidden-xs">
-                <%=t ( '.create_event') %>
-            </span>
-        </button>
-    </a>
-  </h1>
+   <i class="fa fa-trophy"></i> <%=t ( '.page_header') %>
+
+   <div class="btn-group pull-right">
+    <button type="button" class="btn btn-primary dropdown-toggle pull-right" data-toggle="dropdown" id="dropdownMenu"> <i class="fa fa-plus"></i>
+      <span class="hidden-xs">
+        <%=t ( '.create_event') %>
+      </span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+      <li>
+        <a href="/#/events_create">
+          <i class="fa fa-plus-circle"></i>
+          <%=t ( '.single_event') %>
+        </a>
+      </li>
+      <li>
+        <a href="/#/events_create">
+          <i class="fa fa-repeat"></i>
+          <%=t ('.repeating_event') %></a>
+        </li>
+      </ul>
+
+    </h1>
+  </div>
 </section>
+
+
 <div class="row">
+  <% if @event.size == 0 %>
   <!--  condition ng-show -->
-    <div class="jumbotron text-center">
-      <i class="fa fa-trophy fa-5x"></i>
-      <h2>
-        <%=t ( ".help_title") %>
-      </h2>
-      <%=t ( ".help_paragraph1") %>
-      <br>
-      <%=t ( ".help_paragraph2") %>
+  <div class="jumbotron text-center">
+    <i class="fa fa-trophy fa-5x"></i>
+    <h2>
+      <%=t ( ".help_title") %>
+    </h2>
+    <%=t ( ".help_paragraph1") %>
+    <br>
+    <%=t ( ".help_paragraph2") %>
+  </div>
+</div>
+<% else %>
+<div class="col-lg-12">
+  <div ng-repeat="events in allEvents track by $index" class="panel panel-default">
+    <div class="row">
+      <div class="col-lg-1 col-md-2 col-sm-1 col-xs-2">
+        <%= image_tag("jp-rodgers-articleLarge.jpg", :class => "img-circle-eve") %>
+     </div>
+     <div name="event-name-eve" class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
+      <div class="row">
+        <div class="event-name-eve col-lg-12 col-md-12 col-xs-12"> 
+          {{events.name}} ({{events.date}}, {{events.location}})
+        </div>
+
+        <div name="event-text-eve">
+          <div class="col-lg-9 col-md-9 col-xs-9">
+            {{events.description}}
+          </div>
+        </div>
+        <div name="event-text-eve">
+          <div class="col-lg-3 col-md-3 col-xs-3">
+            <button class="btn btn-success pull-right" ng-click="take_part(events.id)"><i class="fa fa-check"></i>
+              <span class="hidden-xs">
+                <%=t('.take_part') %>
+              </span>
+            </button>
+
+            <button class="btn btn-danger pull-right" ng-click="deny()"><i class="fa fa-remove"></i>
+              <span class="hidden-xs">
+                <%=t('.deny') %>
+              </span>
+            </button>
+          </div>
+
+        </div>
+        <a href="/#/events_dashboard">
+        <div style="position: absolute; right: 0px;"><i class="fa fa-sign-out"><%=t ('.see_part') %></i></div>
+      </a>
+      </div>
     </div>
+  </div>
+</div>
+<% end %>
 </div>

@@ -52,9 +52,6 @@ gem 'angularjs-rails'
 #Underscore js, cool collection api's for js
 gem 'underscore-rails'
 
-# scheduler
-#gem 'rufus-scheduler'
-
 # Angular bindings bootstrap, typeahead
 gem 'angular-ui-bootstrap-rails'
 
@@ -76,13 +73,16 @@ gem 'momentjs-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 
+#datepicker support
+gem 'bootstrap-datepicker-rails'
+
+#datetimepicker support
+gem 'bootstrap-datetimepicker-rails'
+
 
 group :production do
     # Use unicorn as the app server
     gem 'unicorn'
-
-    #file storage in amazon cloud?? needed,
-    gem 'aws-sdk'
 
     # mail exception notification, if something goes wrong, not yet configured
     gem 'exception_notification'

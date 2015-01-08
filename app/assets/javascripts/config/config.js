@@ -1,8 +1,7 @@
 // Angular Config / Routes
 var app = angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar','ui-iconpicker']);
 
-app.config(function($httpProvider, $routeProvider, $compileProvider){
-
+app.config(function($httpProvider, $routeProvider){
 	$httpProvider.defaults.headers.common = {'X-CSRF-Token': $("meta[name='csrf-token']").attr("content"), 'Content-Type': 'application/json'};
 	
 	$routeProvider.
@@ -20,6 +19,10 @@ app.config(function($httpProvider, $routeProvider, $compileProvider){
 	}).
 	when('/events_create', {
 		templateUrl: '/templates/events_create',
+		controller: 'eventsCtrl'
+	}).
+	when('/events_dashboard',{
+		templateUrl: '/templates/events_dashboard',
 		controller: 'eventsCtrl'
 	}).
 	when('/groups', {

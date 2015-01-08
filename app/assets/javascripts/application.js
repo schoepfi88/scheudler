@@ -42,3 +42,5 @@
 //= require ./vendor/scrolldown.js
 //= require raphael
 //= require morris
+//= require bootstrap-datepicker
+//= require bootstrap-datetimepicker

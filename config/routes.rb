@@ -12,7 +12,8 @@ scope "(:locale)", locale: /en|de/ do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
     get '/calendar', to: :calendar, as: 'calendar_template'
     get '/events', to: :events, as: 'events_template'
-    get 'events_create', to: :events_create, as: 'events_create_template'
+    get '/events_create', to: :events_create, as: 'events_create_template'
+    get '/events_dashboard', to: :events_dashboard, as: 'events_dashboard_template'
     get '/groups', to: :groups, as: 'groups_template'
     get '/groups_create', to: :groups_create, as: 'groups_create_template'
     get '/groups_dashboard/:id', to: :groups_dashboard, as: 'groups_dashboard_template'
@@ -27,9 +28,14 @@ scope "(:locale)", locale: /en|de/ do
   namespace :api, defaults: {format: :json} do
     resources :status, only: [:index]
     resources :invite, only: [:create,:destroy]
+	 
+	  resources :event, only: [:index, :create, :get_events, :participate]
+	  get '/events' => 'events#index'
+    #get '/events' => 'events#get_events'
+    post '/events' => 'events#create'
+	  post '/events_participate' => 'events#participate'
 
-    resources :event, only: [:index]
-    get '/event' => 'event#index'
+
 
     #groups
     resources :groups, only: [:create, :update, :show, :destroy, :index, :invite, :destroy, :remove]

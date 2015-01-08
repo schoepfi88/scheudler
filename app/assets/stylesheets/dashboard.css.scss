@@ -17,6 +17,13 @@
   width:30px;
 }
 
+.img-circle-eve {
+  border-radius: 50% !important;
+  margin: 5px; 
+  height:80px; 
+  width:80px;
+}
+
 .message-name {
   color: black;
   font-size: 70%;
@@ -35,8 +42,19 @@
   padding-top: 5px;
 }
 
+.event-name-eve {
+  color: black;
+  font-size: 130%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
 .event-text {
   font-size: 70%; 
+}
+
+.event-text-eve {
+  font-size: 130%; 
 }
 
 .event-close {
@@ -92,6 +110,7 @@
 .big-box-pics {
     width: 60px;
 }
+
 .mini-box {
     height: 50%;
     padding-right: 4px;
@@ -186,8 +205,13 @@
   padding-left: 10px;
 }
 
+/* group link */
+a.group-link-dashboard:link {color: #333333; font-weight: none; text-decoration: none;}
+a.group-link-dashboard:active {color: #333333; font-weight: none; text-decoration: none;}
+a.group-link-dashboard:visited {color: #333333; font-weight: none; text-decoration: none;}
+a.group-link-dashboard:hover {color: #333333; font-weight: none; text-decoration: none;}
 
-
+/* modal link */
 a.modal-link:link {color: white; font-weight: bold; text-decoration: none;}
 a.modal-link:active {color: white; font-weight: bold; text-decoration: none;}
 a.modal-link:visited {color: white; font-weight: bold; text-decoration: none;}
