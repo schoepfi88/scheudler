@@ -1,4 +1,9 @@
 angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$templateCache){
+
+	$scope.removeFromCache = function(id){
+		$templateCache.remove('/templates/groups_dashboard/' + id);
+	};
+
 	$scope.isGoogleUser = false;
 	$scope.create_group = function(isValid){
 		if(isValid && $scope.isGoogleUser){
