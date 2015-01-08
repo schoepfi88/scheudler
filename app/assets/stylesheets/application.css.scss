@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap-datepicker
+ *= require bootstrap-datetimepicker
  */
 
 //$brand-primary:         #008cba;
@@ -62,3 +64,4 @@ $brand-danger:          #E74C3C; */
 @import "ui-iconpicker";
 @import "fullcalendar";
 @import "flaticon";
+@import "morris";

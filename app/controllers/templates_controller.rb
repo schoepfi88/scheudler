@@ -15,6 +15,16 @@ class TemplatesController < ProtectedController
   end
 
   def events
+  @event = Event.get_events(@current_user.id)
+  @groups = Group.joins(:members).where(members: {user_id: @current_user.id})
+  end
+
+  def events_create
+  @groups = Group.joins(:members).where(members: {user_id: @current_user.id})
+  end
+
+  def events_dashboard
+  @event_members = Participants.all
   end
 
   def groups

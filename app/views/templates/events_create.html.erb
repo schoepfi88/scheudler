@@ -4,43 +4,98 @@
 
 <div class="row">
 	 <div class="col-md-6">
-      <form ng-submit="submit()">
+      <form ng-submit="create_event()">
 
        <div class="form-group">
           <label for="name">
             <%= t('.name') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="name" ng-model="" placeholder="<%= t('.name_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" id="name" ng-model="eventData.name" placeholder="<%= t('.name_placeholder') %>" type="text"/>
             <span class="input-group-addon">
               <span class="fa fa-trophy"></span>
             </span>
           </div>
         </div>
 	
-        <div class="form-group">
-          <label for="date">
-            <%= t('.date') %></label>
+         <div class="form-group">
+          <label for="location">
+            <%= t('.location') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="date" ng-model="" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text"/>
             <span class="input-group-addon">
-              <span class="glyphicon glyphicon-dashboard"></span>
+              <span class="fa fa-location-arrow"></span>
             </span>
           </div>
         </div>
 
-
-		<div class="form-group">
+      <div class="form-group">
           <label for="description">
             <%= t('.description') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="description" ng-model="" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" id="description" ng-model="eventData.description" placeholder="<%= t('.description_placeholder') %>" type="text"/>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-info-sign"></span>
             </span>
           </div>
         </div>
+
+        <div class="form-group">
+          <label for="date">
+            <%= t('.date') %></label>
+          <div class="input-group date" id="datepicker">
+            <input autofocus="autofocus" id="date" ng-model="eventData.date" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+
+<script type="text/javascript">
+      $(function () {
+        $('#datepicker').datepicker({
+          pickTime: false
+        });
+      });
+    </script>
+
+
+        <div class="form-group">
+          <label for="time">
+            <%= t('.time') %></label>
+          <div class="input-group time" id="timex">
+            <input data-format="hh:mm:ss" ng-model="eventData.time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-time"></span>
+            </span>
+          </div>
+        </div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#time').datetimepicker({
+      maskInput: true,
+      pickDate: false
+    });
+  });
+</script>
+
+
+<div class="form-group">
+  <label for="time">
+            <%= t('.select_group') %></label><br>
+    <% @groups.each do |group| %>
+      <label>
+                  <input type="checkbox" checklist-model="eventData.group_id" checklist-value="<%= group.id %>"> <%= group.name %>
+                </label>
+                <br>
+    <% end %>
+
+</div>
 		
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="submit()"> <%=t(".create_event")%> </a></p>
+		<p>
+      <button type="submit" class="btn btn-primary btn-lg"><%=t(".create_event")%>
+      </button>
+    </p>
       </form>
 		
 		

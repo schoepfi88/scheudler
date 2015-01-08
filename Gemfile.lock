@@ -36,6 +36,9 @@ GEM
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
     bootbox-rails (0.3.0)
+    bootstrap-datepicker-rails (1.3.1.1)
+      railties (>= 3.0)
+    bootstrap-datetimepicker-rails (0.0.11)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -96,6 +99,8 @@ GEM
     minitest (4.7.5)
     momentjs-rails (2.8.3)
       railties (>= 3.1)
+    morrisjs-rails (0.5.1)
+      railties (> 3.1, < 5)
     multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -147,6 +152,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    raphael-rails (2.1.2)
     rb-readline (0.5.1)
     ref (1.0.5)
     retriable (1.4.1)
@@ -206,6 +212,8 @@ DEPENDENCIES
   angularjs-rails
   assert_json
   bootbox-rails
+  bootstrap-datepicker-rails
+  bootstrap-datetimepicker-rails
   bootstrap-sass (~> 3.1.1)
   capistrano
   chart-js-rails
@@ -221,6 +229,7 @@ DEPENDENCIES
   json_builder
   launchy
   momentjs-rails
+  morrisjs-rails
   netrc
   omniauth-facebook
   omniauth-google-oauth2
@@ -228,6 +237,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails_12factor
   rake (= 10.3.2)
+  raphael-rails
   rb-readline
   sass-rails (~> 4.0.0)
   therubyracer
