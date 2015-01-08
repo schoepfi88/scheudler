@@ -16,15 +16,17 @@ class Api::EventController < Api::RestController
 			events = gcal_events_get(tmp.calendar_id)
 		
 			events.each do |event|
-				ev = Event.new
-				ev.gcal_id = event.id
-				ev.name = event.summary
-				ev.start = event.start
-				ev.end = event.end
-				ev.color = bg_color[index % bg_color.length]
-				ev.text_color = fg_color[index % fg_color.length]
+				if event.start.date.nil? && event.end.date.nil? then
+					ev = Event.new
+					ev.gcal_id = event.id
+					ev.name = event.summary
+					ev.start = event.start
+					ev.end = event.end
+					ev.color = bg_color[index % bg_color.length]
+					ev.text_color = fg_color[index % fg_color.length]
 
-				out.push(ev.to_json)
+					out.push(event)
+				end
 			end
 		end
 
