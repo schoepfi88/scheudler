@@ -18,10 +18,12 @@ function start(time, send, loading){
 			scrolldown();
 			var myVar = window.setTimeout(function() {
 				var elem = document.getElementById('scrollarea');
-				elem.scrollTop = elem.scrollHeight;
-				// slow connections needs a longer timeout
-				if (elem.scrollTop < 10){
-					start2(2000);
+				if (elem !== null){
+					elem.scrollTop = elem.scrollHeight;
+					// slow connections needs a longer timeout
+					if (elem.scrollTop < 10){
+						start2(2000);
+					}
 				}
 			}, time);
 		}
@@ -31,7 +33,9 @@ function start(time, send, loading){
 function start2(time){
 	var myVar2 = window.setTimeout(function() {
 		var elem2 = document.getElementById('scrollarea');
-		elem2.scrollTop = elem2.scrollHeight;
+		if (elem2 !== null){
+			elem2.scrollTop = elem2.scrollHeight;
+		}
 	}, time);
 };
 

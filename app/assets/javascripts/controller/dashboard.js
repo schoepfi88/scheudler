@@ -7,10 +7,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 			dashboardService.message.unread(function(data){
 				if($scope.old_status){
 					$scope.forUpdate = [];
-					console.log(data.unread);
-					console.log(data.last_mes);
-					console.log(data.undisplayed);
-
 					for (var i = 0; i < data.unread.length; i++) {
 						if (data.last_mes[i] != $scope.old_status.last_mes[i]){
 							$scope.newMessages = dashboardService.message.get();
@@ -22,22 +18,15 @@ angular.module('scheudler').controller("dashboardCtrl",
 										if ($scope.selectedGroup === null)
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
 										if ($scope.selectedGroup !== null){
-											console.log("group-index" + $scope.selectedGroup.index);
-											console.log("for update:" + $scope.forUpdate[z]);
 											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
 												var check = data.unread[$scope.forUpdate[z]];
 												var start_index = Object.keys($scope.newMessages[$scope.forUpdate[z]]).length - check;
-												console.log("start-index:" + start_index);
-												console.log("keys len: " + Object.keys($scope.newMessages[$scope.forUpdate[z]]).length);
 												for (var r = start_index; r < Object.keys($scope.newMessages[$scope.forUpdate[z]]).length; r++){
 													$scope.selectedGroupMessages.push($scope.newMessages[$scope.forUpdate[z]][r]);
 												}
 												start(500, true);
 											}
 										}
-										console.log("old:" + $scope.unreadMessages.unread[$scope.forUpdate[z]]);
-										console.log("new:" + data.unread[$scope.forUpdate[z]]);
-
 										$scope.unreadMessages.unread[$scope.forUpdate[z]] = $scope.unreadMessages.unread[$scope.forUpdate[z]]+data.unread[$scope.forUpdate[z]];
 
 										$scope.tickCounter = 0;
@@ -158,29 +147,8 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.send_message_modal=function(group_id, group_text){
-		console.log(group_id + group_text);
 		$scope.send_message(group_id, group_text, $routeParams.index, true);
 		start(5000, true, true);
-	}
-
-	$scope.getAllMessages=function(group_id, index){
-		$scope.set_modal_height();
-		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
-		$scope.tmpMyMessages = $scope.mymessages;
-		$scope.mymessages = [];
-		$scope.selectedGroup = $scope.mygroups[index];
-		$scope.selectedGroup.text = "";
-		$scope.selectedGroup.index = index;
-		start(3000, true, true);
-	}
-
-	$scope.getAllMessages2 = function(group_id){
-		console.log("test");
-		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
-	}
-
-	$scope.setMyMessages=function(){
-		$timeout($scope.redirect_to_dashboard, 1000);
 	}
 
 	$scope.redirect_to_dashboard = function(){
@@ -256,14 +224,13 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.getGroupName = function(){
+		$scope.set_modal_height();
 		var id = $routeParams.id;
 		for (var i = 0; i < $scope.mygroups.length; i++){
 			if ($scope.mygroups !== undefined && $scope.mymessages !== undefined){
 				if ($scope.mygroups[i].id.toString() === id.toString()){
 					$scope.selectedGroup = $scope.mygroups[i];
 					$scope.selectedGroup.index = $routeParams.index;
-					$('#myModal').modal('show');
-					$scope.set_modal_height();
 					return $scope.mygroups[i].name;
 				}
 			}
