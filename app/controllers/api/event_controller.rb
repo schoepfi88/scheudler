@@ -26,7 +26,7 @@ class Api::EventController < Api::RestController
 						ev.color = bg_color[index % bg_color.length]
 						ev.text_color = fg_color[index % fg_color.length]
 
-						out.push(event)
+						out.push(ev.to_json)
 					end
 				end
 			end
