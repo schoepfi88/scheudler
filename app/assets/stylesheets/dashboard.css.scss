@@ -128,7 +128,7 @@
 
 .btn-input {
   border-color: $blue;
-  margin-right: -1px;
+  margin-right: 0px;
 }
 
 .panel-footer {
@@ -138,9 +138,8 @@
 }
 
 .mes-footer {
-  border-bottom-width: 2px !important;
-  border-right-width: 2px !important;
   border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
   border-top-width: 0px !important;
   border-color: $blue !important;
 }
@@ -177,10 +176,10 @@
   padding-left: 10px;
 }
 
-.modal-link{
-  
+.mes-box{
+  border-width: 2px !important;
+  border-color: $blue !important;
 }
-
 /* group link */
 a.group-link-dashboard:link {color: #333333; font-weight: none; text-decoration: none;}
 a.group-link-dashboard:active {color: #333333; font-weight: none; text-decoration: none;}
