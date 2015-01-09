@@ -1,13 +1,13 @@
 <section class="hidden-print">
   <h1 class="page-header"><span class="fa fa-rss"></span> <%= t('.page_header') %>
   	{{getGroupName()}}
-  	<button style="margin-top: 19px; font-size: 25px;" type="button" ng-click="redirect_to_dashboard()" class="close pull-right" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	<button style="margin-top: 14px; font-size: 25px;" type="button" ng-click="redirect_to_dashboard()" class="close pull-right" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   </h1>
 </section>
 <body>
 	<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-			<div id="scrollarea" class="panel panel-default box-dashboard" style="margin-bottom: 0px; overflow-y: scroll; overflow-x: hidden">
+			<div id="scrollarea" class="panel panel-default box-dashboard mes-box"  style="margin-bottom: 0px; overflow-y: scroll; overflow-x: hidden">
 				<!--messages of groups-->
 				<div class="panel-body" id="message_body">
 					<!-- read messages -->
@@ -90,7 +90,7 @@
 								ng-model="selectedGroup.text"
 								ng-disabled="!NewForm.$valid">
 						<span class="input-group-btn">
-							<button class=" btn btn-primary btn-input" style="margin-right: 0px;" ng-click="send_message_modal(selectedGroup.id, selectedGroup.text)" type="submit">
+							<button class=" btn btn-primary btn-input" ng-click="send_message_modal(selectedGroup.id, selectedGroup.text)" type="submit">
 								<span class="glyphicon glyphicon-ok"></span> 
 								<%= t('.send') %>
 							</button>
