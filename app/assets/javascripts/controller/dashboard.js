@@ -161,7 +161,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
 	$scope.currentlyRead = function(mes, group_index, mes_index, modal_active){
 		$scope.center_messages();
-		if ($scope.unreadMessages !== undefined){
+		if ($scope.unreadMessages !== undefined && $scope.mymessages !== undefined){
 			if ($scope.allRead){
 				return false;
 			}
@@ -226,19 +226,31 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.getGroupName = function(){
+		$q.all([$scope.mygroups.$promise]).then(function(){
+			$scope.selectedGroup = $scope.mygroups[$routeParams.index];
+			$scope.selectedGroup.index = $routeParams.index;
+		});
+		// fix correct width of panel body and panel footer in all-messages overview because chrome has problems with the width
+		// of panel body in combination with the scrollbar. the branch if(set != parseInt(set)) only set the correct margin for the chrome browser
+		var modal_body = document.getElementById('scrollarea');
+		var x = $('#scrollarea').width();
+		var y = $('#footer-mes').width();
+		//console.log("footer-mes " + y);
+		//console.log("scrollarea " + x);
+		var set = x - y;
+		var dif = y - Math.ceil(x);
+		//console.log("dif: " + dif);
+		set = set + dif;
+		//console.log(set);
+		//console.log(parseInt(set));
+		if (set !== parseInt(10, set))
+			document.getElementById('footer-btn').style.marginRight = set + "px";
+
+	};
+
+	$scope.setAllMessages = function(){
 		$scope.set_modal_height();
-		var id = $routeParams.id;
-		for (var i = 0; i < $scope.mygroups.length; i++){
-			if ($scope.mygroups !== undefined && $scope.mymessages !== undefined){
-				if ($scope.mygroups[i].id.toString() === id.toString()){
-					$scope.selectedGroup = $scope.mygroups[i];
-					$scope.selectedGroup.index = $routeParams.index;
-					return $scope.mygroups[i].name;
-				}
-			}
-		}
-		return "";
-	}
+	};
 
 	if ($routeParams.id >= 0){
 		$scope.selectedGroupMessages = dashboardService.message.getAll($routeParams.id);
