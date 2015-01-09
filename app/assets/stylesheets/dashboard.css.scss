@@ -128,6 +128,11 @@
 
 .btn-input {
   border-color: $blue;
+  margin-right: -2px;
+}
+
+.btn-mes-input {
+  border-color: $blue;
   margin-right: 0px;
 }
 
@@ -135,13 +140,6 @@
   border-bottom-width: 1px;
   border-color: $blue;
   padding: 0px;
-}
-
-.mes-footer {
-  border-left-width: 2px !important;
-  border-bottom-width: 2px !important;
-  border-top-width: 0px !important;
-  border-color: $blue !important;
 }
 
 .inbox-empty {
@@ -178,6 +176,13 @@
 
 .mes-box{
   border-width: 2px !important;
+  border-color: $blue !important;
+}
+
+.mes-footer {
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
+  border-top-width: 2px !important;
   border-color: $blue !important;
 }
 /* group link */

@@ -85,12 +85,13 @@
 					<div class="input-group input-group-sm">
 						<input  name="input-text"
 								type="text" 
-								class="form-control mes-footer" 
+								class="form-control mes-footer"
+								style="border-top-width: 0px !important;"
 								placeholder="<%= t('.new_message') %>"
 								ng-model="selectedGroup.text"
 								ng-disabled="!NewForm.$valid">
 						<span class="input-group-btn">
-							<button class=" btn btn-primary btn-input" ng-click="send_message_modal(selectedGroup.id, selectedGroup.text)" type="submit">
+							<button class=" btn btn-primary btn-mes-input" ng-click="send_message_modal(selectedGroup.id, selectedGroup.text)" type="submit">
 								<span class="glyphicon glyphicon-ok"></span> 
 								<%= t('.send') %>
 							</button>
