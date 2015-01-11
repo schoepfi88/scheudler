@@ -225,7 +225,7 @@
       <div class="panel-body" id="message_body">
         <!-- read messages -->
         <div  class="panel panel-default inbox-dashboard" 
-              ng-init="center_messages()" 
+              ng-init="center_messages()"
               ng-repeat="message in mymessages[$index] track by $index"
               ng-click="redirect_to_messages(group, $index)"
               ng-show="currentUserIsSender(message) || !currentlyRead(message, $parent.$index, $index, false)">

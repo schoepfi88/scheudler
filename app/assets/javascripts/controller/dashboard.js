@@ -17,8 +17,9 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										if ($scope.selectedGroup === null)
+										if ($scope.selectedGroup === null){
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+										}
 										if ($scope.selectedGroup !== null){
 											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
 												var check = data.unread[$scope.forUpdate[z]];
@@ -30,7 +31,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 											}
 										}
 										$scope.unreadMessages.unread[$scope.forUpdate[z]] = $scope.unreadMessages.unread[$scope.forUpdate[z]]+data.unread[$scope.forUpdate[z]];
-
 										$scope.tickCounter = 0;
 									}
 							});
@@ -43,12 +43,12 @@ angular.module('scheudler').controller("dashboardCtrl",
 					$scope.unreadMessages = data;
 					$scope.tickCounter = 0;
 				}
-				$scope.center_messages();
 				$timeout(tick, 3000);
 			});
 		}
 		
 	})();
+
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
 	$scope.allRead = false;
 	$scope.mygroups = dashboardService.groups.get();
@@ -104,8 +104,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 		var mes_pic = document.getElementsByName('mes-pic');
 		var mes_time = document.getElementsByName('mes-time');
 		for (var i = mes_text.length - 1; i >= 0; i--) {
-			mes_pic[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
-			mes_time[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
+			if (mes_text[i].offsetHeight.toString() !== "0"){
+				mes_pic[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
+				mes_time[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
+			}
 		}
 	};
 	/*++++end UI functions++++*/
@@ -145,6 +147,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 				inputs[x].value='';
 			}
 		});
+		$scope.center_messages();
 		
 	};
 
@@ -160,7 +163,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
 	$scope.currentlyRead = function(mes, group_index, mes_index, modal_active){
-		$scope.center_messages();
 		if ($scope.unreadMessages !== undefined && $scope.mymessages !== undefined){
 			if ($scope.allRead){
 				return false;
@@ -197,7 +199,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.parseTime = function(time){
-		$scope.center_messages();
 		var oneDayInMillis = 86400000;
 		var oneHourInMillis = 3600000;
 		if (time === null || time === undefined){
@@ -248,11 +249,14 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	};
 
-	$scope.setAllMessages = function(){
-		$scope.set_modal_height();
-	};
-
 	if ($routeParams.id >= 0){
 		$scope.selectedGroupMessages = dashboardService.message.getAll($routeParams.id);
 	}
+
+	(function centering() {
+		$scope.center_messages();
+		console.log("centering");
+		$timeout(centering, 500);
+	})();
+	
 });
