@@ -102,18 +102,18 @@ class Api::DashboardController < ApplicationController
 		respond_with({unread: group_counter, last_mes: last_mes_ids, undisplayed: group_counter_undisplayed})
 	end
 
-	def get_events
-		@all_events = []
+	def get_invites
+		@all_invites = []
 		groups_of_user = Member.where(user_id: current_user.id).pluck(:group_id)
 		groups_of_user.each do |g|
 			e = Event.where(group_id: g)
-			if e.length > 0
-				e.each do |e1|
-					@all_events << e1
+			e.each do |e1|
+				if (e1.accepted == nil)
+					@all_invites << e1
 				end
 			end
 		end
-		@all_events
+		@all_invites
 	end
 
 	private
