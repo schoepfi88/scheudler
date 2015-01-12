@@ -20,9 +20,9 @@ angular.module('scheudler').service("dashboardService", function($resource) {
                             'get': {method: "GET", isArray:true}
                         });
 
-    var eventSer = $resource('api/dashboard/events/', {},
+    var eventSer = $resource('api/dashboard/invites/', {},
                         {
-                            'get_events': {method: "GET", isArray:true}
+                            'get_invites': {method: "GET", isArray:true}
                         });
 
     return {
@@ -39,7 +39,7 @@ angular.module('scheudler').service("dashboardService", function($resource) {
             get: function(){ return groupSer.get();}
         },
         events: {
-            get_events: function(succ){ return eventSer.get_events(succ);}
+            get_invites: function(succ){ return eventSer.get_invites(succ);}
         } 
     }
     
