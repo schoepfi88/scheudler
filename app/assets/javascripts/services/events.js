@@ -19,8 +19,8 @@ angular.module('scheudler').factory("eventsService",function($resource) {
 				create: function(eventData, succH, errH){
 					eventsService.create(eventData, succH, errH);
 				},
-				get_events: function(){
-					return eventsService.get();
+				get_events: function(succH){
+					return eventsService.get(succH);
 				},
 				take_part: function(id, succH, errH){
 					participateService.participate({id: id},succH,errH);

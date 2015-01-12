@@ -57,6 +57,7 @@ scope "(:locale)", locale: /en|de/ do
     post '/messages' => 'dashboard#create'
     get '/messages/unread' => 'dashboard#unread'
     get '/messages/:group_id' => 'dashboard#get_all'
+    get '/dashboard/events' => 'dashboard#get_events'
   end
 
 

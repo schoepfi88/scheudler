@@ -39,19 +39,11 @@ class Event < ActiveRecord::Base
 
 	def self.get_events(userid)
 		returnList = []
-		buffer = []
-		members = Member.all
-		members.each do |m|
-			if m.user_id == userid
-				buffer << m.group_id
-			end
-		end
-		events = Event.all
-		events.each do |e|
-			buffer.each do |b|
-				if e.group_id == b
-					returnList << e
-				end
+		groups_of_user = Member.where(user_id: userid).pluck(:group_id)
+		groups_of_user.each do |g|
+			e = Event.where(group_id: g)
+			e.each do |e1|
+				returnList << e1
 			end
 		end
 		returnList

@@ -17,9 +17,15 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
+										// test the comments TODO
+										/* if ($routeParams.index === null)
+											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+										*/
 										if ($scope.selectedGroup === null){
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
 										}
+										/* if ($routeParams.index !== null) { */
+											/* if ($scope.forUpdate[z].toString() === $routeParams.index){*/
 										if ($scope.selectedGroup !== null){
 											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
 												var check = data.unread[$scope.forUpdate[z]];
@@ -51,6 +57,9 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
 	$scope.allRead = false;
+	$scope.allEvents = dashboardService.events.get_events(function(data){
+		console.log(data);
+	});
 	$scope.mygroups = dashboardService.groups.get();
 	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
 	$scope.current_user = dashboardService.user.get();
