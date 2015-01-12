@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
 	belongs_to :group
 	has_many :participants
 	has_many :users, :through => :participants
+	
+#validates   :name, :description, :location, :date, :group_id
 	attr_accessor :gcal_id
   attr_accessor :title
 	attr_accessor :start
@@ -29,7 +31,6 @@ class Event < ActiveRecord::Base
       'end' =>  self.end
     }
   end
-#validates   :name, :description, :location, :date, :group_id
 
 
 	def self.create_event(params)

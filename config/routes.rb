@@ -13,7 +13,7 @@ scope "(:locale)", locale: /en|de/ do
     get '/calendar', to: :calendar, as: 'calendar_template'
     get '/events', to: :events, as: 'events_template'
     get '/events_create', to: :events_create, as: 'events_create_template'
-    get '/events_dashboard', to: :events_dashboard, as: 'events_dashboard_template'
+    get '/events_dashboard/:id', to: :events_dashboard, as: 'events_dashboard_template'
     get '/groups', to: :groups, as: 'groups_template'
     get '/groups_create', to: :groups_create, as: 'groups_create_template'
     get '/groups_dashboard/:id', to: :groups_dashboard, as: 'groups_dashboard_template'

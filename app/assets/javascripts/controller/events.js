@@ -15,7 +15,15 @@ angular.module('scheudler').controller("eventsCtrl",
         $scope.deny = function(event_id){
         };
 
-        $scope.get_members = function(){
+        $scope.redirect_to_members = function(id){
+        location.href="/#/events_dashboard/" + id;
+        };
+
+        $scope.get_members = function(event_id){
+            eventsService.event.get_members(event_id, function(){
+                location.href ="/#/events_dashboard";
+                location.reload();
+            });
         };
 
         $scope.allEvents = eventsService.event.get_events();
