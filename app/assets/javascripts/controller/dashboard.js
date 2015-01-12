@@ -1,6 +1,8 @@
 angular.module('scheudler').controller("dashboardCtrl",
-    function($scope,$rootScope,$timeout,$q,Util,dashboardService){
+    function($scope,$rootScope,$routeParams,$timeout,$q,Util,dashboardService){
+	
 	$scope.unreadMessages = dashboardService.message.unread();
+	
 	$scope.tickCounter = 0; 
 	(function tick() {
 		if ($rootScope.dash_is_active === true){		// only on dashboard polling is allowed
@@ -15,12 +17,17 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										if ($scope.selectedGroup !== null)
-											$scope.tmpMyMessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-										else 
+										// test the comments TODO
+										/* if ($routeParams.index === null)
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+										*/
+										if ($scope.selectedGroup === null){
+											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
+										}
+										/* if ($routeParams.index !== null) { */
+											/* if ($scope.forUpdate[z].toString() === $routeParams.index){*/
 										if ($scope.selectedGroup !== null){
-											if ($scope.selectedGroup.index === $scope.forUpdate[z]){
+											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
 												var check = data.unread[$scope.forUpdate[z]];
 												var start_index = Object.keys($scope.newMessages[$scope.forUpdate[z]]).length - check;
 												for (var r = start_index; r < Object.keys($scope.newMessages[$scope.forUpdate[z]]).length; r++){
@@ -30,7 +37,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 											}
 										}
 										$scope.unreadMessages.unread[$scope.forUpdate[z]] = $scope.unreadMessages.unread[$scope.forUpdate[z]]+data.unread[$scope.forUpdate[z]];
-
 										$scope.tickCounter = 0;
 									}
 							});
@@ -43,14 +49,17 @@ angular.module('scheudler').controller("dashboardCtrl",
 					$scope.unreadMessages = data;
 					$scope.tickCounter = 0;
 				}
-				$scope.center_messages();
 				$timeout(tick, 3000);
 			});
 		}
 		
 	})();
+
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
 	$scope.allRead = false;
+	$scope.allEvents = dashboardService.events.get_events(function(data){
+		console.log(data);
+	});
 	$scope.mygroups = dashboardService.groups.get();
 	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
 	$scope.current_user = dashboardService.user.get();
@@ -73,7 +82,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.set_modal_height=function(){
 		var modal_body = document.getElementById('scrollarea');
 		var set = $(window).height();
-		modal_body.style.height = (set-200) + "px";
+		modal_body.style.height = (set-300) + "px";
 		start(500,true);
 	}
 
@@ -104,8 +113,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 		var mes_pic = document.getElementsByName('mes-pic');
 		var mes_time = document.getElementsByName('mes-time');
 		for (var i = mes_text.length - 1; i >= 0; i--) {
-			mes_pic[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
-			mes_time[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
+			if (mes_text[i].offsetHeight.toString() !== "0"){
+				mes_pic[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
+				mes_time[i].style.lineHeight = mes_text[i].offsetHeight.toString() + "px";
+			}
 		}
 	};
 	/*++++end UI functions++++*/
@@ -137,20 +148,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 				}
 			}
 			if (modal_active){
-				var leng = Object.keys($scope.tmpMyMessages[index]).length;
-				if (leng === max_messages){
-					for (var z = 0; z < leng-1; z++){
-						$scope.tmpMyMessages[index][z] = $scope.tmpMyMessages[index][z+1];
-					}
-					$scope.tmpMyMessages[index][leng-1] = data;
-				}
-				else {
-					for (var y = 0; y < leng; y++){
-						groupmes.mes[y] = $scope.tmpMyMessages[index][y];
-					}
-					groupmes.mes.push(data);
-					$scope.tmpMyMessages[index] = groupmes.mes;
-				}
 				$scope.selectedGroupMessages.push(data);
 			}
 			
@@ -159,56 +156,51 @@ angular.module('scheudler').controller("dashboardCtrl",
 				inputs[x].value='';
 			}
 		});
+		$scope.center_messages();
 		
 	};
 
-	$scope.send_message_modal=function(group_id, group_text, index){
-		$scope.send_message(group_id, group_text, index, true);
+	$scope.send_message_modal=function(group_id, group_text){
+		$scope.send_message(group_id, group_text, $routeParams.index, true);
 		start(5000, true, true);
 	}
 
-	$scope.getAllMessages=function(group_id, index){
-		$scope.set_modal_height();
-		$scope.selectedGroupMessages = dashboardService.message.getAll(group_id);
-		$scope.tmpMyMessages = $scope.mymessages;
-		$scope.mymessages = [];
-		$scope.selectedGroup = $scope.mygroups[index];
-		$scope.selectedGroup.text = "";
-		$scope.selectedGroup.index = index;
-		start(3000, true, true);
+	$scope.redirect_to_dashboard = function(){
+		location.href="/#/dashboard";
 	}
 
-	$scope.setMyMessages=function(){
-		$scope.mymessages = $scope.tmpMyMessages;
-		$scope.selectedGroup = null;
-	}
 
 	// check if message.read is just now set to true. if this is the case the message should be shown as unread for few seconds
 	$scope.currentlyRead = function(mes, group_index, mes_index, modal_active){
-		$scope.center_messages();
-		if ($scope.allRead){
-			return false;
-		}
-		if ($scope.unreadMessages.unread[group_index] === 0){
-			return false;
-		}
-		var date = new Date().toISOString();
-		var millis = Date.parse(date) - 20000;
-		var unread = $scope.unreadMessages.unread[group_index];
-		// mark the correct number of messages as unread 
-		if (!modal_active){
-			var len = Object.keys($scope.mymessages[group_index]).length;
-			var read = len - unread -1;
-			if (mes_index > read){
-				$scope.mymessages[group_index][mes_index].updated_at = "3000";		// to achieve compareDate is smaller -> ugly
+		if ($scope.unreadMessages !== undefined && $scope.mymessages !== undefined){
+			if ($scope.allRead){
+				return false;
 			}
-			else {
-				$scope.mymessages[group_index][mes_index].updated_at = "1000";		// to achieve compareDate is greater -> ugly
+			if ($scope.unreadMessages.unread[group_index] === 0){
+				return false;
 			}
+			var date = new Date().toISOString();
+			var millis = Date.parse(date) - 20000;
+			var unread = $scope.unreadMessages.unread[group_index];
+			// mark the correct number of messages as unread 
+			if (!modal_active){
+				var len = Object.keys($scope.mymessages[group_index]).length;
+				var read = len - unread -1;
+				if (mes_index > read){
+					$scope.mymessages[group_index][mes_index].updated_at = "3000";		// to achieve compareDate is smaller -> ugly
+				}
+				else {
+					$scope.mymessages[group_index][mes_index].updated_at = "1000";		// to achieve compareDate is greater -> ugly
+				}
+			}
+			var compareDate = new Date(millis).toISOString();
+			var currently = (compareDate < mes.updated_at);
+			return currently;
 		}
-		var compareDate = new Date(millis).toISOString();
-		var currently = (compareDate < mes.updated_at);
-		return currently;
+	};
+
+	$scope.redirect_to_messages = function(id, index){
+		location.href="/#/dashboard/messages/" + id.id +"/" + index;
 	};
 
 	$scope.currentUserIsSender = function(mes){
@@ -216,7 +208,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 	};
 
 	$scope.parseTime = function(time){
-		$scope.center_messages();
 		var oneDayInMillis = 86400000;
 		var oneHourInMillis = 3600000;
 		if (time === null || time === undefined){
@@ -243,4 +234,38 @@ angular.module('scheudler').controller("dashboardCtrl",
 			return day1.format("mmm d");
 		}
 	};
+
+	$scope.getGroupName = function(){
+		$q.all([$scope.mygroups.$promise]).then(function(){
+			$scope.selectedGroup = $scope.mygroups[$routeParams.index];
+			$scope.selectedGroup.index = $routeParams.index;
+		});
+		// fix correct width of panel body and panel footer in all-messages overview because chrome has problems with the width
+		// of panel body in combination with the scrollbar. the branch if(set != parseInt(set)) only set the correct margin for the chrome browser
+		var modal_body = document.getElementById('scrollarea');
+		var x = $('#scrollarea').width();
+		var y = $('#footer-mes').width();
+		//console.log("footer-mes " + y);
+		//console.log("scrollarea " + x);
+		var set = x - y;
+		var dif = y - Math.ceil(x);
+		//console.log("dif: " + dif);
+		set = set + dif;
+		//console.log(set);
+		//console.log(parseInt(set));
+		if (set !== parseInt(10, set))
+			document.getElementById('footer-btn').style.marginRight = set + "px";
+
+	};
+
+	if ($routeParams.id >= 0){
+		$scope.selectedGroupMessages = dashboardService.message.getAll($routeParams.id);
+	}
+
+	(function centering() {
+		$scope.center_messages();
+		console.log("centering");
+		$timeout(centering, 500);
+	})();
+	
 });

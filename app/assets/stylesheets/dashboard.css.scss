@@ -128,7 +128,12 @@
 
 .btn-input {
   border-color: $blue;
-  margin-right: -1px;
+  margin-right: -2px;
+}
+
+.btn-mes-input {
+  border-color: $blue;
+  margin-right: 0px;
 }
 
 .panel-footer {
@@ -161,48 +166,24 @@
   background-color: #CED8F6;
 }
 
-.modal-link {
-  text-decoration: none;
-  color: white;
-}
-
-.modal-dialog{
-      overflow-y: initial !important;
-}
-.modal-body{
-  height: 900px;
-  overflow-y: auto;
-  border-color: $blue;
-  border: 2px solid $blue;
-}
-
-.modal-header{
-  background-color: $blue;
-  color: white;
-  font-variant: small-caps;
-  font-size: 22px;
-  font-family: "calibri";
-  border-color: $blue;
-  border-width: 2px;
-  border: 2px solid $blue;
-}
-
 .fa-rss{
   color: $orange;
 }
 
-// modal schneller anzeigen
-.fade {
-   opacity: 0;
-   -webkit-transition: opacity 0.3s linear;
-      -moz-transition: opacity 0.3s linear;
-       -ms-transition: opacity 0.3s linear;
-        -o-transition: opacity 0.3s linear;
-           transition: opacity 0.3s linear;
- }
-
 .group-icon {
   padding-left: 10px;
+}
+
+.mes-box{
+  border-width: 2px !important;
+  border-color: $blue !important;
+}
+
+.mes-footer {
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
+  border-top-width: 2px !important;
+  border-color: $blue !important;
 }
 
 /* group link */

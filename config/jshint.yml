@@ -12,6 +12,7 @@ paths:
 
 exclude_paths:
   - app/assets/javascripts/vendor/*.js
+  - app/assets/javascripts/directives/*chart.js
 
 
 # ------------ jshint options ------------

@@ -1,6 +1,7 @@
 class Api::DashboardController < ApplicationController
 	respond_to :json
 	$max_messages = 7
+	$max_messages_all = 25
 	def get_groups
 		groups = Member.where(user_id: current_user.id).pluck(:group_id)
 		@mygroups = Array.new
@@ -27,7 +28,7 @@ class Api::DashboardController < ApplicationController
 			group_messages = Message.where(receiver_id: g)
 			#sort that actuall messages are at the bottom
 			group_messages.sort! { |a,b| a.created_at <=> b.created_at }
-			# only last 10
+			# only last 7
 			if group_messages.length > $max_messages
 				number = $max_messages - group_messages.length
 				group_messages = group_messages.drop(number.abs)
@@ -54,6 +55,11 @@ class Api::DashboardController < ApplicationController
                	m.readers = m.readers + [current_user.id]
                	m.save!
            	end
+		end
+		# only last $max_messages_all
+		if @messages_all.length > $max_messages_all
+			number = $max_messages_all - @messages_all.length
+			@messages_all = @messages_all.drop(number.abs)
 		end
 		@messages_all
 	end
@@ -94,6 +100,20 @@ class Api::DashboardController < ApplicationController
 			group_counter_undisplayed << undisplayed
 		end
 		respond_with({unread: group_counter, last_mes: last_mes_ids, undisplayed: group_counter_undisplayed})
+	end
+
+	def get_events
+		@all_events = []
+		groups_of_user = Member.where(user_id: current_user.id).pluck(:group_id)
+		groups_of_user.each do |g|
+			e = Event.where(group_id: g)
+			if e.length > 0
+				e.each do |e1|
+					@all_events << e1
+				end
+			end
+		end
+		@all_events
 	end
 
 	private

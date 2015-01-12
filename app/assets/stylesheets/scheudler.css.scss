@@ -137,11 +137,11 @@ canvas{
 }
 
 .panel-default > .panel-heading {
-  background-color: $blue;
-  color: white;
-  font-variant: small-caps;
-  font-size: 22px;
-  border-color: $blue;
+  background-color: $blue !important;
+  color: white !important;
+  font-variant: small-caps !important;
+  font-size: 22px !important;
+  border-color: $blue !important;
 }
 
 .panel-default > .panel-heading .fa {

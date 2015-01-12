@@ -10,6 +10,7 @@ scope "(:locale)", locale: /en|de/ do
   # template routes
   namespace :templates do
     get '/dashboard', to: :dashboard, as: 'dashboard_template'
+    get '/dashboard/messages/:id', to: :dashboard_messages, as: 'dashboard_messages_template'
     get '/calendar', to: :calendar, as: 'calendar_template'
     get '/events', to: :events, as: 'events_template'
     get '/events_create', to: :events_create, as: 'events_create_template'
@@ -34,7 +35,8 @@ scope "(:locale)", locale: /en|de/ do
     #get '/events' => 'events#get_events'
     post '/events' => 'events#create'
 	  post '/events_participate' => 'events#participate'
-
+    get '/events_dashboard' => 'events#get_members'
+    get '/events_dashboard/:id' => 'events#get_members'
 
 
     #groups
@@ -56,6 +58,7 @@ scope "(:locale)", locale: /en|de/ do
     post '/messages' => 'dashboard#create'
     get '/messages/unread' => 'dashboard#unread'
     get '/messages/:group_id' => 'dashboard#get_all'
+    get '/dashboard/events' => 'dashboard#get_events'
   end
 
 

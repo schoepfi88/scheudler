@@ -9,9 +9,10 @@ angular.module('scheudler').factory("eventsService",function($resource) {
 						{
 							'participate': {method: "POST"}
 						});
-	var memberService = $resource('api/events_members',{},
+	var memberService = $resource('api/events_dashboard/:id',{},
 						{
-							'members': {method: "GET"}
+							'members': {method: "GET",
+							isArray: true }
 						});
 
     return {
@@ -19,14 +20,14 @@ angular.module('scheudler').factory("eventsService",function($resource) {
 				create: function(eventData, succH, errH){
 					eventsService.create(eventData, succH, errH);
 				},
-				get_events: function(){
-					return eventsService.get();
+				get_events: function(succH){
+					return eventsService.get(succH);
 				},
 				take_part: function(id, succH, errH){
 					participateService.participate({id: id},succH,errH);
 				},
-				get_members: function(memData, succH, errH){
-					memberService.members(memData);
+				get_members: function(id, succH, errH){
+					return memberService.members({id: id},succH, errH);
 				}
 			}
     };

@@ -20,6 +20,11 @@ angular.module('scheudler').service("dashboardService", function($resource) {
                             'get': {method: "GET", isArray:true}
                         });
 
+    var eventSer = $resource('api/dashboard/events/', {},
+                        {
+                            'get_events': {method: "GET", isArray:true}
+                        });
+
     return {
         message: {
             get: function(succ){ return messageSer.get(succ);},
@@ -32,7 +37,10 @@ angular.module('scheudler').service("dashboardService", function($resource) {
         },
         groups: {
             get: function(){ return groupSer.get();}
-        }
+        },
+        events: {
+            get_events: function(succ){ return eventSer.get_events(succ);}
+        } 
     }
     
 });

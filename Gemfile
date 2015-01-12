@@ -69,11 +69,16 @@ gem 'google-api-client', :require => 'google/api_client'
 gem 'fullcalendar-rails', '~>2.0.2.0'
 gem 'momentjs-rails'
 
+#morris charts
+gem 'morrisjs-rails'
+gem 'raphael-rails'
+
 #datepicker support
 gem 'bootstrap-datepicker-rails'
 
 #datetimepicker support
 gem 'bootstrap-datetimepicker-rails'
+
 
 group :production do
     # Use unicorn as the app server

@@ -1,7 +1,10 @@
 angular.module('scheudler').controller("eventsCtrl",
-    function($scope,eventsService, groupsService, Util){
+    function($scope, $routeParams, eventsService, dashboardService, Util){
 
         $scope.create_event = function(){
+            var group_id = $scope.eventData.group_id[0];
+            console.log(group_id);
+            $scope.eventData.group_id = group_id;
             eventsService.event.create($scope.eventData, function(){
             location.href ="/#/events";
             location.reload();
@@ -19,16 +22,17 @@ angular.module('scheudler').controller("eventsCtrl",
         location.href="/#/events_dashboard/" + id;
         };
 
-        $scope.get_members = function(event_id){
+        $scope.get_members = eventsService.event.get_members($routeParams.id);
+/*        $scope.get_members = function(event_id){
             eventsService.event.get_members(event_id, function(){
                 location.href ="/#/events_dashboard";
                 location.reload();
             });
         };
+*/
 
         $scope.allEvents = eventsService.event.get_events();
-        
-
+        $scope.groups = dashboardService.groups.get();
         $scope.eventData = {
             name: '',
             location: '',
