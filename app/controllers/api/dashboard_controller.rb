@@ -108,9 +108,7 @@ class Api::DashboardController < ApplicationController
 		groups_of_user.each do |g|
 			e = Event.where(group_id: g)
 			e.each do |e1|
-				if (e1.accepted == nil)
-					@all_invites << e1
-				end
+				@all_invites << e1
 			end
 		end
 		@all_invites

@@ -18,6 +18,7 @@ class Api::EventsController < Api::RestController
   def create
     event = Event.create_event(create_params)
     event.save!
+    Participants.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
   end
   

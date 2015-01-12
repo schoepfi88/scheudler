@@ -5,6 +5,5 @@ json.array!(@all_invites) do |e|
   json.description e.description
   json.date e.date
   json.time e.time
-  json.accepted e.accepted
   json.icon Group.find(e.group_id).icon
 end
