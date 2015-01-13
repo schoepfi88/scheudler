@@ -20,10 +20,17 @@ angular.module('scheudler').service("dashboardService", function($resource) {
                             'get': {method: "GET", isArray:true}
                         });
 
-    var eventSer = $resource('api/dashboard/invites/', {},
+    var inviteSer = $resource('api/dashboard/invites/', {},
                         {
                             'get_invites': {method: "GET", isArray:true}
                         });
+
+    var eventSer = $resource('api/dashboard/events/', {}, 
+                        {
+                            'get_events': {method: "GET", isArray:true},
+                            'accepted': {method: "POST"}
+                        });
+
 
     return {
         message: {
@@ -39,7 +46,9 @@ angular.module('scheudler').service("dashboardService", function($resource) {
             get: function(){ return groupSer.get();}
         },
         events: {
-            get_invites: function(succ){ return eventSer.get_invites(succ);}
+            get_invites: function(succ){ return inviteSer.get_invites(succ);},
+            get_events: function(succ){ return eventSer.get_events(succ);},
+            accepted: function(acceptedData){return eventSer.accepted(acceptedData);}
         } 
     }
     

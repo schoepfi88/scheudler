@@ -58,6 +58,9 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
 	$scope.allRead = false;
 	$scope.allEventsUnaccepted = dashboardService.events.get_invites(function(data){
+		//console.log(data);
+	});
+	$scope.allEventsAccepted = dashboardService.events.get_events(function(data){
 		console.log(data);
 	});
 	$scope.mygroups = dashboardService.groups.get();
@@ -90,10 +93,11 @@ angular.module('scheudler').controller("dashboardCtrl",
 	$scope.center_groups=function(){
 		var gr_text = document.getElementsByName('group-text');
 		var gr_pic = document.getElementsByName('group-pic');
-		var ev_text = document.getElementsByName('event-text');
-		for (var i = gr_pic.length - 1; i >= 0; i--) {
-			gr_text[i].style.lineHeight = ev_text[i].clientHeight.toString() + "px";
-			gr_pic[i].style.lineHeight = ev_text[i].clientHeight.toString() + "px";
+		var gr_head = document.getElementById('group_head');
+		var height = (gr_head.clientHeight * 0.76).toString() + "px";
+		for (var i = gr_text.length - 1; i >= 0; i--) {
+			gr_text[i].style.lineHeight = height;
+			gr_pic[i].style.lineHeight = height;
 		}
 	};
 
@@ -102,9 +106,13 @@ angular.module('scheudler').controller("dashboardCtrl",
 		var ev_text = document.getElementsByName('event-text');
 		var ev_pic = document.getElementsByName('event-pic');
 		var ev_close = document.getElementsByName('event-close');
+		var ev_head = document.getElementById('event-head');
+		var height = (ev_head.clientHeight * 0.76).toString() + "px";
+		var ev_empty = document.getElementById('event-empty');
+		ev_empty.style.lineHeight = height;
 		for (var i = ev_text.length - 1; i >= 0; i--) {
-			ev_pic[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
-			ev_close[i].style.lineHeight = ev_text[i].offsetHeight.toString() + "px";
+			ev_pic[i].style.lineHeight = height;
+			ev_close[i].style.lineHeight = height;
 		}
 	};
 	// set correct line-height to center the pic and the time #messages
@@ -205,6 +213,17 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	$scope.currentUserIsSender = function(mes){
 		return (mes.sender_id == $scope.current_user.id);
+	};
+
+	$scope.accepted = function(state, event_id){
+		$scope.acceptedData = {
+	          bool: state,
+	          eve_id: event_id
+       	};
+          console.log($scope.acceptedData);
+		dashboardService.events.accepted($scope.acceptedData, function(data){
+			location.reload();
+		});
 	};
 
 	$scope.parseTime = function(time){

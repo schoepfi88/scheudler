@@ -5,61 +5,31 @@
   <div class="col-lg-4 col-xs-12 col-md-6">
     <!-- next events -->
     <div class="panel panel-default box-dashboard">
-      <div class="panel-heading">
+      <div class="panel-heading" id="event-head">
         <span class="fa fa-trophy"></span>
          Next events
       </div>
       <!-- next events -->
       <div class="panel-body" id="event_body">
-        <!-- next event 1 -->
-        <div class="panel panel-default inbox-dashboard">
+        <!-- events ng-repeat -->
+         <div class="panel panel-default inbox-dashboard" ng-repeat="eve in allEventsAccepted" ng-init="center_events()">
           <div class="panel-body inbox-dashboard">
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
                   <div class="big-box">
-                    <span class="{{mygroups[0].icon}} group-icon"></span>
+                    <span class="{{eve.icon}} group-icon"></span>
                   </div>
               </div>
               <div name="event-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
                     <div class="mini-box event-name">
-                      Training:
+                      {{eve.name}}: {{eve.description}}
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
                     <div class="mini-box event-text">
-                      Monday 15th december 5pm
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div name="event-close" class="col-lg-2 col-md-2 col-xs-2 center">
-                <div class="big-box event-close">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- next event 2-->
-        <div class="panel panel-default inbox-dashboard" ng-init="center_events()">
-          <div class="panel-body inbox-dashboard">
-            <div name="event-pic" class="row center-row">
-              <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
-                  <div class="big-box">
-                    <span class="{{mygroups[0].icon}} group-icon"></span>
-                  </div>
-              </div>
-              <div name="event-text" class="col-lg-8 col-md-8 col-sm-9 col-xs-8 uncenter">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
-                    <div class="mini-box event-name">
-                      Training:
-                    </div>
-                  </div>
-                  <div class="col-lg-12 col-md-12 col-xs-12 uncenter">
-                    <div class="mini-box event-text">
-                      Wednesday 17th december 5pm
+                      {{eve.location}}: {{inv.date}} , {{inv.time}}
                     </div>
                   </div>
                 </div>
@@ -72,12 +42,19 @@
           </div>
         </div>
       </div> <!-- end next events -->
+      <div class"panel panel-default inbox-dashboard" ng-show="allEventsAccepted.length === 0 && !checkLoading()" ng-init="set_height()">
+          <div id="event-empty" class="panel-body inbox-empty groups-text text-center">
+            <div>
+              <%=t('.no_event_placeholder') %>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
   <!-- My groups -->
   <div class="col-lg-4 col-xs-12 col-md-6">
     <div class="panel panel-default box-dashboard">
-      <div class="panel-heading">
+      <div class="panel-heading" id="group_head">
         <span class="fa fa-group"></span> 
         My Groups
       </div>
@@ -156,11 +133,11 @@
               <div name="event-close" class="col-lg-4 col-md-4 col-xs-4 center">
                 <div class="big-box">
                   <div class="btn-group pull-right">
-                    <div class="btn event-check">
+                    <div class="btn event-check" ng-click="accepted(true, inv.id)">
                       <span class="fa fa-check"></span>
                     </div>
                     <div class="btn event-close">
-                      <span class="fa fa-close"></span>
+                      <span class="fa fa-close" ng-click="accepted(false, inv.id)"></span>
                     </div>
                   </div>
                 </div>

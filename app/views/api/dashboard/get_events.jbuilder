@@ -1,4 +1,4 @@
-json.array!(@all_invites) do |e|
+json.array!(@all_events) do |e|
   json.id e.id
   json.name e.name
   json.location e.location
