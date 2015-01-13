@@ -25,10 +25,10 @@ app.config(function($httpProvider, $routeProvider){
 		templateUrl: '/templates/events_create',
 		controller: 'eventsCtrl'
 	}).
-	when('/events_dashboard',{
-		templateUrl: '/templates/events_dashboard',
-		controller: 'eventsCtrl'
-	}).
+  when('/events_dashboard/:id',{
+    templateUrl: function(params){ return '/templates/events_dashboard/' + params.id;},
+    controller: 'eventsCtrl'
+  }).
 	when('/groups', {
 		templateUrl: '/templates/groups',
 		controller: 'groupsCtrl'

@@ -1,5 +1,5 @@
 angular.module('scheudler').controller("eventsCtrl",
-    function($scope,eventsService, groupsService, dashboardService, Util){
+    function($scope, $routeParams, eventsService, dashboardService, Util){
 
         $scope.create_event = function(){
             var group_id = $scope.eventData.group_id[0];
@@ -11,22 +11,20 @@ angular.module('scheudler').controller("eventsCtrl",
             });
         };
 
-        $scope.take_part = function(event_id){
-            eventsService.event.take_part(event_id);
+        $scope.take_part = function(event_id, bool){
+            eventsService.event.take_part(event_id, bool);
         };
 
-        $scope.deny = function(event_id){
+        $scope.redirect_to_members = function(id){
+        location.href="/#/events_dashboard/" + id;
         };
 
-        $scope.get_members = function(){
-        };
-
-        $scope.test = function(){
-            console.log("test");
-        }
+        $scope.get_members = eventsService.event.get_members($routeParams.id);
 
         $scope.allEvents = eventsService.event.get_events();
+
         $scope.groups = dashboardService.groups.get();
+
         $scope.eventData = {
             name: '',
             location: '',
@@ -35,5 +33,6 @@ angular.module('scheudler').controller("eventsCtrl",
             group_id: '',
           //from: '',
           //till: '',
-          time: ''};
+          time: ''
+      };
   });
