@@ -109,8 +109,10 @@ class Api::DashboardController < ApplicationController
 			e = Event.where(group_id: g)
 			e.each do |e1|
 				check = Participants.where(user_id: current_user.id, event_id: e1.id).first
-				if check.accepted == nil 
-					@all_invites << e1
+				if check != nil
+					if check.accepted == nil 
+						@all_invites << e1
+					end
 				end
 
 			end
@@ -125,10 +127,11 @@ class Api::DashboardController < ApplicationController
 			e = Event.where(group_id: g)
 			e.each do |e1|
 				check = Participants.where(user_id: current_user.id, event_id: e1.id).first
-				if check.accepted == true 
-					@all_events << e1
+				if check != nil
+					if check.accepted == true 
+						@all_events << e1
+					end
 				end
-
 			end
 		end
 		@all_events
