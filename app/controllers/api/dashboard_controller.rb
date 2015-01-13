@@ -138,7 +138,7 @@ class Api::DashboardController < ApplicationController
 		part = Participants.where(user_id: current_user.id, event_id: acc_params[:eve_id]).first
 		part.accepted = acc_params[:bool]
 		part.save!
-		redirect_to root_url
+		redirect_to :back
 	end
 
 	private
