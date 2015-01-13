@@ -30,16 +30,7 @@ class Api::EventsController < Api::RestController
 
   def get_members
 	@evemem = Participant.get_members(part_params)
-
     respond_with @evemem
-  end
-
-  def name
-	@name
-  end
-
-  def name=(value)
-	@name = value
   end
 
   private
