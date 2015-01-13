@@ -1,5 +1,5 @@
 class Api::EventsController < Api::RestController
-   
+
   def index
     #client = Google::APIClient.new
     #client.authorization.access_token = session[:token]
@@ -18,19 +18,28 @@ class Api::EventsController < Api::RestController
   def create
     event = Event.create_event(create_params)
     event.save!
-    Participants.create_part(event.id, event.group_id)
+    Participant.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
   end
   
   def participate
-    part = Participants.change_participation(part_params, current_user.id)
+    part = Participant.change_participation(part_params, current_user.id)
     part.save!
     respond_with(nil, :location => nil)
   end
 
   def get_members
-    @evemem = Participants.get_members(part_params)
+	@evemem = Participant.get_members(part_params)
+
     respond_with @evemem
+  end
+
+  def name
+	@name
+  end
+
+  def name=(value)
+	@name = value
   end
 
   private
