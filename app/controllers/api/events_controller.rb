@@ -1,5 +1,6 @@
 class Api::EventsController < Api::RestController
-   
+   respond_to :json
+
   def index
     #client = Google::APIClient.new
     #client.authorization.access_token = session[:token]

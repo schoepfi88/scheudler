@@ -11,14 +11,14 @@ class Participants < ActiveRecord::Base
 	end
 
 	def self.get_members(eventid)
-	#	returnlist = []
+		returnlist = []
 		p = Participants.where(:event_id == eventid[:id]).where(:accepted => 'true')
 	#	p
-	#	p.each do |p|
-	#		returnlist << User.find(:id == p.user_id).pluck(:name)
-	#	end
-	#	returnlist
-		p
+		p.each do |p|
+			returnlist << User.where(:id == p.user_id).pluck(:name)
+		end
+		returnlist
+	#	p
 	end
 
 	def self.create_part(event_id, group_id)

@@ -24,8 +24,7 @@ class TemplatesController < ProtectedController
   end
 
   def events_dashboard
-  #only participants with current event_id
-  #@event_members = Participants.all
+  #@event_members = Participants.get_members(params[:id])
   end
 
   def groups
