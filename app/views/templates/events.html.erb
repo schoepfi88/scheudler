@@ -60,13 +60,13 @@
         </div>
         <div name="event-text-eve">
           <div class="col-lg-3 col-md-3 col-xs-3">
-            <button class="btn btn-success pull-right" ng-click="take_part(events.id)"><i class="fa fa-check"></i>
+            <button class="btn btn-success pull-right" ng-click="take_part(events.id, 'true')"><i class="fa fa-check"></i>
               <span class="hidden-xs">
                 <%=t('.take_part') %>
               </span>
             </button>
 
-            <button class="btn btn-danger pull-right" ng-click="deny()"><i class="fa fa-remove"></i>
+            <button class="btn btn-danger pull-right" ng-click="take_part(events.id, 'false')"><i class="fa fa-remove"></i>
               <span class="hidden-xs">
                 <%=t('.deny') %>
               </span>

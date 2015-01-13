@@ -57,7 +57,7 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
 	$scope.allRead = false;
-	$scope.allEvents = dashboardService.events.get_events(function(data){
+	$scope.allEventsUnaccepted = dashboardService.events.get_invites(function(data){
 		console.log(data);
 	});
 	$scope.mygroups = dashboardService.groups.get();
@@ -264,7 +264,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	(function centering() {
 		$scope.center_messages();
-		console.log("centering");
 		$timeout(centering, 500);
 	})();
 	

@@ -25,7 +25,7 @@ class TemplatesController < ProtectedController
 
   def events_dashboard
   #only participants with current event_id
-  @event_members = Participants.all
+  #@event_members = Participants.all
   end
 
   def groups
@@ -40,13 +40,6 @@ class TemplatesController < ProtectedController
   end
 
   def groups_dashboard
-	@msg_count = 0
-	group_messages = Message.where(receiver_id: @group.id)
-	group_messages.each do |m|
-		if !m.readers.include?(current_user.id)
-        	@msg_count += 1
-    	end
-	end
   end
 
   def groups_members

@@ -11,11 +11,8 @@ angular.module('scheudler').controller("eventsCtrl",
             });
         };
 
-        $scope.take_part = function(event_id){
-            eventsService.event.take_part(event_id);
-        };
-
-        $scope.deny = function(event_id){
+        $scope.take_part = function(event_id, bool){
+            eventsService.event.take_part(event_id, bool);
         };
 
         $scope.redirect_to_members = function(id){
@@ -23,16 +20,11 @@ angular.module('scheudler').controller("eventsCtrl",
         };
 
         $scope.get_members = eventsService.event.get_members($routeParams.id);
-/*        $scope.get_members = function(event_id){
-            eventsService.event.get_members(event_id, function(){
-                location.href ="/#/events_dashboard";
-                location.reload();
-            });
-        };
-*/
 
         $scope.allEvents = eventsService.event.get_events();
+
         $scope.groups = dashboardService.groups.get();
+
         $scope.eventData = {
             name: '',
             location: '',
@@ -41,5 +33,6 @@ angular.module('scheudler').controller("eventsCtrl",
             group_id: '',
           //from: '',
           //till: '',
-          time: ''};
+          time: ''
+      };
   });

@@ -18,22 +18,17 @@ class Api::EventsController < Api::RestController
   def create
     event = Event.create_event(create_params)
     event.save!
+    Participants.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
   end
   
   def participate
-    part = Participants.create_participation(part_params, current_user.id)
+    part = Participants.change_participation(part_params, current_user.id)
     part.save!
     respond_with(nil, :location => nil)
   end
 
-  def reject
-
-
-  end
-
   def get_members
-    logger.info "test"
     @evemem = Participants.get_members(part_params)
     respond_with @evemem
   end
@@ -44,6 +39,6 @@ class Api::EventsController < Api::RestController
     end
 
     def part_params
-      params.permit(:id)
+      params.permit(:id, :accepted)
     end
 end

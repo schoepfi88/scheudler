@@ -23,8 +23,8 @@ angular.module('scheudler').factory("eventsService",function($resource) {
 				get_events: function(succH){
 					return eventsService.get(succH);
 				},
-				take_part: function(id, succH, errH){
-					participateService.participate({id: id},succH,errH);
+				take_part: function(id, bool, succH, errH){
+					participateService.participate({id: id}, {accepted: bool}, succH,errH);
 				},
 				get_members: function(id, succH, errH){
 					return memberService.members({id: id},succH, errH);

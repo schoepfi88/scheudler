@@ -1,4 +1,15 @@
-angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$templateCache){
+angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$timeout,$templateCache,dashboardService){
+
+	$scope.unreadMessages = 0;
+
+	//For updating blog counter
+	(function tick() {
+		dashboardService.message.unread(function(data){
+			if(data.unread[0] != $scope.unreadMessages)
+				$scope.unreadMessages = data.unread[0];
+		});
+		$timeout(tick, 3000);
+	})();
 
 	$scope.removeFromCache = function(id){
 		$templateCache.remove('/templates/groups_dashboard/' + id);
@@ -64,8 +75,8 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		location.href="/#/statistic";
 	};
 
-	$scope.redirect_to_blog = function(id, unreadCount){
-		location.href="/#/dashboard/messages/" + id + "/" + unreadCount;
+	$scope.redirect_to_blog = function(id){
+		location.href="/#/dashboard/messages/" + id + "/" + $scope.unreadMessages;
 	};
 
 	$scope.redirect_to_invite = function(id){
