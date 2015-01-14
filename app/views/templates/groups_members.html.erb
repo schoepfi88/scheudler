@@ -16,6 +16,10 @@
 					<%= t(".user") + "  " %>
 					<i class="fa fa-remove"></i>
 				</button>
+				<button class="btn btn-success badge-btn pull-right" ng-click="make_admin(<%= @group.id %>, <%= member.id %>)">
+					<%= t(".make_admin") + "  " %>
+					<i class="fa fa-level-up"></i>
+				</button>
 			<% else %>
 				<span class="badge-normal pull-right"><%= t(".user") + "  " %><i class="fa fa-ban"></i></span>
 			<% end %>

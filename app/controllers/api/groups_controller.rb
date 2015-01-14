@@ -34,7 +34,12 @@ class Api::GroupsController < Api::RestController
 			gcal_acl_delete(gcal_id, u.email)
 		end
 				
-		Group.remove_member(remove_params)
+		Group.remove_member(member_params)
+		respond_with(nil, :location => nil)
+	end
+
+	def make_admin
+		Group.make_admin(member_params)
 		respond_with(nil, :location => nil)
 	end
 
@@ -62,7 +67,7 @@ class Api::GroupsController < Api::RestController
 		params.permit(:id)
 	end
 
-	def remove_params
+	def member_params
 		params.permit(:group_id, :user_id)
 	end
 

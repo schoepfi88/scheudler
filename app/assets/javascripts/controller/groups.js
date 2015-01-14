@@ -35,11 +35,20 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.remove_member = function(group_id, user_id){
-		$scope.removeData.group_id = group_id;
-		$scope.removeData.user_id = user_id;
-		groupsService.group.remove($scope.removeData, function(){
+		$scope.memberData.group_id = group_id;
+		$scope.memberData.user_id = user_id;
+		groupsService.group.remove($scope.memberData, function(){
 			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
 			$templateCache.remove('/templates/groups_dashboard/' + group_id);
+			location.href="/#/groups_dashboard/" + group_id;
+		});
+	};
+
+	$scope.make_admin = function(group_id, user_id){
+		$scope.memberData.group_id = group_id;
+		$scope.memberData.user_id = user_id;
+		groupsService.group.make_admin($scope.memberData, function(){
+			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
 			location.href="/#/groups_dashboard/" + group_id;
 		});
 	};
@@ -95,6 +104,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 			$scope.inviteData.group_id = id;
 			groupsService.group.invite($scope.inviteData, function(){
 				$templateCache.remove('/templates/groups_dashboard/' + id);
+				$templateCache.remove('/templates/groups_dashboard/' + id + '/members');
 				location.href="/#/groups_dashboard/" + id;
 			});
 		}
@@ -117,7 +127,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		group_id: 0
 	};
 
-	$scope.removeData = {
+	$scope.memberData = {
 		group_id: 0,
 		user_id: 0
 	};

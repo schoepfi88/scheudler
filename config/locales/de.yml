@@ -197,6 +197,7 @@ de:
       admin                              : "Administrator"
       user                               : "Benutzer"
       remove_member                      : "Von Gruppe Entfernen"
+      make_admin                         : "Zu Admin machen"
     groups_settings:
       page_header                        : " - Einstellungen"
       page_title                         : "Gruppen Einstellungen"

@@ -44,7 +44,8 @@ scope "(:locale)", locale: /en|de/ do
     post '/groups' => 'groups#create'
     post '/groups_invite' => 'groups#invite'
     delete '/groups' => 'groups#destroy'
-    delete '/groups_remove' => 'groups#remove'
+    delete '/groups_members' => 'groups#remove'
+	post '/groups_members' => 'groups#make_admin'
 
     #account
     resources :account, only: [:update, :destroy]

@@ -307,7 +307,12 @@ canvas{
 	color: $orange;
 }
 
+.flaticon-large:before {
+  font-size: 80px !important;
+  color: $orange;
+}
 
+/* Used for showing members */
 .badge-normal {
   background-color: #999999;
   margin-top: 0px;
@@ -317,10 +322,9 @@ canvas{
   padding-bottom: 2px;
 }
 
+/* Used for performing actions on members */
 .badge-btn {
   color: white;
-  background-color: #d9534f;
-  border-color: #d43f3a;
   margin-top: 0px;
   padding-left: 5px;
   padding-right: 5px;

@@ -197,6 +197,7 @@ en:
       admin                              : "Administrator"
       user                               : "User"
       remove_member                      : "Remove From Group"
+      make_admin                         : "Make admin"
     groups_settings:
       page_header                        : " - Settings"
       page_title                         : "Group Settings"
