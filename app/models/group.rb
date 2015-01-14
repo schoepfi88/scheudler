@@ -32,4 +32,9 @@ class Group < ActiveRecord::Base
 		Member.where(:group_id => params[:group_id]).where(:user_id => params[:user_id]).destroy_all
 		nil
 	end
+
+	def self.make_admin(params)
+		Admin.create(group_id: params[:group_id], user_id: params[:user_id])
+		nil
+	end
 end

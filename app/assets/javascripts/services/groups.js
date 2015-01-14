@@ -10,9 +10,10 @@ angular.module('scheudler').factory("groupsService",function($resource) {
 						{
 							'invite': {method: "POST"}
 						});
-	var removeService = $resource('/api/groups_remove/:id',{},
+	var memberService = $resource('/api/groups_members/:id',{},
 						{
-							'remove': {method: "DELETE"}
+							'remove': {method: "DELETE"},
+							'make_admin': {method: "POST"}
 						});
 
     return {
@@ -32,8 +33,11 @@ angular.module('scheudler').factory("groupsService",function($resource) {
 				invite: function(inviteData, succH, errH){
 					inviteService.invite(inviteData, succH, errH);
 				},
-				remove: function(removeData, succH, errH){
-					removeService.remove(removeData, succH, errH);
+				remove: function(memberData, succH, errH){
+					memberService.remove(memberData, succH, errH);
+				},
+				make_admin: function(memberData, succH, errH){
+					memberService.make_admin(memberData, succH, errH);
 				}
 			}
     };
