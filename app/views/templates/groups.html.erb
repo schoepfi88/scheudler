@@ -24,7 +24,7 @@
 		<% counter = 0 %>
 		<% @groups.each do |group| %>
 			<div class="col-lg-6 col-sm-12">
-				<div class="panel panel-default clickable" ng-click="redirect_to_group(<%= group.id %>)">
+				<div class="panel panel-default clickable" ng-click="redirect_to_group(<%= group.id %>, <%= @groups.index(group) %>)">
 				  <div class="panel-heading">
 					<div class="row">
 					  <div class="col-xs-12">

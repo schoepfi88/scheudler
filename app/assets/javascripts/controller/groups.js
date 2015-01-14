@@ -1,12 +1,12 @@
-angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$timeout,$templateCache,$rootScope,dashboardService){
+angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$routeParams,$timeout,$templateCache,$rootScope,dashboardService){
 
 	$scope.unreadMessages = 0;
 	//For updating blog counter
 	(function tick() {
 		if ($rootScope.dash_groups_is_active === true){
 			dashboardService.message.unread(function(data){
-				if(data.unread[0] != $scope.unreadMessages)
-					$scope.unreadMessages = data.unread[0];
+				if(data.unread[$routeParams.index] != $scope.unreadMessages)
+					$scope.unreadMessages = data.unread[$routeParams.index];
 			});
 		}
 		$scope.checkPolling();
@@ -59,9 +59,9 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		}
 	};
 
-	$scope.redirect_to_group = function(id){
-
-		location.href="/#/groups_dashboard/" + id;
+	$scope.redirect_to_group = function(id, index){
+		console.log(index);
+		location.href="/#/groups_dashboard/" + id + "/"+ index;
 	};
 
 	$scope.redirect_to_groups_create = function(is_google_user){

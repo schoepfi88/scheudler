@@ -37,8 +37,8 @@ app.config(function($httpProvider, $routeProvider){
 		templateUrl: '/templates/groups_create',
 		controller: 'groupsCtrl'
 	}).
-	when('/groups_dashboard/:id', {
-		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id; },
+	when('/groups_dashboard/:id/:index', {
+		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id + "/" + params.index; },
 		controller: 'groupsCtrl'
 	}).
 	when('/groups_dashboard/:id/invite', {
