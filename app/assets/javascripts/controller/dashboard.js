@@ -17,17 +17,11 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										// test the comments TODO
-										/* if ($routeParams.index === null)
+										console.log($routeParams.index);
+										if ($routeParams.index === undefined)
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-										*/
-										if ($scope.selectedGroup === null){
-											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-										}
-										/* if ($routeParams.index !== null) { */
-											/* if ($scope.forUpdate[z].toString() === $routeParams.index){*/
-										if ($scope.selectedGroup !== null){
-											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
+										if ($routeParams.index !== undefined) {
+											if ($scope.forUpdate[z].toString() === $routeParams.index){
 												var check = data.unread[$scope.forUpdate[z]];
 												var start_index = Object.keys($scope.newMessages[$scope.forUpdate[z]]).length - check;
 												for (var r = start_index; r < Object.keys($scope.newMessages[$scope.forUpdate[z]]).length; r++){
