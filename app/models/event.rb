@@ -43,6 +43,7 @@ class Event < ActiveRecord::Base
 		groups_of_user = Member.where(user_id: userid).pluck(:group_id)
 		groups_of_user.each do |g|
 			e = Event.where(group_id: g)
+			e.joins(:group)
 			e.each do |e1|
 				returnList << e1
 			end
