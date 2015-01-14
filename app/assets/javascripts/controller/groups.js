@@ -38,7 +38,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		groupsService.group.remove($scope.memberData, function(){
 			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
 			$templateCache.remove('/templates/groups_dashboard/' + group_id);
-			location.href="/#/groups_dashboard/" + group_id + "/members";
+			location.href="/#/groups_dashboard/" + group_id;
 		});
 	};
 
@@ -47,7 +47,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		$scope.memberData.user_id = user_id;
 		groupsService.group.make_admin($scope.memberData, function(){
 			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
-			location.href="/#/groups_dashboard/" + group_id + "/members";
+			location.href="/#/groups_dashboard/" + group_id;
 		});
 	};
 
