@@ -79,17 +79,13 @@ angular.module('scheudler').controller("dashboardCtrl",
 			var event_empty = document.getElementById('event-empty');
 			var ev_head = document.getElementById('event-head');
 			var height = (ev_head.clientHeight * 0.76).toString() + "px";
-			var group_text = document.getElementsByName('group-text');
-			if (group_text.length > 0)
-				height = group_text.clientHeight.toString() + "px";
 			event_empty.style.lineHeight = height;
 		}
 		if($scope.allEventsUnaccepted.length === 0){
-			var event_empty = document.getElementById('invite-empty');
-			var ev_head = document.getElementById('event-head');
-			var height = (ev_head.clientHeight * 0.76).toString() + "px";
-			var group_text = document.getElementsByName('group-text');
-			event_empty.style.lineHeight = height;
+			var event_empty2 = document.getElementById('invite-empty');
+			var ev_head2 = document.getElementById('event-head');
+			var height2 = (ev_head2.clientHeight * 0.76).toString() + "px";
+			event_empty2.style.lineHeight = height2;
 		}
 
 	}
