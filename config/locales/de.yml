@@ -205,6 +205,9 @@ de:
     statistic:
       page_header                        : "Statistiken"
       page_title                         : "Statistiken"
+    statistic_groups:
+      page_header                        : "Gruppen Statistiken"
+      page_title                         : "Gruppen Statistiken"
     account:
       page_header                        : "Konto Einstellungen"
       page_title                         : "Konto Einstellungen"
