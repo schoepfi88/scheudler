@@ -8,7 +8,6 @@ angular.module('scheudler').controller("statisticCtrl",
   $scope.labels = ['Accepted', 'Rejected', 'Unanswered'];
 
   $scope.colors = ['#47A447', '#D2322D', '#999999'];
-  $scope.barColors = ['#47A447', '#D2322D', '#999999'];
 
   $scope.myModel3 = [
     { group: '2000', accepted: 5, rejected: 5, unanswered: 1 },
@@ -29,17 +28,12 @@ angular.module('scheudler').controller("statisticCtrl",
 	for(var i = 0; i < data.length; i++){
 		$scope.barModel.push({group: data[i][0], accepted: data[i][1], rejected: data[i][2], unanswered: data[i][3]});
 	}
-
-	/*[
-    	{ group: 'Group1', accepted: accepted, rejected: rejected, unanswered: unanswered },
-    	{ group: 'Group2', accepted: accepted, rejected: rejected, unanswered: unanswered },
-    	{ group: 'Group3', accepted: accepted, rejected: rejected, unanswered: unanswered }];*/
   };
 
   $scope.initDonut = function(data){
 	$scope.donutModel = [
-    	{ label: 'Accepted', value: data[0] },
-    	{ label: 'Rejected', value: data[1] },
-    	{ label: 'Unanswered', value: data[2] }];
+        { label: 'Accepted', value: data[0] },
+        { label: 'Rejected', value: data[1] },
+        { label: 'Unanswered', value: data[2] }];
   };
 });
