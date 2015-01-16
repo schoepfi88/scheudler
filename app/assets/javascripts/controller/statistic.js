@@ -1,5 +1,9 @@
 angular.module('scheudler').controller("statisticCtrl",
-	function($scope,Util){
+	function($scope,Util,$templateCache){
+
+  $scope.onInit = function(){
+	$templateCache.remove('/templates/statistic');
+  };
 
   $scope.xkey = 'group';
 

@@ -4,17 +4,21 @@
   </h1>
 </section>
 
-<div class="row">
+<div class="row" ng-init="onInit()">
 	<!--<div class="col-lg-6 col-sm-12">
 		<areachart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel3"/>
 	</div>
 	<div class="col-lg-6 col-sm-12">
 		<linechart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel3"/>
 	</div>-->
-	<div class="col-lg-6 col-sm-12" ng-init="initBar(<%= @groups_data %>)">
-		<barchart xkey="xkey" ykeys="ykeys" labels="labels" data="barModel" colors="colors"/>
-	</div>
-	<div class="col-lg-6 col-sm-12" ng-init="initDonut(<%= @user_data %>)">
-		<donutchart data="donutModel" colors="colors"/>
-	</div>
+	<% if @user_data[0] + @user_data[1] + @user_data[2] != 0 then %>
+		<div class="col-lg-6 col-sm-12" ng-init="initBar(<%= @groups_data %>)">
+			<barchart xkey="xkey" ykeys="ykeys" labels="labels" data="barModel" colors="colors"/>
+		</div>
+		<div class="col-lg-6 col-sm-12" ng-init="initDonut(<%= @user_data %>)">
+			<donutchart data="donutModel" colors="colors"/>
+		</div>
+	<% else %>
+		Nothing to show
+	<% end %>
 </div>
