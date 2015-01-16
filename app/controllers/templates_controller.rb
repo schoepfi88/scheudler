@@ -1,9 +1,10 @@
 class TemplatesController < ProtectedController
   layout false, except: [:index]
-  before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members]
+  before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members, :statistic_groups]
   before_action :is_group_admin, only: [:groups_settings]
   before_action :is_admin_var, only: [:groups_dashboard, :groups_members]
   before_action :is_google_user, only: [:groups, :groups_create, :account, :dashboard]
+  before_action :get_user_groups, only: [:events, :events_create, :statistic, :groups]
 
   def index
   end
@@ -15,12 +16,10 @@ class TemplatesController < ProtectedController
   end
 
   def events
-  @event = Event.get_events(@current_user.id)
-  @groups = Group.joins(:members).where(members: {user_id: @current_user.id})
+  	@event = Event.get_events(@current_user.id)
   end
 
   def events_create
-  @groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 
   def events_dashboard
@@ -28,7 +27,6 @@ class TemplatesController < ProtectedController
   end
 
   def groups
-	@groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 
   def groups_create
@@ -49,6 +47,17 @@ class TemplatesController < ProtectedController
   end
 
   def statistic
+	response = Participant.create_user_charts(@current_user.id, @groups)
+	@user_data = response[0]
+	@groups_data = response[1]
+	@year_data = response[2]
+  end
+
+  def statistic_groups
+	response = Participant.create_group_charts(@current_user.id, params[:id])
+	@user_data = response[0]
+	@groups_data = response[1]
+	@year_data = response[2]
   end
 
   def account
@@ -86,5 +95,9 @@ class TemplatesController < ProtectedController
 	if @current_user.provider != "google_oauth2" then
 		@is_google_user = false;
 	end
+  end
+
+  def get_user_groups
+	@groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 end

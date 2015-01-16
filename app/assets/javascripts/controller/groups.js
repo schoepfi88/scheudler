@@ -40,7 +40,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		groupsService.group.remove($scope.memberData, function(){
 			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
 			$templateCache.remove('/templates/groups_dashboard/' + group_id);
-			location.href="/#/groups_dashboard/" + group_id;
+			location.href="/#/groups_dashboard/" + group_id + "/0";
 		});
 	};
 
@@ -49,7 +49,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		$scope.memberData.user_id = user_id;
 		groupsService.group.make_admin($scope.memberData, function(){
 			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
-			location.href="/#/groups_dashboard/" + group_id;
+			location.href="/#/groups_dashboard/" + group_id + "/0";
 		});
 	};
 
@@ -84,7 +84,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.redirect_to_statistic = function(id){
-		location.href="/#/statistic";
+		location.href="/#/statistic_groups/" + id;
 	};
 
 	$scope.redirect_to_blog = function(id){
@@ -105,7 +105,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 			groupsService.group.invite($scope.inviteData, function(){
 				$templateCache.remove('/templates/groups_dashboard/' + id);
 				$templateCache.remove('/templates/groups_dashboard/' + id + '/members');
-				location.href="/#/groups_dashboard/" + id;
+				location.href="/#/groups_dashboard/" + id + "/0";
 			});
 		}
 	};

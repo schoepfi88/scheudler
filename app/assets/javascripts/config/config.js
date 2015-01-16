@@ -57,6 +57,10 @@ app.config(function($httpProvider, $routeProvider){
 		templateUrl: '/templates/statistic',
 		controller: 'statisticCtrl'
 	}).
+	when('/statistic_groups/:id', {
+		templateUrl: function(params){ return '/templates/statistic_groups/' + params.id; },
+		controller: 'statisticCtrl'
+	}).
 	when('/account', {
 		templateUrl: '/templates/account',
 		controller: 'accountCtrl'

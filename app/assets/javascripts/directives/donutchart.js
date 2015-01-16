@@ -6,14 +6,16 @@ angular.module('scheudler').directive('donutchart', function() {
         replace: true,
         link: function($scope, element, attrs) {
 
-            var data = $scope[attrs.data];
+            var data = $scope[attrs.data],
+				colors = $scope[attrs.colors];
 
             var setData = function(){
                 console.log('inside setData function');
                 Morris.Donut({
                     element: element,
                     data: data,
-					resize: true
+					resize: true,
+					colors: colors
                 });
             };
 
