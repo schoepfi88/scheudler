@@ -49,6 +49,13 @@ class TemplatesController < ProtectedController
   def statistic
 	@user_data = [0, 0, 0]
 	@groups_data = []
+	@year_data = []
+	month_count = []
+
+	for i in 0..11
+		month_count << [0, 0, 0]
+	end
+	
 	#For each group
 	@groups.each do |g|
 		#Get group events
@@ -66,10 +73,13 @@ class TemplatesController < ProtectedController
 			participations.each do |p|
 				if p.accepted == nil
 					unanswered += 1
+					month_count[p.updated_at.month - 1][2] += 1
 				elsif !p.accepted
 					rejected += 1
+					month_count[p.updated_at.month - 1][1] += 1
 				else
 					accepted += 1
+					month_count[p.updated_at.month - 1][0] += 1
 				end
 			end
 		end
@@ -77,12 +87,15 @@ class TemplatesController < ProtectedController
 		@user_data[0] += accepted
 		@user_data[1] += rejected
 		@user_data[2] += unanswered
-		
+
 		if accepted + rejected + unanswered != 0
 			@groups_data << [g.name, accepted, rejected, unanswered]
 		end
 	end
 
+	for i in 0..11
+		@year_data << ['2015-' + (i + 1).to_s, month_count[i][0], month_count[i][1], month_count[i][2]]
+	end
 
   end
 

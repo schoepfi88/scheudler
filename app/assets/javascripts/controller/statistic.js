@@ -20,12 +20,12 @@ angular.module('scheudler').controller("statisticCtrl",
     { group: '2005', accepted: 20, rejected: 6, unanswered: 1 }
   ];
 
-  $scope.myModel2 = [
-    { group: 'January', accepted: 5, rejected: 5, unanswered: 1 },
-    { group: 'January', accepted: 35, rejected: 8, unanswered: 1 },
-    { group: 'January', accepted: 20, rejected: 1, unanswered: 1 },
-    { group: 'January', accepted: 20, rejected: 6, unanswered: 1 }
-  ];
+  $scope.initLine = function(data){
+	$scope.lineModel = [];
+	for(var i = 0; i < data.length; i++){
+		$scope.lineModel.push({group: data[i][0], accepted: data[i][1], rejected: data[i][2], unanswered: data[i][3]});
+	}
+  };
 
   $scope.initBar = function(data){
 	$scope.barModel = [];
