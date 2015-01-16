@@ -137,7 +137,7 @@ class Participant < ActiveRecord::Base
 			end
 		end
 
-		groups_data.sort! { |a,b| a[1] <=> b[1] }
+		groups_data.sort! { |a,b| b[1] <=> a[1] }
 
 		for i in 0..11
 			year_data << ['2015-' + (i + 1).to_s, month_count[i][0], month_count[i][1], month_count[i][2]]
