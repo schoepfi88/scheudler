@@ -1,0 +1,24 @@
+<section class="hidden-print">
+  <h1 class="page-header">
+	<i class="fa fa-line-chart"></i> <%=t ( '.page_header') %>
+  </h1>
+</section>
+
+<div class="row" ng-init="onInitGroup(<%= params[:id] %> )">
+	<!--<div class="col-lg-6 col-sm-12">
+		<areachart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel3"/>
+	</div>-->
+	<% if @user_data[0] + @user_data[1] + @user_data[2] != 0 then %>
+		<div class="col-lg-6 col-sm-12" ng-init="initDonut(<%= @user_data %>)">
+			<donutchart data="donutModel" colors="colors"/>
+		</div>
+		<div class="col-lg-6 col-sm-12" ng-init="initBar(<%= @groups_data %>)">
+			<barchart xkey="xkey" ykeys="ykeys" labels="labels" data="barModel" colors="colors"/>
+		</div>
+		<div class="col-lg-6 col-sm-12" ng-init="initLine(<%= @year_data %>)">
+			<areachart xkey="xkey" ykeys="ykeys" labels="labels" data="lineModel" colors="colors"/>
+		</div>
+	<% else %>
+		Nothing to show
+	<% end %>
+</div>

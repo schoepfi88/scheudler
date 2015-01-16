@@ -5,6 +5,10 @@ angular.module('scheudler').controller("statisticCtrl",
 	$templateCache.remove('/templates/statistic');
   };
 
+  $scope.onInitGroup = function(group_id){
+	$templateCache.remove('/templates/statistic_groups/' + group_id);
+  };
+
   $scope.xkey = 'group';
 
   $scope.ykeys = ['accepted', 'rejected', 'unanswered'];
