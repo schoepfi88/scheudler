@@ -19,7 +19,8 @@ angular.module('scheudler').directive('areachart', function() {
                     xkey: xkey,
                     ykeys: ykeys,
                     labels: labels,
-					resize: true
+					resize: true,
+					lineColors: ['#47A447', '#D2322D', '#999999']
                 });
             };
 

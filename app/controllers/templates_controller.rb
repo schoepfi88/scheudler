@@ -4,6 +4,7 @@ class TemplatesController < ProtectedController
   before_action :is_group_admin, only: [:groups_settings]
   before_action :is_admin_var, only: [:groups_dashboard, :groups_members]
   before_action :is_google_user, only: [:groups, :groups_create, :account, :dashboard]
+  before_action :get_user_groups, only: [:events, :events_create, :statistic, :groups]
 
   def index
   end
@@ -15,12 +16,10 @@ class TemplatesController < ProtectedController
   end
 
   def events
-  @event = Event.get_events(@current_user.id)
-  @groups = Group.joins(:members).where(members: {user_id: @current_user.id})
+  	@event = Event.get_events(@current_user.id)
   end
 
   def events_create
-  @groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 
   def events_dashboard
@@ -28,7 +27,6 @@ class TemplatesController < ProtectedController
   end
 
   def groups
-	@groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 
   def groups_create
@@ -49,6 +47,43 @@ class TemplatesController < ProtectedController
   end
 
   def statistic
+	@user_data = [0, 0, 0]
+	@groups_data = []
+	#For each group
+	@groups.each do |g|
+		#Get group events
+		group_events = Event.where(:group_id => g.id)
+
+		accepted = 0
+		rejected = 0
+		unanswered = 0
+	
+		#For each event
+		group_events.each do |e|
+			#Get participations of current user
+			participations = e.participants.where(:user_id => @current_user.id)
+			#Count participations
+			participations.each do |p|
+				if p.accepted == nil
+					unanswered += 1
+				elsif !p.accepted
+					rejected += 1
+				else
+					accepted += 1
+				end
+			end
+		end
+		
+		@user_data[0] += accepted
+		@user_data[1] += rejected
+		@user_data[2] += unanswered
+		
+		if accepted + rejected + unanswered != 0
+			@groups_data << [g.name, accepted, rejected, unanswered]
+		end
+	end
+
+
   end
 
   def account
@@ -86,5 +121,9 @@ class TemplatesController < ProtectedController
 	if @current_user.provider != "google_oauth2" then
 		@is_google_user = false;
 	end
+  end
+
+  def get_user_groups
+	@groups = Group.joins(:members).where(members: {user_id: @current_user.id})
   end
 end

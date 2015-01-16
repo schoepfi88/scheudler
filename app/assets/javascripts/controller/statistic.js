@@ -1,30 +1,45 @@
 angular.module('scheudler').controller("statisticCtrl",
 	function($scope,Util){
 
-  $scope.xkey = 'range';
+  $scope.xkey = 'group';
 
-  $scope.ykeys = ['total_tasks',     'total_overdue'];
+  $scope.ykeys = ['accepted', 'rejected', 'unanswered'];
 
-  $scope.labels = ['Total Tasks', 'Out of Budget Tasks'];
+  $scope.labels = ['Accepted', 'Rejected', 'Unanswered'];
+
+  $scope.colors = ['#47A447', '#D2322D', '#999999'];
+  $scope.barColors = ['#47A447', '#D2322D', '#999999'];
 
   $scope.myModel3 = [
-    { range: '2000', total_tasks: 5, total_overdue: 5 },
-    { range: '2001', total_tasks: 35, total_overdue: 8 },
-    { range: '2002', total_tasks: 20, total_overdue: 1 },
-    { range: '2005', total_tasks: 20, total_overdue: 6 }
+    { group: '2000', accepted: 5, rejected: 5, unanswered: 1 },
+    { group: '2001', accepted: 35, rejected: 8, unanswered: 1 },
+    { group: '2002', accepted: 20, rejected: 1, unanswered: 1 },
+    { group: '2005', accepted: 20, rejected: 6, unanswered: 1 }
   ];
 
   $scope.myModel2 = [
-    { range: 'January', total_tasks: 5, total_overdue: 5 },
-    { range: 'January', total_tasks: 35, total_overdue: 8 },
-    { range: 'January', total_tasks: 20, total_overdue: 1 },
-    { range: 'January', total_tasks: 20, total_overdue: 6 }
+    { group: 'January', accepted: 5, rejected: 5, unanswered: 1 },
+    { group: 'January', accepted: 35, rejected: 8, unanswered: 1 },
+    { group: 'January', accepted: 20, rejected: 1, unanswered: 1 },
+    { group: 'January', accepted: 20, rejected: 6, unanswered: 1 }
   ];
 
-  $scope.myModel = [
-    { label: 'January', value: 5 },
-    { label: 'February', value: 35 },
-    { label: 'March', value: 20 },
-    { label: 'April', value: 20 }
-  ];
+  $scope.initBar = function(data){
+	$scope.barModel = [];
+	for(var i = 0; i < data.length; i++){
+		$scope.barModel.push({group: data[i][0], accepted: data[i][1], rejected: data[i][2], unanswered: data[i][3]});
+	}
+
+	/*[
+    	{ group: 'Group1', accepted: accepted, rejected: rejected, unanswered: unanswered },
+    	{ group: 'Group2', accepted: accepted, rejected: rejected, unanswered: unanswered },
+    	{ group: 'Group3', accepted: accepted, rejected: rejected, unanswered: unanswered }];*/
+  };
+
+  $scope.initDonut = function(data){
+	$scope.donutModel = [
+    	{ label: 'Accepted', value: data[0] },
+    	{ label: 'Rejected', value: data[1] },
+    	{ label: 'Unanswered', value: data[2] }];
+  };
 });

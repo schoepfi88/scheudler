@@ -9,7 +9,8 @@ angular.module('scheudler').directive('barchart', function() {
             var data = $scope[attrs.data],
                 xkey = $scope[attrs.xkey],
                 ykeys= $scope[attrs.ykeys],
-                labels= $scope[attrs.labels];
+                labels= $scope[attrs.labels],
+				colors= $scope[attrs.colors];
 
             var setData = function(){
                 console.log('inside setData function');
@@ -19,7 +20,8 @@ angular.module('scheudler').directive('barchart', function() {
                     xkey: xkey,
                     ykeys: ykeys,
                     labels: labels,
-					resize: true
+					resize: true,
+					barColors: colors
                 });
             };
 

@@ -5,16 +5,16 @@
 </section>
 
 <div class="row">
-	<div class="col-lg-6 col-sm-12">
+	<!--<div class="col-lg-6 col-sm-12">
 		<areachart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel3"/>
 	</div>
 	<div class="col-lg-6 col-sm-12">
 		<linechart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel3"/>
+	</div>-->
+	<div class="col-lg-6 col-sm-12" ng-init="initBar(<%= @groups_data %>)">
+		<barchart xkey="xkey" ykeys="ykeys" labels="labels" data="barModel" colors="colors"/>
 	</div>
-	<div class="col-lg-6 col-sm-12">
-		<barchart xkey="xkey" ykeys="ykeys" labels="labels" data="myModel2"/>
-	</div>
-	<div class="col-lg-6 col-sm-12">
-		<donutchart data="myModel"/>
+	<div class="col-lg-6 col-sm-12" ng-init="initDonut(<%= @user_data %>)">
+		<donutchart data="donutModel" colors="colors"/>
 	</div>
 </div>
