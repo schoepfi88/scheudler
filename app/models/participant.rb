@@ -104,18 +104,24 @@ class Participant < ActiveRecord::Base
 			#For each event
 			group_events.each do |e|
 				#Get participations of current user
-				participations = e.participants.where(:user_id => user_id)
+				participations = e.participants.where(:user_id => m.user_id)
 				#Count participations
 				participations.each do |p|
 					if p.accepted == nil
 						unanswered += 1
-						month_count[p.updated_at.month - 1][2] += 1
+						if m.user_id == user_id then
+							month_count[p.updated_at.month - 1][2] += 1
+						end
 					elsif !p.accepted
 						rejected += 1
-						month_count[p.updated_at.month - 1][1] += 1
+						if m.user_id == user_id then
+							month_count[p.updated_at.month - 1][1] += 1
+						end
 					else
 						accepted += 1
-						month_count[p.updated_at.month - 1][0] += 1
+						if m.user_id == user_id then
+							month_count[p.updated_at.month - 1][0] += 1
+						end
 					end
 				end
 			end
