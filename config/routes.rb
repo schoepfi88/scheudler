@@ -17,7 +17,7 @@ scope "(:locale)", locale: /en|de/ do
     get '/events_dashboard/:id', to: :events_dashboard, as: 'events_dashboard_template'
     get '/groups', to: :groups, as: 'groups_template'
     get '/groups_create', to: :groups_create, as: 'groups_create_template'
-    get '/groups_dashboard/:id', to: :groups_dashboard, as: 'groups_dashboard_template'
+    get '/groups_dashboard/:id/:index', to: :groups_dashboard, as: 'groups_dashboard_template'
     get '/groups_dashboard/:id/invite', to: :groups_invite, as: 'groups_invite_template'
     get '/groups_dashboard/:id/members', to: :groups_members, as: 'groups_members_template'
     get '/groups_dashboard/:id/settings', to: :groups_settings, as: 'groups_settings_template'

@@ -23,12 +23,20 @@ angular.module('scheudler').controller("rootCtrl",function($scope,$rootScope,$ti
         return route === $location.path();
     };
 
-    $scope.actPolling=function(){
-        $rootScope.dash_is_active = true;
-    };
-
-    $scope.deactPolling=function(){
-        $rootScope.dash_is_active = false;
+    $scope.checkPolling=function(){
+        var path = $location.path();
+        if (path.indexOf("/dashboard") >= 0){
+            $rootScope.dash_is_active = true;
+            $rootScope.dash_groups_is_active = false;
+        }
+        else if (path.indexOf("groups_dash") >= 0){
+            $rootScope.dash_groups_is_active = true;
+            $rootScope.dash_is_active = false;
+        }
+        else {
+            $rootScope.dash_groups_is_active = false;
+            $rootScope.dash_is_active = false;
+        }
     }
 
     $scope.startBar();

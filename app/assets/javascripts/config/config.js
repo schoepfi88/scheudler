@@ -37,8 +37,8 @@ app.config(function($httpProvider, $routeProvider){
 		templateUrl: '/templates/groups_create',
 		controller: 'groupsCtrl'
 	}).
-	when('/groups_dashboard/:id', {
-		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id; },
+	when('/groups_dashboard/:id/:index', {
+		templateUrl: function(params){ return '/templates/groups_dashboard/' + params.id + "/" + params.index; },
 		controller: 'groupsCtrl'
 	}).
 	when('/groups_dashboard/:id/invite', {
@@ -85,6 +85,7 @@ app.config(function($httpProvider, $routeProvider){
 }).run(function($rootScope,Util){
   $rootScope.pending_requests=0;
   $rootScope.dash_is_active = true;
+  $rootScope.dash_groups_is_active = false;
   $rootScope.$on('$routeChangeStart',function(){
     Util.clear_server_errors();     //clear errors on view change
     $('.modal.in').modal('hide');   //dirty nasty ugly hack!!! DON'T DO THIS AT

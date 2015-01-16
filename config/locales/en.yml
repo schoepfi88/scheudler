@@ -106,6 +106,8 @@ en:
       new_message                        : "Enter text"
       no_group_placeholder               : "Currently you arn't member of a group"
       create_group                       : "Create New Group"
+      no_event_placeholder               : "No upcoming events. Accept your event invites"
+      no_invite_placeholder              : "No event invitations"
     dashboard_messages:
       page_header                        : "Blog of"
       new_message                        : "Enter text"

@@ -108,7 +108,7 @@ class Api::DashboardController < ApplicationController
 		groups_of_user.each do |g|
 			e = Event.where(group_id: g)
 			e.each do |e1|
-				check = Participants.where(user_id: current_user.id, event_id: e1.id).first
+				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
 					if check.accepted == nil 
 						@all_invites << e1
@@ -126,7 +126,7 @@ class Api::DashboardController < ApplicationController
 		groups_of_user.each do |g|
 			e = Event.where(group_id: g)
 			e.each do |e1|
-				check = Participants.where(user_id: current_user.id, event_id: e1.id).first
+				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
 					if check.accepted == true 
 						@all_events << e1
@@ -138,7 +138,7 @@ class Api::DashboardController < ApplicationController
 	end
 
 	def accepted
-		part = Participants.where(user_id: current_user.id, event_id: acc_params[:eve_id]).first
+		part = Participant.where(user_id: current_user.id, event_id: acc_params[:eve_id]).first
 		part.accepted = acc_params[:bool]
 		part.save!
 		redirect_to :back

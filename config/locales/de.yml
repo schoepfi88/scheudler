@@ -106,6 +106,8 @@ de:
       new_message                        : "Text eingeben"
       no_group_placeholder               : "Derzeit sind Sie nicht Mitglied einer Gruppe"
       create_group                       : "Erstelle neue Gruppe"
+      no_event_placeholder               : "Keine anstehenden Events. Bestätige deine Event Einladungen"
+      no_invite_placeholder              : "Keine Event Einladungen"
     dashboard_messages:
       page_header                        : "Blog of"
       send                               : "senden"

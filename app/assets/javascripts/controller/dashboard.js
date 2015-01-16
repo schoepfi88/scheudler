@@ -17,17 +17,11 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										// test the comments TODO
-										/* if ($routeParams.index === null)
+										console.log($routeParams.index);
+										if ($routeParams.index === undefined)
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-										*/
-										if ($scope.selectedGroup === null){
-											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
-										}
-										/* if ($routeParams.index !== null) { */
-											/* if ($scope.forUpdate[z].toString() === $routeParams.index){*/
-										if ($scope.selectedGroup !== null){
-											if ($scope.selectedGroup.index.toString() === $scope.forUpdate[z].toString()){
+										if ($routeParams.index !== undefined) {
+											if ($scope.forUpdate[z].toString() === $routeParams.index){
 												var check = data.unread[$scope.forUpdate[z]];
 												var start_index = Object.keys($scope.newMessages[$scope.forUpdate[z]]).length - check;
 												for (var r = start_index; r < Object.keys($scope.newMessages[$scope.forUpdate[z]]).length; r++){
@@ -49,10 +43,10 @@ angular.module('scheudler').controller("dashboardCtrl",
 					$scope.unreadMessages = data;
 					$scope.tickCounter = 0;
 				}
-				$timeout(tick, 3000);
 			});
 		}
-		
+		$scope.checkPolling();
+		$timeout(tick, 3000);
 	})();
 
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
@@ -74,6 +68,18 @@ angular.module('scheudler').controller("dashboardCtrl",
 			var group_empty = document.getElementById('group_empty');
 			var set_height = Math.max(group_body.clientHeight, event_body.clientHeight, invite_body.clientHeight)/2;
 			group_empty.style.lineHeight = set_height.toString() + "px";
+		}
+		if($scope.allEventsAccepted.length === 0){
+			var event_empty = document.getElementById('event-empty');
+			var ev_head = document.getElementById('event-head');
+			var height = (ev_head.clientHeight * 0.76).toString() + "px";
+			event_empty.style.lineHeight = height;
+		}
+		if($scope.allEventsUnaccepted.length === 0){
+			var event_empty2 = document.getElementById('invite-empty');
+			var ev_head2 = document.getElementById('event-head');
+			var height2 = (ev_head2.clientHeight * 0.76).toString() + "px";
+			event_empty2.style.lineHeight = height2;
 		}
 
 	}
@@ -104,8 +110,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 		var ev_close = document.getElementsByName('event-close');
 		var ev_head = document.getElementById('event-head');
 		var height = (ev_head.clientHeight * 0.76).toString() + "px";
-		var ev_empty = document.getElementById('event-empty');
-		ev_empty.style.lineHeight = height;
 		for (var i = ev_text.length - 1; i >= 0; i--) {
 			ev_pic[i].style.lineHeight = height;
 			ev_close[i].style.lineHeight = height;
@@ -224,7 +228,8 @@ angular.module('scheudler').controller("dashboardCtrl",
 				}
 			}
 			var new_next = $scope.allEventsUnaccepted.splice(index, 1);
-			$scope.allEventsAccepted.push(new_next[0]);
+			if(state === true)
+				$scope.allEventsAccepted.push(new_next[0]);
 		});
 	};
 
