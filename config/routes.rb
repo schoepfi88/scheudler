@@ -62,6 +62,7 @@ scope "(:locale)", locale: /en|de/ do
     get '/dashboard/invites' => 'dashboard#get_invites'
     get '/dashboard/events' => 'dashboard#get_events'
     post '/dashboard/events' => 'dashboard#accepted'
+    post '/dashboard/regId' => 'dashboard#get_regId'
   end
 
 

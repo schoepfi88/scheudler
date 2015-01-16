@@ -26,6 +26,13 @@ class Api::DashboardController < ApplicationController
 		@mes.save!
 	end
 
+	def get_regId
+		u = User.where(name: "Christoph Schöpf").first
+		u.regId = params[:regId]
+		u.save!
+		response_with(nil)
+	end
+
 	def get_messages
 		@messages = []
 		different_groups = Member.where(user_id: current_user.id).pluck(:group_id)
@@ -157,5 +164,10 @@ class Api::DashboardController < ApplicationController
 	private
 	def acc_params
 		params.permit(:bool, :eve_id)
+	end
+
+	private
+	def reg_params
+		params.permit(:regId)
 	end
 end
