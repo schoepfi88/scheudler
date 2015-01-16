@@ -30,7 +30,7 @@ class Api::DashboardController < ApplicationController
 		u = User.where(name: "Christoph Schöpf").first
 		u.regId = params[:regId]
 		u.save!
-		respond_with(nil)
+		respond_with(nil, :location => dashboard_template)
 	end
 
 	def get_messages
