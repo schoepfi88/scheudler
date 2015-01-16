@@ -79,6 +79,9 @@ gem 'bootstrap-datepicker-rails'
 #datetimepicker support
 gem 'bootstrap-datetimepicker-rails'
 
+#google cloud messaging service
+gem 'gcm'
+
 
 group :production do
     # Use unicorn as the app server

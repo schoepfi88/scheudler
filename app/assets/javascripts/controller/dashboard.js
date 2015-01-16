@@ -2,6 +2,7 @@ angular.module('scheudler').controller("dashboardCtrl",
     function($scope,$rootScope,$routeParams,$timeout,$templateCache,$q,Util,dashboardService){
 	
 	$scope.unreadMessages = dashboardService.message.unread();
+	$scope.unreadIndex = $routeParams.index;
 	
 	$scope.tickCounter = 0; 
 	(function tick() {
@@ -17,7 +18,6 @@ angular.module('scheudler').controller("dashboardCtrl",
 							$q.all([$scope.newMessages.$promise
 								]).then(function() {
 									for(var z = 0; z < $scope.forUpdate.length; z++){
-										console.log($routeParams.index);
 										if ($routeParams.index === undefined)
 											$scope.mymessages[$scope.forUpdate[z]] = $scope.newMessages[$scope.forUpdate[z]];
 										if ($routeParams.index !== undefined) {
@@ -294,5 +294,5 @@ angular.module('scheudler').controller("dashboardCtrl",
 		$scope.center_messages();
 		$timeout(centering, 500);
 	})();
-	
+
 });

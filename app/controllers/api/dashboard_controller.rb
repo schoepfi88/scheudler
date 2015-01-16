@@ -1,4 +1,5 @@
 class Api::DashboardController < ApplicationController
+	require 'gcm'	
 	respond_to :json
 	$max_messages = 7
 	$max_messages_all = 25
@@ -14,10 +15,14 @@ class Api::DashboardController < ApplicationController
 	end
 
 	def create
+		gcm = GCM.new("AIzaSyD7pD3x9x4aBsqBnQfaxMLFLPkepeXLpJo")
+		registration_ids= ["APA91bFNkjbijIP8-5G7R8j7w-FvFVWiFWhzzbPS8vcthMYA2G9h7eY9xjQQJAmfI9iCv7f1zmS6VlABI0qPlrIbuY3SUeYlBYZWLnouS-pJbnOuryE4boyFbOIlhI39Vj-HEfCWCBbch9ApiTwv-i-AEpwoIezPqCmHARD886XCHbDKNzzR9Fk"] 
 		@mes = Message.new(mes_params)
 		@mes.sender_id = current_user.id
 		@mes.created_at = Message.calcTime()
 		@mes.readers = [current_user.id]
+		options = {data: {title: current_user.name, message: mes_params[:text]}, collapse_key: "updated_score"}
+		response = gcm.send(registration_ids, options)
 		@mes.save!
 	end
 
