@@ -15,22 +15,22 @@ class Api::DashboardController < ApplicationController
 	end
 
 	def create
-		#bundle exec push $RACK_ENV -f
-		#ENV('GCM_API')
 		key = ENV["GOOGLE_GCM_API_KEY"]
 		gcm = GCM.new(key)
-		#group_id = mes_params[:group_id]
-		registration_ids=["APA91bFNkjbijIP8-5G7R8j7w-FvFVWiFWhzzbPS8vcthMYA2G9h7eY9xjQQJAmfI9iCv7f1zmS6VlABI0qPlrIbuY3SUeYlBYZWLnouS-pJbnOuryE4boyFbOIlhI39Vj-HEfCWCBbch9ApiTwv-i-AEpwoIezPqCmHARD886XCHbDKNzzR9Fk"]
-		#group_members = Member.where(group_id: group_id).pluck(:user_id)
+		group_id = mes_params[:receiver_id]
+		registration_ids=[]
+		group_members = Member.where(group_id: group_id).pluck(:user_id)
 		# add regId of group members
-		#group_members.each do |u|
-		#	if u != current_user.id
-		#		member = User.find(u)
-		#		if member.regId != nil
-		#			registration_ids << member.regId
-		#		end
-		#	end
-		#end
+		group_members.each do |u|
+			# don't send to sender
+			if u != current_user.id
+				member = User.find(u)
+				# only if regId exist
+				if member.regId != nil
+					registration_ids << member.regId
+				end
+			end
+		end
 		
 		@mes = Message.new(mes_params)
 		@mes.sender_id = current_user.id
