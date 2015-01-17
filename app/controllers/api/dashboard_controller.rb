@@ -17,7 +17,8 @@ class Api::DashboardController < ApplicationController
 	def create
 		#bundle exec push $RACK_ENV -f
 		#ENV('GCM_API')
-		gcm = GCM.new("AIzaSyD7pD3x9x4aBsqBnQfaxMLFLPkepeXLpJo")
+		key = ENV["GOOGLE_GCM_API_KEY"]
+		gcm = GCM.new(key)
 		#group_id = mes_params[:group_id]
 		registration_ids=["APA91bFNkjbijIP8-5G7R8j7w-FvFVWiFWhzzbPS8vcthMYA2G9h7eY9xjQQJAmfI9iCv7f1zmS6VlABI0qPlrIbuY3SUeYlBYZWLnouS-pJbnOuryE4boyFbOIlhI39Vj-HEfCWCBbch9ApiTwv-i-AEpwoIezPqCmHARD886XCHbDKNzzR9Fk"]
 		#group_members = Member.where(group_id: group_id).pluck(:user_id)
