@@ -162,6 +162,27 @@ private
 		return result.data
 	end
 	
+	def gcal_acl_add_owner(gcal_id, email)
+		acl = {
+			"kind" => "calendar#aclRule",
+			"id" => "user:" + email,
+			"scope" => {
+				"type" => "user",
+				"value" => email
+			},
+			"role" => "owner"
+		}
+		params = {
+      calendarId: gcal_id
+    }
+		result = @client.execute(
+		  :api_method => @calendar.acl.insert,
+			:parameters => params,
+		  :body_object => acl
+		)
+		return result.data
+	end
+	
 	def gcal_acl_delete(gcal_id, email)
 		id = "user:" + email
 	

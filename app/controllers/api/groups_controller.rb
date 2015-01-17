@@ -39,7 +39,16 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def make_admin
-		Group.make_admin(member_params)
+		u = User.find(params[:user_id])
+		
+		if u.provider == 'google_oauth2' then
+			Group.make_admin(member_params)
+			init_calendar
+			gcal_id = Group.find(params[:group_id]).calendar_id
+			gcal_acl_delete(gcal_id, u.email)
+			gcal_acl_add_owner(gcal_id, u.email)
+		end
+		
 		respond_with(nil, :location => nil)
 	end
 
