@@ -16,7 +16,19 @@ class Api::DashboardController < ApplicationController
 
 	def create
 		gcm = GCM.new(ENV['GCM_API'])
-		registration_ids= ["APA91bFNkjbijIP8-5G7R8j7w-FvFVWiFWhzzbPS8vcthMYA2G9h7eY9xjQQJAmfI9iCv7f1zmS6VlABI0qPlrIbuY3SUeYlBYZWLnouS-pJbnOuryE4boyFbOIlhI39Vj-HEfCWCBbch9ApiTwv-i-AEpwoIezPqCmHARD886XCHbDKNzzR9Fk"] 
+		group_id = mes_params[:group_id]
+		registration_ids=[]
+		group_members = Member.where(group_id: group_id).pluck(:user_id)
+		# add regId of group members
+		group_members.each do |u|
+			if u != current_user.id
+				member = User.find(u)
+				if member.regId != nil
+					registration_ids << member.regId
+				end
+			end
+		end
+		
 		@mes = Message.new(mes_params)
 		@mes.sender_id = current_user.id
 		@mes.created_at = Message.calcTime()
@@ -27,9 +39,16 @@ class Api::DashboardController < ApplicationController
 	end
 
 	def get_regId
-		u = User.where(name: "Christoph Schöpf").first
-		u.regId = params[:regId]
-		u.save!
+		accounts = params[:accounts]
+		accounts.each do |acc|
+			check_user = User.where(email: acc.name).first
+			if check_user != nil
+				if check_user.regId == nil
+					check_user.regId = params[:regId]
+					check_user.save!
+				end
+			end
+		end
 		respond_with(nil, :location => nil)
 	end
 
@@ -168,6 +187,6 @@ class Api::DashboardController < ApplicationController
 
 	private
 	def reg_params
-		params.permit(:regId)
+		params.permit(:regId, :accounts)
 	end
 end
