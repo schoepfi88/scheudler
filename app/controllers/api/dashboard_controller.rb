@@ -46,10 +46,8 @@ class Api::DashboardController < ApplicationController
 		accounts.each do |acc|
 			check_user = User.where(email: acc[:name]).first
 			if check_user != nil
-				if check_user.regId == nil
 					check_user.regId = params[:regId]
 					check_user.save!
-				end
 			end
 		end
 		respond_with(nil, :location => nil)
