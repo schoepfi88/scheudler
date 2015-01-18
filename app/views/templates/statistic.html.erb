@@ -19,6 +19,15 @@
 			<areachart xkey="xkey" ykeys="ykeys" labels="labels" data="lineModel" colors="colors"/>
 		</div>
 	<% else %>
-		Nothing to show
+		<!--  condition ng-show -->
+		<div class="jumbotron text-center">
+			<i class="fa fa-line-chart fa-5x"></i>
+			<h2>
+			  <%=t ( ".help_title") %>
+			</h2>
+			<%=t ( ".help_paragraph1") %>
+			<br>
+			<%=t ( ".help_paragraph2") %>
+		</div>
 	<% end %>
 </div>

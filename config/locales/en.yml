@@ -205,9 +205,15 @@ en:
     statistic:
       page_header                        : "Statistics"
       page_title                         : "Statistics"
+      help_title                         : "Nothing to show"
+      help_paragraph1                    : "Create Events..."
+      help_paragraph2                    : "and participate"
     statistic_groups:
       page_header                        : "Group Statistics"
       page_title                         : "Group Statistics"
+      help_title                         : "Nothing to show"
+      help_paragraph1                    : "Create Events..."
+      help_paragraph2                    : "and participate"
     account:
       page_header                        : "Account Settings"
       page_title                         : "Account Settings"
