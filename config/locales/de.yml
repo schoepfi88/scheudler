@@ -150,6 +150,9 @@ de:
       location_placeholder               : "Wien"
     events_dashboard:
       page_header                        : "Ereignisse"
+    events_location:
+      page_header                        : "Ort"
+      page_title                         : "Ort"
     groups:
       page_header                        : "Gruppen"
       page_title                         : "Gruppen"
