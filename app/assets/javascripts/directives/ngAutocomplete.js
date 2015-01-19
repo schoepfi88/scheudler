@@ -80,7 +80,7 @@ angular.module( "ngAutocomplete", [])
           }
         }
 
-        if (scope.gPlace == undefined) {
+        if (scope.gPlace === undefined) {
           scope.gPlace = new google.maps.places.Autocomplete(element[0], {});
         }
         google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
@@ -113,7 +113,7 @@ angular.module( "ngAutocomplete", [])
                 offset: result.name.length
               },
               function listentoresult(list, status) {
-                if(list == null || list.length == 0) {
+                if(list === null || list.length === 0) {
 
                   scope.$apply(function() {
                     scope.details = null;
@@ -125,7 +125,7 @@ angular.module( "ngAutocomplete", [])
                     {'reference': list[0].reference},
                     function detailsresult(detailsResult, placesServiceStatus) {
 
-                      if (placesServiceStatus == google.maps.GeocoderStatus.OK) {
+                      if (placesServiceStatus === google.maps.GeocoderStatus.OK) {
                         scope.$apply(function() {
 
                           controller.$setViewValue(detailsResult.formatted_address);
