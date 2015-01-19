@@ -41,12 +41,14 @@ scope "(:locale)", locale: /en|de/ do
 
 
     #groups
-    resources :groups, only: [:create, :update, :show, :destroy, :index, :invite, :destroy, :remove]
+    resources :groups, only: [:create, :update, :destroy, :index, :invite, :destroy, :remove, :make_admin, :get]
     post '/groups' => 'groups#create'
     post '/groups_invite' => 'groups#invite'
     delete '/groups' => 'groups#destroy'
     delete '/groups_members' => 'groups#remove'
 	post '/groups_members' => 'groups#make_admin'
+	get '/groups/:id' => 'groups#get'
+	put '/groups/:id' => 'groups#update'
 
     #account
     resources :account, only: [:update, :destroy]

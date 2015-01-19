@@ -18,11 +18,30 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.isGoogleUser = false;
+	
 	$scope.create_group = function(isValid){
 		if(isValid && $scope.isGoogleUser){
 			groupsService.group.create($scope.groupData, function(){
 				$templateCache.remove('/templates/groups');
 				location.href="/#/groups";
+			});
+		}
+	};
+
+	$scope.init_form = function(id){
+		groupsService.group.get(id, function(group){
+			$scope.groupData.name = group.name;
+			$scope.groupData.description = group.description;
+			$scope.groupData.icon = group.icon;
+		});
+
+	};
+
+	$scope.update_group = function(id, isValid){
+		if(isValid){
+			groupsService.group.update(id, $scope.groupData, function(){
+				$templateCache.remove('/templates/groups_dashboard/' + id + '/0');
+				location.href="/#/groups_dashboard/" + id + "/0";
 			});
 		}
 	};

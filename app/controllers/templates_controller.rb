@@ -46,6 +46,9 @@ class TemplatesController < ProtectedController
   def groups_invite
   end
 
+  def groups_settings
+  end
+
   def statistic
 	response = Participant.create_user_charts(@current_user.id, @groups)
 	@user_data = response[0]
