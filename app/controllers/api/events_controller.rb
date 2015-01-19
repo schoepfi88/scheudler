@@ -17,8 +17,26 @@ class Api::EventsController < Api::RestController
   end
 
   def create
+    key = ENV["GOOGLE_GCM_API_KEY"]
+    gcm = GCM.new(key)
+    group_id = create_params[:group_id]
+    registration_ids=[]
+    group_members = Member.where(group_id: group_id).pluck(:user_id)
+    # add regId of group members
+    group_members.each do |u|
+      # don't send to sender
+      if u != current_user.id
+        member = User.find(u)
+        # only if regId exist
+        if member.regId != nil
+          registration_ids << member.regId
+        end
+      end
+    end
     event = Event.create_event(create_params)
     event.save!
+    options = {data: {title: event.name, message: event.date}, collapse_key: "updated_score"}
+    response = gcm.send(registration_ids, options)
     Participant.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
   end
