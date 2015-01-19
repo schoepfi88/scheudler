@@ -12,6 +12,6 @@ angular.module('scheudler').controller("accountCtrl",
 		}
 		
 		$scope.userData = {
-			back_link_enabled: false
+			back_link_enabled: true
 		}
 });

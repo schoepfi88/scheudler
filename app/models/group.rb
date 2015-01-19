@@ -7,6 +7,20 @@ class Group < ActiveRecord::Base
 	has_many    :receivedMessages, :class_name => 'Message', :foreign_key => 'receiver_id'
 	validates   :name, :description, :calendar_id, presence: true
 
+	def self.get_group(params)
+		g = Group.find(params[:id])
+		g
+	end
+
+	def self.update_group(id, params)
+		g = Group.find(id)
+		g.name = params[:name]
+		g.description = params[:description]
+		g.icon = params[:icon]
+		g.save!
+		g
+	end
+
 	def self.create_new_group(params, admin_id, cal_id)
 		g = Group.create(name: params[:name], description: params[:description], icon: params[:icon].split(' ').last, calendar_id: cal_id)
 		a = Admin.create(group_id: g.id, user_id: admin_id)

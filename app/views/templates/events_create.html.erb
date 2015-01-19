@@ -21,7 +21,7 @@
         <label for="location">
           <%= t('.location') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text"/>
+            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text" ng-autocomplete="result1" details="details1" options="options1"/>
             <span class="input-group-addon">
               <span class="fa fa-location-arrow"></span>
             </span>

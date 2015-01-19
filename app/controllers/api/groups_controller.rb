@@ -5,6 +5,11 @@ class Api::GroupsController < Api::RestController
 		
     end
 
+	def get
+		group = Group.get_group(destroy_params)
+		respond_with(group)
+	end
+
 	def create
 		group = Group.create_new_group(create_params, current_user.id, create_cal(params[:name]))
 		group.save!
@@ -12,7 +17,8 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def update
-
+		Group.update_group(params[:id], update_params)
+		respond_with(nil, :location => nil)
 	end
 
 	def show
@@ -82,5 +88,9 @@ class Api::GroupsController < Api::RestController
 
 	def invite_params
 		params.permit(:email, :group_id)
+	end
+
+	def update_params
+		params.permit(:name, :description, :icon);
 	end
 end

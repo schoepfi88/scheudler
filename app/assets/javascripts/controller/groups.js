@@ -14,15 +14,35 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	})();
 
 	$scope.removeFromCache = function(id){
-		$templateCache.remove('/templates/groups_dashboard/' + id);
+		$templateCache.remove('/templates/groups_dashboard/' + id + "/0");
 	};
 
 	$scope.isGoogleUser = false;
+	
 	$scope.create_group = function(isValid){
 		if(isValid && $scope.isGoogleUser){
 			groupsService.group.create($scope.groupData, function(){
 				$templateCache.remove('/templates/groups');
 				location.href="/#/groups";
+			});
+		}
+	};
+
+	$scope.init_form = function(id){
+		groupsService.group.get(id, function(group){
+			$scope.groupData.name = group.name;
+			$scope.groupData.description = group.description;
+			$scope.groupData.icon = group.icon;
+		});
+
+	};
+
+	$scope.update_group = function(id, isValid){
+		if(isValid){
+			groupsService.group.update(id, $scope.groupData, function(){
+				$templateCache.remove('/templates/groups');
+				$templateCache.remove('/templates/groups_dashboard/' + id + '/0');
+				location.href="/#/groups_dashboard/" + id + "/0";
 			});
 		}
 	};
@@ -48,7 +68,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		$scope.memberData.group_id = group_id;
 		$scope.memberData.user_id = user_id;
 		groupsService.group.make_admin($scope.memberData, function(){
-			$templateCache.remove('/templates/groups_dashboard/' + group_id + '/members');
+			$templateCache.remove('/templates/groups_dashboard/' + group_id + "/0");
 			location.href="/#/groups_dashboard/" + group_id + "/0";
 		});
 	};
@@ -103,7 +123,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 		if(isValid){
 			$scope.inviteData.group_id = id;
 			groupsService.group.invite($scope.inviteData, function(){
-				$templateCache.remove('/templates/groups_dashboard/' + id);
+				$templateCache.remove('/templates/groups_dashboard/' + id + "/0");
 				$templateCache.remove('/templates/groups_dashboard/' + id + '/members');
 				location.href="/#/groups_dashboard/" + id + "/0";
 			});

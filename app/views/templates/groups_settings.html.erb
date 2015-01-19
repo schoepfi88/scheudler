@@ -11,3 +11,45 @@
 		    </button>
 	</h1>
 </section>
+
+<!-- Update the groups data -->
+<div class="row" ng-init="init_form(<%= params[:id] %>)">
+    <div class="col-md-6">
+      <form name="updateGroupForm" ng-submit="update_group(<%= params[:id] %>, updateGroupForm.$valid)" novalidate>
+
+       <div class="form-group" ng-class="{ 'has-error' : updateGroupForm.name.$invalid && !updateGroupForm.name.$pristine }">
+          <label class="control-label" for="name">
+            <%= t('.name') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" name="name" ng-model="groupData.name" placeholder="<%= t('.name_placeholder') %>" type="text" class="form-control" ng-minlength="3" required />
+			<span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+            </span>
+          </div>
+		  <p ng-show="updateGroupForm.name.$invalid && !updateGroupForm.name.$pristine && !updateGroupForm.name.$error.minlength" class="help-block"><%= t('.required_name') %></p>
+		  <p ng-show="updateGroupForm.name.$error.minlength" class="help-block"><%= t('.minlength_name') %></p>
+        </div>
+	
+		<div class="form-group" ng-class="{ 'has-error' : updateGroupForm.description.$invalid && !updateGroupForm.description.$pristine }">
+          <label class="control-label" for="description">
+            <%= t('.description') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" name="description" ng-model="groupData.description" placeholder="<%= t('.description_placeholder') %>" type="text" class="form-control" required />
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </span>
+          </div>
+		  <p ng-show="updateGroupForm.description.$invalid && !updateGroupForm.description.$pristine" class="help-block"><%= t('.required_description') %></p>
+        </div>
+		
+		<div class="form-group">
+			<label><%= t('.icon') %></label>
+			<ui-iconpicker groups="font-awesome" value="flaticon-ball39" ng-model="groupData.icon"></ui-iconpicker>
+		</div>
+		
+		<button type="submit" class="btn btn-primary btn-lg" ng-disabled="updateGroupForm.$invalid"><%=t(".create_group")%></button>
+      </form>
+		
+		
+    </div>
+</div>
