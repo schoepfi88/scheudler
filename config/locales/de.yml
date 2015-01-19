@@ -108,6 +108,10 @@ de:
       create_group                       : "Erstelle neue Gruppe"
       no_event_placeholder               : "Keine anstehenden Events. Bestätige deine Event Einladungen"
       no_invite_placeholder              : "Keine Event Einladungen"
+      next_events                        : "Nächste Events"
+      my_groups                          : "Meine Gruppen"
+      my_invites                         : "Meine Event Einladungen"
+      blog_of                            : "Blog von"
     dashboard_messages:
       page_header                        : "Blog of"
       send                               : "senden"

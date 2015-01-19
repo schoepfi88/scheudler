@@ -7,7 +7,7 @@
     <div class="panel panel-default box-dashboard">
       <div class="panel-heading" id="event-head">
         <span class="fa fa-trophy"></span>
-         Next events
+         <%= t('.next_events') %>
       </div>
       <!-- next events -->
       <div class="panel-body" id="event_body">
@@ -56,7 +56,7 @@
     <div class="panel panel-default box-dashboard">
       <div class="panel-heading" id="group_head">
         <span class="fa fa-group"></span> 
-        My Groups
+         <%= t('.my_groups') %>
       </div>
       <!-- groups -->
       <div class="panel-body" id="group_body">
@@ -104,7 +104,7 @@
     <div class="panel panel-default box-dashboard">
       <div class="panel-heading">
         <span class="fa fa-envelope-o"></span> 
-        My Event Invites
+         <%= t('.my_invites') %>
       </div>
       <div class="panel-body" id="invite_body">
         <!-- invite ng-repeat -->
@@ -164,7 +164,7 @@
     <div class="panel panel-default box-dashboard">
       <div class="panel-heading" ng-click="redirect_to_messages(group, $index)">
         <span class="fa fa-rss"></span> 
-        Blog of {{group.name}}
+          <%=t('.blog_of') %> {{group.name}}
         <span class="badge pull-right">{{unreadMessages.unread[$index] + unreadMessages.undisplayed[$index]}}</span>
       </div>
       <!--messages of groups-->

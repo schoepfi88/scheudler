@@ -108,6 +108,10 @@ en:
       create_group                       : "Create New Group"
       no_event_placeholder               : "No upcoming events. Accept your event invites"
       no_invite_placeholder              : "No event invitations"
+      next_events                        : "Next Events"
+      my_groups                          : "My Groups"
+      my_invites                         : "My Event Invites"
+      blog_of                            : "Blog of"
     dashboard_messages:
       page_header                        : "Blog of"
       new_message                        : "Enter text"
