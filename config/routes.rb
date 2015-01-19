@@ -15,6 +15,7 @@ scope "(:locale)", locale: /en|de/ do
     get '/events', to: :events, as: 'events_template'
     get '/events_create', to: :events_create, as: 'events_create_template'
     get '/events_dashboard/:id', to: :events_dashboard, as: 'events_dashboard_template'
+    get '/events_location/:id', to: :events_location, as: 'events_location_template'
     get '/groups', to: :groups, as: 'groups_template'
     get '/groups_create', to: :groups_create, as: 'groups_create_template'
     get '/groups_dashboard/:id/invite', to: :groups_invite, as: 'groups_invite_template'
