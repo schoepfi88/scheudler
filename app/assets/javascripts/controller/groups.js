@@ -40,6 +40,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	$scope.update_group = function(id, isValid){
 		if(isValid){
 			groupsService.group.update(id, $scope.groupData, function(){
+				$templateCache.remove('/templates/groups');
 				$templateCache.remove('/templates/groups_dashboard/' + id + '/0');
 				location.href="/#/groups_dashboard/" + id + "/0";
 			});
