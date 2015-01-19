@@ -43,7 +43,8 @@ window.onload = initialize();
 <section class="hidden-print">
   	<h1 class="page-header">
 		<span>
-			Map
+			<i class="fa <%= Group.find(@event.group_id).icon %>"></i> 
+			<%= @event.name + " - " + t('.page_header') %>
 		</span>
 	</h1>
 </section>

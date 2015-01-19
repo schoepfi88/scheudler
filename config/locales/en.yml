@@ -146,6 +146,9 @@ en:
       location_placeholder               : "Vienna"
     events_dashboard:
       page_header                        : "Events"
+    events_location:
+      page_header                        : "Location"
+      page_title                         : "Location"
     groups:
       page_header                        : "Groups"
       page_title                         : "Groups"
