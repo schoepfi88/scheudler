@@ -74,7 +74,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.redirect_to_back = function(back_link_enabled){
-		if(back_link_enabled === null || back_link_enabled === false){
+		if(back_link_enabled === null || back_link_enabled === true){
 			Util.redirect_to.back();
 		}
 	};

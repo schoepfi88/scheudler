@@ -235,7 +235,7 @@ de:
     account:
       page_header                        : "Konto Einstellungen"
       page_title                         : "Konto Einstellungen"
-      disable_back_link                  : "Versteckten zurück link deaktivieren"
+      disable_back_link                  : "Versteckten zurück link aktivieren"
       save                               : "Einstellungen Speichern"
       cant_create_group                  : "Du brauchst einen Google Account um eine Gruppe zu erstellen"
 

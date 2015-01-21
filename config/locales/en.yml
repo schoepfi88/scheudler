@@ -235,7 +235,7 @@ en:
     account:
       page_header                        : "Account Settings"
       page_title                         : "Account Settings"
-      disable_back_link                  : "Disable secret back link"
+      disable_back_link                  : "Enable secret back link"
       save                               : "Save Settings"
       cant_create_group                  : "You need a Google account to create a group"
 
