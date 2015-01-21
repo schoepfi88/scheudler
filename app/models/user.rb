@@ -26,6 +26,20 @@ class User < ActiveRecord::Base
         end
     end
 
+    def self.from_omniauth_existing_user(auth, user)
+        where(auth.slice(:provider,:uid)).first_or_initialize.tap do |u|
+            user.provider = auth.provider
+            user.uid = auth.uid
+            user.name = auth.info.name
+            user.oauth_token = auth.credentials.token
+            user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+            user.image_path = auth.info.image
+            user.email = auth.info.email
+            user.back_link_enabled = true
+            user.save!
+        end
+    end
+
 	def self.update(params)
 		u = User.find(params[:id])
 		u.back_link_enabled = params[:back_link_enabled]
