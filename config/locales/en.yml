@@ -205,6 +205,7 @@ en:
       user                               : "User"
       remove_member                      : "Remove From Group"
       make_admin                         : "Make admin"
+      unregistered_user                  : "(Unregistered User)"
     groups_settings:
       page_header                        : " - Settings"
       page_title                         : "Group Settings"

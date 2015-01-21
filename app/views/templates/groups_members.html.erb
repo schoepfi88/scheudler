@@ -7,7 +7,11 @@
 <ul class="list-group">
   <% @group_members.each do |member| %>
 	<li class="list-group-item">
-		<%= member.name %>
+		<% if member.name == "dummy" then %>
+			<%= t(".unregistered_user") %>
+		<% else %>
+			<%= member.name %>
+		<% end %>
 		<% if @group.admins.find_by(user_id: member.id) != nil then %>
 			<span class="badge-normal pull-right"><%= t(".admin") + "  " %><i class="fa fa-ban"></i></span>
 		<% else %>
