@@ -8,7 +8,7 @@
   <% @group_members.each do |member| %>
 	<li class="list-group-item">
 		<% if member.name == "dummy" then %>
-			<%= t(".unregistered_user") %>
+			<%= member.email + ' ' + t(".unregistered_user") %>
 		<% else %>
 			<%= member.name %>
 		<% end %>
