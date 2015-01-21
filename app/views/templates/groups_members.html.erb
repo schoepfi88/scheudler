@@ -28,6 +28,12 @@
 				<span class="badge-normal pull-right"><%= t(".user") + "  " %><i class="fa fa-ban"></i></span>
 			<% end %>
 		<% end %>
+		<% if member.id != @current_user.id and member.name != "dummy" and (@friends == nil or @friends.where(friend_id: member.id).size == 0) then %>
+			<button class="btn btn-info badge-btn pull-right" ng-click="make_friend(<%= @group.id %>, <%= member.id %>)">
+				<%= t(".make_friend") + "  " %>
+				<i class="fa fa-plus"></i>
+			</button>
+		<% end %>
 	</li>
   <% end %>
 </ul>

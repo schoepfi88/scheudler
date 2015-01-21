@@ -24,7 +24,7 @@ scope "(:locale)", locale: /en|de/ do
     get '/groups_dashboard/:id/:index', to: :groups_dashboard, as: 'groups_dashboard_template'
     get '/statistic', to: :statistic, as: 'statistic_template'
 	get '/statistic_groups/:id', to: :statistic_groups, as: 'statistic_groups_template'
-    get '/account', to: :account, as: 'account_template'
+    get '/friends', to: :friends, as: 'friends_template'
   end
 
   #REST API
@@ -51,9 +51,9 @@ scope "(:locale)", locale: /en|de/ do
 	get '/groups/:id' => 'groups#get'
 	put '/groups/:id' => 'groups#update'
 
-    #account
-    resources :account, only: [:update, :destroy]
-    put '/account' => 'account#update'
+    #friends
+    resources :friends, only: [:update, :destroy]
+    post '/friends' => 'friends#make_friend'
 
     #dashboard
     resources :dashboard, only: [:destroy, :create, :unread]

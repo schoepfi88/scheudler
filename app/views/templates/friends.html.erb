@@ -1,11 +1,10 @@
-<div class="row">
-	<div class="col-lg-offset-3 col-lg-6">
-	  <h1 class="page-header">
-		<i class="fa fa-group"></i> <%=t('.page_header') %>
-	  </h1>
-	</div>
-</div>
-<% if !@is_google_user then %>
+<section class="hidden-print">
+  <h1 class="page-header">
+	<i class="fa fa-child"></i> <%=t ( '.page_header') %>
+  </h1>
+</section>
+
+<!--<% if !@is_google_user then %>
 	<div class="col-lg-offset-3 col-lg-6 alert alert-danger"><%= t('.cant_create_group') %></div>
 <% end %>
 <div class="row">
@@ -21,4 +20,24 @@
 		<button type="submit" class="btn btn-primary btn-lg"><%=t(".save")%></button>
       </form>
 	</div>
-</div>
+</div>-->
+
+<% if @friends.size != 0 then %>
+	<ul class="list-group">
+		<% @friends.each do |friend| %>
+			<li class="list-group-item">
+				<%= User.find(friend.friend_id).name %>
+			</li>
+		<% end %>
+	</ul>
+<% else %>
+	<div class="jumbotron text-center">
+		<i class="fa fa-child fa-5x"></i>
+		<h2>
+			<%=t ( ".help_title") %>
+		</h2>
+		<%=t ( ".help_paragraph1") %>
+		<br>
+		<%=t ( ".help_paragraph2") %>
+	</div>
+<% end %>

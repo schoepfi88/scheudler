@@ -74,7 +74,7 @@ de:
         statistic                         : "Statistiken"
         events                            : "Events"
         groups                            : "Gruppen"
-        account                           : "Konto"
+        friends                           : "Freunde"
 
   public:
     about:
@@ -202,7 +202,7 @@ de:
       page_header                        : " - Mitglieder"
       page_title                         : "Gruppen Mitglieder"
       admin                              : "Administrator"
-      user                               : "Benutzer"
+      user                               : "Löschen"
       remove_member                      : "Von Gruppe Entfernen"
       make_admin                         : "Zu Admin machen"
       unregistered_user                  : "(Nicht registrierter Nutzer)"
@@ -232,12 +232,15 @@ de:
       help_title                         : "Keine Daten verfügbar"
       help_paragraph1                    : "Erstelle Events..."
       help_paragraph2                    : "und nimm daran teil"
-    account:
-      page_header                        : "Konto Einstellungen"
-      page_title                         : "Konto Einstellungen"
+    friends:
+      page_header                        : "Freunde"
+      page_title                         : "Freunde"
       disable_back_link                  : "Versteckten zurück link aktivieren"
       save                               : "Einstellungen Speichern"
       cant_create_group                  : "Du brauchst einen Google Account um eine Gruppe zu erstellen"
+      help_title                         : "Du hast noch keine Freunde"
+      help_paragraph1                    : "Du kannst neue Freunde hinzufügen..."
+      help_paragraph2                    : "wenn du mit ihnen in einer Gruppe bist"
 
   session:
     index:

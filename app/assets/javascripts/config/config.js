@@ -65,9 +65,9 @@ app.config(function($httpProvider, $routeProvider){
 		templateUrl: function(params){ return '/templates/statistic_groups/' + params.id; },
 		controller: 'statisticCtrl'
 	}).
-	when('/account', {
-		templateUrl: '/templates/account',
-		controller: 'accountCtrl'
+	when('/friends', {
+		templateUrl: '/templates/friends',
+		controller: 'friendsCtrl'
 	}).
 	otherwise({
 		redirectTo: '/dashboard'

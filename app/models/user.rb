@@ -2,9 +2,11 @@ class User < ActiveRecord::Base
 	has_many :admins
 	has_many :members
 	has_many :participants
+	has_many :friends
 	has_many :events, :through => :participants
 	has_many :groups, :through => :members
 	has_many :groups, :through => :admins
+	has_many :users, :through => :friends
     has_many    :sentMessages, :class_name => 'Message', :foreign_key => 'sender_id'
     validates   :provider, :uid, :name, :oauth_token, :email, presence: true
 

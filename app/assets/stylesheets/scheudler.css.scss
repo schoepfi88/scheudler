@@ -6,6 +6,7 @@ $yellow_dark : #C17D11;
 $green_light : #8AE234;
 $green_dark : #4E9A06;
 $blue_light : #729FCF;
+$blue_medium : #5B7FA6;
 $blue_dark : #204A87;
 $purple_light : #AD7FA8;
 $purple_dark : #5C3566;
@@ -330,6 +331,17 @@ canvas{
   padding-right: 5px;
   padding-top: 0px;
   padding-bottom: 2px;
+}
+
+/* Used for add friend button */
+.btn-info {
+	background-color: $blue_light;
+	border-color: $blue_dark;
+}
+
+.btn-info:hover {
+	background-color: $blue_medium;
+	border-color: $blue_dark;
 }
 
 /* boxes on dashborad */
