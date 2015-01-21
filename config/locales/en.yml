@@ -149,7 +149,7 @@ en:
       location                           : "Location"
       location_placeholder               : "Vienna"
     events_dashboard:
-      page_header                        : "Events"
+      page_header                        : "Participants"
     events_location:
       page_header                        : "Location"
       page_title                         : "Location"

@@ -149,7 +149,7 @@ de:
       location                           : "Ort"
       location_placeholder               : "Wien"
     events_dashboard:
-      page_header                        : "Ereignisse"
+      page_header                        : "Teilnehmer"
     events_location:
       page_header                        : "Ort"
       page_title                         : "Ort"

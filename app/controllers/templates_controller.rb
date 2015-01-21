@@ -23,7 +23,7 @@ class TemplatesController < ProtectedController
   end
 
   def events_dashboard
-  #@event_members = Participants.get_members(params[:id])
+  	@event = Event.find(params[:id])
   end
 
   def events_location
