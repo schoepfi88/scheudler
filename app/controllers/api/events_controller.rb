@@ -1,4 +1,6 @@
 class Api::EventsController < Api::RestController
+	include CalendarModule
+
    respond_to :json
 
   def index
@@ -20,6 +22,7 @@ class Api::EventsController < Api::RestController
     key = ENV["GOOGLE_GCM_API_KEY"]
     gcm = GCM.new(key)
     group_id = create_params[:group_id]
+
     registration_ids=[]
     group_members = Member.where(group_id: group_id).pluck(:user_id)
     # add regId of group members
@@ -33,8 +36,13 @@ class Api::EventsController < Api::RestController
         end
       end
     end
+	
+	init_calendar
+	gcal_id = Group.find(group_id).calendar_id
     event = Event.create_event(create_params)
+	gcal_event_insert(gcal_id, event)
     event.save!
+	
     options = {data: {title: event.name, message: event.date}, collapse_key: "updated_score"}
     response = gcm.send(registration_ids, options)
     Participant.create_part(event.id, event.group_id)
