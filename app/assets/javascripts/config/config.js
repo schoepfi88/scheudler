@@ -1,5 +1,6 @@
 // Angular Config / Routes
-var app = angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar','ui-iconpicker', 'checklist-model', 'ngAutocomplete']);
+var modules = ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar','ui-iconpicker', 'checklist-model', 'ngAutocomplete', 'ngTagsInput'];
+var app = angular.module('scheudler', modules);
 
 app.config(function($httpProvider, $routeProvider){
 	$httpProvider.defaults.headers.common = {'X-CSRF-Token': $("meta[name='csrf-token']").attr("content"), 'Content-Type': 'application/json'};

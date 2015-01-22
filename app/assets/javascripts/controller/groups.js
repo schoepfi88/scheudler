@@ -1,4 +1,4 @@
-angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$routeParams,$timeout,$templateCache,$rootScope,dashboardService,friendsService){
+angular.module('scheudler').controller("groupsCtrl", function($scope,groupsService,Util,$routeParams,$timeout,$templateCache,$rootScope,dashboardService,friendsService,$q){
 
 	$scope.unreadMessages = 0;
 	//For updating blog counter
@@ -120,7 +120,7 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	$scope.invite_to_group = function(id, isValid){
 		if(isValid){
 			$scope.inviteData.group_id = id;
-			groupsService.group.invite($scope.inviteData, function(){
+			groupsService.group.invite($scope.inviteData, $scope.tags, function(){
 				$templateCache.remove('/templates/groups_dashboard/' + id + "/0");
 				$templateCache.remove('/templates/groups_dashboard/' + id + '/members');
 				location.href="/#/groups_dashboard/" + id + "/0";
@@ -155,12 +155,31 @@ angular.module('scheudler').controller("groupsCtrl", function($scope,groupsServi
 	};
 
 	$scope.inviteData = {
-		email: '',
-		group_id: 0
+		group_id: 0,
+		tags: $scope.tags
 	};
 
 	$scope.memberData = {
 		group_id: 0,
 		user_id: 0
+	};
+
+
+	
+	$scope.tags = [];
+	$scope.friends = [];
+
+	$scope.init_friends = function(friends){
+		for(var i = 0; i < friends.length; i++){
+			$scope.friends.push({user_id: friends[i][0], 
+								name: friends[i][1], 
+								email: friends[i][2]});
+		}
+	}
+
+	$scope.loadTags = function(query) {
+		var deferred = $q.defer();
+		deferred.resolve($scope.friends);
+		return deferred.promise;
 	};
 });

@@ -60,7 +60,7 @@ class Api::GroupsController < Api::RestController
 
 	def invite
 		
-		user_to_add = Member.add_member(invite_params)
+		user_to_add = Member.add_member(invite_params, params[:_json])
 		
 		if user_to_add != nil then
 			init_calendar
@@ -87,7 +87,7 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def invite_params
-		params.permit(:email, :group_id)
+		params.permit(:group_id)
 	end
 
 	def update_params

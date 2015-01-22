@@ -49,6 +49,17 @@ class TemplatesController < ProtectedController
   end
 
   def groups_invite
+	@friends = []
+	@current_user.friends.each do |f|
+		u = User.find(f.friend_id)
+		if @group.members.where(user_id: u.id).size == 0 then
+			tmp = []
+			tmp << u.id
+			tmp << u.name
+			tmp << u.email
+			@friends << tmp
+		end
+	end
   end
 
   def groups_settings

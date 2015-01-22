@@ -194,8 +194,8 @@ en:
       page_header                        : "Invite people to your group"
       page_title                         : "Invite poeple to your group"
       email                              : "E-Mail Addresses"
-      email_placeholder                  : "john@gmail.com; wayne@gmail.com"
-      invite                             : "Invite"
+      email_placeholder                  : "john.wayne@gmail.com"
+      invite                             : "Invite to group"
       required_email                     : "At least one email address is required"
       pattern_email                      : "Wrong format"
     groups_members:
@@ -206,6 +206,7 @@ en:
       remove_member                      : "Remove From Group"
       make_admin                         : "Make admin"
       unregistered_user                  : "(Unregistered User)"
+      make_friend                        : "Make friend"
     groups_settings:
       page_header                        : " - Settings"
       page_title                         : "Group Settings"

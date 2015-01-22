@@ -44,3 +44,4 @@
 //= require morris
 //= require bootstrap-datepicker
 //= require bootstrap-datetimepicker
+//= require ./vendor/ng-tags-input.js

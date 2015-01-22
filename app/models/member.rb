@@ -2,10 +2,20 @@ class Member < ActiveRecord::Base
 	belongs_to :groups
 	belongs_to :users
 
-	def self.add_member(params)
+	def self.add_member(params, json_data)
 		to_add = Array.new
 		
-		params[:email].delete(' ').split(';').each do |email|
+		emails = []
+		json_data.each do |members|
+			if members[:email] == nil then
+				emails << members[:name]
+			else
+				emails << members[:email]
+			end
+		end
+
+		#params[:email].delete(' ').split(';').each do |email|
+		emails.each do |email|
 			user = User.find_by email: email
 			if user != nil then
 				#add to group if isn't member already

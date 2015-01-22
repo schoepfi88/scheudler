@@ -344,6 +344,11 @@ canvas{
 	border-color: $blue_dark;
 }
 
+.btn-info:focus {
+	background-color: $blue_medium;
+	border-color: $blue_dark;
+}
+
 /* boxes on dashborad */
 .box-dashboard > .panel-body {
   padding: 0px;

@@ -194,8 +194,8 @@ de:
       page_header                        : "Lade Leute in deine Gruppe ein"
       page_title                         : "Lade Leute in deine Gruppe ein"
       email                              : "E-Mail Adressen"
-      email_placeholder                  : "john@gmail.com; wayne@gmail.com"
-      invite                             : "Einladen"
+      email_placeholder                  : "john.wayne@gmail.com"
+      invite                             : "In Gruppe einladen"
       required_email                     : "Zumindest eine E-Mail Adresse ist erforderlich"
       pattern_email                      : "Falsches Format"
     groups_members:
@@ -206,6 +206,7 @@ de:
       remove_member                      : "Von Gruppe Entfernen"
       make_admin                         : "Zu Admin machen"
       unregistered_user                  : "(Nicht registrierter Nutzer)"
+      make_friend                        : "Zu Freunden hinzufügen"
     groups_settings:
       page_header                        : " - Einstellungen"
       page_title                         : "Gruppen Einstellungen"
