@@ -38,7 +38,8 @@ class Event < ActiveRecord::Base
 		  'start' => { 'dateTime' => self.start.rfc3339},
 		  'end' =>  { 'dateTime' => self.endTime.rfc3339},
 		  'attendees' => [],
-		  'location' => self.location
+		  'location' => self.location,
+		  'description' => self.description
 		}
 	end
 
