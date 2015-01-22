@@ -11,8 +11,11 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def create
-		group = Group.create_new_group(create_params, current_user.id, create_cal(params[:name]))
-		group.save!
+		cal = create_cal(params[:name])
+		if cal != nil then
+			group = Group.create_new_group(create_params, current_user.id, cal)
+			group.save!
+		end
 		respond_with(nil, :location => nil)
 	end
 
