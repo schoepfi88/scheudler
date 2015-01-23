@@ -11,13 +11,13 @@ class Event < ActiveRecord::Base
 	attr_accessor :endTime
 	attr_accessor :color
 	attr_accessor :text_color
-
+	
 	def to_json
 		event = {
       'id' => self.gcal_id,
       'title' => self.name,
-      'start' => self.start.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
-      'end' => self.endTime.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
+      'start' => self.start.to_date.strftime('%Y-%m-%d ') + self.start.to_time.strftime('%H:%M:%S'),
+      'end' => self.endTime.to_date.strftime('%Y-%m-%d ') + self.endTime.to_time.strftime('%H:%M:%S'),
       'color' => self.color,
       'textColor' => self.text_color
     }
