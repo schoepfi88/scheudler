@@ -18,13 +18,15 @@ angular.module('scheudler').controller("eventsCtrl",
 
         $scope.create_weekly_event = function(){
             var enddate = $scope.enddate;
+
             var startdate = $scope.eventData.start;
             var week_in_millis = 604800000;
             var day = startdate.toString().split("-")[2];
             var month = startdate.toString().split("-")[1];
             var year = startdate.toString().split("-")[0];
-
-            startdate = new Date(year, month-1, day, 3, 3, 0, 0).toISOString();
+            var hour = $scope.start_time.toString().split(":")[0];
+            var min = $scope.start_time.toString().split(":")[1];
+            startdate = new Date(year, month-1, day, hour+4, min, 0, 0).toISOString();
             day = enddate.toString().split("-")[2];
             month = enddate.toString().split("-")[1];
             year = enddate.toString().split("-")[0];

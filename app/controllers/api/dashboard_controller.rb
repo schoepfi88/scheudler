@@ -144,12 +144,13 @@ class Api::DashboardController < ApplicationController
 			if groups_of_user.include?(e1.group_id)
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
-					#now = Time.new.to_s 
-					#if now < e1.time
-						if check.accepted == nil 
-							@all_invites << e1
-						end
-					#end
+					now = Time.new.to_s 
+					if now.to_s > e1.start.to_s
+						Participant.where(event_id: e1.id).destroy_all
+						Event.find(e1.id).destroy
+					elsif check.accepted == nil 
+						@all_invites << e1
+					end
 
 				end
 
@@ -166,11 +167,12 @@ class Api::DashboardController < ApplicationController
 			if groups_of_user.include?(e1.group_id)
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
-					if check.accepted == true 
-						#now = Time.new.to_s 
-						#if now < e1.time
-							@all_events << e1
-						#end
+					now = Time.new.to_s 
+					if now.to_s > e1.start.to_s
+						Participant.where(event_id: e1.id).destroy_all
+						Event.find(e1.id).destroy
+					elsif check.accepted == true 
+						@all_events << e1
 					end
 				end
 			end
