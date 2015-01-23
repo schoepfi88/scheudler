@@ -11,8 +11,11 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def create
-		group = Group.create_new_group(create_params, current_user.id, create_cal(params[:name]))
-		group.save!
+		cal = create_cal(params[:name])
+		if cal != nil then
+			group = Group.create_new_group(create_params, current_user.id, cal)
+			group.save!
+		end
 		respond_with(nil, :location => nil)
 	end
 
@@ -60,7 +63,7 @@ class Api::GroupsController < Api::RestController
 
 	def invite
 		
-		user_to_add = Member.add_member(invite_params)
+		user_to_add = Member.add_member(invite_params, params[:_json])
 		
 		if user_to_add != nil then
 			init_calendar
@@ -87,7 +90,7 @@ class Api::GroupsController < Api::RestController
 	end
 
 	def invite_params
-		params.permit(:email, :group_id)
+		params.permit(:group_id)
 	end
 
 	def update_params

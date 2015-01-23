@@ -30,8 +30,8 @@ angular.module('scheudler').factory("groupsService",function($resource) {
 				destroy: function(id, succH, errH){
 					groupsService.destroy({id: id}, succH, errH);
 				},
-				invite: function(inviteData, succH, errH){
-					inviteService.invite(inviteData, succH, errH);
+				invite: function(inviteData, tags, succH, errH){
+					inviteService.invite(inviteData, tags, succH, errH);
 				},
 				remove: function(memberData, succH, errH){
 					memberService.remove(memberData, succH, errH);

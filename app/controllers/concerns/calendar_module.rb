@@ -42,13 +42,13 @@ private
 
 	def gcal_event_insert(gcal_id, event)
 		params = {
-      calendarId: gcal_id
-    }
-    result = @client.execute(
-      :api_method => @calendar.events.insert,
-      :parameters => params,
-      :body_object => event.convert_to_gcal_event
-    )
+			calendarId: gcal_id
+    	}
+		result = @client.execute(
+		  :api_method => @calendar.events.insert,
+		  :parameters => params,
+		  :body_object => event.convert_to_gcal_event
+		)
 	end
 
 	def gcal_event_update(gcal_id, event)

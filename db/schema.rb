@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150123084820) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.time     "time"
     t.integer  "group_id"
     t.datetime "start"
   end

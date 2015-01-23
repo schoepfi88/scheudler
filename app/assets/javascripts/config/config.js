@@ -1,5 +1,6 @@
 // Angular Config / Routes
-var app = angular.module('scheudler', ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar','ui-iconpicker', 'checklist-model', 'ngAutocomplete']);
+var modules = ['ngRoute','ngResource','angles','ui.bootstrap', 'chieffancypants.loadingBar','ui-iconpicker', 'checklist-model', 'ngAutocomplete', 'ngTagsInput'];
+var app = angular.module('scheudler', modules);
 
 app.config(function($httpProvider, $routeProvider){
 	$httpProvider.defaults.headers.common = {'X-CSRF-Token': $("meta[name='csrf-token']").attr("content"), 'Content-Type': 'application/json'};
@@ -65,9 +66,9 @@ app.config(function($httpProvider, $routeProvider){
 		templateUrl: function(params){ return '/templates/statistic_groups/' + params.id; },
 		controller: 'statisticCtrl'
 	}).
-	when('/account', {
-		templateUrl: '/templates/account',
-		controller: 'accountCtrl'
+	when('/friends', {
+		templateUrl: '/templates/friends',
+		controller: 'friendsCtrl'
 	}).
 	otherwise({
 		redirectTo: '/dashboard'

@@ -43,7 +43,16 @@ class Group < ActiveRecord::Base
 	end
 
 	def self.remove_member(params)
-		Member.where(:group_id => params[:group_id]).where(:user_id => params[:user_id]).destroy_all
+		member = Member.where(:group_id => params[:group_id]).where(:user_id => params[:user_id])
+
+		#delete dummy user if not member in any other group
+		member.each do |m|
+			u = User.find(m.user_id)
+			m.destroy
+			if u.name == "dummy" and u.members.size == 0 then
+				u.destroy
+			end
+		end
 		nil
 	end
 

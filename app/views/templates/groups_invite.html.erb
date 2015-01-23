@@ -6,23 +6,32 @@
 </section>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <form name="inviteToGroupForm" ng-submit="invite_to_group(<%= @group.id %>, inviteToGroupForm.$valid)" novalidate>
+		<label>
+            <%= t('.email') %></label>
+		<tags-input ng-model="tags" placeholder="<%= t('.email_placeholder') %>" ng-init="init_friends(<%= @friends %>)" display-property="name" min-tags="1" max-tags="10" allowed-tags-pattern="^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}){1}$">
+			<auto-complete source="loadTags($query)" load-on-down-arrow="true"></auto-complete>
+		</tags-input>
 
-       <div class="form-group" ng-class="{ 'has-error' : inviteToGroupForm.email.$invalid && !inviteToGroupForm.email.$pristine }">
+       <!--<div class="form-group" ng-class="{ 'has-error' : inviteToGroupForm.email.$invalid && !inviteToGroupForm.email.$pristine }">
           <label for="email">
             <%= t('.email') %></label>
+
           <div class="input-group">
             <input autofocus="autofocus" name="email" ng-model="inviteData.email" placeholder="<%= t('.email_placeholder') %>" type="text" class="form-control" ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/" required/>
             <span class="input-group-addon">
-              <span class="fa fa-at"></span>
+				<i class="fa fa-at"/></button>
             </span>
           </div>
 		  <p ng-show="inviteToGroupForm.email.$invalid && !inviteToGroupForm.email.$pristine && !inviteToGroupForm.email.$error.pattern" class="help-block"><%= t('.required_email') %></p>
 		  <p ng-show="inviteToGroupForm.email.$error.pattern" class="help-block"><%= t('.pattern_email') %></p>
-        </div>
+        </div>-->
 		
 		<button type="submit" class="btn btn-primary btn-lg" ng-disabled="inviteToGroupForm.$invalid"><%=t(".invite")%></button>
       </form>
     </div>
 </div>
+
+
+

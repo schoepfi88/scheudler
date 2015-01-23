@@ -3,7 +3,7 @@ class TemplatesController < ProtectedController
   before_action :is_group_member, only: [:groups_dashboard, :groups_invite, :groups_members, :statistic_groups]
   before_action :is_group_admin, only: [:groups_settings]
   before_action :is_admin_var, only: [:groups_dashboard, :groups_members]
-  before_action :is_google_user, only: [:groups, :groups_create, :account, :dashboard]
+  before_action :is_google_user, only: [:groups, :groups_create, :friends, :dashboard]
   before_action :get_user_groups, only: [:events, :events_create, :statistic, :groups]
 
   def index
@@ -23,7 +23,7 @@ class TemplatesController < ProtectedController
   end
 
   def events_dashboard
-  #@event_members = Participants.get_members(params[:id])
+  	@event = Event.find(params[:id])
   end
 
   def events_location
@@ -36,7 +36,7 @@ class TemplatesController < ProtectedController
   def groups_create
 	if !@is_google_user then
 		#redirect_to templates_account_template_path, :alert => t('.cant_create_group')
-		redirect_to templates_account_template_path
+		redirect_to templates_dashboard_template_path
 	end
   end
 
@@ -44,10 +44,22 @@ class TemplatesController < ProtectedController
   end
 
   def groups_members
+	@friends = @current_user.friends
 	@group_members = User.joins(:members).where(members: {group_id: @group.id})
   end
 
   def groups_invite
+	@friends = []
+	@current_user.friends.each do |f|
+		u = User.find(f.friend_id)
+		if @group.members.where(user_id: u.id).size == 0 then
+			tmp = []
+			tmp << u.id
+			tmp << u.name
+			tmp << u.email
+			@friends << tmp
+		end
+	end
   end
 
   def groups_settings
@@ -67,7 +79,8 @@ class TemplatesController < ProtectedController
 	@year_data = response[2]
   end
 
-  def account
+  def friends
+	@friends = @current_user.friends
   end
 
   private
