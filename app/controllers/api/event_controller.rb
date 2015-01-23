@@ -3,8 +3,6 @@ class Api::EventController < Api::RestController
 	include CalendarModule
    
   def index  
-		init_calendar
-
 		out = Array.new
 		
 		Event.get_events(current_user.id).each do |ev|
