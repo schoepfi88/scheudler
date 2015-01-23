@@ -5,6 +5,6 @@ json.array!(@all_events) do |e|
   json.description e.description
   json.accepted Participant.where(event_id: e.id, user_id: current_user.id).first.accepted
   json.date e.start
-  json.time e.time
+  json.time e.start
   json.icon Group.find(e.group_id).icon
 end

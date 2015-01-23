@@ -46,8 +46,8 @@ angular.module('scheudler').service("dashboardService", function($resource) {
             get: function(){ return groupSer.get();}
         },
         events: {
-            get_invites: function(succ){ return inviteSer.get_invites(succ);},
-            get_events: function(succ){ return eventSer.get_events(succ);},
+            get_invites: function(succ){ return inviteSer.get_invites({}, succ);},
+            get_events: function(succ){ return eventSer.get_events({}, succ);},
             accepted: function(acceptedData, succ){return eventSer.accepted(acceptedData, succ);}
         } 
     }

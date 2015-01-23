@@ -51,8 +51,19 @@ angular.module('scheudler').controller("dashboardCtrl",
 
 	$q.all([$scope.unreadMessages.$promise]).then(function(){$scope.mymessages = dashboardService.message.get();});
 	$scope.allRead = false;
-	$scope.allEventsUnaccepted = dashboardService.events.get_invites();
-	$scope.allEventsAccepted = dashboardService.events.get_events();
+	$scope.allEventsUnaccepted = dashboardService.events.get_invites(function(data){
+		for(var i = 0; i < data.length; i++){
+               data[i].time = new Date(data[i].time).format("shortTime");
+               data[i].date = new Date(data[i].date).format("dd. mmm");
+          }
+	});
+	$scope.allEventsAccepted = dashboardService.events.get_events(function(data){
+		for(var i = 0; i < data.length; i++){
+               data[i].time = new Date(data[i].time).format("shortTime");
+               data[i].date = new Date(data[i].date).format("dd. mmm");
+          }
+	});
+
 	$scope.mygroups = dashboardService.groups.get();
 	$scope.newMess = {sender_id: "", receiver_id: "", text: "", readers: []}; 
 	$scope.current_user = dashboardService.user.get();
@@ -220,17 +231,22 @@ angular.module('scheudler').controller("dashboardCtrl",
 	          bool: state,
 	          eve_id: event_id
 		};
+		
 		dashboardService.events.accepted($scope.acceptedData, function(){
 			var index = 0;
-			for (var i = 0; i < $scope.allEventsUnaccepted; i++){
+			var len = Object.keys($scope.allEventsUnaccepted).length;
+			for (var i = 0; i < len; i++){
 				if ($scope.allEventsUnaccepted[i].id === event_id){
 					index = i; break;
 				}
 			}
 			var new_next = $scope.allEventsUnaccepted.splice(index, 1);
+			console.log(new_next);
 			if(state === true)
 				$scope.allEventsAccepted.push(new_next[0]);
 		});
+
+
 	};
 
 	

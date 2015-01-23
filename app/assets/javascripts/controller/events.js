@@ -18,30 +18,29 @@ angular.module('scheudler').controller("eventsCtrl",
 
         $scope.create_weekly_event = function(){
             var enddate = $scope.enddate;
-            var startdate = $scope.eventData.date;
+            var startdate = $scope.eventData.start;
             var week_in_millis = 604800000;
-            var day = startdate.toString().split("/")[1];
-            var month = startdate.toString().split("/")[0];
-            var year = startdate.toString().split("/")[2];
+            var day = startdate.toString().split("-")[2];
+            var month = startdate.toString().split("-")[1];
+            var year = startdate.toString().split("-")[0];
 
             startdate = new Date(year, month-1, day, 3, 3, 0, 0).toISOString();
-            day = enddate.toString().split("/")[1];
-            month = enddate.toString().split("/")[0];
-            year = enddate.toString().split("/")[2];
+            day = enddate.toString().split("-")[2];
+            month = enddate.toString().split("-")[1];
+            year = enddate.toString().split("-")[0];
 
             enddate = new Date(year, month-1, day, 3, 3, 0, 0).toISOString();
 
             while (startdate <= enddate){
-                $scope.eventData.date = startdate;
+                $scope.eventData.start = startdate;
                 eventsService.event.create($scope.eventData);
                 // add one week
                 var tmp = Date.parse(startdate)+week_in_millis;
                 startdate = new Date(tmp).toISOString();
             }
-            $scope.eventData.date = startdate;
-            eventsService.event.create($scope.eventData, function(){
-                location.href ="/#/events";
-            });
+            $scope.eventData.start = startdate;
+            eventsService.event.create($scope.eventData);
+            location.href ="/#/events";
         };
 
         $scope.take_part = function(event_id, bool){

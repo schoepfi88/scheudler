@@ -12,7 +12,7 @@
       <!-- next events -->
       <div class="panel-body" id="event_body">
         <!-- events ng-repeat -->
-         <div class="panel panel-default inbox-dashboard" ng-repeat="eve in allEventsAccepted" ng-init="center_events()">
+         <div class="panel panel-default inbox-dashboard" ng-repeat="eve in allEventsAccepted track by $index" ng-init="center_events()" ng-show="$index < 7">
           <div class="panel-body inbox-dashboard">
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
@@ -108,7 +108,7 @@
       </div>
       <div class="panel-body" id="invite_body">
         <!-- invite ng-repeat -->
-        <div class="panel panel-default inbox-dashboard" ng-repeat="inv in allEventsUnaccepted" ng-init="center_events();">
+        <div class="panel panel-default inbox-dashboard" ng-repeat="inv in allEventsUnaccepted track by $index" ng-init="center_events();" ng-show="$index < 7">
           <div class="panel-body inbox-dashboard">
             <div name="event-pic" class="row center-row">
               <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">

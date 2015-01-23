@@ -37,14 +37,19 @@ class Api::EventsController < Api::RestController
       end
     end
 	
-	init_calendar
-	gcal_id = Group.find(group_id).calendar_id
+  	init_calendar
+  	gcal_id = Group.find(group_id).calendar_id
     event = Event.create_event(create_params)
-	gcal_event_insert(gcal_id, event)
+    puts create_params
+  	gcal_event_insert(gcal_id, event)
     title = "New Event: " + event.name
-    mess = event.start.to_s + event.name.to_s
+    #Sun, 25 Jan 2015 15:00:00 +0000:DateTime
+    date = event.start.strftime("%d. %b") # 12. Jan
+    time = event.start.strftime("%H:%M %p") # 11:00 AM
+
+    mess = date + " - " + time
     event.save!
-    options = {data: {title: event.name, message: mess}, collapse_key: "updated_score"}
+    options = {data: {title: title, message: mess}, collapse_key: "updated_score"}
     response = gcm.send(registration_ids, options)
     Participant.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
