@@ -16,8 +16,8 @@ class Event < ActiveRecord::Base
 		event = {
       'id' => self.gcal_id,
       'title' => self.name,
-      'start' => self.start.to_date.strftime('%Y-%m-%d ') + self.start.to_time.strftime('%H:%M:%S'),
-      'end' => self.endTime.to_date.strftime('%Y-%m-%d ') + self.endTime.to_time.strftime('%H:%M:%S'),
+      'start' => self.start.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
+      'end' => self.endTime.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
       'color' => self.color,
       'textColor' => self.text_color
     }
