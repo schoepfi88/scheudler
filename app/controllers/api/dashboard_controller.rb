@@ -139,9 +139,9 @@ class Api::DashboardController < ApplicationController
 		def get_invites
 		@all_invites = []
 		groups_of_user = Member.where(user_id: current_user.id).pluck(:group_id)
-		groups_of_user.each do |g|
-			e = Event.where(group_id: g)
-			e.each do |e1|
+		inv_all = Event.order("start ASC")
+		inv_all.each do |e1|
+			if groups_of_user.include?(e1.group_id)
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
 					#now = Time.new.to_s 
@@ -155,16 +155,15 @@ class Api::DashboardController < ApplicationController
 
 			end
 		end
-		#sort
-		@all_invites = @all_invites.sort! { |a,b| a.start <=> a.start }
+		@all_invites
 	end
 
 	def get_events
 		@all_events = []
 		groups_of_user = Member.where(user_id: current_user.id).pluck(:group_id)
-		groups_of_user.each do |g|
-			e = Event.where(group_id: g)
-			e.each do |e1|
+		eve_all = Event.order("start ASC")
+		eve_all.each do |e1|
+			if groups_of_user.include?(e1.group_id)
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
 					if check.accepted == true 
@@ -176,8 +175,7 @@ class Api::DashboardController < ApplicationController
 				end
 			end
 		end
-		#sort
-		@all_events = @all_events.sort! { |a,b| a.start <=> a.start }
+		@all_events
 
 	end
 
