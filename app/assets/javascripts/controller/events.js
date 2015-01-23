@@ -2,6 +2,7 @@ angular.module('scheudler').controller("eventsCtrl",
     function($scope, $routeParams, $rootScope, eventsService, dashboardService, Util){
         $scope.weekly = $rootScope.weekly;
         $scope.enddate = null;
+        $scope.start_time = null;
         
         $scope.set_weekly = function(set){
             $rootScope.weekly = set;
@@ -9,6 +10,7 @@ angular.module('scheudler').controller("eventsCtrl",
         $scope.create_event = function(){
             var group_id = $scope.eventData.group_id[0];
             $scope.eventData.group_id = group_id;
+            $scope.eventData.start = $scope.eventData.start + " " + $scope.start_time;
             eventsService.event.create($scope.eventData, function(){
                 location.href ="/#/events";
             });
@@ -52,7 +54,13 @@ angular.module('scheudler').controller("eventsCtrl",
 
         $scope.get_members = eventsService.event.get_members($routeParams.id);
 
-        $scope.allEvents = eventsService.event.get_events();
+        $scope.allEvents = eventsService.event.get_events(function(data){
+            for(var i = 0; i < data.length; i++){
+                data[i].time = new Date(data[i].time).format("shortTime");
+                data[i].date = new Date(data[i].date).format("dd. mmm");
+                
+            }
+        });
 
         $scope.groups = dashboardService.groups.get();
 
@@ -60,11 +68,11 @@ angular.module('scheudler').controller("eventsCtrl",
             name: '',
             location: '',
             description: '',
-            date: '',
+            start: '',
             group_id: '',
+            time: '',
           //from: '',
           //till: '',
-          time: ''
       };
 
 	$scope.result1 = '';

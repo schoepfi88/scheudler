@@ -13,7 +13,10 @@ class Api::EventsController < Api::RestController
     #@events = result.data.items
     #respond_with @events
     @events = Event.get_events(current_user.id)
-    respond_with @events
+    @events.each do |e|
+      puts e.start
+    end
+    @events
   end
 
   def create
@@ -35,9 +38,9 @@ class Api::EventsController < Api::RestController
     end
     event = Event.create_event(create_params)
     title = "New Event: " + event.name
-    mess = event.date.to_s + event.name.to_s
+    mess = event.start.to_s + event.name.to_s
     event.save!
-    options = {data: {title: event.name, message: event.date}, collapse_key: "updated_score"}
+    options = {data: {title: event.name, message: mess}, collapse_key: "updated_score"}
     response = gcm.send(registration_ids, options)
     Participant.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
@@ -56,7 +59,7 @@ class Api::EventsController < Api::RestController
 
   private
     def create_params
-      params.permit(:name, :description, :location, :date, :time, :group_id)
+      params.permit(:name, :description, :location, :start, :group_id)
     end
 
     def part_params

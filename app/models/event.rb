@@ -7,8 +7,8 @@ class Event < ActiveRecord::Base
 	
 #validates   :name, :description, :location, :date, :group_id
 	attr_accessor :gcal_id
-  attr_accessor :title
-	attr_accessor :start
+  	attr_accessor :title
+	#attr_accessor :start
 	attr_accessor :end
 	attr_accessor :color
 	attr_accessor :text_color
@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
 
 
 	def self.create_event(params)
-		event = Event.create(name: params[:name], description: params[:description], location: params[:location], date: params[:date], time: params[:time], group_id: params[:group_id])
+		event = Event.create(name: params[:name], description: params[:description], location: params[:location], start: params[:start], group_id: params[:group_id])
 		event
 	end
 
@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
 		groups_of_user = Member.where(user_id: userid).pluck(:group_id)
 		groups_of_user.each do |g|
 			e = Event.where(group_id: g)
-			e.joins(:group)
+			#e.joins(:group)
 			e.each do |e1|
 				returnList << e1
 			end

@@ -5,21 +5,24 @@
 <script type="text/javascript">
   $(function () {
     $('#datepicker').datepicker({
-      pickTime: false
+      pickTime: false,
+      format: 'yyyy-mm-dd'
     });
   });
 </script>
 <script type="text/javascript">
   $(function () {
     $('#datepicker2').datepicker({
-      pickTime: false
+      pickTime: false,
+      format: 'yyyy-mm-dd'
     });
   });
 </script>
 <script type="text/javascript">
   $(function () {
     $('#datepicker3').datepicker({
-      pickTime: false
+      pickTime: false,
+      format: 'yyyy-mm-dd'
     });
   });
 </script>
@@ -65,7 +68,7 @@
             <label for="date">
               <%= t('.date') %></label>
               <div class="input-group date" id="datepicker">
-                <input autofocus="autofocus" id="date" ng-model="eventData.date" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <input autofocus="autofocus" id="date" ng-model="eventData.start" placeholder="<%= t('.date_placeholder') %>" type="text"/>
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -76,7 +79,7 @@
               <label for="time">
                 <%= t('.time') %></label>
                 <div class="input-group time" id="timex">
-                  <input data-format="hh:mm" ng-model="eventData.time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
+                  <input data-format="hh:mm" ng-model="start_time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-time"></span>
                   </span>
@@ -144,7 +147,7 @@
             <label for="date2">
               <%= t('.date') %></label>
               <div class="input-group date" id="datepicker2">
-                <input autofocus="autofocus" id="date2" ng-model="eventData.date" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <input autofocus="autofocus" id="date2" ng-model="eventData.start" placeholder="<%= t('.date_placeholder') %>" type="text"/>
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -166,7 +169,7 @@
               <label for="time">
                 <%= t('.time') %></label>
                 <div class="input-group time" id="timex">
-                  <input data-format="hh:mm" ng-model="eventData.time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
+                  <input data-format="hh:mm" ng-model="start_time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-time"></span>
                   </span>

@@ -4,6 +4,7 @@ json.array!(@events) do |eve|
 	json.description eve.description
 	json.icon eve.group.icon
 	json.location eve.location
-	json.time eve.time
+	json.date eve.start
+	json.time eve.start
 	json.group_id eve.group_id
 end
