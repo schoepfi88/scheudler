@@ -13,8 +13,10 @@ class Event < ActiveRecord::Base
 	attr_accessor :text_color
 	
 	def to_json
+		if self.endTime.nil? then
+			self.endTime = self.start.to_datetime.advance(:hours => 1)
+		end
 		event = {
-      'id' => self.gcal_id,
       'title' => self.name,
       'start' => self.start.to_datetime.new_offset(Rational(1, 24)),
       'end' => self.endTime.to_datetime.new_offset(Rational(1, 24)),
@@ -41,12 +43,17 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.get_events(userid)
+		bg_color = ['#3465A4', '#f57900', '#4e9a06', '#cc0000', '#75507b', '#edd400']
+		fg_color = ['white', 'white', 'black', 'white', 'white', 'black']
+		
 		returnList = []
 		groups_of_user = Member.where(user_id: userid).pluck(:group_id)
-		groups_of_user.each do |g|
+		groups_of_user.each_with_index do |g, index|
 			e = Event.where(group_id: g)
 			#e.joins(:group)
 			e.each do |e1|
+				e1.color = bg_color[index % bg_color.length]
+				e1.text_color = fg_color[index % fg_color.length]
 				returnList << e1
 			end
 		end
