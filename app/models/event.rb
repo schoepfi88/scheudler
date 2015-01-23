@@ -9,24 +9,32 @@ class Event < ActiveRecord::Base
 	attr_accessor :gcal_id
   	attr_accessor :title
 	#attr_accessor :start
-	attr_accessor :endTime
+	attr_writer :endTime
 	attr_accessor :color
 	attr_accessor :text_color
 
 	def start
-		return DateTime.new(2015,1,25,15,0,0)
+		if read_attribute(:start).nil? then
+			return DateTime.new(2015,1,25,15,0,0)
+		else
+			return read_attribute(:start)
+		end
 	end
 
 	def endTime
-		return DateTime.new(2015,1,25,16,0,0)
+		if @endTime.nil? then
+			return DateTime.new(2015,1,25,16,0,0)
+		else
+			return @endTime
+		end
 	end
 
 	def to_json
 		event = {
       'id' => self.gcal_id,
       'title' => self.name,
-      'start' => self.start.strftime('%Y-%m-%d %H:%M:%S'),
-      'end' => self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
+      'start' => self.start.to_date.strftime('%Y-%m-%d ') + self.start.to_time.strftime('%H:%M:%S'),
+      'end' => self.endTime.to_date.strftime('%Y-%m-%d ') + self.endTime.to_time.strftime('%H:%M:%S'),
       'color' => self.color,
       'textColor' => self.text_color
     }
