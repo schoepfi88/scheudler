@@ -8,25 +8,16 @@ class Event < ActiveRecord::Base
 #validates   :name, :description, :location, :date, :group_id
 	attr_accessor :gcal_id
   	attr_accessor :title
-	#attr_accessor :start
 	attr_accessor :endTime
 	attr_accessor :color
 	attr_accessor :text_color
-
-	def start
-		return DateTime.new(2015,1,25,15,0,0)
-	end
-
-	def endTime
-		return DateTime.new(2015,1,25,16,0,0)
-	end
 
 	def to_json
 		event = {
       'id' => self.gcal_id,
       'title' => self.name,
-      'start' => self.start.strftime('%Y-%m-%d %H:%M:%S'),
-      'end' => self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
+      'start' => self.start.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
+      'end' => self.endTime.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
       'color' => self.color,
       'textColor' => self.text_color
     }
@@ -35,8 +26,8 @@ class Event < ActiveRecord::Base
 	def convert_to_gcal_event
 		event = {
 		  'summary' => self.name,
-		  'start' => { 'dateTime' => self.start.rfc3339},
-		  'end' =>  { 'dateTime' => self.endTime.rfc3339},
+		  'start' => { 'dateTime' => self.start.to_datetime.rfc3339},
+		  'end' =>  { 'dateTime' => (self.start.to_datetime + 1/24.0).rfc3339},
 		  'attendees' => [],
 		  'location' => self.location,
 		  'description' => self.description
@@ -45,7 +36,7 @@ class Event < ActiveRecord::Base
 
 
 	def self.create_event(params)
-		event = Event.create(name: params[:name], description: params[:description], location: params[:location], start: params[:start], group_id: params[:group_id])
+		event = Event.create(name: params[:name], description: params[:description], location: params[:location], start: (params[:start].to_datetime - 1/24.0), group_id: params[:group_id])
 		event
 	end
 

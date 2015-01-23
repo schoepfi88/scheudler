@@ -63,7 +63,7 @@ class Api::EventsController < Api::RestController
 
   private
     def create_params
-      params.permit(:name, :description, :location, :start, :group_id)
+      params.permit(:name, :description, :location, :start, :end, :group_id)
     end
 
     def part_params
