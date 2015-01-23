@@ -21,8 +21,8 @@ class Api::EventController < Api::RestController
 						ev = Event.new
 						ev.gcal_id = event.id
 						ev.name = event.summary
-						ev.start = event.start
-						ev.end = event.end
+						ev.start = event.start.dateTime
+						ev.endTime = event.end.dateTime
 						ev.color = bg_color[index % bg_color.length]
 						ev.text_color = fg_color[index % fg_color.length]
 
