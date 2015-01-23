@@ -16,8 +16,8 @@ class Event < ActiveRecord::Base
 		event = {
       'id' => self.gcal_id,
       'title' => self.name,
-      'start' => self.start.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
-      'end' => self.endTime.strftime('%Y-%m-%d %H:%M:%S').to_datetime + 1/24.0,
+      'start' => self.start.to_datetime.new_offset(Rational(1, 24)),
+      'end' => self.endTime.to_datetime.new_offset(Rational(1, 24)),
       'color' => self.color,
       'textColor' => self.text_color
     }
@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
 		event = {
 		  'summary' => self.name,
 		  'start' => { 'dateTime' => self.start.to_datetime.rfc3339},
-		  'end' =>  { 'dateTime' => (self.start.to_datetime + 1/24.0).rfc3339},
+		  'end' =>  { 'dateTime' => (self.start.to_datetime.advance(:hours => 1)).rfc3339},
 		  'attendees' => [],
 		  'location' => self.location,
 		  'description' => self.description
