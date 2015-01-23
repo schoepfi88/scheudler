@@ -70,7 +70,7 @@ angular.module('scheudler').controller("eventsCtrl",
             description: '',
             start: '',
             group_id: '',
-            time: '',
+            time: ''
           //from: '',
           //till: '',
       };
