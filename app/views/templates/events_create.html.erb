@@ -2,7 +2,29 @@
   <h1 class="page-header"><span class="fa fa-edit"></span> <%= t('.page_header') %></h1>
 </section>
 
-<div class="row">
+<script type="text/javascript">
+  $(function () {
+    $('#datepicker').datepicker({
+      pickTime: false
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(function () {
+    $('#datepicker2').datepicker({
+      pickTime: false
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(function () {
+    $('#datepicker3').datepicker({
+      pickTime: false
+    });
+  });
+</script>
+
+<div class="row" ng-show="!weekly">
   <div class="col-md-6">
     <form ng-submit="create_event()">
 
@@ -50,34 +72,16 @@
               </div>
             </div>
 
-            <script type="text/javascript">
-              $(function () {
-                $('#datepicker').datepicker({
-                  pickTime: false
-                });
-              });
-            </script>
-
-
             <div class="form-group">
               <label for="time">
                 <%= t('.time') %></label>
                 <div class="input-group time" id="timex">
-                  <input data-format="hh:mm:ss" ng-model="eventData.time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
+                  <input data-format="hh:mm" ng-model="eventData.time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-time"></span>
                   </span>
                 </div>
               </div>
-
-              <script type="text/javascript">
-                $(function() {
-                  $('#time').datetimepicker({
-                    maskInput: true,
-                    pickDate: false
-                  });
-                });
-              </script>
 
               <div class="form-group">
                 <label for="time">
@@ -99,3 +103,93 @@
 
             </div>
           </div>
+<div class="row" ng-show="weekly">
+  <div class="col-md-6">
+    <form ng-submit="create_weekly_event()">
+
+     <div class="form-group">
+      <label for="name">
+        <%= t('.name') %></label>
+        <div class="input-group">
+          <input autofocus="autofocus" id="name" ng-model="eventData.name" placeholder="<%= t('.name_placeholder') %>" type="text"/>
+          <span class="input-group-addon">
+            <span class="fa fa-trophy"></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="location">
+          <%= t('.location') %></label>
+          <div class="input-group">
+            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text" ng-autocomplete="result1" details="details1" options="options1"/>
+            <span class="input-group-addon">
+              <span class="fa fa-location-arrow"></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">
+            <%= t('.description') %></label>
+            <div class="input-group">
+              <input autofocus="autofocus" id="description" ng-model="eventData.description" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-info-sign"></span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date2">
+              <%= t('.date') %></label>
+              <div class="input-group date" id="datepicker2">
+                <input autofocus="autofocus" id="date2" ng-model="eventData.date" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+            <label for="date3">
+              <%= t('.date_end') %></label>
+              <div class="input-group date" id="datepicker3">
+                <input autofocus="autofocus" id="date3" ng-model="enddate" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="time">
+                <%= t('.time') %></label>
+                <div class="input-group time" id="timex">
+                  <input data-format="hh:mm" ng-model="eventData.time" autofocus="autofocus" id="time" placeholder="<%= t('.time_placeholder') %>" type="text"/>
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="time">
+                  <%= t('.select_group') %></label><br>
+                  <label ng-repeat="group in groups">
+                    <input type="checkbox" checklist-model="eventData.group_id" checklist-value="group.id">{{group.name}}
+                    <br>
+
+                  </label>
+
+
+                </div>
+
+                <p>
+                  <button type="submit" class="btn btn-primary btn-lg"><%=t(".create_events")%></button>
+                </p>
+              </form>
+
+            </div>
+          </div>
+

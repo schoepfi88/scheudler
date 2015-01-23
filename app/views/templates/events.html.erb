@@ -10,13 +10,13 @@
     </button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
       <li>
-        <a href="/#/events_create">
+        <a href="/#/events_create" ng-click="set_weekly(false)">
           <i class="fa fa-plus-circle"></i>
           <%=t ( '.single_event') %>
         </a>
       </li>
       <li>
-        <a href="/#/events_create">
+        <a href="/#/events_create" ng-click="set_weekly(true)">
           <i class="fa fa-repeat"></i>
           <%=t ('.repeating_event') %></a>
         </li>

@@ -144,9 +144,13 @@ class Api::DashboardController < ApplicationController
 			e.each do |e1|
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
-					if check.accepted == nil 
-						@all_invites << e1
-					end
+					#now = Time.new.to_s 
+					#if now < e1.time
+						if check.accepted == nil 
+							@all_invites << e1
+						end
+					#end
+
 				end
 
 			end
@@ -163,7 +167,10 @@ class Api::DashboardController < ApplicationController
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
 					if check.accepted == true 
-						@all_events << e1
+						#now = Time.new.to_s 
+						#if now < e1.time
+							@all_events << e1
+						#end
 					end
 				end
 			end

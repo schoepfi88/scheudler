@@ -34,6 +34,8 @@ class Api::EventsController < Api::RestController
       end
     end
     event = Event.create_event(create_params)
+    title = "New Event: " + event.name
+    mess = event.date.to_s + event.name.to_s
     event.save!
     options = {data: {title: event.name, message: event.date}, collapse_key: "updated_score"}
     response = gcm.send(registration_ids, options)
