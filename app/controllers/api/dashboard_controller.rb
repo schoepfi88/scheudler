@@ -136,17 +136,22 @@ class Api::DashboardController < ApplicationController
 		respond_with({unread: group_counter, last_mes: last_mes_ids, undisplayed: group_counter_undisplayed})
 	end
 
-	def get_invites
+		def get_invites
 		@all_invites = []
 		groups_of_user = Member.where(user_id: current_user.id).pluck(:group_id)
-		groups_of_user.each do |g|
-			e = Event.where(group_id: g)
-			e.each do |e1|
+		inv_all = Event.order("start ASC")
+		inv_all.each do |e1|
+			if groups_of_user.include?(e1.group_id)
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
-					if check.accepted == nil 
+					now = Time.new.to_s 
+					if now.to_s > e1.start.to_s
+						Participant.where(event_id: e1.id).destroy_all
+						Event.find(e1.id).destroy
+					elsif check.accepted == nil 
 						@all_invites << e1
 					end
+
 				end
 
 			end
@@ -157,18 +162,23 @@ class Api::DashboardController < ApplicationController
 	def get_events
 		@all_events = []
 		groups_of_user = Member.where(user_id: current_user.id).pluck(:group_id)
-		groups_of_user.each do |g|
-			e = Event.where(group_id: g)
-			e.each do |e1|
+		eve_all = Event.order("start ASC")
+		eve_all.each do |e1|
+			if groups_of_user.include?(e1.group_id)
 				check = Participant.where(user_id: current_user.id, event_id: e1.id).first
 				if check != nil
-					if check.accepted == true 
+					now = Time.new.to_s 
+					if now.to_s > e1.start.to_s
+						Participant.where(event_id: e1.id).destroy_all
+						Event.find(e1.id).destroy
+					elsif check.accepted == true 
 						@all_events << e1
 					end
 				end
 			end
 		end
 		@all_events
+
 	end
 
 	def accepted

@@ -7,22 +7,48 @@
 <ul class="list-group">
   <% @group_members.each do |member| %>
 	<li class="list-group-item">
-		<%= member.name %>
+		<% if member.name == "dummy" then %>
+			<%= member.email + ' ' + t(".unregistered_user") %>
+		<% else %>
+			<%= member.name %>
+		<% end %>
 		<% if @group.admins.find_by(user_id: member.id) != nil then %>
-			<span class="badge-normal pull-right"><%= t(".admin") + "  " %><i class="fa fa-ban"></i></span>
+			<span class="badge-normal pull-right">
+				<span class="hidden-xs">
+					<%= t(".admin") + "  " %>
+				</span>
+				<i class="fa fa-ban"></i>
+			</span>
 		<% else %>
 			<% if @is_admin then %>
 				<button class="btn btn-danger badge-btn pull-right" ng-click="remove_member(<%= @group.id %>, <%= member.id %>)">
-					<%= t(".user") + "  " %>
+					<span class="hidden-xs">
+						<%= t(".user") + "  " %>
+					</span>
 					<i class="fa fa-remove"></i>
 				</button>
 				<button class="btn btn-success badge-btn pull-right" ng-click="make_admin(<%= @group.id %>, <%= member.id %>)">
-					<%= t(".make_admin") + "  " %>
+					<span class="hidden-xs">
+						<%= t(".make_admin") + "  " %>
+					</span>
 					<i class="fa fa-level-up"></i>
 				</button>
 			<% else %>
-				<span class="badge-normal pull-right"><%= t(".user") + "  " %><i class="fa fa-ban"></i></span>
+				<span class="badge-normal pull-right">
+					<span class="hidden-xs">
+						<%= t(".user") + "  " %>
+					</span>
+					<i class="fa fa-ban"></i>
+				</span>
 			<% end %>
+		<% end %>
+		<% if member.id != @current_user.id and member.name != "dummy" and (@friends == nil or @friends.where(friend_id: member.id).size == 0) then %>
+			<button class="btn btn-info badge-btn pull-right" ng-click="make_friend(<%= @group.id %>, <%= member.id %>)">
+				<span class="hidden-xs">
+					<%= t(".make_friend") + "  " %>
+				</span>
+				<i class="fa fa-plus"></i>
+			</button>
 		<% end %>
 	</li>
   <% end %>

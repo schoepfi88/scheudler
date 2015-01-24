@@ -1,4 +1,6 @@
 class Api::EventsController < Api::RestController
+	include CalendarModule
+
    respond_to :json
 
   def index
@@ -13,13 +15,14 @@ class Api::EventsController < Api::RestController
     #@events = result.data.items
     #respond_with @events
     @events = Event.get_events(current_user.id)
-    respond_with @events
+    @events
   end
 
   def create
     key = ENV["GOOGLE_GCM_API_KEY"]
     gcm = GCM.new(key)
     group_id = create_params[:group_id]
+
     registration_ids=[]
     group_members = Member.where(group_id: group_id).pluck(:user_id)
     # add regId of group members
@@ -33,9 +36,20 @@ class Api::EventsController < Api::RestController
         end
       end
     end
+	
+  	init_calendar
+  	gcal_id = Group.find(group_id).calendar_id
     event = Event.create_event(create_params)
+    puts create_params
+  	gcal_event_insert(gcal_id, event)
+    title = "New Event: " + event.name
+    #Sun, 25 Jan 2015 15:00:00 +0000:DateTime
+    date = event.start.strftime("%d. %b") # 12. Jan
+    time = event.start.strftime("%H:%M %p") # 11:00 AM
+
+    mess = date + " - " + time
     event.save!
-    options = {data: {title: event.name, message: event.date}, collapse_key: "updated_score"}
+    options = {data: {title: title, message: mess}, collapse_key: "updated_score"}
     response = gcm.send(registration_ids, options)
     Participant.create_part(event.id, event.group_id)
     respond_with(nil, :location => nil)
@@ -54,7 +68,7 @@ class Api::EventsController < Api::RestController
 
   private
     def create_params
-      params.permit(:name, :description, :location, :date, :time, :group_id)
+      params.permit(:name, :description, :location, :start, :end, :group_id)
     end
 
     def part_params

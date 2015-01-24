@@ -74,7 +74,7 @@ en:
         statistic                         : "Statistics"
         events                            : "Events"
         groups                            : "Groups"
-        account                           : "Account"
+        friends                           : "Friends"
 
   public:
     about:
@@ -123,11 +123,12 @@ en:
       page_header                        : "Events"
       page_title                         : "Events"
       create_event                       : "Create Event"
+      create_events                      : "Create Events"
       help_title                         : "Create your first event..."
       help_paragraph1                    : "You can create a new event..."
       help_paragraph2                    : "and invite them to join"
       single_event                       : "Single Event"
-      repeating_event                    : "Repeating Event"
+      repeating_event                    : "Weekly Event"
       take_part                          : "Take part"
       deny                               : "Reject"
       see_part                           : "...see participants"
@@ -142,14 +143,15 @@ en:
       description                        : "Description"
       description_placeholder            : "Final of American Football"
       date                               : "Date"
+      date_end                           : "End Date"
       date_placeholder                   : "Implement Mini-Calendar"
       time                               : "Time"
-      time_placeholder                   : "18:00:00"
+      time_placeholder                   : "18:00"
       create_event                       : "Create event"
       location                           : "Location"
       location_placeholder               : "Vienna"
     events_dashboard:
-      page_header                        : "Events"
+      page_header                        : "Participants"
     events_location:
       page_header                        : "Location"
       page_title                         : "Location"
@@ -194,17 +196,19 @@ en:
       page_header                        : "Invite people to your group"
       page_title                         : "Invite poeple to your group"
       email                              : "E-Mail Addresses"
-      email_placeholder                  : "john@gmail.com; wayne@gmail.com"
-      invite                             : "Invite"
+      email_placeholder                  : "john.wayne@gmail.com"
+      invite                             : "Invite to group"
       required_email                     : "At least one email address is required"
       pattern_email                      : "Wrong format"
     groups_members:
       page_header                        : " - Members"
       page_title                         : "Group Members"
       admin                              : "Administrator"
-      user                               : "User"
+      user                               : "Remove"
       remove_member                      : "Remove From Group"
       make_admin                         : "Make admin"
+      unregistered_user                  : "(Unregistered User)"
+      make_friend                        : "Make friend"
     groups_settings:
       page_header                        : " - Settings"
       page_title                         : "Group Settings"
@@ -231,12 +235,15 @@ en:
       help_title                         : "Nothing to show"
       help_paragraph1                    : "Create Events..."
       help_paragraph2                    : "and participate"
-    account:
-      page_header                        : "Account Settings"
-      page_title                         : "Account Settings"
-      disable_back_link                  : "Disable secret back link"
+    friends:
+      page_header                        : "Friends"
+      page_title                         : "Friends"
+      disable_back_link                  : "Enable secret back link"
       save                               : "Save Settings"
       cant_create_group                  : "You need a Google account to create a group"
+      help_title                         : "You don't have any friends yet"
+      help_paragraph1                    : "You can add new friends..."
+      help_paragraph2                    : "if you are in the same group"
 
   session:
     index:
