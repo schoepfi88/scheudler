@@ -150,6 +150,7 @@ en:
       create_event                       : "Create event"
       location                           : "Location"
       location_placeholder               : "Vienna"
+      required_name                      : "Require name"
     events_dashboard:
       page_header                        : "Participants"
     events_location:

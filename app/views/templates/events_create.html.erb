@@ -29,24 +29,26 @@
 
 <div class="row" ng-show="!weekly">
   <div class="col-md-6">
-    <form ng-submit="create_event()">
+    <form name="createevent" ng-submit="create_event(createevent.$valid)" novalidate>
 
-     <div class="form-group">
+     <div class="form-group" ng-class="{ 'has-error' : createevent.name.$invalid && !createevent.name.$pristine }">
       <label for="name">
         <%= t('.name') %></label>
         <div class="input-group">
-          <input autofocus="autofocus" id="name" ng-model="eventData.name" placeholder="<%= t('.name_placeholder') %>" type="text"/>
+          <input autofocus="autofocus" id="name" ng-model="eventData.name" placeholder="<%= t('.name_placeholder') %>" type="text" ng-minlength="3" required/>
           <span class="input-group-addon">
             <span class="fa fa-trophy"></span>
           </span>
         </div>
+          <p ng-show="createevent.name.$invalid && !createevent.name.$pristine && !createevent.name.$error.minlength" class="help-block"><%= t('.required_name') %></p>
+      <p ng-show="createevent.name.$error.minlength" class="help-block"><%= t('.minlength_name') %></p>
       </div>
 
       <div class="form-group">
         <label for="location">
           <%= t('.location') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text" ng-autocomplete="result1" details="details1" options="options1"/>
+            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text" ng-autocomplete="result1" details="details1" options="options1" required/>
             <span class="input-group-addon">
               <span class="fa fa-location-arrow"></span>
             </span>
@@ -57,7 +59,7 @@
           <label for="description">
             <%= t('.description') %></label>
             <div class="input-group">
-              <input autofocus="autofocus" id="description" ng-model="eventData.description" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+              <input autofocus="autofocus" id="description" ng-model="eventData.description" placeholder="<%= t('.description_placeholder') %>" type="text" required/>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-info-sign"></span>
               </span>
@@ -68,7 +70,7 @@
             <label for="date">
               <%= t('.date') %></label>
               <div class="input-group date" id="datepicker">
-                <input autofocus="autofocus" id="date" ng-model="eventData.start" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <input autofocus="autofocus" id="date" ng-model="eventData.start" placeholder="<%= t('.date_placeholder') %>" type="text" required/>
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -90,7 +92,7 @@
                 <label for="time">
                   <%= t('.select_group') %></label><br>
                   <label ng-repeat="group in groups">
-                    <input type="checkbox" checklist-model="eventData.group_id" checklist-value="group.id">{{group.name}}
+                    <input type="checkbox" checklist-model="eventData.group_id" ng-change="checkChanged(eventData)" checklist-value="group.id" ng-disabled="checked==limit && !eventData.group_id">{{group.name}}
                     <br>
 
                   </label>
@@ -99,33 +101,37 @@
                 </div>
 
                 <p>
-                  <button type="submit" class="btn btn-primary btn-lg"><%=t(".create_event")%>
+                  <button type="submit" class="btn btn-primary btn-lg" ng-disabled="createevent.$invalid"><%=t(".create_event")%>
                   </button>
                 </p>
               </form>
 
             </div>
           </div>
+
+
 <div class="row" ng-show="weekly">
   <div class="col-md-6">
-    <form ng-submit="create_weekly_event()">
+    <form name="week" ng-submit="create_weekly_event(week.$valid)">
 
-     <div class="form-group">
+     <div class="form-group" ng-class="{ 'has-error' : week.name.$invalid && !week.name.$pristine }">
       <label for="name">
         <%= t('.name') %></label>
         <div class="input-group">
-          <input autofocus="autofocus" id="name" ng-model="eventData.name" placeholder="<%= t('.name_placeholder') %>" type="text"/>
+          <input autofocus="autofocus" id="name" ng-model="eventData.name" placeholder="<%= t('.name_placeholder') %>" type="text" ng-minlength="3" required/>
           <span class="input-group-addon">
             <span class="fa fa-trophy"></span>
           </span>
         </div>
+                  <p ng-show="week.name.$invalid && !week.name.$pristine && !week.name.$error.minlength" class="help-block"><%= t('.required_name') %></p>
+      <p ng-show="week.name.$error.minlength" class="help-block"><%= t('.minlength_name') %></p>
       </div>
 
       <div class="form-group">
         <label for="location">
           <%= t('.location') %></label>
           <div class="input-group">
-            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text" ng-autocomplete="result1" details="details1" options="options1"/>
+            <input autofocus="autofocus" id="location" ng-model="eventData.location" placeholder="<%= t('.location_placeholder') %>" type="text" ng-autocomplete="result1" details="details1" options="options1" required/>
             <span class="input-group-addon">
               <span class="fa fa-location-arrow"></span>
             </span>
@@ -136,7 +142,7 @@
           <label for="description">
             <%= t('.description') %></label>
             <div class="input-group">
-              <input autofocus="autofocus" id="description" ng-model="eventData.description" placeholder="<%= t('.description_placeholder') %>" type="text"/>
+              <input autofocus="autofocus" id="description" ng-model="eventData.description" placeholder="<%= t('.description_placeholder') %>" type="text" required/>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-info-sign"></span>
               </span>
@@ -147,7 +153,7 @@
             <label for="date2">
               <%= t('.date') %></label>
               <div class="input-group date" id="datepicker2">
-                <input autofocus="autofocus" id="date2" ng-model="eventData.start" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <input autofocus="autofocus" id="date2" ng-model="eventData.start" placeholder="<%= t('.date_placeholder') %>" type="text" required/>
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -158,7 +164,7 @@
             <label for="date3">
               <%= t('.date_end') %></label>
               <div class="input-group date" id="datepicker3">
-                <input autofocus="autofocus" id="date3" ng-model="enddate" placeholder="<%= t('.date_placeholder') %>" type="text"/>
+                <input autofocus="autofocus" id="date3" ng-model="enddate" placeholder="<%= t('.date_placeholder') %>" type="text" required/>
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -180,7 +186,7 @@
                 <label for="time">
                   <%= t('.select_group') %></label><br>
                   <label ng-repeat="group in groups">
-                    <input type="checkbox" checklist-model="eventData.group_id" checklist-value="group.id">{{group.name}}
+                    <input type="checkbox" checklist-model="eventData.group_id" ng-change="checkChanged(eventData)" checklist-value="group.id" ng-disabled="checked==limit && !eventData.group_id">{{group.name}}
                     <br>
 
                   </label>
@@ -189,7 +195,7 @@
                 </div>
 
                 <p>
-                  <button type="submit" class="btn btn-primary btn-lg"><%=t(".create_events")%></button>
+                  <button type="submit" class="btn btn-primary btn-lg" ng-disabled="week.$invalid"><%=t(".create_events")%></button>
                 </p>
               </form>
 

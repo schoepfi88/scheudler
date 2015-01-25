@@ -150,6 +150,7 @@ de:
       time_placeholder                   : "18:00"
       location                           : "Ort"
       location_placeholder               : "Wien"
+      required_name                      : "Bitte Namen eingeben"
     events_dashboard:
       page_header                        : "Teilnehmer"
     events_location:

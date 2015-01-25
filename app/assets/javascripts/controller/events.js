@@ -3,20 +3,33 @@ angular.module('scheudler').controller("eventsCtrl",
         $scope.weekly = $rootScope.weekly;
         $scope.enddate = null;
         $scope.start_time = null;
-        
+        $scope.limit = 1;
+        $scope.checked = 0;
+
         $scope.set_weekly = function(set){
             $rootScope.weekly = set;
-        }
-        $scope.create_event = function(){
+        };
+
+        $scope.checkChanged = function(eve){
+            if(eve.group_id = "") {
+                $scope.checked++;
+            }
+            else $scope.checked--;
+        };
+
+        $scope.create_event = function(valid){
+            if(valid){
             var group_id = $scope.eventData.group_id[0];
             $scope.eventData.group_id = group_id;
             $scope.eventData.start = $scope.eventData.start + " " + $scope.start_time;
             eventsService.event.create($scope.eventData, function(){
                 location.href ="/#/events";
             });
+            }
         };
 
-        $scope.create_weekly_event = function(){
+        $scope.create_weekly_event = function(valid){
+            if(valid){
             var enddate = $scope.enddate;
 
             var startdate = $scope.eventData.start;
@@ -43,6 +56,7 @@ angular.module('scheudler').controller("eventsCtrl",
             $scope.eventData.start = startdate;
             eventsService.event.create($scope.eventData);
             location.href ="/#/events";
+            }
         };
 
         $scope.take_part = function(event_id, bool){
