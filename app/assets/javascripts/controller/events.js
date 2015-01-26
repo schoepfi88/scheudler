@@ -17,8 +17,8 @@ angular.module('scheudler').controller("eventsCtrl",
         $scope.set_weekly = function(set){
             $rootScope.weekly = set;
         };
-        $('#timepicker').timepicker({ 'timeFormat': 'h:i' });
-        $('#timepicker2').timepicker({ 'timeFormat': 'h:i' });
+        $('#timepicker').timepicker({ 'timeFormat': 'H:i' });
+        $('#timepicker2').timepicker({ 'timeFormat': 'H:i' });
 
         $scope.checkChanged = function(eve){
             if(eve.group_id = "") {
