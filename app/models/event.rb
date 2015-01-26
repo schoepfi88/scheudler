@@ -50,13 +50,15 @@ class Event < ActiveRecord::Base
 		groups_of_user = Member.where(user_id: userid).pluck(:group_id)
 		groups_of_user.each_with_index do |g, index|
 			e = Event.where(group_id: g)
-			#e.joins(:group)
 			e.each do |e1|
-				e1.color = bg_color[index % bg_color.length]
-				e1.text_color = fg_color[index % fg_color.length]
-				returnList << e1
+				now = Time.new.to_s 
+				if now.to_s < e1.start.to_s
+					e1.color = bg_color[index % bg_color.length]
+					e1.text_color = fg_color[index % fg_color.length]
+					returnList << e1
+				end
 			end
 		end
-		returnList
+		returnList.sort! { |a,b| a.start <=> b.start }
 	end
 end

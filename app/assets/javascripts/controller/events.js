@@ -6,9 +6,19 @@ angular.module('scheudler').controller("eventsCtrl",
         $scope.limit = 1;
         $scope.checked = 0;
 
+        $scope.allEvents = eventsService.event.get_events(function(data){
+            for(var i = 0; i < data.length; i++){
+                data[i].time = new Date(data[i].time).format("shortTime");
+                data[i].date = new Date(data[i].date).format("dd. mmm");
+            }
+
+        });
+
         $scope.set_weekly = function(set){
             $rootScope.weekly = set;
         };
+        $('#timepicker').timepicker({ 'timeFormat': 'h:i' });
+        $('#timepicker2').timepicker({ 'timeFormat': 'h:i' });
 
         $scope.checkChanged = function(eve){
             if(eve.group_id = "") {
@@ -19,47 +29,36 @@ angular.module('scheudler').controller("eventsCtrl",
 
         $scope.create_event = function(valid){
             if(valid){
-            var group_id = $scope.eventData.group_id[0];
-            $scope.eventData.group_id = group_id;
-            $scope.eventData.start = $scope.eventData.start + " " + $scope.start_time;
-            eventsService.event.create($scope.eventData, function(){
-                location.href ="/#/events";
-            });
+                var group_id = $scope.eventData.group_id[0];
+                $scope.eventData.group_id = group_id;
+                $scope.eventData.start = $scope.eventData.start + " " + $scope.start_time;
+                eventsService.event.create($scope.eventData, function(){
+                    location.href ="/#/events";
+                });
             }
         };
 
         $scope.create_weekly_event = function(valid){
             if(valid){
-            var enddate = $scope.enddate;
+                var enddate = $scope.enddate + "T" + $scope.start_time;
+                var startdate = $scope.eventData.start + "T" + $scope.start_time;
+                var week_in_millis = 604800000;
 
-            var startdate = $scope.eventData.start;
-            var week_in_millis = 604800000;
-            var day = startdate.toString().split("-")[2];
-            var month = startdate.toString().split("-")[1];
-            var year = startdate.toString().split("-")[0];
-            var hour = $scope.start_time.toString().split(":")[0];
-            var min = $scope.start_time.toString().split(":")[1];
-            startdate = new Date(year, month-1, day, hour+4, min, 0, 0).toISOString();
-            day = enddate.toString().split("-")[2];
-            month = enddate.toString().split("-")[1];
-            year = enddate.toString().split("-")[0];
-
-            enddate = new Date(year, month-1, day, 3, 3, 0, 0).toISOString();
-
-            while (startdate <= enddate){
+                while (startdate <= enddate){
+                    $scope.eventData.start = startdate;
+                    eventsService.event.create($scope.eventData);
+                    // add one week
+                    var tmp = Date.parse(startdate)+week_in_millis;
+                    startdate = new Date(tmp).toISOString();
+                }
                 $scope.eventData.start = startdate;
                 eventsService.event.create($scope.eventData);
-                // add one week
-                var tmp = Date.parse(startdate)+week_in_millis;
-                startdate = new Date(tmp).toISOString();
-            }
-            $scope.eventData.start = startdate;
-            eventsService.event.create($scope.eventData);
-            location.href ="/#/events";
+                location.href ="/#/events";
             }
         };
 
-        $scope.take_part = function(event_id, bool){
+        $scope.take_part = function(event_id, bool, index){
+            $scope.allEvents[index].accepted = bool;
             eventsService.event.take_part(event_id, bool);
         };
 
@@ -69,13 +68,7 @@ angular.module('scheudler').controller("eventsCtrl",
 
         $scope.get_members = eventsService.event.get_members($routeParams.id);
 
-        $scope.allEvents = eventsService.event.get_events(function(data){
-            for(var i = 0; i < data.length; i++){
-                data[i].time = new Date(data[i].time).format("shortTime");
-                data[i].date = new Date(data[i].date).format("dd. mmm");
-                
-            }
-        });
+        
 
         $scope.groups = dashboardService.groups.get();
 

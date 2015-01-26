@@ -146,8 +146,7 @@ class Api::DashboardController < ApplicationController
 				if check != nil
 					now = Time.new.to_s 
 					if now.to_s > e1.start.to_s
-						Participant.where(event_id: e1.id).destroy_all
-						Event.find(e1.id).destroy
+						
 					elsif check.accepted == nil 
 						@all_invites << e1
 					end
@@ -169,8 +168,7 @@ class Api::DashboardController < ApplicationController
 				if check != nil
 					now = Time.new.to_s 
 					if now.to_s > e1.start.to_s
-						Participant.where(event_id: e1.id).destroy_all
-						Event.find(e1.id).destroy
+						
 					elsif check.accepted == true 
 						@all_events << e1
 					end

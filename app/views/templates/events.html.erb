@@ -53,26 +53,61 @@
           <a href="/#/events_location/{{events.id}}">{{events.name}} ({{events.date}} - {{events.time}}, {{events.location}}</a>)
         </div>
         <div name="event-text-eve">
-          <div class="col-lg-9 col-md-9 col-xs-9">
+          <div class="col-lg-8 col-md-8 col-xs-8">
             {{events.description}}
           </div>
         </div>
         <div name="event-text-eve">
-          <div class="col-lg-3 col-md-3 col-xs-3">
-            <button class="btn btn-success pull-right" ng-click="take_part(events.id, 'true')"><i class="fa fa-check"></i>
-              <span class="hidden-xs">
-                <%=t('.take_part') %>
-              </span>
-            </button>
+          <div class="col-lg-4 col-md-4 col-xs-4" ng-show="events.accepted == null">
+            <div class="btn btn-group pull-right">
+              <button class="btn btn-success" ng-click="take_part(events.id, true, $index)">
+                <i class="fa fa-check"></i>
+                <span class="hidden-xs">
+                  <%=t('.take_part') %>
+                </span>
+              </button>
 
-            <button class="btn btn-danger pull-right" ng-click="take_part(events.id, 'false')"><i class="fa fa-remove"></i>
-              <span class="hidden-xs">
-                <%=t('.deny') %>
-              </span>
-            </button>
+              <button class="btn btn-danger" ng-click="take_part(events.id, false, $index)">
+                <span class="hidden-xs">
+                  <%=t('.deny') %>
+                </span>
+                <i class="fa fa-remove"></i>
+              </button>
+            </div>
           </div>
-
         </div>
+        <div class="col-lg-4 col-md-4 col-xs-4" ng-show="events.accepted == true">
+            <div class="btn btn-group pull-right">
+              <button class="btn btn-success"><i class="fa fa-check"></i>
+                <span class="hidden-xs">
+                  Accepted
+                </span>
+              </button>
+
+              <button class="btn btn-success" ng-click="take_part(events.id, null, $index)">
+                <span class="hidden-xs">
+                  Change
+                </span>
+                <i class="fa fa-question"></i>
+              </button>
+            </div>
+          </div>
+        <div class="col-lg-4 col-md-4 col-xs-4" ng-show="events.accepted == false">
+            <div class="btn btn-group pull-right">
+              <button class="btn btn-danger"><i class="fa fa-remove"></i>
+                <span class="hidden-xs">
+                  Rejected
+                </span>
+              </button>
+
+              <button class="btn btn-danger" ng-click="take_part(events.id, null, $index)">
+                <span class="hidden-xs">
+                  Change
+                </span>
+                <i class="fa fa-question"></i>
+              </button>
+            </div>
+          </div>
         <div style="position: absolute; right: 0px;" ng-click="redirect_to_members(events.id)"><i class="fa fa-sign-out"><%=t ('.see_part') %></i></div>
       </div>
     </div>

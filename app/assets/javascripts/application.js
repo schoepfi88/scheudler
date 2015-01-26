@@ -45,3 +45,6 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datetimepicker
 //= require ./vendor/ng-tags-input.js
+//= require ./vendor/jquery.timepicker.js
+
+

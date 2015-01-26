@@ -40,7 +40,6 @@ class Api::EventsController < Api::RestController
   	init_calendar
   	gcal_id = Group.find(group_id).calendar_id
     event = Event.create_event(create_params)
-    puts create_params
   	gcal_event_insert(gcal_id, event)
     title = "New Event: " + event.name
     #Sun, 25 Jan 2015 15:00:00 +0000:DateTime
