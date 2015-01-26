@@ -7,5 +7,5 @@ json.array!(@events) do |eve|
 	json.date eve.start
 	json.time eve.start
 	json.group_id eve.group_id
-	json.accepted eve.participants.pluck(:accepted).first
+	json.accepted Participant.find(eve.id).accepted
 end
