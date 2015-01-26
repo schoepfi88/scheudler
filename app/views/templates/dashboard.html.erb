@@ -60,8 +60,8 @@
       </div>
       <!-- groups -->
       <div class="panel-body" id="group_body">
-        <div class="panel panel-default inbox-dashboard" ng-repeat="group in mygroups" ng-init="center_groups()">
-          <a class="group-link-dashboard" href="/#/groups_dashboard/{{group.id}}">
+        <div class="panel panel-default inbox-dashboard" ng-repeat="group in mygroups track by $index" ng-init="center_groups()">
+          <a class="group-link-dashboard" href="/#/groups_dashboard/{{group.id}}/{{$index}}">
             <div class="panel-body inbox-dashboard">
               <div class="row center-row">
                 <div name="group-pic" class="col-lg-2 col-md-2 col-sm-1 col-xs-2 center">
