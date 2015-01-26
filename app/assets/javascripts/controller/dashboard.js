@@ -57,22 +57,22 @@ angular.module('scheudler').controller("dashboardCtrl",
                data[i].date = new Date(data[i].date).format("dd. mmm");
                var tmp = data[i].location;
                data[i].location = tmp.split(",")[0];
-              	if (tmp.split(",")[1] !== undefined)
-               	data[i].location = data[i].location +", " + tmp.split(",")[1];
-               if (tmp.split(",")[2] !== undefined)
-               	data[i].location = data[i].location +", " + tmp.split(",")[2];
-          }
+			if (tmp.split(",")[1] !== undefined)
+				data[i].location = data[i].location +", " + tmp.split(",")[1];
+			if (tmp.split(",")[2] !== undefined)
+				data[i].location = data[i].location +", " + tmp.split(",")[2];
+		}
 	});
 	$scope.allEventsAccepted = dashboardService.events.get_events(function(data){
 		for(var i = 0; i < data.length; i++){
-               data[i].time = new Date(data[i].time).format("shortTime");
-               data[i].date = new Date(data[i].date).format("dd. mmm");
-               var tmp = data[i].location;
-               data[i].location = tmp.split(",")[0];
-              	if (tmp.split(",")[1] !== undefined)
-               	data[i].location = data[i].location +", " + tmp.split(",")[1];
-               if (tmp.split(",")[2] !== undefined)
-               	data[i].location = data[i].location +", " + tmp.split(",")[2];
+			data[i].time = new Date(data[i].time).format("shortTime");
+			data[i].date = new Date(data[i].date).format("dd. mmm");
+			var tmp = data[i].location;
+			data[i].location = tmp.split(",")[0];
+			if (tmp.split(",")[1] !== undefined)
+				data[i].location = data[i].location +", " + tmp.split(",")[1];
+			if (tmp.split(",")[2] !== undefined)
+				data[i].location = data[i].location +", " + tmp.split(",")[2];
           }
 	});
 
